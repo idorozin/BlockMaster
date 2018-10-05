@@ -88,7 +88,5 @@ public class PlayerInput : MonoBehaviour {
 		if(rot2)
 		predictionLine.paintDotedLine(diff*15,transform.GetChild(0).position);
 	}
-//big trol
-	//are you kidding me?
 	
 }

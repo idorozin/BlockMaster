@@ -69,9 +69,4 @@ public class PredictionLine : MonoBehaviour {
 					}
 				}
 		}
-	
-	
-	//test
-
-
 }

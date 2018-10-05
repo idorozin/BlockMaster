@@ -35,7 +35,8 @@ public class PredictionLine : MonoBehaviour {
 			}
 		}
 	}
-	
+	//sadasdasdadasdad
+	//ahalan peopl how are you kids
 	//calculate the dots position
 	private Vector2 CalculatePosition(Vector2 LAUNCH_VELOCITY,Vector2 INITIAL_POSITION,float elapsedTime){
 		 return gravity * elapsedTime * elapsedTime * 0.5f +

@@ -20,6 +20,7 @@ public class PlayerStats : MonoBehaviour {
 		
 	}
 	void Start(){
+		File.Delete(Application.persistentDataPath+"/PlayerFile.json");
 		update=GetComponent<updatePlayerStats>();
 		Debug.Log(Application.persistentDataPath+"/PlayerFile.json");
 		if(File.Exists(Application.persistentDataPath+"/PlayerFile.json")) Debug.Log("file exists"); else update.saveFile();	

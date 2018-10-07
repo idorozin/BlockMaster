@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class shapeBehaviour : MonoBehaviour {
 	Rigidbody2D rb;
-	public BoxCollider2D coll;
+	public Collider2D coll;
 	bool triggerOff=true;
 	public bool isTouching=true;
 	
@@ -15,7 +15,7 @@ public class shapeBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		coll=GetComponent<BoxCollider2D>();
+		coll=GetComponent<Collider2D>();
 		coll.isTrigger=true;
 		GetComponent<Rigidbody2D>().isKinematic=true; // turn off the effect of the rigidbody2D
 		rb = GetComponent<Rigidbody2D>();
@@ -40,6 +40,7 @@ public class shapeBehaviour : MonoBehaviour {
 			if(rb.velocity.y<0 && coll.isTrigger && !isTouching && triggerOff)
 			{
 				gameObject.layer=8;
+				gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Shape";
 				coll.isTrigger=false;
 				triggerOff=false;
 				Destroy(transform.GetChild(0).gameObject);

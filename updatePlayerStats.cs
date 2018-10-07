@@ -46,7 +46,6 @@ public class updatePlayerStats : MonoBehaviour {
 		JSONArray cannonsOwned = new JSONArray();
 		if(PlayerStats.cannonsOwned!=null && PlayerStats.cannonsOwned.Count!=0)
 		foreach(string cannon in PlayerStats.cannonsOwned){
-			cannonsOwned.Add("default");
 			cannonsOwned.Add(cannon);
 		}
 		playerStats.Add("cannonsOwned",cannonsOwned);

@@ -16,7 +16,7 @@ public class shapeGenerator : MonoBehaviour
 	private List<string> shapesList()
 	{
 		List<string> shapes=new List<string>();
-		string[] shapeNames={"box"};	
+		string[] shapeNames={"box","h_rectangel","square","m_square","rectangel","circle_S"};	
 		foreach (string shape in shapeNames)
 			shapes.Add(shape);
 		return shapes;

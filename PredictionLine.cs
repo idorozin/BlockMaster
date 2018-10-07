@@ -65,7 +65,7 @@ public class PredictionLine : MonoBehaviour {
 				{
 					if (dot_ != null)
 					{
-						dot_.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f); // about 50% transparent
+						dot_.GetComponent<SpriteRenderer>().color = new Color(1f, 0.65f, 0.016f, .5f); // about 50% transparent
 					}
 				}
 		}

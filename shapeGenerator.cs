@@ -16,7 +16,7 @@ public class shapeGenerator : MonoBehaviour
 	private List<string> shapesList()
 	{
 		List<string> shapes=new List<string>();
-		string[] shapeNames={"box","h_rectangel","square","m_square","rectangel","circle_S"};	
+		string[] shapeNames={"box","box","box","box","box","box","box","box","box","box","box","box","h_rectangel","square","m_square","rectangel"};	
 		foreach (string shape in shapeNames)
 			shapes.Add(shape);
 		return shapes;
@@ -45,7 +45,6 @@ public class shapeGenerator : MonoBehaviour
 		{
 			spawningPos = new Vector3(transform.position.x,transform.position.y+1f,transform.position.z);
 			string prefabName=filePath+shapes[Random.Range(0,shapes.Count)];
-			Debug.Log(prefabName);
 			GameObject shape = (GameObject)Instantiate(Resources.Load(prefabName) , spawningPos , Quaternion.identity);
 			shape.transform.parent=transform;
 			cannonLoaded=true;

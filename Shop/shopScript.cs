@@ -21,10 +21,8 @@ public class shopScript : MonoBehaviour {
 		items[0]=new Item("1",20);
 		items[1]=new Item("2",10); 
 		currentItem=0;
-		Debug.Log(path+items[currentItem].getName());
 		item = (GameObject)Instantiate(Resources.Load(path+items[currentItem].getName()));
 		playerStats = GameObject.Find("PlayerStats");
-		Debug.Log(PlayerStats.money);
 	}
 
 	void Update(){
@@ -42,9 +40,6 @@ public class shopScript : MonoBehaviour {
 	
 	public void rightButton()
 	{
-		/*  string[] items=new string[2];
-		items[0]="1";
-		items[1]="2"; */
 		if(currentItem+1<=items.Length-1 /* && items[currentItem+1]!=null */){
 		Destroy(item);
 		currentItem++;
@@ -55,7 +50,6 @@ public class shopScript : MonoBehaviour {
  	public void buyButton()
 	{
 		foreach(string item_ in PlayerStats.cannonsOwned){
-			Debug.Log("you have this item");
 			if(item_ == items[currentItem].getName())
 				return;
 		}
@@ -65,27 +59,22 @@ public class shopScript : MonoBehaviour {
 			Debug.Log("you bought the cannon");
 			playerStats.GetComponent<updatePlayerStats>().saveFile();
 		}
-		else
-			Debug.Log("you dont have enough money");
 		
 	}
 	
 	public void useButton()
 	{
+		if (PlayerStats.lastCannon == items[currentItem].getName())
+			return;
 		bool have = false;
 		foreach(string item_ in PlayerStats.cannonsOwned){
-			Debug.Log(item_ + " citem " +items[currentItem].getName());
 			if(item_ == items[currentItem].getName())
 				have=true;
 		}
-		if(have){
+		if(!have)
+			return;
 		PlayerStats.lastCannon=items[currentItem].getName();
-					Debug.Log("you are using the cannon");
-
-					playerStats.GetComponent<updatePlayerStats>().saveFile();
-
-		}
-		
+		playerStats.GetComponent<updatePlayerStats>().saveFile();
 	} 
 
 	public void backButton(){

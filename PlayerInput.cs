@@ -5,11 +5,11 @@ using System;
 public class PlayerInput : MonoBehaviour {
 	private Vector3 shootPosition,aimPosition;
 	[SerializeField]
-	private int x,y,z,shootingPower=4;
+	private int x,y,z,shootingPower;
 	double lastz,zf,current;
 	bool rot=false,rot2=false,loading;
 	float nextTime=0;
-	public float shootingSpeed=1.5f;
+	public float shootingSpeed=1f;
 	int i=0;
 	PredictionLine predictionLine;
 
@@ -71,7 +71,7 @@ public class PlayerInput : MonoBehaviour {
 		transform.GetChild(0).GetComponent<Rigidbody2D>().isKinematic = false; // Rigidbody2D effect on
 		Vector3 diff = Camera.main.ScreenToWorldPoint(aimPosition) - transform.position;
 		diff.Normalize();
-		transform.GetChild(0).GetComponent<Rigidbody2D>().velocity=(diff)*15;
+		transform.GetChild(0).GetComponent<Rigidbody2D>().velocity=(diff)*16;
 		transform.DetachChildren();
 		GetComponent<shapeGenerator>().onCannonLoaded();
 		loading=true;
@@ -86,7 +86,7 @@ public class PlayerInput : MonoBehaviour {
 		float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
 		if(rot2)
-		predictionLine.paintDotedLine(diff*15,transform.GetChild(0).position);
+		predictionLine.paintDotedLine(diff*16,transform.GetChild(0).position);
 	}
 	
 }

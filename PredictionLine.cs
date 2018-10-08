@@ -29,7 +29,6 @@ public class PredictionLine : MonoBehaviour {
 			if(-0.8f<CalculatePosition(f_launch_velocity,f_initial_position,time_step*i).y){
 			GameObject Dot = (GameObject)Instantiate(Resources.Load(dot_path));
 			Dot.transform.position=CalculatePosition(f_launch_velocity,f_initial_position,time_step*i);
-				Debug.Log("trasparency ->"+(1f-(float)i*0.1f));
 			Dot.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f,1f-(float)i*0.1f); // first dot 0% transparent -> last dot 99% transparent
 			dots.Add(Dot);
 			}

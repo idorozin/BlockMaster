@@ -19,6 +19,7 @@ public class shapeBehaviour : MonoBehaviour {
 		coll.isTrigger=true;
 		GetComponent<Rigidbody2D>().isKinematic=true; // turn off the effect of the rigidbody2D
 		rb = GetComponent<Rigidbody2D>();
+		//transform.eulerAngles = new Vector3(transform.parent.eulerAngles.x,transform.parent.eulerAngles.y,transform.parent.eulerAngles.z);
 	}
 	
 	// Update is called once per frame
@@ -47,6 +48,7 @@ public class shapeBehaviour : MonoBehaviour {
 				rb.constraints = RigidbodyConstraints2D.None; // turn off freeze rotation
 
 			}
+			//TODO
 			if(!triggerOff && transform.position.y<-3)
 			{
 				HeightFinder.lives--;

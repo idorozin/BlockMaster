@@ -17,9 +17,9 @@ public class pauseMenu : MonoBehaviour {
 		if(HeightFinder.lives<=-3){
 			LoadMainMenu();
 			HeightFinder.lives=0;
+			
 			PlayerStats.money+=(float)Math.Round(HeightFinder.score*10);
 			Debug.Log(PlayerStats.money);
-			playerStats.GetComponent<updatePlayerStats>().saveFile();
 		}
 	}
 	

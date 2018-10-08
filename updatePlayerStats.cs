@@ -10,11 +10,13 @@ public class updatePlayerStats : MonoBehaviour {
 	string path;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		path=Application.persistentDataPath+"/PlayerFile.json";
 	}
 	
-	public void loadFile(){
+	public void loadFile()
+	{
 		string fileString = File.ReadAllText(path);
 		Debug.Log(fileString);
 		JSONObject playerJson= (JSONObject)JSON.Parse(fileString);
@@ -22,20 +24,15 @@ public class updatePlayerStats : MonoBehaviour {
 		PlayerStats.player=playerJson["Name"];
 		PlayerStats.highScore=playerJson["highScore"];
 		PlayerStats.lastCannon=playerJson["lastCannon"];
-		Debug.Log(playerJson["lastCannon"]);
 		PlayerStats.money=playerJson["Money"];
 		//get cannonsOwned
-		//*********************************************FIX**************************************
 	 	JSONArray jsonArray = (JSONArray) playerJson["cannonsOwned"].AsArray;
-		Debug.Log("typeof" + jsonArray.GetType());
 		foreach (JSONNode explrObject in jsonArray) 
 			PlayerStats.cannonsOwned.Add(explrObject.Value); 
-	
-		foreach(string c in PlayerStats.cannonsOwned)
-			Debug.Log(c);
 	}
 	
-	public void saveFile(){
+	public void saveFile()
+	{
 		JSONObject playerStats = new JSONObject();
 		//stats
 		playerStats.Add("Name",PlayerStats.player);
@@ -45,9 +42,10 @@ public class updatePlayerStats : MonoBehaviour {
 		//cannonsOwned
 		JSONArray cannonsOwned = new JSONArray();
 		if(PlayerStats.cannonsOwned!=null && PlayerStats.cannonsOwned.Count!=0)
-		foreach(string cannon in PlayerStats.cannonsOwned){
-			cannonsOwned.Add(cannon);
-		}
+			foreach(string cannon in PlayerStats.cannonsOwned)
+			{
+				cannonsOwned.Add(cannon);
+			}
 		playerStats.Add("cannonsOwned",cannonsOwned);
 		//save json file
 		File.WriteAllText(path , playerStats.ToString());

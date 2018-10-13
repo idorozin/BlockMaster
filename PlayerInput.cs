@@ -87,6 +87,7 @@ public class PlayerInput : MonoBehaviour {
 		transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
 		if(rot2)
 		predictionLine.paintDotedLine(diff*16,transform.GetChild(0).position);
+		
 	}
 	
 }

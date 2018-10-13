@@ -14,14 +14,23 @@ public class shopScript : MonoBehaviour {
 	GameObject item;
 	GameObject playerStats;
 	public Text balance_text;
+	public GameObject lockedUi;
+	private Text lockedUiText;
 
 	// Use this for initialization
 	void Start () {
  		items=new Item[2];
-		items[0]=new Item("1",20);
-		items[1]=new Item("2",10); 
+		items[0]=new Item("1",20,10);
+		items[1]=new Item("2",10,40); 
 		currentItem=0;
 		item = (GameObject)Instantiate(Resources.Load(path+items[currentItem].getName()));
+		if (items[currentItem].getScore() > PlayerStats.highScore)
+		{
+			lockedUi.SetActive(true);
+			lockedUiText=lockedUi.GetComponent<Text>();
+			lockedUiText.text = "To unlock the \n cannon reach to \n " + items[currentItem].getScore() + "points";
+		}
+
 		playerStats = GameObject.Find("PlayerStats");
 	}
 
@@ -31,24 +40,45 @@ public class shopScript : MonoBehaviour {
 	
 	public void leftButton()
 	{
-		if(currentItem-1>=0 && items[currentItem-1]!=null){
-		Destroy(item);
-		currentItem--;
-		item = (GameObject)Instantiate(Resources.Load(path+items[currentItem].getName()));
+		if (currentItem - 1 >= 0 && items[currentItem - 1] != null)
+		{
+			Destroy(item);
+			currentItem--;
+			item = (GameObject) Instantiate(Resources.Load(path + items[currentItem].getName()));
+			if (items[currentItem].getScore() > PlayerStats.highScore)
+			{
+				lockedUi.SetActive(true);
+				lockedUiText = lockedUi.GetComponent<Text>();
+				lockedUiText.text = "To unlock the \n cannon reach to \n " + items[currentItem].getScore() + "points";
+			}
+			else
+				lockedUi.SetActive(false);
 		}
+
 	}
 	
 	public void rightButton()
 	{
-		if(currentItem+1<=items.Length-1 /* && items[currentItem+1]!=null */){
-		Destroy(item);
-		currentItem++;
-		item = (GameObject)Instantiate(Resources.Load(path+items[currentItem].getName()));
+		if (currentItem + 1 <= items.Length - 1 && items[currentItem + 1] != null)
+		{
+			Destroy(item);
+			currentItem++;
+			item = (GameObject) Instantiate(Resources.Load(path + items[currentItem].getName()));
+			if (items[currentItem].getScore() > PlayerStats.highScore)
+			{
+				lockedUi.SetActive(true);
+				lockedUiText=lockedUi.GetComponent<Text>();
+				lockedUiText.text = "To unlock the \n cannon reach to \n " + items[currentItem].getScore() + "points";
+			}
+			else
+				lockedUi.SetActive(false);
 		}
 	}
 	
  	public void buyButton()
-	{
+	 {
+		 if (items[currentItem].getScore() > PlayerStats.highScore)
+			 return;
 		foreach(string item_ in PlayerStats.cannonsOwned){
 			if(item_ == items[currentItem].getName())
 				return;

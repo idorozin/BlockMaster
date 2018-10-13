@@ -1,12 +1,17 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class pauseMenu : MonoBehaviour {
 	
 	public static bool GameIsPaused = false;
 	public GameObject PauseMenuUI;
 	public GameObject playerStats;
+	public GameObject GameOverUI;
+	public Text gameOverScore;
+	public Text gameOverMoney;
+	public GameObject Score;
 	
 	void Start(){
 		playerStats = GameObject.Find("PlayerStats");
@@ -15,11 +20,12 @@ public class pauseMenu : MonoBehaviour {
 	
 	void Update(){
 		if(HeightFinder.lives<=-3){
-			LoadMainMenu();
+			GameOverUI.SetActive(true);
 			HeightFinder.lives=0;
-			
-			PlayerStats.money+=(float)Math.Round(HeightFinder.score*10);
-			Debug.Log(PlayerStats.money);
+			PlayerStats.money+=(float)Math.Round(Math.Round(HeightFinder.score*10));
+			gameOver((float)Math.Round(Math.Round(HeightFinder.score*10)));
+			GameIsPaused = true;
+			Time.timeScale = 0;
 		}
 	}
 	
@@ -51,5 +57,20 @@ public class pauseMenu : MonoBehaviour {
 		SceneManager.LoadScene("MainMenu");
 		Time.timeScale = 1f;
 		GameIsPaused = false;
+	}
+
+	public void playAgain()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		GameOverUI.SetActive(false);
+		Time.timeScale = 1f;
+		GameIsPaused = false;
+	}
+
+	public void gameOver(float score)
+	{
+		gameOverScore.text=score.ToString();
+		gameOverMoney.text = "+"+score.ToString()+" (coins)";
+		Score.SetActive(false);
 	}
 }

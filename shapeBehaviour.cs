@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class shapeBehaviour : MonoBehaviour {
 	private Transform shape;
 	public float radius;
 	public LayerMask onShape;
+	private float nextTime=0;
+	private bool setTime = false;
 
 	// Use this for initialization
 	void Start () 
@@ -30,28 +33,49 @@ public class shapeBehaviour : MonoBehaviour {
 			{
 				shape = hasChild();
 				isTouching = Physics2D.OverlapCircle(shape.position , radius , onShape); //is the shape touching another shape?
-			}
-			/* if(rb.velocity.y>=0 && !coll.isTrigger && !triggerOff)
-			{
-				coll.isTrigger=true;
-				triggerOff=true;
-			} */
+
+				
+			}			
 			
 			//if the shape isnt touching another shape and its falling turn boxcoll on
 			if(rb.velocity.y<0 && coll.isTrigger && !isTouching && triggerOff)
 			{
-				gameObject.layer=8;
-				gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Shape";
 				coll.isTrigger=false;
 				triggerOff=false;
 				Destroy(transform.GetChild(0).gameObject);
-				rb.constraints = RigidbodyConstraints2D.None; // turn off freeze rotation
+				gameObject.layer=8;
+				gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Shape";
+				//rb.constraints = RigidbodyConstraints2D.None; // turn off freeze rotation
 
 			}
-			//TODO
+
+		if (!triggerOff && rb.velocity.y < 0.1f && rb.velocity.x < 0.1f &&
+		    rb.transform.InverseTransformDirection(rb.velocity).z < 0.1f && rb.velocity.y > -0.1f &&
+		    rb.velocity.x > -0.1f &&
+		    rb.transform.InverseTransformDirection(rb.velocity).z > -0.1f)
+		{
+			if (!setTime)
+			{
+				nextTime = Time.time + 2f;
+				setTime = true;
+			}
+
+			if (Time.time > nextTime)
+			{
+				Debug.Log("freezed");
+				//rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+				rb.mass = 5f;
+				setTime = false;
+			}
+		}
+		else
+			setTime = false;
+
+		//TODO
 			if(!triggerOff && transform.position.y<-3)
 			{
 				HeightFinder.lives--;
+				HeartsUi.heartsUi.heartsDown((int)HeightFinder.lives+3);
 				Destroy(gameObject);
 			}
 	}

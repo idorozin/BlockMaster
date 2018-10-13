@@ -11,6 +11,7 @@ public class shapeGenerator : MonoBehaviour
 	[SerializeField]
 	private int x,y,z;
 	public Transform camera;
+	private int circle = 0;
 		
 	//initialize the list of the shapes
 	private List<string> shapesList()
@@ -45,9 +46,15 @@ public class shapeGenerator : MonoBehaviour
 		{
 			spawningPos = new Vector3(transform.position.x,transform.position.y+1f,transform.position.z);
 			string prefabName=filePath+shapes[Random.Range(0,shapes.Count)];
+			if (circle > 15)
+			{
+				prefabName = filePath + "circle_S";
+				circle = 0;
+			}
 			GameObject shape = (GameObject)Instantiate(Resources.Load(prefabName) , spawningPos , Quaternion.identity);
 			shape.transform.parent=transform;
 			cannonLoaded=true;
+			circle++;
 		}
 		
 		

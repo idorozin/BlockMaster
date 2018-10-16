@@ -28,27 +28,49 @@ public class shapeBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		
 			if(triggerOff && hasChild()!=null)
 			{
+				//TODO : check how to implement coll.isTouching()
 				shape = hasChild();
 				isTouching = Physics2D.OverlapCircle(shape.position , radius , onShape); //is the shape touching another shape?
 
-				
 			}			
 			
-			//if the shape isnt touching another shape and its falling turn boxcoll on
-			if(rb.velocity.y<0 && coll.isTrigger && !isTouching && triggerOff)
-			{
-				coll.isTrigger=false;
-				triggerOff=false;
-				Destroy(transform.GetChild(0).gameObject);
-				gameObject.layer=8;
-				gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Shape";
-				//rb.constraints = RigidbodyConstraints2D.None; // turn off freeze rotation
+			//if the shape isn't touching another shape and its falling turn boxcoll on
+			turnOnCollider();
+			//wait period of time and freezes the rigidbody
+			freezeRigidbody();
+			//check if the shape fell down if it did , Destroy game object and lives--
+			healthDown();		
+	}
+	
+	Transform hasChild(){
+		if(transform.childCount > 0)
+		{
+			    foreach(Transform child in transform) 
+				{
+					return child;
+				}
+		}
+		return null;
+	}
 
-			}
+	private void turnOnCollider()
+	{
+		if(rb.velocity.y<0 && coll.isTrigger && !isTouching && triggerOff)
+		{
+			coll.isTrigger=false;
+			triggerOff=false;
+			Destroy(transform.GetChild(0).gameObject);
+			gameObject.layer=8;
+			//rb.constraints = RigidbodyConstraints2D.None; // turn off freeze rotation
+			gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Shape";
+			gameObject.GetComponent<TrailRenderer>().sortingLayerName = "Trail_";
+		}
+	}
 
+	private void freezeRigidbody()
+	{
 		if (!triggerOff && rb.velocity.y < 0.1f && rb.velocity.x < 0.1f &&
 		    rb.transform.InverseTransformDirection(rb.velocity).z < 0.1f && rb.velocity.y > -0.1f &&
 		    rb.velocity.x > -0.1f &&
@@ -63,34 +85,29 @@ public class shapeBehaviour : MonoBehaviour {
 			if (Time.time > nextTime)
 			{
 				Debug.Log("freezed");
-				//rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-				rb.mass = 5f;
+				rb.constraints = RigidbodyConstraints2D.FreezeAll;
+				//rb.mass = 5f;
 				setTime = false;
+				Destroy(gameObject.GetComponent<TrailRenderer>());
 			}
 		}
 		else
 			setTime = false;
 
+	}
+
+	private void healthDown()
+	{
 		//TODO
-			if(!triggerOff && transform.position.y<-3)
-			{
-				HeightFinder.lives--;
-				HeartsUi.heartsUi.heartsDown((int)HeightFinder.lives+3);
-				Destroy(gameObject);
-			}
-	}
-	
-	Transform hasChild(){
-		if(transform.childCount > 0)
+		if(!triggerOff && transform.position.y<-3)
 		{
-			    foreach(Transform child in transform) 
-				{
-					return child;
-				}
+			HeightFinder.lives--;
+			HeartsUi.heartsUi.heartsDown((int)HeightFinder.lives+3);
+			Destroy(gameObject);
 		}
-		return null;
 	}
-	
-	
+
+
+
 
 }

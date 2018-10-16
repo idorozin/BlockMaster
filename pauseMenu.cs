@@ -14,8 +14,7 @@ public class pauseMenu : MonoBehaviour {
 	public GameObject Score;
 	
 	void Start(){
-		playerStats = GameObject.Find("PlayerStats");
-		
+		playerStats = GameObject.Find("PlayerStats");		
 	}
 	
 	void Update(){
@@ -26,6 +25,7 @@ public class pauseMenu : MonoBehaviour {
 			gameOver((float)Math.Round(Math.Round(HeightFinder.score*10)));
 			GameIsPaused = true;
 			Time.timeScale = 0;
+			playerStats.GetComponent<updatePlayerStats>().saveFile();
 		}
 	}
 	

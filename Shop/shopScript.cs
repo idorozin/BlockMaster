@@ -16,7 +16,12 @@ public class shopScript : MonoBehaviour {
 	public Text balance_text;
 	public GameObject lockedUi;
 	private Text lockedUiText;
-
+	[SerializeField]
+	private Text priceText;
+	[SerializeField] 
+	private Text nameText;
+	
+	
 	// Use this for initialization
 	void Start () {
  		items=new Item[2];
@@ -24,11 +29,13 @@ public class shopScript : MonoBehaviour {
 		items[1]=new Item("2",10,40); 
 		currentItem=0;
 		item = (GameObject)Instantiate(Resources.Load(path+items[currentItem].getName()));
+		priceText.text = items[currentItem].getPrice().ToString();
+		nameText.text = items[currentItem].getName();
 		if (items[currentItem].getScore() > PlayerStats.highScore)
 		{
 			lockedUi.SetActive(true);
 			lockedUiText=lockedUi.GetComponent<Text>();
-			lockedUiText.text = "To unlock the \n cannon reach to \n " + items[currentItem].getScore() + "points";
+			lockedUiText.text = "To unlock the \n cannon reach to \n " + items[currentItem].getScore() + "points";		
 		}
 
 		playerStats = GameObject.Find("PlayerStats");
@@ -45,6 +52,8 @@ public class shopScript : MonoBehaviour {
 			Destroy(item);
 			currentItem--;
 			item = (GameObject) Instantiate(Resources.Load(path + items[currentItem].getName()));
+			priceText.text = items[currentItem].getPrice().ToString();
+			nameText.text = items[currentItem].getName();
 			if (items[currentItem].getScore() > PlayerStats.highScore)
 			{
 				lockedUi.SetActive(true);
@@ -64,6 +73,8 @@ public class shopScript : MonoBehaviour {
 			Destroy(item);
 			currentItem++;
 			item = (GameObject) Instantiate(Resources.Load(path + items[currentItem].getName()));
+			priceText.text = items[currentItem].getPrice().ToString();
+			nameText.text = items[currentItem].getName();
 			if (items[currentItem].getScore() > PlayerStats.highScore)
 			{
 				lockedUi.SetActive(true);

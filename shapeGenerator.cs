@@ -17,7 +17,7 @@ public class shapeGenerator : MonoBehaviour
 	private List<string> shapesList()
 	{
 		List<string> shapes=new List<string>();
-		string[] shapeNames={"box","box","box","box","box","box","box","box","box","box","box","box","h_rectangel","square","m_square","rectangel"};	
+		string[] shapeNames={"box","box","box","box","box","box","box","box","box","box","box","box","h_rectangel","square","m_square","rectangel","circle_S"};	
 		foreach (string shape in shapeNames)
 			shapes.Add(shape);
 		return shapes;
@@ -56,11 +56,10 @@ public class shapeGenerator : MonoBehaviour
 			cannonLoaded=true;
 			circle++;
 		}
-		
-		
 	}
 	
 	public void onCannonLoaded(){
 		this.cannonLoaded = this.cannonLoaded ? false : true;
 	}
+
 }

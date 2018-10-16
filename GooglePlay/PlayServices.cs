@@ -1,13 +1,25 @@
-﻿/*
+﻿
 
 using System.Collections;
+using System.Net.Mime;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayServices : MonoBehaviour {
+public class PlayServices : MonoBehaviour
+{
 
+    public static PlayServices Instance;
+    [SerializeField]
+    private Text status;
+    
     // ... other code here... 
+    void Awake()
+    {
+       Instance = this;
+    }
+    
     public void Start() {
         // Create client configuration
         PlayGamesClientConfiguration config = new 
@@ -21,9 +33,25 @@ public class PlayServices : MonoBehaviour {
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.Activate();
         PlayGamesPlatform.Instance.Authenticate(SignInCallback, false);
-        
+        Debug.Log("PLAYSERVICES START");
     }
-    public void SignInCallback(bool success) {}
+
+    public void SignInCallback(bool success)
+    {
+        if (success) {
+            Debug.Log("(Lollygagger) Signed in!");
+            
+            // Change sign-in button text
+            
+            // Show the user's name
+            status.text = "Signed in as: " + Social.localUser.userName;
+        } else {
+            Debug.Log("(Lollygagger) Sign-in failed...");
+            
+            // Show failure message
+            status.text = "Sign-in failed";
+        }
+    }
 
 
     #region Leaderboard
@@ -42,7 +70,7 @@ public class PlayServices : MonoBehaviour {
         {
             // Note: make sure to add 'using GooglePlayGames'
             PlayGamesPlatform.Instance.ReportScore(score,
-                GPGSIds.leaderboardID,
+                GPGSIds.leaderboard_best_high_score,
                 (bool success) =>
                 {
                     Debug.Log("(game) Leaderboard update success: " + success);
@@ -53,7 +81,6 @@ public class PlayServices : MonoBehaviour {
     #endregion
    
  }
-*/
 
 
 

@@ -30,7 +30,7 @@ public class HeightFinder : MonoBehaviour {
 		if(col.gameObject.GetComponent<Rigidbody2D>() !=null && col.gameObject.GetComponent<Rigidbody2D>().velocity.x<0.1 && col.gameObject.GetComponent<Rigidbody2D>().velocity.y<0.1 && col.gameObject.GetComponent<Rigidbody2D>().velocity.x>-0.1 && col.gameObject.GetComponent<Rigidbody2D>().velocity.y>-0.1 && col.isTrigger==false){
 			if (col.gameObject.name != surface.name && col.transform.position.y > surface.transform.position.y)
 			{
-				score=col.transform.position.y-surface.transform.position.y;
+				score=(float)Math.Round((col.transform.position.y-surface.transform.position.y)*10);
 			}
 			if(col.gameObject.name != surface.name && transform.position.y>0)
 				height=col.transform.position.y;

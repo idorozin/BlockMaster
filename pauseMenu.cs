@@ -17,18 +17,11 @@ public class pauseMenu : MonoBehaviour {
 		playerStats = GameObject.Find("PlayerStats");		
 	}
 	
-	void Update(){
-		if(HeightFinder.lives<=-3){
-			GameOverUI.SetActive(true);
-			HeightFinder.lives=0;
-			PlayerStats.money+=(float)Math.Round(Math.Round(HeightFinder.score*10));
-			gameOver((float)Math.Round(Math.Round(HeightFinder.score*10)));
-			GameIsPaused = true;
-			Time.timeScale = 0;
-			playerStats.GetComponent<updatePlayerStats>().saveFile();
-		}
+	void Update()
+	{
+		OnGameOver();
 	}
-	
+
 	public void OnClick(){
 		if(GameIsPaused)
 		{
@@ -67,10 +60,23 @@ public class pauseMenu : MonoBehaviour {
 		GameIsPaused = false;
 	}
 
-	public void gameOver(float score)
+	public void gameOverUI(float score)
 	{
+		GameOverUI.SetActive(true);
 		gameOverScore.text=score.ToString();
 		gameOverMoney.text = "+"+score.ToString()+" (coins)";
 		Score.SetActive(false);
+	}
+	
+	private void OnGameOver()
+	{
+		if(HeightFinder.lives<=-3){
+			HeightFinder.lives=0;
+			PlayerStats.money+=HeightFinder.score;
+			gameOverUI((HeightFinder.score/10));
+			GameIsPaused = true;
+			Time.timeScale = 0;
+			playerStats.GetComponent<updatePlayerStats>().saveFile();
+		}
 	}
 }

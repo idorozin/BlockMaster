@@ -44,17 +44,15 @@ public class PlayServices : MonoBehaviour
             // Change sign-in button text
             
             // Show the user's name
-            status.text = "Signed in as: " + Social.localUser.userName;
         } else {
             Debug.Log("(Lollygagger) Sign-in failed...");
             
             // Show failure message
-            status.text = "Sign-in failed";
         }
     }
 
 
-    #region Leaderboard
+    #region Leaderboards
     public void ShowLeaderboards() {
         if (PlayGamesPlatform.Instance.localUser.authenticated) {
             PlayGamesPlatform.Instance.ShowLeaderboardUI();

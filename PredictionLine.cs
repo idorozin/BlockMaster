@@ -68,4 +68,21 @@ public class PredictionLine : MonoBehaviour {
 					}
 				}
 		}
+
+	public Vector3 maxDot()
+	{
+		if (dots != null)
+		{
+			Vector3 maxdot;
+			maxdot = dots[0].transform.position;
+				foreach (GameObject dot_ in dots)
+				{
+					if (dot_ != null && dot_.transform.position.y > maxdot.y)
+						maxdot = dot_.transform.position;
+				}
+			return maxdot;
+		}
+
+		return new Vector3(0f,0f,0f);
+	}
 }

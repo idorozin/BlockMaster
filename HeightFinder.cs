@@ -32,7 +32,7 @@ public class HeightFinder : MonoBehaviour {
 			{
 				score=col.transform.position.y-surface.transform.position.y;
 			}
-			if(col.gameObject.name != surface.name && col.transform.position.y>0)
+			if(col.gameObject.name != surface.name && transform.position.y>0)
 				height=col.transform.position.y;
 		}
 		this.rb.position = new Vector3(camera.position.x,camera.position.y+5f,camera.position.z);

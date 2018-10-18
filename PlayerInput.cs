@@ -71,9 +71,9 @@ public class PlayerInput : MonoBehaviour {
 	void shoot(Touch touch) // shoots shape and loads the next one
 	{
 		transform.GetChild(0).GetComponent<Rigidbody2D>().isKinematic = false; // Rigidbody2D effect on
-		Vector3 diff = Camera.main.ScreenToWorldPoint(aimPosition) - initialPosition;
+		Vector3 diff = Camera.main.ScreenToWorldPoint(aimPosition) - transform.position;
 		diff.Normalize();
-		transform.GetChild(0).GetComponent<Rigidbody2D>().velocity=(diff)*30;
+		transform.GetChild(0).GetComponent<Rigidbody2D>().velocity=(diff)*16;
 		transform.DetachChildren();
 		GetComponent<shapeGenerator>().onCannonLoaded();
 		loading=true;
@@ -90,9 +90,9 @@ public class PlayerInput : MonoBehaviour {
 		transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
 		if (transform.childCount > 0)
 		{
-			Vector3 diff_ = Camera.main.ScreenToWorldPoint(aimPosition) - initialPosition;
+			Vector3 diff_ = Camera.main.ScreenToWorldPoint(aimPosition) - transform.position;
 			diff_.Normalize();
-			predictionLine.paintDotedLine(diff_ * 30, transform.GetChild(0).position);
+			predictionLine.paintDotedLine(diff_ * 16, transform.GetChild(0).position);
 		}
 
 	}

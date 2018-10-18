@@ -20,17 +20,33 @@ public class score : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(HeightFinder.score!=0 && (float)Math.Round((HeightFinder.score-surface.position.y))>fixedScore)
-			fixedScore=(float)Math.Round(HeightFinder.score);
-		text_.text=(fixedScore*10).ToString(); 
+		if(HeightFinder.score!=0 && (float)Math.Round(HeightFinder.score*10)>fixedScore)
+			fixedScore=(float)Math.Round(HeightFinder.score*10);
+		text_.text=(fixedScore).ToString(); 
 		// text_.text=updatePlayerStats.GetComponent<updatePlayerStats>().saveFiles();
 		// every time record is bitten the file is saved
-		if(fixedScore>PlayerStats.highScore/10){
-			PlayerStats.highScore=fixedScore*10;
+		if(fixedScore>PlayerStats.highScore){
+			PlayerStats.highScore=fixedScore;
+			PlayerStats.highScoreHeight = HeightFinder.height;
 			updatePlayerStats.GetComponent<updatePlayerStats>().saveFile();
 			PlayServices.Instance.addScoreToLeaderboard("",(int)fixedScore);
 		}
-		highScoresign.transform.position=new Vector3(highScoresign.transform.position.x,PlayerStats.highScore/10+surface.transform.position.y+1f,0f);
+		highScoresign.transform.position=new Vector3(highScoresign.transform.position.x,getHighScoreSignHeight(),0f);
 		
+	}
+
+	private float getHighScoreSignHeight()
+	{
+		float roundDiff;
+		if (PlayerStats.highScoreHeight > Math.Round(PlayerStats.highScoreHeight))
+		{
+			roundDiff = (float)(PlayerStats.highScoreHeight-Math.Round(PlayerStats.highScoreHeight));
+		}
+		else
+		{
+			roundDiff = (float)(-PlayerStats.highScoreHeight+Math.Round(PlayerStats.highScoreHeight));
+		}
+		Debug.Log(roundDiff);
+		return PlayerStats.highScoreHeight - surface.transform.position.y;
 	}
 }

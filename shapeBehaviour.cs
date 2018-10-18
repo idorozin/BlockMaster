@@ -13,7 +13,7 @@ public class shapeBehaviour : MonoBehaviour {
 	public float radius;
 	public LayerMask onShape;
 	private float nextTime=0;
-	private bool setTime = false;
+	private bool setTime = false , done=false;
 
 	// Use this for initialization
 	void Start () 
@@ -44,6 +44,7 @@ public class shapeBehaviour : MonoBehaviour {
 			healthDown();		
 	}
 	
+	//return the first child
 	Transform hasChild(){
 		if(transform.childCount > 0)
 		{
@@ -74,7 +75,8 @@ public class shapeBehaviour : MonoBehaviour {
 		if (!triggerOff && rb.velocity.y < 0.1f && rb.velocity.x < 0.1f &&
 		    rb.transform.InverseTransformDirection(rb.velocity).z < 0.1f && rb.velocity.y > -0.1f &&
 		    rb.velocity.x > -0.1f &&
-		    rb.transform.InverseTransformDirection(rb.velocity).z > -0.1f)
+		    rb.transform.InverseTransformDirection(rb.velocity).z > -0.1f
+		    &&!done)
 		{
 			if (!setTime)
 			{
@@ -89,6 +91,7 @@ public class shapeBehaviour : MonoBehaviour {
 				//rb.mass = 5f;
 				setTime = false;
 				Destroy(gameObject.GetComponent<TrailRenderer>());
+				done = true;
 			}
 		}
 		else

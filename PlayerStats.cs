@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour
 	public static string lastCannon="default";
 	public static List<string> cannonsOwned =new List<string>();
 	public static float money=0;
+	public static float highScoreHeight=0;
 	private static bool loaded = false;
 	updatePlayerStats update;
 

@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
-public class PlayButton : MonoBehaviour {
+public class MenuScript : MonoBehaviour {
 
 	public void LoadGame(){
 		SceneManager.LoadScene("GameScene");
@@ -19,4 +21,11 @@ public class PlayButton : MonoBehaviour {
 		PlayServices.Instance.ShowLeaderboards();
 	}
 
+	[SerializeField]
+	private GameObject recordText;
+	
+	public void setRecordText()
+	{
+		recordText.GetComponent<TextMeshProUGUI>().text = PlayerStats.highScore.ToString();
+	}
 }

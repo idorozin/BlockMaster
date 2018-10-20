@@ -12,7 +12,7 @@ public class OnStartGame : MonoBehaviour {
 		if(PlayerStats.lastCannon=="")
 			PlayerStats.lastCannon="default";
 		cannonFilePath="Cannons/"+PlayerStats.lastCannon;
-		GameObject cannon = (GameObject)Instantiate(Resources.Load(cannonFilePath) , spawningPos , Quaternion.identity);
+		Instantiate(Resources.Load(cannonFilePath) , spawningPos , Quaternion.identity);
 	}
 	
 }

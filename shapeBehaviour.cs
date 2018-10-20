@@ -14,7 +14,7 @@ public class shapeBehaviour : MonoBehaviour {
 	public LayerMask onShape;
 	private float nextTime=0;
 	private bool setTime = false , done=false;
-
+	public LayerMask mask = 8;
 	// Use this for initialization
 	void Start () 
 	{
@@ -28,12 +28,11 @@ public class shapeBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-			if(triggerOff && hasChild()!=null)
+			if(triggerOff)
 			{
 				//TODO : check how to implement coll.isTouching()
-				shape = hasChild();
-				isTouching = Physics2D.OverlapCircle(shape.position , radius , onShape); //is the shape touching another shape?
-
+				isTouching = isTouchingShapes(); //is the shape touching another shape?
+				//isTouching = Physics2D.IsTouchingLayers(mask);
 			}			
 			
 			//if the shape isn't touching another shape and its falling turn boxcoll on
@@ -45,15 +44,15 @@ public class shapeBehaviour : MonoBehaviour {
 	}
 	
 	//return the first child
-	Transform hasChild(){
+	bool isTouchingShapes(){
 		if(transform.childCount > 0)
 		{
-			    foreach(Transform child in transform) 
-				{
-					return child;
-				}
+			    foreach(Transform child in transform)
+			    {
+				    if (Physics2D.OverlapCircle(child.position, radius, onShape)) ;
+			    }
 		}
-		return null;
+		return false;
 	}
 
 	private void turnOnCollider()

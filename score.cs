@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class score : MonoBehaviour {
 	//TODO : set score in HeigthFinder class and use only one varible;
 	
-	public Text text_;
 	public Transform surface;
 	float fixedScore=0;
 	public GameObject updatePlayerStats;
 	public GameObject highScoresign;
+	public TextMeshProUGUI text_;
 
 	// Use this for initialization
 	void Start () {
 		updatePlayerStats=GameObject.Find("PlayerStats");
+		text_ = GetComponent<TextMeshProUGUI>();
 	}
 	
 	// Update is called once per frame
@@ -31,16 +33,6 @@ public class score : MonoBehaviour {
 
 	private float getHighScoreSignHeight()
 	{
-		float roundDiff;
-		if (PlayerStats.highScoreHeight > Math.Round(PlayerStats.highScoreHeight))
-		{
-			roundDiff = (float)(PlayerStats.highScoreHeight-Math.Round(PlayerStats.highScoreHeight));
-		}
-		else
-		{
-			roundDiff = (float)(-PlayerStats.highScoreHeight+Math.Round(PlayerStats.highScoreHeight));
-		}
-		Debug.Log(roundDiff);
 		return PlayerStats.highScoreHeight - surface.transform.position.y;
 	}
 
@@ -60,4 +52,16 @@ public class score : MonoBehaviour {
 			fixedScore=HeightFinder.score;
 		text_.text=(fixedScore).ToString(); 
 	}
+	
+	
+	//round diff (probably not needed)
+	/*float roundDiff;
+		if (PlayerStats.highScoreHeight > Math.Round(PlayerStats.highScoreHeight))
+		{
+			roundDiff = (float)(PlayerStats.highScoreHeight-Math.Round(PlayerStats.highScoreHeight));
+		}
+		else
+		{
+			roundDiff = (float)(-PlayerStats.highScoreHeight+Math.Round(PlayerStats.highScoreHeight));
+		}*/
 }

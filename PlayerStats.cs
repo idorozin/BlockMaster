@@ -31,14 +31,13 @@ public class PlayerStats : MonoBehaviour
 	
 	void Start()
 	{
-		Debug.Log("PLAYERSTATS START");
-
 		if(loaded)
 			return;
 		update=GetComponent<updatePlayerStats>();
 		if(File.Exists(Application.persistentDataPath+"/PlayerFile.json")) Debug.Log("file exists"); else update.saveFile();	
 		update.loadFile();
-		loaded = true;
+		GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
+		loaded = true;		
 	}
 
 }

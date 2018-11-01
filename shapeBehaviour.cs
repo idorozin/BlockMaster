@@ -14,7 +14,6 @@ public class shapeBehaviour : MonoBehaviour {
 	public LayerMask onShape;
 	private float nextTime=0;
 	private bool setTime = false , done=false;
-	public LayerMask mask = 8;
 	// Use this for initialization
 	void Start () 
 	{
@@ -30,9 +29,8 @@ public class shapeBehaviour : MonoBehaviour {
 	{
 			if(triggerOff)
 			{
-				//TODO : check how to implement coll.isTouching()
+
 				isTouching = isTouchingShapes(); //is the shape touching another shape?
-				//isTouching = Physics2D.IsTouchingLayers(mask);
 			}			
 			
 			//if the shape isn't touching another shape and its falling turn boxcoll on
@@ -49,7 +47,7 @@ public class shapeBehaviour : MonoBehaviour {
 		{
 			    foreach(Transform child in transform)
 			    {
-				    if (Physics2D.OverlapCircle(child.position, radius, onShape)) ;
+				    if (Physics2D.OverlapCircle(child.position, radius, onShape)) return true;
 			    }
 		}
 		return false;
@@ -86,8 +84,8 @@ public class shapeBehaviour : MonoBehaviour {
 			if (Time.time > nextTime)
 			{
 				Debug.Log("freezed");
-				rb.constraints = RigidbodyConstraints2D.FreezeAll;
-				//rb.mass = 5f;
+				//rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+				rb.mass = 5f;
 				setTime = false;
 				Destroy(gameObject.GetComponent<TrailRenderer>());
 				done = true;

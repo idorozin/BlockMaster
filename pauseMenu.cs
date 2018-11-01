@@ -64,7 +64,7 @@ public class pauseMenu : MonoBehaviour {
 	{
 		GameOverUI.SetActive(true);
 		gameOverScore.text=score.ToString();
-		gameOverMoney.text = "+"+score.ToString()+" (coins)";
+		gameOverMoney.text = "+"+(score/10).ToString()+" (coins)";
 		Score.SetActive(false);
 	}
 	
@@ -73,7 +73,7 @@ public class pauseMenu : MonoBehaviour {
 		if(HeightFinder.lives<=-3){
 			HeightFinder.lives=0;
 			PlayerStats.money+=HeightFinder.score;
-			gameOverUI((HeightFinder.score/10));
+			gameOverUI((HeightFinder.score));
 			GameIsPaused = true;
 			Time.timeScale = 0;
 			playerStats.GetComponent<updatePlayerStats>().saveFile();

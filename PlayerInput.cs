@@ -9,7 +9,7 @@ public class PlayerInput : MonoBehaviour {
 	double lastz,zf,current;
 	bool fingerMoved=false,loading,cantShoot;
 	float nextTime=0;
-	public float shootingSpeed=1f;
+	public float shootingSpeed=0.5f;
 	PredictionLine predictionLine;
 
 	// Use this for initialization
@@ -70,7 +70,7 @@ public class PlayerInput : MonoBehaviour {
 	
 	void shoot(Touch touch) // shoots shape and loads the next one
 	{
-		transform.GetChild(0).GetComponent<Rigidbody2D>().isKinematic = false; // Rigidbody2D effect on
+		transform.GetChild(0).GetComponent<Rigidbody2D>().isKinematic = false; // gravity effect on
 		Vector3 diff = Camera.main.ScreenToWorldPoint(aimPosition) - transform.position;
 		diff.Normalize();
 		transform.GetChild(0).GetComponent<Rigidbody2D>().velocity=(diff)*16;

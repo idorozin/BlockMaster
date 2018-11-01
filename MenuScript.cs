@@ -8,6 +8,11 @@ using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour {
 
+	public void LoadMenu()
+	{
+		SceneManager.LoadScene("MainMenu");
+	}
+
 	public void LoadGame(){
 		SceneManager.LoadScene("GameScene");
 	}
@@ -22,10 +27,19 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	[SerializeField]
-	private GameObject recordText;
-	
-	public void setRecordText()
-	{
-		recordText.GetComponent<TextMeshProUGUI>().text = PlayerStats.highScore.ToString();
+     	private GameObject recordText;
+     	
+     	public void setRecordText()
+     	{
+     		recordText.GetComponent<TextMeshProUGUI>().text = PlayerStats.highScore.ToString();
+     	}
+     
+     	void Start()
+     	{
+     		setRecordText();
+     	}
+	public void LoadWheelOfFortune(){
+		SceneManager.LoadScene("WheelOfFortune");
 	}
+
 }

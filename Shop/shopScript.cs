@@ -39,13 +39,34 @@ public class shopScript : MonoBehaviour {
 		}
 
 		playerStats = GameObject.Find("PlayerStats");
+		GetComponent<swipeDetector>().swipeDetected += moveToSwipeDirection;
+	
+	}
+
+	void moveToSwipeDirection(string direction)
+	{
+		switch (direction)
+		{
+			case "Right":
+				moveRight();
+			    break;
+			case "Left":
+				moveLeft();
+				break;
+			case "Up":
+				moveUp();
+				break;
+			case "Down":
+				moveDown();
+				break;
+		}
 	}
 
 	void Update(){
 		balance_text.text=PlayerStats.money.ToString();
 	}
 	
-	public void leftButton()
+	public void moveLeft()
 	{
 		if (currentItem - 1 >= 0 && items[currentItem - 1] != null)
 		{
@@ -66,7 +87,7 @@ public class shopScript : MonoBehaviour {
 
 	}
 	
-	public void rightButton()
+	public void moveRight()
 	{
 		if (currentItem + 1 <= items.Length - 1 && items[currentItem + 1] != null)
 		{
@@ -85,8 +106,19 @@ public class shopScript : MonoBehaviour {
 				lockedUi.SetActive(false);
 		}
 	}
+
+	public void moveUp()
+	{
+		Debug.Log("moveUp");
+	}
 	
- 	public void buyButton()
+	public void moveDown()
+	{
+		Debug.Log("down");
+	}
+
+
+	public void buyButton()
 	 {
 		 if (items[currentItem].getScore() > PlayerStats.highScore)
 			 return;

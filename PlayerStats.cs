@@ -1,26 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using SimpleJSON;
 
 public class PlayerStats : MonoBehaviour
 {
 	public static PlayerStats Instance;
-	public static string player="";
-	public static float highScore=0;
-	public static string lastCannon="default";
-	public static List<string> cannonsOwned =new List<string>();
-	public static float money=0;
-	public static float highScoreHeight=0;
-	public static string wheelTime = "";
-	public static string giftTime = "";
-	private static bool loaded = false;
-	updatePlayerStats update;
-
+	public string player="";
+	public float highScore=0;
+	public string lastCannon="default";
+	public List<string> cannonsOwned =new List<string>();
+	public float money=0;
+	public float highScoreHeight=0;
+	public string wheelTime = "";
+	public string giftTime = "";
+	
 	void Awake()
 	{
 		if (Instance == null)
 		{
+			path=Application.persistentDataPath+"/PlayerFile.json";
+			if(File.Exists(Application.persistentDataPath+"/PlayerFile.json")) Debug.Log("file exists"); else saveFile();	
+			loadFile();
+			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
+			GetComponent<DailyReward>().callStart();
 			Instance = this;
 			DontDestroyOnLoad(gameObject);
 		}
@@ -30,17 +33,48 @@ public class PlayerStats : MonoBehaviour
 		}
 
 	}
+
 	
-	void Start()
-	{
-		if(loaded)
-			return;
-		update=GetComponent<updatePlayerStats>();
-		if(File.Exists(Application.persistentDataPath+"/PlayerFile.json")) Debug.Log("file exists"); else update.saveFile();	
-		update.loadFile();
-		GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
-		GetComponent<DailyReward>().callStart();
-		loaded = true;		
+	string path;
+	
+	public void loadFile()
+	{		string fileString = File.ReadAllText(path);
+		Debug.Log(fileString);
+		JSONObject playerJson= (JSONObject)JSON.Parse(fileString);
+		//get stats
+		player=playerJson["Name"];
+		highScore=playerJson["highScore"];
+		lastCannon=playerJson["lastCannon"];
+		money=playerJson["Money"];
+		highScoreHeight=playerJson["highScoreHeight"];
+		wheelTime=playerJson["wheelTime"];
+		//get cannonsOwned
+		JSONArray jsonArray = (JSONArray) playerJson["cannonsOwned"].AsArray;
+		foreach (JSONNode explrObject in jsonArray) 
+			cannonsOwned.Add(explrObject.Value); 
 	}
+	
+	public void saveFile()
+	{
+		JSONObject playerStats = new JSONObject();
+		//stats
+		playerStats.Add("Name",player);
+		playerStats.Add("highScore",highScore);	
+		playerStats.Add("lastCannon",lastCannon);
+		playerStats.Add("Money",money);
+		playerStats.Add("highScoreHeight",highScoreHeight);
+		playerStats.Add("wheelTime",wheelTime);
+		//cannonsOwned
+		JSONArray cannonsOwned = new JSONArray();
+		if(cannonsOwned!=null && cannonsOwned.Count!=0)
+			foreach(string cannon in this.cannonsOwned)
+			{
+				cannonsOwned.Add(cannon);
+			}
+		playerStats.Add("cannonsOwned",cannonsOwned);
+		//save json file
+		File.WriteAllText(path , playerStats.ToString());
+	}
+
 
 }

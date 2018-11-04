@@ -33,15 +33,15 @@ public class score : MonoBehaviour {
 
 	private float getHighScoreSignHeight()
 	{
-		return PlayerStats.highScoreHeight - surface.transform.position.y;
+		return PlayerStats.Instance.highScoreHeight - surface.transform.position.y;
 	}
 
 	private void updateStats()
 	{
-		if(fixedScore>PlayerStats.highScore){
-			PlayerStats.highScore=fixedScore;
-			PlayerStats.highScoreHeight = HeightFinder.height;
-			updatePlayerStats.GetComponent<updatePlayerStats>().saveFile();
+		if(fixedScore>PlayerStats.Instance.highScore){
+			PlayerStats.Instance.highScore=fixedScore;
+			PlayerStats.Instance.highScoreHeight = HeightFinder.height;
+			PlayerStats.Instance.saveFile();
 			PlayServices.Instance.addScoreToLeaderboard("",(int)fixedScore);
 		}
 	}
@@ -56,12 +56,12 @@ public class score : MonoBehaviour {
 	
 	//round diff (probably not needed)
 	/*float roundDiff;
-		if (PlayerStats.highScoreHeight > Math.Round(PlayerStats.highScoreHeight))
+		if (PlayerStats.Instance.highScoreHeight > Math.Round(PlayerStats.Instance.highScoreHeight))
 		{
-			roundDiff = (float)(PlayerStats.highScoreHeight-Math.Round(PlayerStats.highScoreHeight));
+			roundDiff = (float)(PlayerStats.Instance.highScoreHeight-Math.Round(PlayerStats.Instance.highScoreHeight));
 		}
 		else
 		{
-			roundDiff = (float)(-PlayerStats.highScoreHeight+Math.Round(PlayerStats.highScoreHeight));
+			roundDiff = (float)(-PlayerStats.Instance.highScoreHeight+Math.Round(PlayerStats.Instance.highScoreHeight));
 		}*/
 }

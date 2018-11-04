@@ -79,14 +79,14 @@ public class WheelOfFortune : MonoBehaviour
 	void getPrize(int prizeIndex)
 	{
 		if (prizeIndex == 1)
-			PlayerStats.money += 200;
+			PlayerStats.Instance.money += 200;
 		else if(prizeIndex == 3)
-		PlayerStats.money+= 500;
+		PlayerStats.Instance.money+= 500;
 		if (prizeIndex == 7)
-			PlayerStats.money += 100;
+			PlayerStats.Instance.money += 100;
 		else if(prizeIndex == 6)
-			PlayerStats.money+=50 ;
-		GameObject.Find("PlayerStats").GetComponent<updatePlayerStats>().saveFile();
+			PlayerStats.Instance.money+=50 ;
+		PlayerStats.Instance.saveFile();
 	}
 	
 }

@@ -25,10 +25,7 @@ public class TimeManager : MonoBehaviour
 		}
 	}
 
-	private void Start()
-	{
-	}
-
+	//gets time from the server and updates countDown
 	public IEnumerator getTime()
 	{
 		WWW www = new WWW(path);
@@ -59,7 +56,7 @@ public class TimeManager : MonoBehaviour
 		return time;
 	}
 
-	public int getTimeInSecs() 
+	public int getTimeInSecs() // current time in seconds
 	{
 		return (sec)+(min*60)+(hour*60*60)+(day*60*60*24);
 	}
@@ -75,9 +72,9 @@ public class TimeManager : MonoBehaviour
 		//month_ = int.Parse(timePeriods[2]);
 		//year_ = int.Parse(timePeriods[3]);
 		return (sec_)+(min_*60)+(hour_*60*60)+(day_*60*60*24);
-	}
+	} // time(string) to seconds
 
-	public bool isRelevent(int year , int month) // check if the year and the month are not that far
+	public bool isRelevent(int year , int month) // check if the year and the month are not that far away
 	{
 		return year == this.year+1 && month <= this.month+1;
 	}

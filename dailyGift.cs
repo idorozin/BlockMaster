@@ -24,7 +24,7 @@ public class dailyGift : MonoBehaviour {
 	private void getGift(string gift)
 	{
 		if (gift == "200coins")
-			PlayerStats.money += 200;
+			PlayerStats.Instance.money += 200;
 	}
 
 	// Update is called once per frame

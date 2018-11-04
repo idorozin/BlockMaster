@@ -8,7 +8,7 @@ public class WheelOfFortune : MonoBehaviour
 {
 	private WheelJoint2D wheelJoint;
 	private JointMotor2D motor;
-	private bool rollAllowed=true;
+	public static bool rollAllowed=true;
 	[SerializeField]
 	private int startSpeed=600, stopSpeed=50 , prizeIndex;
 	
@@ -49,10 +49,10 @@ public class WheelOfFortune : MonoBehaviour
 		motor.maxMotorTorque = 10000;
 		wheelJoint.motor = motor;
 		prizeIndex = (int)Math.Round(transform.GetChild(0).eulerAngles.z);
-		Debug.Log(prizeIndex);
 		prizeIndex=getPrizeIndex(prizeIndex);
 		getPrize(prizeIndex);
 		rollAllowed = true;
+		gameObject.transform.parent.gameObject.SetActive(false);
 	}
 
 	int getPrizeIndex(int angel)
@@ -88,5 +88,5 @@ public class WheelOfFortune : MonoBehaviour
 			PlayerStats.money+=50 ;
 		GameObject.Find("PlayerStats").GetComponent<updatePlayerStats>().saveFile();
 	}
-
+	
 }

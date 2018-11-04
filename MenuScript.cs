@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class MenuScript : MonoBehaviour {
+public class MenuScript : MonoBehaviour
+{
+
+	[SerializeField]
+	private GameObject WheelOfFortune;
 
 	public void LoadMenu()
 	{
@@ -39,7 +43,9 @@ public class MenuScript : MonoBehaviour {
      		setRecordText();
      	}
 	public void LoadWheelOfFortune(){
-		SceneManager.LoadScene("WheelOfFortune");
+		GameObject.Find("Rollete").GetComponent<Button>().enabled = false;
+		WheelOfFortune.SetActive(true);
+		GameObject.Find("PlayerStats").GetComponent<DailyReward>().StartCoroutine("resetTimer");
 	}
 
 }

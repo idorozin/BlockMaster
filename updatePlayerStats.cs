@@ -26,6 +26,7 @@ public class updatePlayerStats : MonoBehaviour {
 		PlayerStats.lastCannon=playerJson["lastCannon"];
 		PlayerStats.money=playerJson["Money"];
 		PlayerStats.highScoreHeight=playerJson["highScoreHeight"];
+		PlayerStats.wheelTime=playerJson["wheelTime"];
 		//get cannonsOwned
 	 	JSONArray jsonArray = (JSONArray) playerJson["cannonsOwned"].AsArray;
 		foreach (JSONNode explrObject in jsonArray) 
@@ -41,6 +42,7 @@ public class updatePlayerStats : MonoBehaviour {
 		playerStats.Add("lastCannon",PlayerStats.lastCannon);
 		playerStats.Add("Money",PlayerStats.money);
 		playerStats.Add("highScoreHeight",PlayerStats.highScoreHeight);
+		playerStats.Add("wheelTime",PlayerStats.wheelTime);
 		//cannonsOwned
 		JSONArray cannonsOwned = new JSONArray();
 		if(PlayerStats.cannonsOwned!=null && PlayerStats.cannonsOwned.Count!=0)

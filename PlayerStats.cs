@@ -12,6 +12,8 @@ public class PlayerStats : MonoBehaviour
 	public static List<string> cannonsOwned =new List<string>();
 	public static float money=0;
 	public static float highScoreHeight=0;
+	public static string wheelTime = "";
+	public static string giftTime = "";
 	private static bool loaded = false;
 	updatePlayerStats update;
 
@@ -37,6 +39,7 @@ public class PlayerStats : MonoBehaviour
 		if(File.Exists(Application.persistentDataPath+"/PlayerFile.json")) Debug.Log("file exists"); else update.saveFile();	
 		update.loadFile();
 		GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
+		GetComponent<DailyReward>().callStart();
 		loaded = true;		
 	}
 

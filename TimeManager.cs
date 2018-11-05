@@ -60,8 +60,10 @@ public class TimeManager : MonoBehaviour
 	{
 		return (sec)+(min*60)+(hour*60*60)+(day*60*60*24);
 	}
-	public int getTimeInSecs(string time) 
+	public int getTimeInSecs(string time)
 	{
+		if (time == "")
+			time = this.time;
 		string[] currentTime = time.Split(' ');
 		string[] timePeriods = currentTime[1].Split(':');
 		int hour_ = int.Parse(timePeriods[0]);

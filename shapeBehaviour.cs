@@ -84,8 +84,8 @@ public class shapeBehaviour : MonoBehaviour {
 			if (Time.time > nextTime)
 			{
 				Debug.Log("freezed");
-				//rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-				rb.mass = 5f;
+				rb.constraints = RigidbodyConstraints2D.FreezeAll;
+				//rb.mass = 5f;
 				setTime = false;
 				Destroy(gameObject.GetComponent<TrailRenderer>());
 				done = true;

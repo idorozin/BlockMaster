@@ -14,17 +14,18 @@ public class PlayerStats : MonoBehaviour
 	public float highScoreHeight=0;
 	public string wheelTime = "";
 	public string giftTime = "";
+	public int offset;
 	
 	void Awake()
 	{
 		if (Instance == null)
 		{
+			Instance = this;
 			path=Application.persistentDataPath+"/PlayerFile.json";
 			if(File.Exists(Application.persistentDataPath+"/PlayerFile.json")) Debug.Log("file exists"); else saveFile();	
 			loadFile();
 			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
 			GetComponent<DailyReward>().callStart();
-			Instance = this;
 			DontDestroyOnLoad(gameObject);
 		}
 		else
@@ -48,10 +49,12 @@ public class PlayerStats : MonoBehaviour
 		money=playerJson["Money"];
 		highScoreHeight=playerJson["highScoreHeight"];
 		wheelTime=playerJson["wheelTime"];
+		offset = playerJson["Offset"];
 		//get cannonsOwned
 		JSONArray jsonArray = (JSONArray) playerJson["cannonsOwned"].AsArray;
 		foreach (JSONNode explrObject in jsonArray) 
-			cannonsOwned.Add(explrObject.Value); 
+			cannonsOwned.Add(explrObject.Value);
+		Debug.Log(highScore);
 	}
 	
 	public void saveFile()
@@ -64,6 +67,7 @@ public class PlayerStats : MonoBehaviour
 		playerStats.Add("Money",money);
 		playerStats.Add("highScoreHeight",highScoreHeight);
 		playerStats.Add("wheelTime",wheelTime);
+		playerStats.Add("Offset",offset);
 		//cannonsOwned
 		JSONArray cannonsOwned = new JSONArray();
 		if(cannonsOwned!=null && cannonsOwned.Count!=0)

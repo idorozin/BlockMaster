@@ -35,6 +35,7 @@ public class MenuScript : MonoBehaviour
      	
      	public void setRecordText()
      	{
+		     if(PlayerStats.Instance!=null)
      		recordText.GetComponent<TextMeshProUGUI>().text = PlayerStats.Instance.highScore.ToString();
      	}
      

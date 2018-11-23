@@ -11,8 +11,6 @@ public class PlayServices : MonoBehaviour
 {
 
     public static PlayServices Instance;
-    [SerializeField]
-    private Text status;
     
     // ... other code here... 
     void Awake()
@@ -33,7 +31,6 @@ public class PlayServices : MonoBehaviour
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.Activate();
         PlayGamesPlatform.Instance.Authenticate(SignInCallback, false);
-        Debug.Log("PLAYSERVICES START");
     }
 
     public void SignInCallback(bool success)

@@ -7,15 +7,12 @@ using UnityEngine.UI;
 public class DailyReward: MonoBehaviour
 {
 	[SerializeField]
-	private int coolDown=500;
+	private int countDownLenght=500,coolDown;
 
-	private int offset;
-	private int minCoolDown=500;
 
 	public void callStart()
 	{
-		Debug.Log(PlayerStats.Instance.wheelTime);
-		if (PlayerStats.Instance.wheelTime == "")
+	if (PlayerStats.Instance.wheelTime == "")
 		{
 			GameObject.Find("TimeText").GetComponent<Text>().text = "READY!";
 			GameObject.Find("Rollete").GetComponent<Button>().enabled = true;
@@ -29,8 +26,7 @@ public class DailyReward: MonoBehaviour
 	{
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		PlayerStats.Instance.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
-		coolDown = 500;
-		minCoolDown = 500;
+		coolDown = countDownLenght;
 		PlayerStats.Instance.wheelTime = TimeManager.Instance.getFullTime();
 		PlayerStats.Instance.saveFile();
 		StartCoroutine("CountDown");
@@ -40,23 +36,14 @@ public class DailyReward: MonoBehaviour
 
 	public void updateTime() // updates countDown with internet time
 	{
-		coolDown = (500) - (TimeManager.Instance.getTimeInSecs() - TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.wheelTime));
-		minCoolDown = coolDown;
+		coolDown = (countDownLenght) - (TimeManager.Instance.getTimeInSecs() - TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.wheelTime));
 	}
 
 	IEnumerator CountDown()
 	{
-		while (coolDown > 0)
+		while (coolDown > 0 || coolDown > countDownLenght+1)
 		{
 			coolDown = timePassed();
-			if (minCoolDown >= coolDown)
-			{
-				minCoolDown = coolDown;
-			}
-			else
-			{
-				coolDown = 0;
-			}
 			if(GameObject.Find("TimeText") != null && coolDown > 0)
 			GameObject.Find("TimeText").GetComponent<Text>().text = secsToTime(coolDown);
 			yield return new WaitForSeconds(1);
@@ -71,13 +58,14 @@ public class DailyReward: MonoBehaviour
 	{
 		if(GameObject.Find("TimeText")!=null)GameObject.Find("TimeText").GetComponent<Text>().text = "READY!";
 		//validate 
+		while ((Application.internetReachability == NetworkReachability.NotReachable))
+			Debug.Log("no internet connection");
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		if (coolDown <= 0 && GameObject.Find("Rollete")!=null && GameObject.Find("TimeText") != null)
 		{
 			GameObject.Find("Rollete").GetComponent<Button>().enabled = true;
 			yield break;
 		}
-		
 		PlayerStats.Instance.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
 		PlayerStats.Instance.saveFile();
 		//start timer again
@@ -85,15 +73,22 @@ public class DailyReward: MonoBehaviour
 
 	}
 
-	string secsToTime(int coolDown) // convert seconds to time format 00:00:00
+	 string secsToTime(int coolDown) // convert seconds to time format 00:00:00
 	{
 		return coolDown / 60 / 60 + ":" + coolDown / 60 % 60 + ":" + coolDown % 60;
 	}
+	
+	
 
 	int timePassed()
 	{
-		return 500 - (-TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.wheelTime) + 
+		return countDownLenght - (-TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.wheelTime) + 
 		                  TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss"))) + PlayerStats.Instance.offset;
+	}
+
+	public string getCoolDown()
+	{
+		return secsToTime(coolDown);
 	}
 
 }

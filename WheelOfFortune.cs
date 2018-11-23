@@ -22,8 +22,8 @@ public class WheelOfFortune : MonoBehaviour
 	{
 		if (!rollAllowed)
 			return;
-		startSpeed = UnityEngine.Random.Range(600 , 1600);
-		stopSpeed = UnityEngine.Random.Range(100 ,150);
+		startSpeed = UnityEngine.Random.Range(400 , 800);
+		stopSpeed = UnityEngine.Random.Range(50 ,100);
 		motor.motorSpeed = startSpeed;
 		motor.maxMotorTorque = 10000;
 		wheelJoint.motor = motor;
@@ -41,7 +41,7 @@ public class WheelOfFortune : MonoBehaviour
 			yield return new WaitForSeconds(1f);
 		}
 
-		motor.motorSpeed = 10;
+		motor.motorSpeed = motor.motorSpeed < 10 ? motor.motorSpeed : 10;
 		motor.maxMotorTorque = 10000;
 		wheelJoint.motor = motor;
 		yield return new WaitForSeconds(1f);

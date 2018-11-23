@@ -9,9 +9,8 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
 
-	[SerializeField]
-	private GameObject WheelOfFortune;
 
+	#region LoadButtons
 	public void LoadMenu()
 	{
 		SceneManager.LoadScene("MainMenu");
@@ -25,24 +24,45 @@ public class MenuScript : MonoBehaviour
 		SceneManager.LoadScene("Shop");
 	}
 
+	public void unLoadSettings()
+	{
+		Settings.SetActive(false);
+	}
+
+
 	public void ShowLeaderboards()
 	{
 		PlayServices.Instance.ShowLeaderboards();
 	}
 
+	public void LoadDailyGift()
+	{
+		DailyGift.SetActive(true);
+		DailyGift.GetComponent<dailyGift>().getGiftButton();
+	}
+
+	#endregion
+	
+	
 	[SerializeField]
-     	private GameObject recordText;
+     private GameObject recordText;
+	[SerializeField]
+	private GameObject WheelOfFortune;
+	[SerializeField]
+	private GameObject Settings;
+	[SerializeField]
+	private GameObject DailyGift;
      	
-     	public void setRecordText()
-     	{
-		     if(PlayerStats.Instance!=null)
-     		recordText.GetComponent<TextMeshProUGUI>().text = PlayerStats.Instance.highScore.ToString();
-     	}
-     
-     	void Start()
-     	{
-     		setRecordText();
-     	}
+	 public void setRecordText()
+     {
+		if(PlayerStats.Instance!=null)
+     	recordText.GetComponent<TextMeshProUGUI>().text = PlayerStats.Instance.highScore.ToString();
+     }
+    
+     void Start()
+     {
+     	setRecordText();
+     }
 	public void LoadWheelOfFortune(){
 		if (!hasConnection())
 		{

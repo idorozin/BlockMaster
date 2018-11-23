@@ -6,7 +6,6 @@ using System;
 using TMPro;
 
 public class score : MonoBehaviour {
-	//TODO : set score in HeigthFinder class and use only one varible;
 	
 	public Transform surface;
 	float fixedScore=0;
@@ -33,7 +32,7 @@ public class score : MonoBehaviour {
 
 	private float getHighScoreSignHeight()
 	{
-		return PlayerStats.Instance.highScoreHeight - surface.transform.position.y;
+		return PlayerStats.Instance.highScoreHeight;
 	}
 
 	private void updateStats()

@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -9,6 +9,7 @@ public class TimeManager : MonoBehaviour
 	private string path="www.korystudios.com/realtime.php";
 	private string time="";
 	private int sec, min, hour, day , month , year;
+	private DateTime baseDate,currentDate,dateTime;
 
 	public static TimeManager Instance;
 	
@@ -18,6 +19,9 @@ public class TimeManager : MonoBehaviour
 		{
 			Instance = this;
 			DontDestroyOnLoad(gameObject);
+			baseDate = new DateTime(1970,1,1,1,1,1);
+			if(Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork)
+			StartCoroutine("getTime");
 		}
 		else
 		{
@@ -49,6 +53,7 @@ public class TimeManager : MonoBehaviour
 		day = int.Parse(timePeriods[1]);
 		month = int.Parse(timePeriods[0]);
 		year = int.Parse(timePeriods[2]);
+		currentDate = new DateTime(year,month,day,hour,min,sec);
 	}
 
 	public string getFullTime()
@@ -58,7 +63,7 @@ public class TimeManager : MonoBehaviour
 
 	public int getTimeInSecs() // current time in seconds
 	{
-		return (sec)+(min*60)+(hour*60*60)+(day*60*60*24);
+		return (int)(currentDate-baseDate).TotalSeconds;
 	}
 	public int getTimeInSecs(string time)
 	{
@@ -71,9 +76,10 @@ public class TimeManager : MonoBehaviour
 		int sec_ = int.Parse(timePeriods[2]);
 		timePeriods =  currentTime[0].Split('-');
 		int day_ = int.Parse(timePeriods[1]);
-		//month_ = int.Parse(timePeriods[2]);
-		//year_ = int.Parse(timePeriods[3]);
-		return (sec_)+(min_*60)+(hour_*60*60)+(day_*60*60*24);
+		int month_ = int.Parse(timePeriods[0]);
+		int year_ = int.Parse(timePeriods[2]);
+		dateTime = new DateTime(year_,month_,day_,hour_,min_,sec_);
+		return (int)(dateTime-baseDate).TotalSeconds;
 	} // time(string) to seconds
 
 	public bool isRelevent(int year , int month) // check if the year and the month are not that far away

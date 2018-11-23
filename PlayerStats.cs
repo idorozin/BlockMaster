@@ -14,7 +14,8 @@ public class PlayerStats : MonoBehaviour
 	public float highScoreHeight=0;
 	public string wheelTime = "";
 	public string giftTime = "";
-	public int offset;
+	public int offset , maxCountDown , GiftIndex;
+	public bool musicOn=true, soundOn=true;
 	
 	void Awake()
 	{
@@ -37,7 +38,9 @@ public class PlayerStats : MonoBehaviour
 
 	
 	string path;
-	
+
+	#region save&load
+
 	public void loadFile()
 	{		string fileString = File.ReadAllText(path);
 		Debug.Log(fileString);
@@ -50,6 +53,10 @@ public class PlayerStats : MonoBehaviour
 		highScoreHeight=playerJson["highScoreHeight"];
 		wheelTime=playerJson["wheelTime"];
 		offset = playerJson["Offset"];
+		maxCountDown = playerJson["MaxCountDown"];
+		musicOn = playerJson["MusicOn"];
+		soundOn = playerJson["SoundOn"];
+		GiftIndex = playerJson["GiftIndex"];
 		//get cannonsOwned
 		JSONArray jsonArray = (JSONArray) playerJson["cannonsOwned"].AsArray;
 		foreach (JSONNode explrObject in jsonArray) 
@@ -68,6 +75,9 @@ public class PlayerStats : MonoBehaviour
 		playerStats.Add("highScoreHeight",highScoreHeight);
 		playerStats.Add("wheelTime",wheelTime);
 		playerStats.Add("Offset",offset);
+		playerStats.Add("MusicOn",musicOn);
+		playerStats.Add("SoundOn",soundOn);
+		playerStats.Add("GiftIndex",GiftIndex);
 		//cannonsOwned
 		JSONArray cannonsOwned = new JSONArray();
 		if(cannonsOwned!=null && cannonsOwned.Count!=0)
@@ -79,6 +89,8 @@ public class PlayerStats : MonoBehaviour
 		//save json file
 		File.WriteAllText(path , playerStats.ToString());
 	}
+
+	#endregion
 
 
 }

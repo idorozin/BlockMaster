@@ -18,17 +18,17 @@ public class dailyGift : MonoBehaviour
 	{
 		if (!giftAllowed)
 			return;
-		getGift(gifts[PlayerStats.Instance.GiftIndex]);
-		PlayerStats.Instance.GiftIndex++;
+		getGift(gifts[PlayerStats.Instance.playerStats.GiftIndex]);
+		PlayerStats.Instance.playerStats.GiftIndex++;
 		PlayerStats.Instance.saveFile();
 	}
 
 	private void getGift(string gift)
 	{
-		for(int i=0;i<PlayerStats.Instance.GiftIndex;i++)
+		for(int i=0;i<PlayerStats.Instance.playerStats.GiftIndex;i++)
 		Instantiate(Tick , GiftPanel);
 //		if (gift == "200coins")
-//			PlayerStats.Instance.money += 200;
+//			PlayerStats.Instance.playerStats.money += 200;
 	}
 
 }

@@ -31,7 +31,7 @@ public class shopScript : MonoBehaviour {
 		item = (GameObject)Instantiate(Resources.Load(path+items[currentItem].getName()));
 		priceText.text = items[currentItem].getPrice().ToString();
 		nameText.text = items[currentItem].getName();
-		if (items[currentItem].getScore() > PlayerStats.Instance.highScore)
+		if (items[currentItem].getScore() > PlayerStats.Instance.playerStats.highScore)
 		{
 			lockedUi.SetActive(true);
 			lockedUiText=lockedUi.GetComponent<Text>();
@@ -63,7 +63,7 @@ public class shopScript : MonoBehaviour {
 	}
 
 	void Update(){
-		balance_text.text=PlayerStats.Instance.money.ToString();
+		balance_text.text=PlayerStats.Instance.playerStats.money.ToString();
 	}
 	
 	public void moveLeft()
@@ -75,7 +75,7 @@ public class shopScript : MonoBehaviour {
 			item = (GameObject) Instantiate(Resources.Load(path + items[currentItem].getName()));
 			priceText.text = items[currentItem].getPrice().ToString();
 			nameText.text = items[currentItem].getName();
-			if (items[currentItem].getScore() > PlayerStats.Instance.highScore)
+			if (items[currentItem].getScore() > PlayerStats.Instance.playerStats.highScore)
 			{
 				lockedUi.SetActive(true);
 				lockedUiText = lockedUi.GetComponent<Text>();
@@ -96,7 +96,7 @@ public class shopScript : MonoBehaviour {
 			item = (GameObject) Instantiate(Resources.Load(path + items[currentItem].getName()));
 			priceText.text = items[currentItem].getPrice().ToString();
 			nameText.text = items[currentItem].getName();
-			if (items[currentItem].getScore() > PlayerStats.Instance.highScore)
+			if (items[currentItem].getScore() > PlayerStats.Instance.playerStats.highScore)
 			{
 				lockedUi.SetActive(true);
 				lockedUiText=lockedUi.GetComponent<Text>();
@@ -120,15 +120,15 @@ public class shopScript : MonoBehaviour {
 
 	public void buyButton()
 	 {
-		 if (items[currentItem].getScore() > PlayerStats.Instance.highScore)
+		 if (items[currentItem].getScore() > PlayerStats.Instance.playerStats.highScore)
 			 return;
-		foreach(string item_ in PlayerStats.Instance.cannonsOwned){
+		foreach(string item_ in PlayerStats.Instance.playerStats.ItemsOwned){
 			if(item_ == items[currentItem].getName())
 				return;
 		}
-		 if(PlayerStats.Instance.money>=items[currentItem].getPrice()){
-			PlayerStats.Instance.cannonsOwned.Add(items[currentItem].getName());
-			PlayerStats.Instance.money-=items[currentItem].getPrice();
+		 if(PlayerStats.Instance.playerStats.money>=items[currentItem].getPrice()){
+			PlayerStats.Instance.playerStats.ItemsOwned.Add(items[currentItem].getName());
+			PlayerStats.Instance.playerStats.money-=items[currentItem].getPrice();
 			Debug.Log("you bought the cannon");
 			PlayerStats.Instance.saveFile();
 		}
@@ -137,16 +137,16 @@ public class shopScript : MonoBehaviour {
 	
 	public void useButton()
 	{
-		if (PlayerStats.Instance.lastCannon == items[currentItem].getName())
+		if (PlayerStats.Instance.playerStats.lastCannon == items[currentItem].getName())
 			return;
 		bool have = false;
-		foreach(string item_ in PlayerStats.Instance.cannonsOwned){
+		foreach(string item_ in PlayerStats.Instance.playerStats.ItemsOwned){
 			if(item_ == items[currentItem].getName())
 				have=true;
 		}
 		if(!have)
 			return;
-		PlayerStats.Instance.lastCannon=items[currentItem].getName();
+		PlayerStats.Instance.playerStats.lastCannon=items[currentItem].getName();
 		PlayerStats.Instance.saveFile();
 	} 
 

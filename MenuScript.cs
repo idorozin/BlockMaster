@@ -55,8 +55,8 @@ public class MenuScript : MonoBehaviour
      	
 	 public void setRecordText()
      {
-		if(PlayerStats.Instance!=null)
-     	recordText.GetComponent<TextMeshProUGUI>().text = PlayerStats.Instance.highScore.ToString();
+		if(PlayerStats.Instance.playerStats!=null)
+     	recordText.GetComponent<TextMeshProUGUI>().text = PlayerStats.Instance.playerStats.highScore.ToString();
      }
     
      void Start()
@@ -66,12 +66,13 @@ public class MenuScript : MonoBehaviour
 	public void LoadWheelOfFortune(){
 		if (!hasConnection())
 		{
+			Debug.Log("PLZ CHECK YOUR INTERNET CONNECTION");
 			return;
 			//Do Something
 		}
 		GameObject.Find("Rollete").GetComponent<Button>().enabled = false;
 		WheelOfFortune.SetActive(true);
-		GameObject.Find("PlayerStats").GetComponent<DailyReward>().StartCoroutine("resetTimer");
+		GameObject.Find("DailyRewards").GetComponent<DailyReward>().StartCoroutine("resetTimer");
 	}
 
 	bool hasConnection()

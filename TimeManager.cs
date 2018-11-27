@@ -18,10 +18,9 @@ public class TimeManager : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
-			DontDestroyOnLoad(gameObject);
 			baseDate = new DateTime(1970,1,1,1,1,1);
-			if(Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork)
 			StartCoroutine("getTime");
+			DontDestroyOnLoad(gameObject);
 		}
 		else
 		{
@@ -32,13 +31,14 @@ public class TimeManager : MonoBehaviour
 	//gets time from the server and updates countDown
 	public IEnumerator getTime()
 	{
+		yield return StartCoroutine("WaitForInteretConnection");
 		WWW www = new WWW(path);
 		yield return www;
 		time = www.text;
 		Debug.Log(time);
 		if(!string.IsNullOrEmpty(time))
 		setCurrentTime();
-		GetComponent<DailyReward>().updateTime();
+		GameObject.Find("DailyRewards").GetComponent<DailyReward>().updateTime();
 	}
 
 	public void setCurrentTime() // get the value of current secs,mins,hours,days in second from the beggining of the month
@@ -69,6 +69,7 @@ public class TimeManager : MonoBehaviour
 	{
 		if (time == "")
 			time = this.time;
+		
 		string[] currentTime = time.Split(' ');
 		string[] timePeriods = currentTime[1].Split(':');
 		int hour_ = int.Parse(timePeriods[0]);
@@ -85,6 +86,15 @@ public class TimeManager : MonoBehaviour
 	public bool isRelevent(int year , int month) // check if the year and the month are not that far away
 	{
 		return year == this.year+1 && month <= this.month+1;
+	}
+	
+	private IEnumerator WaitForInteretConnection()
+	{
+		while (Application.internetReachability == NetworkReachability.NotReachable)
+		{
+			Debug.Log("waiting");
+			yield return null;
+		}
 	}
 
 }

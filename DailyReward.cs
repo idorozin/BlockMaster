@@ -9,15 +9,18 @@ public class DailyReward: MonoBehaviour
 	[SerializeField]
 	private int countDownLenght=500,coolDown;
 
+	[SerializeField] private GameObject TimeText, Button;
 
-	public void callStart()
+	private void Start()
 	{
-	if (PlayerStats.Instance.wheelTime == "")
+		if (PlayerStats.Instance.playerStats.wheelTime == "")
 		{
-			GameObject.Find("TimeText").GetComponent<Text>().text = "READY!";
-			GameObject.Find("Rollete").GetComponent<Button>().enabled = true;
+			TimeText.GetComponent<Text>().text = "READY!";
+			Button.GetComponent<Button>().enabled = true;
 			return;
 		}
+
+		coolDown = 2;
 		StartCoroutine("CountDown");
 	}
 	
@@ -25,30 +28,29 @@ public class DailyReward: MonoBehaviour
 	public IEnumerator resetTimer()
 	{
 		yield return TimeManager.Instance.StartCoroutine("getTime");
-		PlayerStats.Instance.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
+		PlayerStats.Instance.playerStats.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
 		coolDown = countDownLenght;
-		PlayerStats.Instance.wheelTime = TimeManager.Instance.getFullTime();
+		PlayerStats.Instance.playerStats.wheelTime = TimeManager.Instance.getFullTime();
 		PlayerStats.Instance.saveFile();
 		StartCoroutine("CountDown");
 
-		Debug.Log(PlayerStats.Instance.wheelTime);
+		Debug.Log(PlayerStats.Instance.playerStats.wheelTime);
 	}
 
 	public void updateTime() // updates countDown with internet time
 	{
-		coolDown = (countDownLenght) - (TimeManager.Instance.getTimeInSecs() - TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.wheelTime));
+		coolDown = (countDownLenght) - (TimeManager.Instance.getTimeInSecs() - TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.playerStats.wheelTime));
 	}
 
 	IEnumerator CountDown()
 	{
 		while (coolDown > 0 || coolDown > countDownLenght+1)
 		{
-			coolDown = timePassed();
-			if(GameObject.Find("TimeText") != null && coolDown > 0)
-			GameObject.Find("TimeText").GetComponent<Text>().text = secsToTime(coolDown);
+			coolDown = timeRemaining();
+			if(TimeText != null && coolDown > 0)
+			TimeText.GetComponent<Text>().text = secsToTime(coolDown);
 			yield return new WaitForSeconds(1);
 		}
-
 		StartCoroutine("enableButton");
 	}
 
@@ -56,17 +58,15 @@ public class DailyReward: MonoBehaviour
 	// true => button enabled false => button disabled and count down continouse with updated time. 
 	IEnumerator enableButton()
 	{
-		if(GameObject.Find("TimeText")!=null)GameObject.Find("TimeText").GetComponent<Text>().text = "READY!";
+		if(TimeText!=null)TimeText.GetComponent<Text>().text = "READY!";
 		//validate 
-		while ((Application.internetReachability == NetworkReachability.NotReachable))
-			Debug.Log("no internet connection");
 		yield return TimeManager.Instance.StartCoroutine("getTime");
-		if (coolDown <= 0 && GameObject.Find("Rollete")!=null && GameObject.Find("TimeText") != null)
+		if (coolDown <= 0 && Button!=null && TimeText != null)
 		{
-			GameObject.Find("Rollete").GetComponent<Button>().enabled = true;
+			Button.GetComponent<Button>().enabled = true;
 			yield break;
 		}
-		PlayerStats.Instance.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
+		PlayerStats.Instance.playerStats.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
 		PlayerStats.Instance.saveFile();
 		//start timer again
 		StartCoroutine("CountDown");
@@ -77,18 +77,13 @@ public class DailyReward: MonoBehaviour
 	{
 		return coolDown / 60 / 60 + ":" + coolDown / 60 % 60 + ":" + coolDown % 60;
 	}
-	
-	
+		
 
-	int timePassed()
+	int timeRemaining()
 	{
-		return countDownLenght - (-TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.wheelTime) + 
-		                  TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss"))) + PlayerStats.Instance.offset;
+		return countDownLenght - (-TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.playerStats.wheelTime) + 
+		                  TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss"))) + PlayerStats.Instance.playerStats.offset;
 	}
 
-	public string getCoolDown()
-	{
-		return secsToTime(coolDown);
-	}
 
 }

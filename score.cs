@@ -32,14 +32,14 @@ public class score : MonoBehaviour {
 
 	private float getHighScoreSignHeight()
 	{
-		return PlayerStats.Instance.highScoreHeight;
+		return PlayerStats.Instance.playerStats.highScoreHeight;
 	}
 
 	private void updateStats()
 	{
-		if(fixedScore>PlayerStats.Instance.highScore){
-			PlayerStats.Instance.highScore=fixedScore;
-			PlayerStats.Instance.highScoreHeight = HeightFinder.height;
+		if(fixedScore>PlayerStats.Instance.playerStats.highScore){
+			PlayerStats.Instance.playerStats.highScore=fixedScore;
+			PlayerStats.Instance.playerStats.highScoreHeight = HeightFinder.height;
 			PlayerStats.Instance.saveFile();
 			PlayServices.Instance.addScoreToLeaderboard("",(int)fixedScore);
 		}
@@ -55,12 +55,12 @@ public class score : MonoBehaviour {
 	
 	//round diff (probably not needed)
 	/*float roundDiff;
-		if (PlayerStats.Instance.highScoreHeight > Math.Round(PlayerStats.Instance.highScoreHeight))
+		if (PlayerStats.Instance.playerStats.highScoreHeight > Math.Round(PlayerStats.Instance.playerStats.highScoreHeight))
 		{
-			roundDiff = (float)(PlayerStats.Instance.highScoreHeight-Math.Round(PlayerStats.Instance.highScoreHeight));
+			roundDiff = (float)(PlayerStats.Instance.playerStats.highScoreHeight-Math.Round(PlayerStats.Instance.playerStats.highScoreHeight));
 		}
 		else
 		{
-			roundDiff = (float)(-PlayerStats.Instance.highScoreHeight+Math.Round(PlayerStats.Instance.highScoreHeight));
+			roundDiff = (float)(-PlayerStats.Instance.playerStats.highScoreHeight+Math.Round(PlayerStats.Instance.playerStats.highScoreHeight));
 		}*/
 }

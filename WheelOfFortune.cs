@@ -79,13 +79,13 @@ public class WheelOfFortune : MonoBehaviour
 	void getPrize(int prizeIndex)
 	{
 		if (prizeIndex == 1)
-			PlayerStats.Instance.money += 200;
+			PlayerStats.Instance.playerStats.money += 200;
 		else if(prizeIndex == 3)
-		PlayerStats.Instance.money+= 500;
+		PlayerStats.Instance.playerStats.money+= 500;
 		if (prizeIndex == 7)
-			PlayerStats.Instance.money += 100;
+			PlayerStats.Instance.playerStats.money += 100;
 		else if(prizeIndex == 6)
-			PlayerStats.Instance.money+=50 ;
+			PlayerStats.Instance.playerStats.money+=50 ;
 		PlayerStats.Instance.saveFile();
 	}
 	

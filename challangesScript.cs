@@ -21,7 +21,7 @@ public class NewBehaviourScript : MonoBehaviour
 		{
 			height = (int) (height * 1.5);
 			prize = (int) (prize * 1.5);
-			PlayerStats.Instance.money += prize;
+			PlayerStats.Instance.playerStats.money += prize;
 		}
 		
 		

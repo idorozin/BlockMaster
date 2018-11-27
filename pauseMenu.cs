@@ -72,7 +72,7 @@ public class pauseMenu : MonoBehaviour {
 	{
 		if(HeightFinder.lives<=-3){
 			HeightFinder.lives=0;
-			PlayerStats.Instance.money+=HeightFinder.score;
+			PlayerStats.Instance.playerStats.money+=HeightFinder.score;
 			gameOverUI((HeightFinder.score));
 			GameIsPaused = true;
 			Time.timeScale = 0;

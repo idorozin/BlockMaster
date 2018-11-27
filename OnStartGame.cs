@@ -9,9 +9,9 @@ public class OnStartGame : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		spawningPos = new Vector3(transform.position.x,transform.position.y-3f,transform.position.z);
-		if(PlayerStats.Instance.lastCannon=="")
-			PlayerStats.Instance.lastCannon="default";
-		cannonFilePath="Cannons/"+PlayerStats.Instance.lastCannon;
+		if(PlayerStats.Instance.playerStats.lastCannon=="")
+			PlayerStats.Instance.playerStats.lastCannon="default";
+		cannonFilePath="Cannons/"+PlayerStats.Instance.playerStats.lastCannon;
 		Instantiate(Resources.Load(cannonFilePath) , spawningPos , Quaternion.identity);
 	}
 	

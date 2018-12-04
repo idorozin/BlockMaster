@@ -37,8 +37,31 @@ public class MenuScript : MonoBehaviour
 
 	public void LoadDailyGift()
 	{
+		if (!hasConnection())
+		{
+			Debug.Log("PLZ CHECK YOUR INTERNET CONNECTION");
+			return;
+			//Do Something
+		}
 		DailyGift.SetActive(true);
-		DailyGift.GetComponent<dailyGift>().getGiftButton();
+		//DailyGift.GetComponent<dailyGift>().getGiftButton();
+	}
+
+	public void unLoadDailyGift()
+	{
+		DailyGift.SetActive(false);
+		DailyGift.GetComponent<dailyGift>().destroyTicks();
+	}
+
+	public void LoadChallanges()
+	{
+		Challanges.SetActive(true);
+		Challange.Instance.LoadChallanges();
+	}
+
+	public void unLoadChallanges()
+	{
+		Challanges.SetActive(false);
 	}
 
 	#endregion
@@ -52,6 +75,8 @@ public class MenuScript : MonoBehaviour
 	private GameObject Settings;
 	[SerializeField]
 	private GameObject DailyGift;
+	[SerializeField] 
+	private GameObject Challanges;
      	
 	 public void setRecordText()
      {
@@ -70,9 +95,7 @@ public class MenuScript : MonoBehaviour
 			return;
 			//Do Something
 		}
-		GameObject.Find("Rollete").GetComponent<Button>().enabled = false;
 		WheelOfFortune.SetActive(true);
-		GameObject.Find("DailyRewards").GetComponent<DailyReward>().StartCoroutine("resetTimer");
 	}
 
 	bool hasConnection()

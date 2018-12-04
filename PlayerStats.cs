@@ -1,9 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 using SimpleJSON;
 using Newtonsoft;
+using UnityEditor.Experimental.UIElements.GraphView;
 using UnityEngine.Serialization;
+using Debug = UnityEngine.Debug;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -19,9 +24,63 @@ public class PlayerStats : MonoBehaviour
 		public float highScoreHeight=0;
 		public string wheelTime = "";
 		public string giftTime = "";
-		public int offset , GiftIndex;
+		public int offsetW , offsetG , GiftIndex;
 		public bool musicOn=true, soundOn=true;
+		private Challange shoot = new Challange("Shoot n shapes",new []{1,2,3,4,5},new []{"1"});
+		public Challange shoot1 = new Challange("Shoot n shapes",new []{1,2,3,4,5},new []{"2"});
+		public Challange shoot2 = new Challange("Shoot n shapes",new []{1,2,3,4,5},new []{"3"});
+		public Challange shoot3 = new Challange("Shoot n shapes",new []{1,2,3,4,5},new []{"4"});
+		public Challange shoot4 = new Challange("Shoot n shapes",new []{1,2,3,4,5},new []{"5"});
+		public Challange shoot5 = new Challange("Shoot n shapes",new []{1,2,3,4,5},new []{"6"});
+		public Challange[] cs = new Challange[6];
+
+		public void SetChallanges()
+		{
+			cs[0] = shoot;
+			cs[1] = shoot1;
+			cs[2] = shoot2;
+			cs[3] = shoot3;
+			cs[4] = shoot4;
+			cs[5] = shoot5;
+		}
+
+
 	}
+
+	public class Challange
+	{
+		public String challageText="" ;
+		private string[] rewards = new string[5];
+		private int[] challangeGoal = new int[5];
+		public int goal , process , level;
+
+		public Challange(String challageText,int[] challangeGoal , string[] rewards)
+		{
+			this.challangeGoal = challangeGoal;
+			this.challageText = challageText;
+			this.rewards = rewards;
+			goal = challangeGoal[0];
+		}
+
+		public void reportProcess(int process)
+		{
+			this.process += process;
+		}
+
+		public string nextLevel()
+		{
+			level++;
+			goal = challangeGoal[level];	
+			return rewards[level-1];
+		}
+
+		public string reward()
+		{
+			return rewards[level];
+		}
+
+	}
+
 
 	void Awake()
 	{
@@ -51,14 +110,14 @@ public class PlayerStats : MonoBehaviour
 		//read file
 		string fileString = File.ReadAllText(path);
 		//Serialize object
-		Newtonsoft.Json.JsonConvert.PopulateObject(fileString , playerStats);
+		Newtonsoft.Json.JsonConvert.PopulateObject(fileString , playerStats);			
+		saveFile();
 	}
 	
 	public void saveFile()
 	{
 		//parse this class to json string
 		string playerStats = Newtonsoft.Json.JsonConvert.SerializeObject(this.playerStats);
-		Debug.Log(playerStats);
 		//save json file
 		File.WriteAllText(path , playerStats); 
 	}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+ using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour
 {
@@ -38,7 +39,9 @@ public class TimeManager : MonoBehaviour
 		Debug.Log(time);
 		if(!string.IsNullOrEmpty(time))
 		setCurrentTime();
+		if(SceneManager.GetActiveScene().name == "MenuScene")
 		GameObject.Find("DailyRewards").GetComponent<DailyReward>().updateTime();
+		GameObject.Find("DailyRewards").GetComponent<DailyReward2>().updateTime();
 	}
 
 	public void setCurrentTime() // get the value of current secs,mins,hours,days in second from the beggining of the month

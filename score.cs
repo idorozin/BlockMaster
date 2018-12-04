@@ -53,14 +53,5 @@ public class score : MonoBehaviour {
 	}
 	
 	
-	//round diff (probably not needed)
-	/*float roundDiff;
-		if (PlayerStats.Instance.playerStats.highScoreHeight > Math.Round(PlayerStats.Instance.playerStats.highScoreHeight))
-		{
-			roundDiff = (float)(PlayerStats.Instance.playerStats.highScoreHeight-Math.Round(PlayerStats.Instance.playerStats.highScoreHeight));
-		}
-		else
-		{
-			roundDiff = (float)(-PlayerStats.Instance.playerStats.highScoreHeight+Math.Round(PlayerStats.Instance.playerStats.highScoreHeight));
-		}*/
+	
 }

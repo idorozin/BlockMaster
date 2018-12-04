@@ -12,7 +12,6 @@ public class shopScript : MonoBehaviour {
 	int currentItem=0;
 	string path="Shop/Items/";
 	GameObject item;
-	GameObject playerStats;
 	public Text balance_text;
 	public GameObject lockedUi;
 	private Text lockedUiText;
@@ -38,7 +37,6 @@ public class shopScript : MonoBehaviour {
 			lockedUiText.text = "To unlock the \n cannon reach to \n " + items[currentItem].getScore() + "points";		
 		}
 
-		playerStats = GameObject.Find("PlayerStats");
 		GetComponent<swipeDetector>().swipeDetected += moveToSwipeDirection;
 	
 	}

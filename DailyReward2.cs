@@ -28,7 +28,6 @@ public class DailyReward2: MonoBehaviour
 	//reset the timer every roll
 	public IEnumerator resetTimer()
 	{
-		Debug.Log("reset");
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		PlayerStats.Instance.playerStats.offsetG = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
 		coolDown = countDownLenght;
@@ -49,7 +48,6 @@ public class DailyReward2: MonoBehaviour
 		run = true;
 		while (coolDown > 0 || coolDown > countDownLenght+1)
 		{
-			Debug.Log("COUNT");
 			coolDown = timeRemaining();
 			if(TimeText != null && coolDown > 0)
 			TimeText.GetComponent<Text>().text = secsToTime();
@@ -63,10 +61,10 @@ public class DailyReward2: MonoBehaviour
 	// true => button enabled false => button disabled and count down continouse with updated time. 
 	IEnumerator enableButton()
 	{
-		Debug.Log("enable");
-
-		if(TimeText!=null){TimeText.GetComponent<Text>().text = "READY!";timeText = secsToTime();}
+		if(TimeText!=null){TimeText.GetComponent<Text>().text = "READY!";timeText = "READY!";}
 		//validate 
+		if (TimeManager.Instance.GetHtmlFromUri("http://google.com") == "")
+			yield break;
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		if (coolDown <= 0 && TimeText != null)
 		{
@@ -77,7 +75,6 @@ public class DailyReward2: MonoBehaviour
 		PlayerStats.Instance.saveFile();
 		//start timer again
 		StartCoroutine("CountDown");
-
 	}
 
 	 public string secsToTime() // convert seconds to time format 00:00:00

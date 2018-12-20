@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
 public class PlayerInput : MonoBehaviour {
 	private Vector3 initialPosition,aimPosition;
 	[SerializeField]
@@ -18,11 +19,13 @@ public class PlayerInput : MonoBehaviour {
 		}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
+		StartCoroutine("s");
 		if(loading && Time.time<nextTime)
 		{
 			cantShoot = true;
-
+		
 		}
 		else
 		{
@@ -80,6 +83,7 @@ public class PlayerInput : MonoBehaviour {
 		//predictionLine.changeOpacity();
 		predictionLine.clearDots();
 		fingerMoved = false;
+		PlayerStats.Instance.playerStats.cs[PlayerStats.Instance.playerStats.challangeIndex].reportProcess(1,"shot");
 	}
 	
 	void aim() // aims on touch
@@ -96,5 +100,15 @@ public class PlayerInput : MonoBehaviour {
 		}
 
 	}
-	
+
+	IEnumerator s()
+	{
+		while (true)
+		{
+			Debug.Log("REPORT");
+			PlayerStats.Instance.playerStats.cs[PlayerStats.Instance.playerStats.challangeIndex].reportProcess(1,"shot");
+			yield return new WaitForSeconds(1);
+		}
+	}
+
 }

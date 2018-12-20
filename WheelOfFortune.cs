@@ -22,13 +22,14 @@ public class WheelOfFortune : MonoBehaviour
 	{
 		if (!rollAllowed || !DailyReward.RollAllowed)
 			return;
+		if (Application.internetReachability == NetworkReachability.NotReachable)
+			return;
 		startSpeed = UnityEngine.Random.Range(400 , 800);
 		stopSpeed = UnityEngine.Random.Range(50 ,100);
 		motor.motorSpeed = startSpeed;
 		motor.maxMotorTorque = 10000;
 		wheelJoint.motor = motor;
 		DailyReward.RollAllowed = false;
-		Debug.Log("RESETTIMER");
 		GameObject.Find("DailyRewards").GetComponent<DailyReward>().StartCoroutine("resetTimer");
 		StartCoroutine(roll(startSpeed));
 	}

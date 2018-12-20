@@ -28,7 +28,6 @@ public class DailyReward: MonoBehaviour
 	//reset the timer every roll
 	public IEnumerator resetTimer()
 	{
-		Debug.Log("reset");
 		coolDown = countDownLenght;
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		PlayerStats.Instance.playerStats.offsetW = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
@@ -41,7 +40,6 @@ public class DailyReward: MonoBehaviour
 
 	public void updateTime() // updates countDown with internet time
 	{
-		Debug.Log("updateTime " + TimeManager.Instance.getTimeInSecs());
 		coolDown = (countDownLenght) - (TimeManager.Instance.getTimeInSecs() - TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.playerStats.wheelTime));
 	}
 
@@ -55,8 +53,8 @@ public class DailyReward: MonoBehaviour
 		{
 			coolDown = timeRemaining();
 			if(TimeText != null && coolDown > 0)
-			TimeText.GetComponent<Text>().text = secsToTime(coolDown);
-			timeText = secsToTime(coolDown);
+			TimeText.GetComponent<Text>().text = secsToTime();
+			timeText = secsToTime();
 			yield return new WaitForSeconds(1);
 		}
 		StartCoroutine("enableButton");
@@ -66,9 +64,7 @@ public class DailyReward: MonoBehaviour
 	// true => button enabled false => button disabled and count down continouse with updated time. 
 	IEnumerator enableButton()
 	{
-		Debug.Log("enable");
-
-		if(TimeText!=null){TimeText.GetComponent<Text>().text = "READY!";timeText = secsToTime(coolDown);}
+		if(TimeText!=null){TimeText.GetComponent<Text>().text = "READY!";timeText = "READY";}
 		//validate 
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		if (coolDown <= 0 && TimeText != null)
@@ -83,7 +79,7 @@ public class DailyReward: MonoBehaviour
 
 	}
 
-	public string secsToTime(int coolDown) // convert seconds to time format 00:00:00
+	public string secsToTime() // convert seconds to time format 00:00:00
 	{
 		return coolDown / 60 / 60 + ":" + coolDown / 60 % 60 + ":" + coolDown % 60;
 	}

@@ -49,7 +49,8 @@ public class score : MonoBehaviour {
 	{
 		if(HeightFinder.score!=0 && HeightFinder.score>fixedScore)
 			fixedScore=HeightFinder.score;
-		text_.text=(fixedScore).ToString(); 
+		text_.text=(fixedScore).ToString();
+		PlayerStats.Instance.playerStats.cs[PlayerStats.Instance.playerStats.challangeIndex].setProcess((int)fixedScore , "record");
 	}
 	
 	

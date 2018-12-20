@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using GooglePlayGames.Native.Cwrapper;
-using UnityEditor.Animations;
+﻿
 using UnityEngine;
 
 public class dailyGift : MonoBehaviour
 {
 	
 	[SerializeField] 
-	private Transform GiftPanel;
+	private Transform GiftPanel , TickPanel;
 	[SerializeField] 
 	private GameObject Tick;
 	[SerializeField]
@@ -21,10 +17,26 @@ public class dailyGift : MonoBehaviour
 		getGiftButton();
 	}
 
+	public void loadGifts()
+	{
+		for(int i=0;i<=PlayerStats.Instance.playerStats.GiftIndex;i++)
+			Instantiate(Tick , TickPanel);
+		foreach (var t in gifts)
+			Instantiate(Resources.Load("Gifts/"+t) , GiftPanel);
+	}
+
 	public void getGiftButton()
 	{
-		if (!giftAllowed || !DailyReward2.GiftAllowed)
+		if (Application.internetReachability == NetworkReachability.NotReachable)
 			return;
+		if(DailyReward2.timeText=="READY!" && !DailyReward2.GiftAllowed)
+			GameObject.Find("DailyRewards").GetComponent<DailyReward2>().StartCoroutine("enableButton");
+		if (!giftAllowed || !DailyReward2.GiftAllowed)
+		{
+			Debug.Log("returned");
+			return;
+		}
+
 		DailyReward2.GiftAllowed = false;
 		GameObject.Find("DailyRewards").GetComponent<DailyReward2>().StartCoroutine("resetTimer");
 		if (PlayerStats.Instance.playerStats.GiftIndex >= gifts.Length-1)
@@ -36,8 +48,8 @@ public class dailyGift : MonoBehaviour
 
 	private void getGift(string gift)
 	{
-		for(int i=0;i<=PlayerStats.Instance.playerStats.GiftIndex;i++)
-			Instantiate(Tick , GiftPanel);
+		Instantiate(Tick , TickPanel);
+		PlayerStats.Instance.playerStats.GiftIndex++;
 //		if (gift == "200coins")
 //			PlayerStats.Instance.playerStats.money += 200;
 	}
@@ -45,6 +57,10 @@ public class dailyGift : MonoBehaviour
 	public void destroyTicks()
 	{
 		foreach (Transform child in GiftPanel)
+		{
+			Destroy(child.gameObject);
+		}
+		foreach (Transform child in TickPanel)
 		{
 			Destroy(child.gameObject);
 		}

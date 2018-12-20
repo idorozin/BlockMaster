@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using SimpleJSON;
-using Newtonsoft;
-using UnityEditor.Experimental.UIElements.GraphView;
-using UnityEngine.Serialization;
-using Debug = UnityEngine.Debug;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -24,16 +16,16 @@ public class PlayerStats : MonoBehaviour
 		public float highScoreHeight=0;
 		public string wheelTime = "";
 		public string giftTime = "";
-		public int offsetW , offsetG , GiftIndex;
+		public int offsetW , offsetG , GiftIndex , challangeIndex=0;
 		public bool musicOn=true, soundOn=true;
-		private Challange shoot = new Challange("Shoot n shapes",new []{1,2,3,4,5},new []{"1"});
-		public Challange shoot1 = new Challange("Shoot n shapes",new []{1,2,3,4,5},new []{"2"});
-		public Challange shoot2 = new Challange("Shoot n shapes",new []{1,2,3,4,5},new []{"3"});
-		public Challange shoot3 = new Challange("Shoot n shapes",new []{1,2,3,4,5},new []{"4"});
-		public Challange shoot4 = new Challange("Shoot n shapes",new []{1,2,3,4,5},new []{"5"});
-		public Challange shoot5 = new Challange("Shoot n shapes",new []{1,2,3,4,5},new []{"6"});
-		public Challange[] cs = new Challange[6];
+		private Challange shoot = new Challange("Shoot 10 shapes", 10 , "shot" , "100coins");
+		private Challange shoot1 = new Challange("Shoot 10 shapes", 100 , "record" , "200coins");
+		private Challange shoot2 = new Challange("Shoot 10 shapes", 10 , "shot" , "100coins");
+		private Challange shoot3 = new Challange("Shoot 10 shapes", 10 , "shot" , "100coins");
+		private Challange shoot4 = new Challange("Shoot 10 shapes", 10 , "shot" , "100coins");
+		private Challange shoot5 = new Challange("Shoot 10 shapes", 10 , "shot" , "100coins");
 
+		public Challange[] cs = new Challange[6];
 		public void SetChallanges()
 		{
 			cs[0] = shoot;
@@ -43,40 +35,32 @@ public class PlayerStats : MonoBehaviour
 			cs[4] = shoot4;
 			cs[5] = shoot5;
 		}
-
-
 	}
 
 	public class Challange
 	{
-		public String challageText="" ;
-		private string[] rewards = new string[5];
-		private int[] challangeGoal = new int[5];
+		public string challageText="" ;
+		public string reward , action;
 		public int goal , process , level;
 
-		public Challange(String challageText,int[] challangeGoal , string[] rewards)
+		public Challange(string challageText,int goal , string action , string reward)
 		{
-			this.challangeGoal = challangeGoal;
 			this.challageText = challageText;
-			this.rewards = rewards;
-			goal = challangeGoal[0];
+			this.goal = goal;
+			this.action = action;
+			this.reward = reward;
 		}
 
-		public void reportProcess(int process)
+		public void reportProcess(int process , string action)
 		{
-			this.process += process;
+			if(this.action==action)
+				this.process += process;
 		}
-
-		public string nextLevel()
+		
+		public void setProcess(int process , string action)
 		{
-			level++;
-			goal = challangeGoal[level];	
-			return rewards[level-1];
-		}
-
-		public string reward()
-		{
-			return rewards[level];
+			if(this.action==action && process>this.process)
+				this.process = process;
 		}
 
 	}
@@ -86,12 +70,15 @@ public class PlayerStats : MonoBehaviour
 	{
 		if (Instance == null)
 		{
+			
 			Instance = this;
 			playerStats=new PlayerStats_();
+			playerStats.SetChallanges();
 			path = Application.persistentDataPath + "/PlayerFile.json";
 			if (File.Exists(Application.persistentDataPath + "/PlayerFile.json")) Debug.Log("file exists");
 			else saveFile();
 			loadFile();
+			playerStats.SetChallanges();
 			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
 			DontDestroyOnLoad(gameObject);
 		}
@@ -107,6 +94,7 @@ public class PlayerStats : MonoBehaviour
 
 	public void loadFile()
 	{		
+		Debug.Log("s");
 		//read file
 		string fileString = File.ReadAllText(path);
 		//Serialize object
@@ -116,6 +104,7 @@ public class PlayerStats : MonoBehaviour
 	
 	public void saveFile()
 	{
+		Debug.Log("s");
 		//parse this class to json string
 		string playerStats = Newtonsoft.Json.JsonConvert.SerializeObject(this.playerStats);
 		//save json file

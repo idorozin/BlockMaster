@@ -37,14 +37,8 @@ public class MenuScript : MonoBehaviour
 
 	public void LoadDailyGift()
 	{
-		if (!hasConnection())
-		{
-			Debug.Log("PLZ CHECK YOUR INTERNET CONNECTION");
-			return;
-			//Do Something
-		}
 		DailyGift.SetActive(true);
-		//DailyGift.GetComponent<dailyGift>().getGiftButton();
+		DailyGift.GetComponent<dailyGift>().loadGifts();
 	}
 
 	public void unLoadDailyGift()
@@ -89,20 +83,9 @@ public class MenuScript : MonoBehaviour
      	setRecordText();
      }
 	public void LoadWheelOfFortune(){
-		if (!hasConnection())
-		{
-			Debug.Log("PLZ CHECK YOUR INTERNET CONNECTION");
-			return;
-			//Do Something
-		}
 		WheelOfFortune.SetActive(true);
 	}
 
-	bool hasConnection()
-	{
-		if (Application.internetReachability == NetworkReachability.NotReachable)
-			return false;
-		return true;
-	}
+
 
 }

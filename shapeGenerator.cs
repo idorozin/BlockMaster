@@ -12,7 +12,7 @@ public class shapeGenerator : MonoBehaviour
 	private int x,y,z;
 	public Transform camera;
 	private int circle = 0;
-		
+
 	//initialize the list of the shapes
 	private List<string> shapesList()
 	{

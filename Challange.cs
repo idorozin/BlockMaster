@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,27 +11,47 @@ public class Challange : MonoBehaviour
 
 	public static Challange Instance;
 
-	[SerializeField]private GameObject Challanges;
 
 	// Use this for initialization
 	public void LoadChallanges ()
 	{
-		PlayerStats.Instance.playerStats.SetChallanges();
 		int i = 0;
-		foreach (Transform child in Challanges.transform)
+		foreach (Transform child in gameObject.transform)
 		{
 			foreach (Transform text in child.transform)
 			{
-				if (text.gameObject.name == "ChallangeTxt")
-					text.gameObject.GetComponent<TextMeshProUGUI>().text=PlayerStats.Instance.playerStats.cs[i].challageText;
-				if(text.gameObject.name=="PrizeTxt")
-					text.gameObject.GetComponent<TextMeshProUGUI>().text=PlayerStats.Instance.playerStats.cs[i].reward();
+				if (i <= PlayerStats.Instance.playerStats.challangeIndex)
+				{
+					Debug.Log(PlayerStats.Instance.playerStats.cs[i].reward);
+					if (text.gameObject.name == "ChallangeTxt")
+						text.gameObject.GetComponent<TextMeshProUGUI>().text =
+							PlayerStats.Instance.playerStats.cs[i].challageText;
+					if (text.gameObject.name == "Prize")
+						text.gameObject.GetComponent<TextMeshProUGUI>().text =
+							PlayerStats.Instance.playerStats.cs[i].reward;
+					if(text.gameObject.name == "Process")
+						text.gameObject.GetComponent<TextMeshProUGUI>().text =
+							PlayerStats.Instance.playerStats.cs[i].process+"/"+PlayerStats.Instance.playerStats.cs[i].goal;
+				}
+				if (text.gameObject.name == "Level")
+				text.gameObject.GetComponent<TextMeshProUGUI>().text =
+					(i + 1).ToString();
 			}
 
 			i++;
 		}
 	}
-	
+
+	public void nextChallange()
+	{
+		if (PlayerStats.Instance.playerStats.cs[PlayerStats.Instance.playerStats.challangeIndex].process >
+		    PlayerStats.Instance.playerStats.cs[PlayerStats.Instance.playerStats.challangeIndex].goal)
+		{
+			PlayerStats.Instance.playerStats.challangeIndex++;
+			LoadChallanges();
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		

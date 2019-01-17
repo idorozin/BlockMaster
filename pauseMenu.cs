@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Boo.Lang;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,15 +9,11 @@ public class pauseMenu : MonoBehaviour {
 	
 	public static bool GameIsPaused = false;
 	public GameObject PauseMenuUI;
-	public GameObject playerStats;
 	public GameObject GameOverUI;
 	public Text gameOverScore;
 	public Text gameOverMoney;
 	public GameObject Score;
-	
-	void Start(){
-		playerStats = GameObject.Find("PlayerStats");		
-	}
+	public static Stack<string> rewards = new Stack<string>();
 	
 	void Update()
 	{
@@ -74,8 +72,7 @@ public class pauseMenu : MonoBehaviour {
 			HeightFinder.lives=0;
 			PlayerStats.Instance.playerStats.money+=HeightFinder.score;
 			gameOverUI((HeightFinder.score));
-			GameIsPaused = true;
-			Time.timeScale = 0;
+			//GameIsPaused = true;
 			PlayerStats.Instance.saveFile();
 		}
 	}

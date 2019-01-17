@@ -18,7 +18,7 @@ public class NativeShare : MonoBehaviour {
 			intentObject.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_SEND"));
 			intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"),
 				"Can you beat my score?");
-			intentObject.Call<AndroidJavaObject>("setType", "message/rfc822");
+			intentObject.Call<AndroidJavaObject>("setType", "text/plain");
 			AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
 			AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity");
 			AndroidJavaObject chooser = intentClass.CallStatic<AndroidJavaObject>("createChooser",

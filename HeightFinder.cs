@@ -8,6 +8,7 @@ public class HeightFinder : MonoBehaviour {
 	public static float height=0f;
 	public static float score=0f;
 	public static float lives=0;
+	public static float timePassed;
 	private Transform camera;
 	Rigidbody2D rb;
 	public GameObject surface;
@@ -19,11 +20,15 @@ public class HeightFinder : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 		height=0f;
 		score=0f;
+		timePassed=0f;
+		Debug.Log("Start");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		rb.velocity = new Vector2(0,-2);
+		Debug.Log(Time.deltaTime);
+		timePassed += Time.deltaTime;
 	}
 	
 	void OnTriggerEnter2D(Collider2D col){

@@ -7,15 +7,12 @@ using TMPro;
 
 public class score : MonoBehaviour {
 	
-	public Transform surface;
 	float fixedScore=0;
-	public GameObject updatePlayerStats;
 	public GameObject highScoresign;
 	public TextMeshProUGUI text_;
 
 	// Use this for initialization
 	void Start () {
-		updatePlayerStats=GameObject.Find("PlayerStats");
 		text_ = GetComponent<TextMeshProUGUI>();
 	}
 	

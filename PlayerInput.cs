@@ -21,7 +21,6 @@ public class PlayerInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		StartCoroutine("s");
 		if(loading && Time.time<nextTime)
 		{
 			cantShoot = true;
@@ -101,14 +100,5 @@ public class PlayerInput : MonoBehaviour {
 
 	}
 
-	IEnumerator s()
-	{
-		while (true)
-		{
-			Debug.Log("REPORT");
-			PlayerStats.Instance.playerStats.cs[PlayerStats.Instance.playerStats.challangeIndex].reportProcess(1,"shot");
-			yield return new WaitForSeconds(1);
-		}
-	}
 
 }

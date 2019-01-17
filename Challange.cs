@@ -10,50 +10,76 @@ public class Challange : MonoBehaviour
 	}
 
 	public static Challange Instance;
+	[SerializeField] private GameObject challange;
+	[SerializeField] private Sprite skip , tick , collect , yellow;
 
 
 	// Use this for initialization
 	public void LoadChallanges ()
 	{
-		int i = 0;
-		foreach (Transform child in gameObject.transform)
+		PlayerStats.Instance.playerStats.challangeIndex = 0;
+		DestroyUI();
+		for(int i=0;i<PlayerStats.Instance.playerStats.cs.Length;i++)
 		{
-			foreach (Transform text in child.transform)
+			Debug.Log(i);
+			GameObject obj=Instantiate(challange, gameObject.transform);
+			foreach (Transform child in obj.transform)
 			{
 				if (i <= PlayerStats.Instance.playerStats.challangeIndex)
 				{
-					Debug.Log(PlayerStats.Instance.playerStats.cs[i].reward);
-					if (text.gameObject.name == "ChallangeTxt")
-						text.gameObject.GetComponent<TextMeshProUGUI>().text =
+					obj.GetComponent<Image>().sprite = yellow;
+					if (child.gameObject.name == "ChallangeTxt")
+						child.gameObject.GetComponent<TextMeshProUGUI>().text =
 							PlayerStats.Instance.playerStats.cs[i].challageText;
-					if (text.gameObject.name == "Prize")
-						text.gameObject.GetComponent<TextMeshProUGUI>().text =
+					if (child.gameObject.name == "Prize")
+						child.gameObject.GetComponent<TextMeshProUGUI>().text =
 							PlayerStats.Instance.playerStats.cs[i].reward;
-					if(text.gameObject.name == "Process")
-						text.gameObject.GetComponent<TextMeshProUGUI>().text =
+					if(child.gameObject.name == "Process")
+						child.gameObject.GetComponent<TextMeshProUGUI>().text =
 							PlayerStats.Instance.playerStats.cs[i].process+"/"+PlayerStats.Instance.playerStats.cs[i].goal;
+					if (child.gameObject.GetComponent<Button>() != null)
+					{
+						if (i < PlayerStats.Instance.playerStats.challangeIndex)
+						{
+							child.gameObject.transform.parent.gameObject.GetComponent<Image>().sprite = tick;
+							Destroy(child.gameObject);
+						}
+						if (i == PlayerStats.Instance.playerStats.challangeIndex)
+						{
+							child.gameObject.GetComponent<Image>().enabled = true;
+							child.GetComponent<Button>().onClick.AddListener(skipChallange);
+							if (PlayerStats.Instance.playerStats.cs[PlayerStats.Instance.playerStats.challangeIndex]
+								    .process <
+							    PlayerStats.Instance.playerStats.cs[PlayerStats.Instance.playerStats.challangeIndex]
+								    .goal)
+								child.gameObject.GetComponent<Image>().sprite = skip;
+						}
+					}
 				}
-				if (text.gameObject.name == "Level")
-				text.gameObject.GetComponent<TextMeshProUGUI>().text =
-					(i + 1).ToString();
+				if (child.gameObject.name == "Level")
+					child.gameObject.GetComponent<TextMeshProUGUI>().text =
+						(i + 1).ToString();
 			}
-
-			i++;
 		}
+		gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(-62.1f,PlayerStats.Instance.playerStats.cs.Length*80f);
 	}
 
-	public void nextChallange()
+	private void DestroyUI()
 	{
-		if (PlayerStats.Instance.playerStats.cs[PlayerStats.Instance.playerStats.challangeIndex].process >
-		    PlayerStats.Instance.playerStats.cs[PlayerStats.Instance.playerStats.challangeIndex].goal)
+		foreach (Transform child in gameObject.transform)
 		{
-			PlayerStats.Instance.playerStats.challangeIndex++;
-			LoadChallanges();
+			Destroy(child.gameObject);
 		}
 	}
 
-	// Update is called once per frame
-	void Update () {
-		
+	public void skipChallange()
+	{
+		if (PlayerStats.Instance.playerStats.money >= 200)
+			PlayerStats.Instance.playerStats.money -= 200;
+		PlayerStats.Instance.playerStats.challangeIndex++;
+		PlayerStats.Instance.saveFile();
+		LoadChallanges();
 	}
+
+
 }

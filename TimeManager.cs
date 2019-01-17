@@ -100,7 +100,7 @@ public class TimeManager : MonoBehaviour
 			yield return null;
 		}
 	}
-
+	//use this to be sure there is internet connection
 	public string GetHtmlFromUri(string resource)
 	{
 		string html = string.Empty;

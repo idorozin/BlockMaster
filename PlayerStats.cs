@@ -18,12 +18,12 @@ public class PlayerStats : MonoBehaviour
 		public string giftTime = "";
 		public int offsetW , offsetG , GiftIndex , challangeIndex=0;
 		public bool musicOn=true, soundOn=true;
-		private Challange shoot = new Challange("Shoot 10 shapes", 10 , "shot" , "100coins");
-		private Challange shoot1 = new Challange("Shoot 10 shapes", 100 , "record" , "200coins");
-		private Challange shoot2 = new Challange("Shoot 10 shapes", 10 , "shot" , "100coins");
-		private Challange shoot3 = new Challange("Shoot 10 shapes", 10 , "shot" , "100coins");
-		private Challange shoot4 = new Challange("Shoot 10 shapes", 10 , "shot" , "100coins");
-		private Challange shoot5 = new Challange("Shoot 10 shapes", 10 , "shot" , "100coins");
+		private Challange shoot = new Challange("Shoot 10 shapes", 10 , "shot" , "100");
+		private Challange shoot1 = new Challange("Shoot 10 shapes", 100 , "record" , "200");
+		private Challange shoot2 = new Challange("Shoot 10 shapes", 10 , "shot" , "100");
+		private Challange shoot3 = new Challange("Shoot 10 shapes", 10 , "shot" , "100");
+		private Challange shoot4 = new Challange("Shoot 10 shapes", 10 , "shot" , "100");
+		private Challange shoot5 = new Challange("Shoot 10 shapes", 10 , "shot" , "100");
 
 		public Challange[] cs = new Challange[6];
 		public void SetChallanges()
@@ -55,6 +55,7 @@ public class PlayerStats : MonoBehaviour
 		{
 			if(this.action==action)
 				this.process += process;
+			nextChallange();
 		}
 		
 		public void setProcess(int process , string action)
@@ -63,6 +64,15 @@ public class PlayerStats : MonoBehaviour
 				this.process = process;
 		}
 
+		public void nextChallange()
+		{
+			if (this.process < this.goal)
+				return;
+			Instance.playerStats.challangeIndex++;
+			Instance.saveFile();
+			pauseMenu.rewards.Push(reward);
+			//claimReward(reward);
+		}
 	}
 
 
@@ -104,7 +114,6 @@ public class PlayerStats : MonoBehaviour
 	
 	public void saveFile()
 	{
-		Debug.Log("s");
 		//parse this class to json string
 		string playerStats = Newtonsoft.Json.JsonConvert.SerializeObject(this.playerStats);
 		//save json file

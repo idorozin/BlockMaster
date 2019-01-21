@@ -55,23 +55,34 @@ public class PlayerStats : MonoBehaviour
 		{
 			if(this.action==action)
 				this.process += process;
-			nextChallange();
+			if (process > goal)
+				nextChallange();
 		}
 		
 		public void setProcess(int process , string action)
 		{
 			if(this.action==action && process>this.process)
 				this.process = process;
+			if (process > goal)
+				nextChallange();
+		}
+		
+ 		public void skipChallange()
+		{
+			
 		}
 
 		public void nextChallange()
 		{
-			if (this.process < this.goal)
-				return;
 			Instance.playerStats.challangeIndex++;
 			Instance.saveFile();
-			pauseMenu.rewards.Push(reward);
+			pauseMenu.rewards.Push(this);
 			//claimReward(reward);
+		}
+
+		public override string ToString()
+		{
+			return challageText;
 		}
 	}
 
@@ -88,7 +99,6 @@ public class PlayerStats : MonoBehaviour
 			if (File.Exists(Application.persistentDataPath + "/PlayerFile.json")) Debug.Log("file exists");
 			else saveFile();
 			loadFile();
-			playerStats.SetChallanges();
 			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
 			DontDestroyOnLoad(gameObject);
 		}
@@ -104,9 +114,9 @@ public class PlayerStats : MonoBehaviour
 
 	public void loadFile()
 	{		
-		Debug.Log("s");
 		//read file
 		string fileString = File.ReadAllText(path);
+		Debug.Log(fileString);
 		//Serialize object
 		Newtonsoft.Json.JsonConvert.PopulateObject(fileString , playerStats);			
 		saveFile();

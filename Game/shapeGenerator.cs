@@ -8,8 +8,6 @@ public class shapeGenerator : MonoBehaviour
 	private string filePath="Shapes/";
 	private bool cannonLoaded=false;
 	private Vector3 spawningPos;
-	[SerializeField]
-	private int x,y,z;
 	public Transform camera;
 	private int circle = 0;
 
@@ -31,7 +29,8 @@ public class shapeGenerator : MonoBehaviour
 		cannonLoaded=false;
 		spawningPos = new Vector3(transform.position.x,transform.position.y+1f,transform.position.z);
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -59,7 +58,9 @@ public class shapeGenerator : MonoBehaviour
 	}
 	
 	public void onCannonLoaded(){
-		this.cannonLoaded = this.cannonLoaded ? false : true;
+		cannonLoaded = cannonLoaded ? false : true;
 	}
+	
+	//spawn the cannon
 
 }

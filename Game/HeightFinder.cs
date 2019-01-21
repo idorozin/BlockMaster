@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HeightFinder : MonoBehaviour {
@@ -12,44 +13,88 @@ public class HeightFinder : MonoBehaviour {
 	private Transform camera;
 	Rigidbody2D rb;
 	public GameObject surface;
+	
+	float fixedScore=0;
+	[SerializeField] private GameObject highScoresign;
+	[SerializeField] private TextMeshProUGUI text_;
 
 	// Use this for initialization
 	void Start ()
 	{
+		Debug.Log(PlayerStats.Instance.playerStats.challangeIndex);
 		camera = GameObject.Find("Main Camera").transform;
 		rb = GetComponent<Rigidbody2D>();
 		height=0f;
 		score=0f;
 		timePassed=0f;
-		Debug.Log("Start");
+		OnScoreChanged();
+		InstantiateCannon();
+	}
+	
+	void InstantiateCannon () 
+	{
+		Vector3 spawningPos = new Vector3(camera.position.x,camera.position.y-3f,0f);
+		if(PlayerStats.Instance.playerStats.lastCannon=="")
+			PlayerStats.Instance.playerStats.lastCannon="default";
+		string cannonFilePath="Cannons/"+PlayerStats.Instance.playerStats.lastCannon;
+		Debug.Log(cannonFilePath+ "    " + spawningPos);
+		Instantiate(Resources.Load(cannonFilePath) , spawningPos , Quaternion.identity);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		rb.velocity = new Vector2(0,-2);
-		Debug.Log(Time.deltaTime);
 		timePassed += Time.deltaTime;
 	}
 	
-	void OnTriggerEnter2D(Collider2D col){
-		if(col.gameObject.GetComponent<Rigidbody2D>() !=null && col.gameObject.GetComponent<Rigidbody2D>().velocity.x<0.1 && col.gameObject.GetComponent<Rigidbody2D>().velocity.y<0.1 && col.gameObject.GetComponent<Rigidbody2D>().velocity.x>-0.1 && col.gameObject.GetComponent<Rigidbody2D>().velocity.y>-0.1 && col.isTrigger==false){
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if(col.gameObject.GetComponent<Rigidbody2D>() !=null && col.gameObject.GetComponent<Rigidbody2D>().velocity.x<0.1 && col.gameObject.GetComponent<Rigidbody2D>().velocity.y<0.1 && col.gameObject.GetComponent<Rigidbody2D>().velocity.x>-0.1 && col.gameObject.GetComponent<Rigidbody2D>().velocity.y>-0.1 && col.isTrigger==false)
+		{
 			if (col.gameObject.name != surface.name && col.transform.position.y > surface.transform.position.y)
-			{
 				score=(float)Math.Round((col.transform.position.y-surface.transform.position.y)*10);
-			}
 			if(col.gameObject.name != surface.name && transform.position.y>0)
 				height=col.transform.position.y;
 		}
-		this.rb.position = new Vector3(camera.position.x,camera.position.y+5f,camera.position.z);
+		rb.position = new Vector3(camera.position.x,camera.position.y+5f,camera.position.z);
+		OnScoreChanged();
 	}
+
+	#region Score
+	
+	private float getHighScoreSignHeight()
+	{
+		return PlayerStats.Instance.playerStats.highScoreHeight;
+	}
+
+	private void updateStats()
+	{
+		if(fixedScore>PlayerStats.Instance.playerStats.highScore){
+			PlayerStats.Instance.playerStats.highScore=fixedScore;
+			PlayerStats.Instance.playerStats.highScoreHeight = height;
+			PlayerStats.Instance.saveFile();
+			PlayServices.Instance.addScoreToLeaderboard("",(int)fixedScore);
+		}
+	}
+
+	private void setScore()
+	{
+		if(score!=0 && score>fixedScore)
+			fixedScore=score;
+		text_.text=(fixedScore).ToString();
+		PlayerStats.Instance.playerStats.cs[PlayerStats.Instance.playerStats.challangeIndex].setProcess((int)fixedScore , "record");
+	}
+
+	private void OnScoreChanged()
+	{
+		//set the current score
+		setScore();
+		// every time record is bitten save the file and push to leaderboard
+		updateStats();
+		//sign to show where is your highScore
+		highScoresign.transform.position=new Vector3(highScoresign.transform.position.x,getHighScoreSignHeight(),0f);
+	}
+	
+	#endregion
+
 }
-
-
-
-
-
-
-		/* Vector3 screenBottomCenter = new Vector3(Screen.width/2, Screen.height, 0);
-		Vector3 inWorld = Camera.main.ScreenToWorldPoint(screenBottomCenter);
-		if(rb.position.y < inWorld.y)
-			rb.position = new Vector3(camera.position.x,camera.position.y+5f,camera.position.z); */

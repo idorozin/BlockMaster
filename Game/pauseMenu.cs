@@ -13,14 +13,15 @@ public class pauseMenu : MonoBehaviour {
 	public Text gameOverScore;
 	public Text gameOverMoney;
 	public GameObject Score;
-	public static Stack<string> rewards = new Stack<string>();
+	public static Stack<PlayerStats.Challange> rewards = new Stack<PlayerStats.Challange>();
 	
 	void Update()
 	{
 		OnGameOver();
 	}
 
-	public void OnClick(){
+	public void OnClickPause()
+	{
 		if(GameIsPaused)
 		{
 			Resume();
@@ -44,7 +45,8 @@ public class pauseMenu : MonoBehaviour {
 		GameIsPaused = true;
 	}
 	
-	public void LoadMainMenu(){
+	public void LoadMainMenu()
+	{
 		SceneManager.LoadScene("MainMenu");
 		Time.timeScale = 1f;
 		GameIsPaused = false;

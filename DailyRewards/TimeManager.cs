@@ -87,19 +87,7 @@ public class TimeManager : MonoBehaviour
 		return (int)(dateTime-baseDate).TotalSeconds;
 	} // time(string) to seconds
 
-	public bool isRelevent(int year , int month) // check if the year and the month are not that far away
-	{
-		return year == this.year+1 && month <= this.month+1;
-	}
-	
-	private IEnumerator WaitForInteretConnection()
-	{
-		while (Application.internetReachability == NetworkReachability.NotReachable)
-		{
-			Debug.Log("waiting");
-			yield return null;
-		}
-	}
+
 	//use this to be sure there is internet connection
 	public string GetHtmlFromUri(string resource)
 	{

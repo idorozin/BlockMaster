@@ -10,10 +10,8 @@ public class LavaBehaviour : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log("asa");
 		if(pauseMenu.GameIsPaused)
 			return;
-		Debug.Log("asa");
 		transform.position = transform.position+Vector3.up*initialSpeed+new Vector3(0f,calcSpeed(),0f);
 		if (transform.position.y > HeightFinder.height)
 			HeightFinder.lives = -3;
@@ -21,7 +19,6 @@ public class LavaBehaviour : MonoBehaviour
 
 	private float calcSpeed()
 	{
-		Debug.Log(HeightFinder.timePassed);
 		return ((float) Math.Sqrt(HeightFinder.timePassed) * 0.5f + (float) Math.Sin(HeightFinder.timePassed) * 5f) *
 		       0.001f;
 	}

@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5329ee54-eb20-4911-8715-a4287ccad257" name="Default Changelist" comment="challanges+time validation+more...">
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/DailyRewards.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/DailyRewards/DailyReward.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/DailyRewards/DailyReward2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/DailyRewards/TimeManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/DailyRewards/TimeText.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/DailyRewards/WheelOfFortune.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/DailyRewards/dailyGift.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Game.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Game/HeartsUi.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Game/HeightFinder.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Game/LavaBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Game/PlayerInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Game/PredictionLine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Game/pauseMenu.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Game/shapeBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Game/shapeGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Game/trackCamera.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Game/trailEffect.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/GooglePlay.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/GooglePlay/PlayServices.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/MenuScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/NativeShare.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/NativeShare/NativeShare.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/PlayerData.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/PlayerData/Challange.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/PlayerData/PlayerStats.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Settings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Shop.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Shop/Item.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Shop/shopScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Shop/swipeDetector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/DailyRewards.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/DailyRewards/DailyReward.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/DailyRewards/DailyReward2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/DailyRewards/TimeManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/DailyRewards/TimeText.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/DailyRewards/WheelOfFortune.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/DailyRewards/dailyGift.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Game.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Game/HeartsUi.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Game/HeightFinder.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Game/LavaBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Game/PlayerInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Game/PredictionLine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Game/pauseMenu.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Game/shapeBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Game/shapeGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Game/trackCamera.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Game/trailEffect.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/GooglePlay.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/GooglePlay/PlayServices.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/MenuScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/NativeShare.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/NativeShare/NativeShare.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/PlayerData.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/PlayerData/Challange.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/PlayerData/PlayerStats.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Settings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Shop.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Shop/Item.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Shop/shopScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Assets/Shop/swipeDetector.cs" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1630157188">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="42" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.23" value="2" />
+          <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.28" value="1" />
+          <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.33" value="1" />
+          <entry key="project.open.time.34" value="2" />
+          <entry key="project.open.time.35" value="1" />
+          <entry key="project.open.time.37" value="2" />
+          <entry key="project.open.time.38" value="3" />
+          <entry key="project.open.time.39" value="1" />
+          <entry key="project.open.time.42" value="1" />
+          <entry key="project.open.time.43" value="2" />
+          <entry key="project.open.time.45" value="3" />
+          <entry key="project.open.time.46" value="2" />
+          <entry key="project.open.time.47" value="3" />
+          <entry key="project.open.time.48" value="2" />
+          <entry key="project.open.time.49" value="3" />
+          <entry key="project.open.time.50" value="4" />
+          <entry key="project.open.time.51" value="2" />
+          <entry key="project.open.time.54" value="1" />
+          <entry key="project.open.time.56" value="2" />
+          <entry key="project.open.time.62" value="1" />
+          <entry key="project.open.time.65" value="1" />
+          <entry key="project.open.time.66" value="1" />
+          <entry key="project.open.time.88" value="1" />
+          <entry key="project.opened" value="45" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cs" value="23507" />
+          <entry key="txt" value="357" />
+          <entry key="xml" value="23" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C#" value="23507" />
+          <entry key="PLAIN_TEXT" value="357" />
+          <entry key="XML" value="23" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cs" value="152" />
+          <entry key="unity" value="1" />
+          <entry key="xml" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="152" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="XML" value="5" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/pauseMenu.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/PlayerData/PlayerStats.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="10" selection-start-column="10" selection-end-column="10" />
+              <folding>
+                <marker date="1548447797130" expanded="true" signature="6:71" ph="..." />
+                <marker date="1548447797130" expanded="true" signature="113:3221" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="214:1268" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="1144:1265" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="1293:2234" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="1482:1598" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="1656:1764" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="1821:1952" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="1986:1998" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="2029:2162" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="2199:2231" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="2250:2726" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="2277:2684" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="2691:2723" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="2744:3217" ph="save&amp;load" />
+                <marker date="1548447797130" expanded="true" signature="2786:2989" ph="{...}" />
+                <marker date="1548447797130" expanded="true" signature="3015:3204" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>GameObject.Find(&quot;PlayerStats&quot;).GetComponent&lt;updatePlayerStats&gt;().saveFile();</find>
+      <find>updatePlayerStats.GetComponent&lt;updatePlayerStats&gt;().saveFile();</find>
+      <find>PlayerStats.</find>
+      <find>playerStats.GetComponent&lt;updatePlayerStats&gt;().saveFile();</find>
+      <find>offset</find>
+      <find>500</find>
+      <find>TimeText</find>
+      <find>Button</find>
+      <find>GameObject.Find(&quot;Rollete&quot;)</find>
+      <find>PlayerStats</find>
+      <find>PlayerStats.Instance</find>
+      <find>wheelTime</find>
+      <find>Newtonsoft</find>
+      <find>810265308980</find>
+      <find>empty</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>PlayerStats.Intstance.</replace>
+      <replace>PlayerStats.Instance.</replace>
+      <replace>PlayerStats.Instance.saveFile();</replace>
+      <replace>5</replace>
+      <replace>countDownLenght</replace>
+      <replace>Button</replace>
+      <replace>PlayerStats.Instance.playerStats</replace>
+      <replace>giftTime</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Assets/Scripts" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/pauseMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2F14D49E-DC70-4940-AEE5-57642343F344/31/21b10e68/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2F14D49E-DC70-4940-AEE5-57642343F344/a5/955d395d/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ECB5D8E2-0A91-44BC-A4F2-58317D1E56F9/c5/e710d24f/Math.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B0962A7E-4E65-4650-BBC1-04838AA9616A/7f/0db2d9e2/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB678F49-88C5-419D-A036-1264E9EA9A98/14/6b31d85c/UnityWebRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B0962A7E-4E65-4650-BBC1-04838AA9616A/72/38b73828/AndroidJavaClass.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerData/PlayerStats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ECB5D8E2-0A91-44BC-A4F2-58317D1E56F9/41/0973efc5/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B0962A7E-4E65-4650-BBC1-04838AA9616A/ca/0ef7300f/TouchPhase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2F14D49E-DC70-4940-AEE5-57642343F344/77/6f54a063/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ECB5D8E2-0A91-44BC-A4F2-58317D1E56F9/af/beea9911/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9424B6EB-B159-40B4-9451-EB9DC7C51273/44/8baca58e/WWW.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/796B3F1F-E72E-48BC-A949-F2B39A7B10DF/7d/edf59c59/Stack`1.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/loadMenuTODO.cs" />
+        <option value="$PROJECT_DIR$/Assets/dailyGift.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/trailEffect.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/dowloadUpdates.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shop/swipeDetector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/NewBehaviourScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/updatePlayerStats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/shapeBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Menu/movetotheside.cs" />
+        <option value="$PROJECT_DIR$/Assets/Menu/MoveToTheSide.cs" />
+        <option value="$PROJECT_DIR$/Assets/TimeToRollete.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/challangesScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OnStartGame.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Settings.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shop/shopScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Challange.cs" />
+        <option value="$PROJECT_DIR$/Assets/TimeText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MenuScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/WheelOfFortune.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Android/AndroidManifest.xml.xml" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/shapeGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TimeText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DailyReward.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/dailyGift.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DailyReward2.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GooglePlay/PlayServices.cs" />
+        <option value="$PROJECT_DIR$/Assets/GooglePlayGames/Plugins/Android/GooglePlayGamesManifest.plugin/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Android/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/score.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Challange.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/NativeShare.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TimeManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HeightFinder.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LavaBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/pauseMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/OnStartGame.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/score.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/shapeBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/OnGameStart.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/shapeGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DailyRewards/TimeManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/dotBehavoiur.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/HeartsUi.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/LavaBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/HeightFinder.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game/pauseMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerData/PlayerStats.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="918" />
+    <option name="y" value="-8" />
+    <option name="width" value="861" />
+    <option name="height" value="945" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="UnityExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="UnityExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="PlayerData" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Shop" type="1045f7f1:UnityExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-hidden-items" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="AndroidMan&#9;FILE&#9;file://C:/Users/IDO/Documents/Block Master/Assets/Plugins/Android/AndroidManifest.xml.xml&#10;Android&#9;FILE&#9;file://C:/Users/IDO/Documents/Block Master/Assets/GooglePlayGames/Plugins/Android/GooglePlayGamesManifest.plugin/AndroidManifest.xml" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHubDesktop/app-1.6.0/resources/app/git/cmd/git.exe" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor" />
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor &amp; Play" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5329ee54-eb20-4911-8715-a4287ccad257" name="Default Changelist" comment="" />
+      <created>1539967625572</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539967625572</updated>
+      <workItem from="1539967643605" duration="1214000" />
+      <workItem from="1540036709514" duration="5103000" />
+      <workItem from="1540050615777" duration="6607000" />
+      <workItem from="1540124791752" duration="4461000" />
+      <workItem from="1540581506710" duration="5815000" />
+      <workItem from="1540732608818" duration="6994000" />
+      <workItem from="1540843779681" duration="4387000" />
+      <workItem from="1540896300515" duration="1992000" />
+      <workItem from="1541078072701" duration="11976000" />
+      <workItem from="1541165331639" duration="880000" />
+      <workItem from="1541187860873" duration="2200000" />
+      <workItem from="1541241243532" duration="12261000" />
+      <workItem from="1541262989609" duration="2574000" />
+      <workItem from="1541338942124" duration="11218000" />
+      <workItem from="1541362764871" duration="3983000" />
+      <workItem from="1541425231332" duration="16159000" />
+      <workItem from="1541858026359" duration="5751000" />
+      <workItem from="1541865138605" duration="11003000" />
+      <workItem from="1542447343711" duration="1289000" />
+      <workItem from="1542981045527" duration="5848000" />
+      <workItem from="1543056199245" duration="519000" />
+      <workItem from="1543056916235" duration="5955000" />
+      <workItem from="1543328219432" duration="6500000" />
+      <workItem from="1543585331482" duration="2330000" />
+      <workItem from="1543599818677" duration="1649000" />
+      <workItem from="1543685897600" duration="4655000" />
+      <workItem from="1543768569666" duration="935000" />
+      <workItem from="1543869374054" duration="4941000" />
+      <workItem from="1543910006127" duration="7672000" />
+      <workItem from="1544024878272" duration="9453000" />
+      <workItem from="1544035425502" duration="1253000" />
+      <workItem from="1544186893109" duration="698000" />
+      <workItem from="1544878316092" duration="3386000" />
+      <workItem from="1545330413440" duration="4924000" />
+      <workItem from="1545404652530" duration="2137000" />
+      <workItem from="1545411306245" duration="1058000" />
+      <workItem from="1545596141636" duration="528000" />
+      <workItem from="1545680136461" duration="1218000" />
+      <workItem from="1545750520181" duration="7192000" />
+      <workItem from="1547032635841" duration="1944000" />
+      <workItem from="1547410705187" duration="3381000" />
+      <workItem from="1547552960219" duration="6259000" />
+      <workItem from="1548094412767" duration="8662000" />
+      <workItem from="1548443551113" duration="2952000" />
+      <workItem from="1548447572085" duration="225000" />
+    </task>
+    <task id="LOCAL-00001" summary="Menu Script and Wheel Of Fortune">
+      <created>1540045665999</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1540045665999</updated>
+    </task>
+    <task id="LOCAL-00002" summary="swipe detector , trailEffect , and a lot of unfinished stuff.">
+      <created>1541085088462</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1541085088462</updated>
+    </task>
+    <task id="LOCAL-00003" summary="swipe detector , trailEffect , and a lot of unfinished stuff.">
+      <created>1541085186729</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1541085186729</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Wheel time almost Working !!!">
+      <created>1541357698016</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1541357698016</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Better Design Pattern">
+      <created>1541367451684</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1541367451684</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fully working internet time ??!!">
+      <created>1541441919845</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1541441919845</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fully working internet time ??!!">
+      <created>1542984147634</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1542984147634</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Settings + JSON.NET PARSING + more...">
+      <created>1543354867220</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1543354867220</updated>
+    </task>
+    <task id="LOCAL-00009" summary="DailyReward2 + Start Of Challanges">
+      <created>1543918124718</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1543918124718</updated>
+    </task>
+    <task id="LOCAL-00010" summary="DailyReward2 + Start Of Challanges">
+      <created>1543918145692</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1543918145692</updated>
+    </task>
+    <task id="LOCAL-00011" summary="challanges+time validation+more...">
+      <created>1545342045222</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1545342045236</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="212206000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15245202" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.52819955" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4989339" weight="0.329718" />
+      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4989339" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Unity" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" weight="0.329718" />
+      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.5010661" side_tool="true" weight="0.329718" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" weight="0.32928804" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_WIDTH">
+      <map>
+        <entry key="3" value="-1" />
+      </map>
+    </option>
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Menu Script and Wheel Of Fortune" />
+    <MESSAGE value="swipe detector , trailEffect , and a lot of unfinished stuff." />
+    <MESSAGE value="Wheel time almost Working !!!" />
+    <MESSAGE value="Better Design Pattern" />
+    <MESSAGE value="fully working internet time ??!!" />
+    <MESSAGE value="Settings + JSON.NET PARSING + more..." />
+    <MESSAGE value="DailyReward2 + Start Of Challanges" />
+    <MESSAGE value="challanges+time validation+more..." />
+    <option name="LAST_COMMIT_MESSAGE" value="challanges+time validation+more..." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Game/shapeGenerator.cs</url>
+          <line>59</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Game/shapeGenerator.cs" initialLine="61">
+            <startOffsets>
+              <option value="1613" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1614" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/TimeToRollete.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Shop/swipeDetector.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/GooglePlayGames/BasicApi/LeaderboardScoreData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Menu/MoveToTheSide.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/challangesScript.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Settings.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2F14D49E-DC70-4940-AEE5-57642343F344/a5/955d395d/SceneManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Challange.cs" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2F14D49E-DC70-4940-AEE5-57642343F344/31/21b10e68/MonoBehaviour.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/TimeText.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Shop/shopScript.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/WheelOfFortune.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/GooglePlayGames/Platforms/Android/AndroidTokenClient.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="334" column="16" selection-start-line="334" selection-start-column="16" selection-end-line="334" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/shapeGenerator.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/TimeText.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/MenuScript.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/dailyGift.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Android/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/GooglePlayGames/PluginVersion.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2F14D49E-DC70-4940-AEE5-57642343F344/77/6f54a063/Component.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/GooglePlayGames/Plugins/Android/GooglePlayGamesManifest.plugin/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/DailyReward.cs" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ECB5D8E2-0A91-44BC-A4F2-58317D1E56F9/c5/e710d24f/Math.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="349" column="32" selection-start-line="349" selection-start-column="32" selection-end-line="349" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/NativeShare.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Challange.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/TimeManager.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/OnStartGame.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/HeightFinder.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/score.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/LavaBehaviour.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/PlayerInput.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/DailyReward2.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/pauseMenu.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/OnStartGame.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/score.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/OnGameStart.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/dotBehavoiur.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/PredictionLine.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="66" column="86" selection-start-line="66" selection-start-column="86" selection-end-line="66" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/shapeGenerator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/PlayerData/Challange.cs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/shapeBehaviour.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/GooglePlay/PlayServices.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="70" column="33" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/HeartsUi.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/LavaBehaviour.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="67" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/796B3F1F-E72E-48BC-A949-F2B39A7B10DF/7d/edf59c59/Stack`1.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-344">
+          <caret line="16" column="15" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/HeightFinder.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/DailyRewards/TimeManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/PlayerInput.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game/pauseMenu.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/PlayerData/PlayerStats.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
+          <folding>
+            <marker date="1548447797130" expanded="true" signature="6:71" ph="..." />
+            <marker date="1548447797130" expanded="true" signature="113:3221" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="214:1268" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="1144:1265" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="1293:2234" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="1482:1598" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="1656:1764" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="1821:1952" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="1986:1998" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="2029:2162" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="2199:2231" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="2250:2726" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="2277:2684" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="2691:2723" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="2744:3217" ph="save&amp;load" />
+            <marker date="1548447797130" expanded="true" signature="2786:2989" ph="{...}" />
+            <marker date="1548447797130" expanded="true" signature="3015:3204" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

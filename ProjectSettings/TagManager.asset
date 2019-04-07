@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - shapes
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - shapes
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Other
+    uniqueID: 2792805133
+    locked: 0
+  - name: Platform
+    uniqueID: 1861682511
+    locked: 0
+  - name: Trail_
+    uniqueID: 1956214137
+    locked: 0
+  - name: Shape
+    uniqueID: 3362168865
+    locked: 0
+  - name: Trail
+    uniqueID: 2691840477
+    locked: 0
+  - name: Shape_cannon
+    uniqueID: 662298637
+    locked: 0
+  - name: Cannon
+    uniqueID: 1976035799
+    locked: 0
+  - name: sky
+    uniqueID: 2764296739
+    locked: 0
+  - name: room
+    uniqueID: 972301339
+    locked: 0
+  - name: shop
+    uniqueID: 612590687
+    locked: 0

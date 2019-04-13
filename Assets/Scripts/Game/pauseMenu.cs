@@ -15,12 +15,17 @@ public class pauseMenu : MonoBehaviour {
 	public Text gameOverMoney;
 	public GameObject ChallangesDisplayPanel;
 	public GameObject ChallengeDisplayPrefab;
+	public GameObject ChallangesCompleteDisplayPanel;
+	public GameObject ChallengeCompleteDisplayPrefab;
 	public GameObject Score;
-	public static Stack<Challenge> rewards = new Stack<Challenge>();
+	public static Queue<Challenge> rewards = new Queue<Challenge>();
 
 	private void Start()
 	{
+		Time.timeScale = 0;
+		GameIsPaused = true;
 		DisplayChallenges();
+		rewards.Clear();
 	}
 
 	private void DisplayChallenges()
@@ -28,9 +33,18 @@ public class pauseMenu : MonoBehaviour {
 		foreach (var c in PlayerStats.Instance.challenges)
 		{
 			if(c.isActive){
-			GameObject challengeDisplay = Instantiate(ChallengeDisplayPrefab , ChallangesDisplayPanel.transform);
-			challengeDisplay.GetComponent<ChallengeDisplay>().ShowChallenge(c);
+				GameObject challengeDisplay = Instantiate(ChallengeDisplayPrefab , ChallangesDisplayPanel.transform);
+				challengeDisplay.GetComponent<ChallengeDisplay>().ShowChallenge(c);
 			}
+		}
+	}	
+	private void DisplayCompletedChallenges()
+	{
+		Challenge[] completedCs = rewards.ToArray();
+		foreach (var c in completedCs)
+		{
+			GameObject challengeDisplay = Instantiate(ChallengeCompleteDisplayPrefab , ChallangesCompleteDisplayPanel.transform);
+			challengeDisplay.GetComponent<ChallengeDisplay>().ShowCompleteChallenge(c);
 		}
 	}
 
@@ -99,11 +113,7 @@ public class pauseMenu : MonoBehaviour {
 			HeightFinder.lives=0;
 			PlayerStats.Instance.money+=HeightFinder.score;
 			GameOverUi((HeightFinder.score));
-			Challenge[] cs = rewards.ToArray();
-			foreach (var r in cs)
-			{
-				Debug.Log("PASSED! " + r.description);
-			}
+			DisplayCompletedChallenges();
 			//GameIsPaused = true;
 			PlayerStats.saveFile();
 		}

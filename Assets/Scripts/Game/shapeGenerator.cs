@@ -50,7 +50,7 @@ public class shapeGenerator : MonoBehaviour
 				prefabName = filePath + "circle_S";
 				circle = 0;
 			}
-			GameObject shape = (GameObject)Instantiate(Resources.Load(prefabName) , spawningPos , Quaternion.identity); // todo transform.identity was pretty close but had centering isue
+			GameObject shape = (GameObject)Instantiate(Resources.Load(prefabName) , spawningPos , Quaternion.identity); // todo transform.identity was pretty close but has centering isue
 			shape.transform.parent=transform;
 			cannonLoaded=true;
 			circle++;

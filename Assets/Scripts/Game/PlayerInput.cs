@@ -105,7 +105,7 @@ public class PlayerInput : MonoBehaviour {
 		{
 			Vector3 diff_ = Camera.main.ScreenToWorldPoint(aimPosition) - transform.position;
 			diff_.Normalize();
-			predictionLine.paintDotedLine(diff_ * 16, transform.GetChild(0).position);
+			predictionLine.paintDotedLine(diff_ * 16, transform.GetChild(0).position); // TODO improve
 		}
 
 	}

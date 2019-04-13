@@ -15,13 +15,14 @@ public class PlayerStats : MonoBehaviour
 	{
 		if (Instance == null)
 		{
+
 			Instance = new PlayerData();
 			path = Application.persistentDataPath + "/PlayerFile.json";
 			if (File.Exists(Application.persistentDataPath + "/PlayerFile.json")) Debug.Log("file exists");
 			else saveFile();
 			loadFile();
-			//Instance.SetChallanges();
 			Instance.challenges = new List<Challenge>(challenges);
+			Instance.ChallengesAvailable = 1;
 			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
 			DontDestroyOnLoad(gameObject);
 		}

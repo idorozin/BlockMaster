@@ -7,15 +7,16 @@ using UnityEngine.Serialization;
 public class Challenge
 {
     public string description;
-    public string reward;
+    public int reward;
     public string action;
     public int goal;
-    public int process;
+    public int progress;
     public int difficulty;
     public int level;
     public bool isActive;
+    public bool completed;
 
-    public Challenge(string description, int goal, string action, string reward)
+    public Challenge(string description, int goal, string action, int reward)
     {
         this.description = description;
         this.goal = goal;
@@ -23,16 +24,16 @@ public class Challenge
         this.reward = reward;
     }
 
-    public void reportProcess(int process, string action)
+    public void ReportProgress(int progress, string action)
     {
-        if (this.action == action) this.process += process;
-        if (this.process > goal) NextChallange();
+        if (this.action == action) this.progress += progress;
+        if (this.progress > goal) NextChallange();
     }
 
     public void setProcess(int process, string action)
     {
-        if (this.action == action && process > this.process) this.process = process;
-        if (this.process > goal) NextChallange();
+        if (this.action == action && process > this.progress) this.progress = process;
+        if (this.progress > goal) NextChallange();
     }
 
     public void skipChallange()
@@ -43,9 +44,10 @@ public class Challenge
     {
         PlayerStats.Instance.ActivateChallenge();
         PlayerStats.Instance.challengeIndex++;
+        completed = true;
         isActive = false;
         //PlayerStats.Instance.challenges.Remove(this);
-        pauseMenu.rewards.Push(this);
+        pauseMenu.rewards.Enqueue(this);
         PlayerStats.saveFile();
         //claimReward(reward);
     }

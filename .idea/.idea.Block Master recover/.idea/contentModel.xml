@@ -4,8 +4,8 @@
     <e p="C:\Users\IDO\.Rider2018.2\config\extensions" t="IncludeRecursive" />
     <e p="C:\Users\IDO\.Rider2018.2\config\scratches" t="IncludeRecursive" />
     <e p="C:\Users\IDO\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\IDO\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_Block Master recover.-1314967051.00" t="ExcludeRecursive" />
-    <e p="C:\Users\IDO\Block Master recover" t="IncludeRecursive">
+    <e p="C:\Users\IDO\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_Block Master recover.1809940222.00" t="ExcludeRecursive" />
+    <e p="C:\Users\IDO\Music\Block Master recover" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -348,6 +348,7 @@
             <e p="DailyReward.cs" t="Include" />
             <e p="DailyReward2.cs" t="Include" />
             <e p="Rewards.cs" t="Include" />
+            <e p="TimedRewards.cs" t="Include" />
             <e p="TimeManager.cs" t="Include" />
             <e p="TimeText.cs" t="Include" />
             <e p="TimeText2.cs" t="Include" />
@@ -381,6 +382,7 @@
             <e p="ChallengeDisplay.cs" t="Include" />
             <e p="PlayerData.cs" t="Include" />
             <e p="PlayerStats.cs" t="Include" />
+            <e p="TimePassed.cs" t="Include" />
           </e>
           <e p="Settings.cs" t="Include" />
           <e p="Shop" t="Include">

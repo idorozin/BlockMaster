@@ -61,8 +61,8 @@ public class DailyReward2: MonoBehaviour
 		StartCoroutine("enableButton");
 	}
 
-	// if countDown is over check if verify that with the server
-	// true => button enabled false => button disabled and count down continouse with updated time. 
+	// if countDown is over verify that with the server
+	// true => button enabled false => button disabled and count down continues with updated time. 
 	IEnumerator enableButton()
 	{
 		if(TimeText!=null){TimeText.GetComponent<Text>().text = "READY!";timeText = "READY!";}
@@ -81,7 +81,7 @@ public class DailyReward2: MonoBehaviour
 		StartCoroutine("CountDown");
 	}
 
-	 public string secsToTime() // convert seconds to time format 00:00:00
+	public string secsToTime() // convert seconds to time format 00:00:00
 	{
 		return coolDown / 60 / 60 + ":" + coolDown / 60 % 60 + ":" + coolDown % 60;
 	}

@@ -12,17 +12,17 @@ public class DailyReward: MonoBehaviour
 	public static string timeText;
 	[SerializeField] private GameObject TimeText, Button;
 	private bool initilized=false;
+	
 	private void Start()
 	{
 		if (initilized)
 			return;
-		if (PlayerStats.Instance.wheelTime == "")
+		if (PlayerStats.Instance.wheel.startTime == "")
 		{
 			TimeText.GetComponent<Text>().text = "READY!";
 			RollAllowed = true;
 			return;
 		}
-
 		initilized = true;
 		coolDown = 2;
 		StartCoroutine("CountDown");
@@ -33,17 +33,17 @@ public class DailyReward: MonoBehaviour
 	{
 		coolDown = countDownLenght;
 		yield return TimeManager.Instance.StartCoroutine("getTime");
-		PlayerStats.Instance.offsetW = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
-		PlayerStats.Instance.wheelTime = TimeManager.Instance.getFullTime();
+		PlayerStats.Instance.wheel.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
+		PlayerStats.Instance.wheel.startTime = TimeManager.Instance.getFullTime();
 		PlayerStats.saveFile();
 		StartCoroutine("CountDown");
 
-		Debug.Log(PlayerStats.Instance.wheelTime);
+		Debug.Log(PlayerStats.Instance.wheel.startTime);
 	}
 
 	public void UpdateTime() // updates countDown with internet time
 	{
-		coolDown = (countDownLenght) - (TimeManager.Instance.getTimeInSecs() - TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.wheelTime));
+		coolDown = (countDownLenght) - (TimeManager.Instance.getTimeInSecs() - TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.wheel.startTime));
 	}
 
 	IEnumerator CountDown()
@@ -63,7 +63,7 @@ public class DailyReward: MonoBehaviour
 		StartCoroutine("EnableButton");
 	}
 
-	// if countDown is over check if verify that with the server
+	// if countDown is over verify that with the server
 	// true => button enabled false => button disabled and count down continouse with updated time. 
 	IEnumerator EnableButton()
 	{
@@ -75,7 +75,7 @@ public class DailyReward: MonoBehaviour
 			RollAllowed = true;
 			yield break;
 		}
-		PlayerStats.Instance.offsetW = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
+		PlayerStats.Instance.wheel.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
 		PlayerStats.saveFile();
 		//start timer again
 		StartCoroutine("CountDown");
@@ -90,8 +90,8 @@ public class DailyReward: MonoBehaviour
 
 	int TimeRemaining()
 	{
-		return countDownLenght - (-TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.wheelTime) + 
-		                  TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss"))) + PlayerStats.Instance.offsetW;
+		return countDownLenght - (-TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.wheel.startTime) + 
+		                  TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss"))) + PlayerStats.Instance.wheel.offset;
 	}
 
 

@@ -1472,7 +1472,7 @@ Prefab:
     - target: {fileID: 114483090269919786, guid: 79b7eaa22951d1e4ba1effe90ac362b5,
         type: 2}
       propertyPath: challenges.Array.data[2].reward
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114483090269919786, guid: 79b7eaa22951d1e4ba1effe90ac362b5,
         type: 2}
@@ -1548,6 +1548,26 @@ Prefab:
         type: 2}
       propertyPath: challenges.Array.data[2].isActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114483090269919786, guid: 79b7eaa22951d1e4ba1effe90ac362b5,
+        type: 2}
+      propertyPath: challenges.Array.data[1].reward
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114483090269919786, guid: 79b7eaa22951d1e4ba1effe90ac362b5,
+        type: 2}
+      propertyPath: challenges.Array.data[3].isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114483090269919786, guid: 79b7eaa22951d1e4ba1effe90ac362b5,
+        type: 2}
+      propertyPath: challenges.Array.data[3].reward
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114483090269919786, guid: 79b7eaa22951d1e4ba1effe90ac362b5,
+        type: 2}
+      propertyPath: challenges.Array.data[4].reward
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79b7eaa22951d1e4ba1effe90ac362b5, type: 2}

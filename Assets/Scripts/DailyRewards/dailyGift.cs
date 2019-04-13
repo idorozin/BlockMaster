@@ -9,7 +9,7 @@ public class dailyGift : MonoBehaviour
 	[SerializeField] 
 	private GameObject Tick;
 	[SerializeField]
-	Rewards.Prize[] gifts = new Rewards.Prize[30];
+	Rewards.Reward[] gifts = new Rewards.Reward[30];
 	private bool giftAllowed=true;
 
 	private void OnMouseDown()
@@ -46,11 +46,11 @@ public class dailyGift : MonoBehaviour
 			PlayerStats.saveFile();
 	}
 
-	private void getGift(Rewards.Prize gift)
+	private void getGift(Rewards.Reward gift)
 	{
 		Instantiate(Tick , TickPanel);
 		PlayerStats.Instance.GiftIndex++;
-		Rewards.Instance.CollectPrizeWithAnimation(Rewards.Prize.GOLD_50);
+		Rewards.Instance.CollectPrizeWithAnimation(Rewards.Reward.GOLD_50);
 	}
 
 	public void destroyTicks()

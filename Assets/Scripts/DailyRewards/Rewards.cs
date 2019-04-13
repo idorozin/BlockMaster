@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Rewards : MonoBehaviour
 {
 	public static Rewards Instance;
-	public static Prize p;
+	public static Reward p;
 
 	private void Awake()
 	{
@@ -17,7 +17,7 @@ public class Rewards : MonoBehaviour
 	[SerializeField] private GameObject lightEffect;
 	private string filePath = "Rewards/";
 
-	public enum Prize
+	public enum Reward
 	{
 		GOLD_50,
 		CANNON_DEFAULT,
@@ -26,9 +26,9 @@ public class Rewards : MonoBehaviour
 	};
 
 
-	public void CollectPrize(Prize prize)
+	public void CollectPrize(Reward reward)
 	{
-		string[] TYPE_DESC = prize.ToString().Split('_');
+		string[] TYPE_DESC = reward.ToString().Split('_');
 		string type = TYPE_DESC[0];
 		string desc = TYPE_DESC[1];
 		switch (type)
@@ -42,12 +42,20 @@ public class Rewards : MonoBehaviour
 		}
 	}
 
-	public void CollectPrizeWithAnimation(Prize prize)
+	public string RewardText(Reward reward)
+	{
+		string[] TYPE_DESC = reward.ToString().Split('_');
+		string type = TYPE_DESC[0];
+		string desc = TYPE_DESC[1];
+		return desc + " " + type;
+	}
+
+	public void CollectPrizeWithAnimation(Reward reward)
 	{
 		GameObject canvas = Instantiate(lightEffect);
-		Instantiate(Resources.Load(filePath + prize), canvas.transform);
-		CollectPrize(prize);
-		p = prize;
+		Instantiate(Resources.Load(filePath + reward), canvas.transform);
+		CollectPrize(reward);
+		p = reward;
 	}
 
 	public void MultiplyPrizeButton()

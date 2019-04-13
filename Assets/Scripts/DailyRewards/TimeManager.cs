@@ -39,9 +39,9 @@ public class TimeManager : MonoBehaviour
 		time = www.text;
 		Debug.Log(time);
 		if(!string.IsNullOrEmpty(time))
-		setCurrentTime();
+			setCurrentTime();
 		if(SceneManager.GetActiveScene().name == "MenuScene")
-		GetComponent<DailyReward>().UpdateTime();
+			GetComponent<DailyReward>().UpdateTime();
 		GetComponent<DailyReward2>().updateTime();
 	}
 
@@ -122,4 +122,5 @@ public class TimeManager : MonoBehaviour
 		return html;
 	}
 
+	
 }

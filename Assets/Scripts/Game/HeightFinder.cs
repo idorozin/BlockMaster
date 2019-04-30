@@ -68,7 +68,6 @@ public class HeightFinder : MonoBehaviour {
 
 	private void updateStats()
 	{
-		Debug.Log(PlayerStats.Instance.highScore);
 		if(fixedScore>PlayerStats.Instance.highScore){
 			PlayerStats.Instance.highScore=fixedScore;
 			PlayerStats.Instance.highScoreHeight = height;

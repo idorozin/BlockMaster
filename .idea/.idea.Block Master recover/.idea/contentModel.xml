@@ -361,6 +361,7 @@
             <e p="pauseMenu.cs" t="Include" />
             <e p="PlayerInput.cs" t="Include" />
             <e p="PredictionLine.cs" t="Include" />
+            <e p="Shape.cs" t="Include" />
             <e p="shapeBehaviour.cs" t="Include" />
             <e p="shapeGenerator.cs" t="Include" />
             <e p="trackCamera.cs" t="Include" />

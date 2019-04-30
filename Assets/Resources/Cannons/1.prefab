@@ -70,7 +70,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98bb0ecea2f9ae8478f5ec307cedeeeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shapes:
+  - prefab: {fileID: 1619428528050146, guid: 2719fed2602b5e34094217324241b2a2, type: 2}
+    chance: 10
+  - prefab: {fileID: 1308761141097490, guid: 185fd6d6f13ee4d4e88b49e27ccf8de8, type: 2}
+    chance: 2
+  - prefab: {fileID: 1246807150928144, guid: 5c9742142dcf92a42b480b7c3bce9920, type: 2}
+    chance: 2
+  - prefab: {fileID: 1497446422642210, guid: 60addf493df4f8f4fa2dd63e7f4f2090, type: 2}
+    chance: 2
+  - prefab: {fileID: 1300665412586776, guid: efa5f4f6eeb242349a5c6554e9b94073, type: 2}
+    chance: 1
+  cannonLoaded: 0
   camera: {fileID: 0}
+  chanceArray: 
 --- !u!114 &114718841357247074
 MonoBehaviour:
   m_ObjectHideFlags: 1

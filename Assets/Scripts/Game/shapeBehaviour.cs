@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shapeBehaviour : MonoBehaviour {
+public class ShapeBehaviour : MonoBehaviour {
 	Rigidbody2D rb;
 	public Collider2D coll;
 	bool triggerOff=true;

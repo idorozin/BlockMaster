@@ -21,6 +21,9 @@ public class PlayerInput : MonoBehaviour {
 	// Update is called once per frame
 	private void Update ()
 	{
+		if(pauseMenu.GameIsPaused)
+			return;
+		
 		if(loading && Time.time<nextTime)
 		{
 			cantShoot = true;
@@ -33,8 +36,7 @@ public class PlayerInput : MonoBehaviour {
 			cantShoot = false;
 		}
 		
-		if(pauseMenu.GameIsPaused)
-			return;
+
 		if(Input.touchCount > 0)
 		{
 			Touch touch = Input.GetTouch(0);
@@ -56,7 +58,7 @@ public class PlayerInput : MonoBehaviour {
 				break;
 				//check if player can shoot and shoots
 				case TouchPhase.Ended:
-				if(transform.GetChild(0) != null )
+				if(ShapeGenerator.shape != null )
 				{
 					if(!loading)
 						Shoot(touch);
@@ -72,12 +74,12 @@ public class PlayerInput : MonoBehaviour {
 	
 	private void Shoot(Touch touch) // shoots shape and loads the next one
 	{
-		transform.GetChild(0).GetComponent<Rigidbody2D>().isKinematic = false; // gravity effect on
+		ShapeGenerator.shape.GetComponent<Rigidbody2D>().isKinematic = false; // gravity effect on
 		Vector3 diff = Camera.main.ScreenToWorldPoint(aimPosition) - transform.position;
 		diff.Normalize();
-		transform.GetChild(0).GetComponent<Rigidbody2D>().velocity=(diff)*16;
+		ShapeGenerator.shape.GetComponent<Rigidbody2D>().velocity=(diff)*16;
 		transform.DetachChildren();
-		GetComponent<shapeGenerator>().onCannonLoaded();
+		GetComponent<ShapeGenerator>().onCannonLoaded();
 		loading=true;
 		//predictionLine.changeOpacity();
 		PlayerStats.Instance.ReportProgress(1 , "shot");
@@ -105,7 +107,7 @@ public class PlayerInput : MonoBehaviour {
 		{
 			Vector3 diff_ = Camera.main.ScreenToWorldPoint(aimPosition) - transform.position;
 			diff_.Normalize();
-			predictionLine.paintDotedLine(diff_ * 16, transform.GetChild(0).position); // TODO improve
+			predictionLine.paintDotedLine(diff_ * 16, ShapeGenerator.shape.transform.position); // TODO improve
 		}
 
 	}

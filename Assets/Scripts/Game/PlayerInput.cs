@@ -77,8 +77,8 @@ public class PlayerInput : MonoBehaviour {
 		ShapeGenerator.shape.GetComponent<Rigidbody2D>().isKinematic = false; // gravity effect on
 		Vector3 diff = Camera.main.ScreenToWorldPoint(aimPosition) - transform.position;
 		diff.Normalize();
+		ShapeGenerator.shape.transform.parent = null;
 		ShapeGenerator.shape.GetComponent<Rigidbody2D>().velocity=(diff)*16;
-		transform.DetachChildren();
 		GetComponent<ShapeGenerator>().onCannonLoaded();
 		loading=true;
 		//predictionLine.changeOpacity();

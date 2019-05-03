@@ -343,6 +343,9 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="AudioManager" t="Include">
+            <e p="AudioManager.cs" t="Include" />
+          </e>
           <e p="DailyRewards" t="Include">
             <e p="dailyGift.cs" t="Include" />
             <e p="DailyReward.cs" t="Include" />
@@ -369,6 +372,7 @@
           </e>
           <e p="GooglePlay" t="Include">
             <e p="PlayServices.cs" t="Include" />
+            <e p="Sound.cs" t="Include" />
           </e>
           <e p="MenuScript.cs" t="Include" />
           <e p="Monitazation" t="Include">

@@ -4,12 +4,11 @@ using System.Linq;
 public class ShapeGenerator : MonoBehaviour 
 {
 	
-	private List<string> shapeNames = new List<string>(){"box","box","box","box","box","box","box","box","box","box","box","box","h_rectangel","square","m_square","rectangel","circle_S"};
 	[SerializeField]
 	private List<Shape> shapes;
-	private string filePath="Shapes/";
 	public bool cannonLoaded=false;
-	private Vector3 spawningPos;
+	[SerializeField]
+	private Transform spawningPos;
 	public Transform camera;
 	private int circle = 0;
 	[SerializeField]
@@ -23,7 +22,6 @@ public class ShapeGenerator : MonoBehaviour
 		ChanceArray();
 		camera=GameObject.Find("Main Camera").transform;
 		cannonLoaded=false;
-		spawningPos = new Vector3(transform.position.x,transform.position.y+1f,transform.position.z);
 	}
 
 	private void ChanceArray()
@@ -52,14 +50,11 @@ public class ShapeGenerator : MonoBehaviour
 		//load the cannon with new shape
 		if(!cannonLoaded)
 		{
-			spawningPos = new Vector3(transform.position.x,transform.position.y+1f,transform.position.z);
-			string prefabName=filePath+shapeNames[Random.Range(0,shapeNames.Count)];
 			if (circle > 15)
 			{
-				prefabName = filePath + "circle_S";
 				circle = 0;
 			}
-			shape = (GameObject)Instantiate(shapes[chanceArray[Random.Range(0,chanceArray.Length)]].prefab , spawningPos , Quaternion.identity); // todo transform.identity was pretty close but has centering isue
+			shape = (GameObject)Instantiate(shapes[chanceArray[Random.Range(0,chanceArray.Length)]].prefab , spawningPos.position , Quaternion.identity); // todo transform.identity was pretty close but has centering isue
 			shape.transform.parent=transform;
 			cannonLoaded=true;
 			circle++;

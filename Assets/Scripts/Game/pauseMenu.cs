@@ -114,7 +114,7 @@ public class pauseMenu : MonoBehaviour {
 			PlayerStats.Instance.money+=HeightFinder.score;
 			GameOverUi((HeightFinder.score));
 			DisplayCompletedChallenges();
-			//GameIsPaused = true;
+			GameIsPaused = true;
 			PlayerStats.saveFile();
 		}
 	}

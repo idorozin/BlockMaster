@@ -43,6 +43,7 @@ public class TimeManager : MonoBehaviour
 		if(SceneManager.GetActiveScene().name == "MenuScene")
 			GetComponent<DailyReward>().UpdateTime();
 		GetComponent<DailyReward2>().updateTime();
+		GetComponent<DailyReward3>().UpdateTime();
 	}
 
 	public void setCurrentTime() // get the value of current secs,mins,hours,days in second from the beggining of the month

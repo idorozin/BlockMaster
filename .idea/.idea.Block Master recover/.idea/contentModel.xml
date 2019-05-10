@@ -269,9 +269,6 @@
           <e p="PluginVersion.cs" t="Include" />
         </e>
         <e p="GPGSIds.cs" t="Include" />
-        <e p="Menu" t="Include">
-          <e p="MoveToTheSide.cs" t="Include" />
-        </e>
         <e p="PlayServicesResolver" t="Include">
           <e p="Editor" t="Include">
             <e p="play-services-resolver_v1.2.61.0.txt" t="Include" />
@@ -343,13 +340,21 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Animation" t="Include">
+            <e p="CameraShake.cs" t="Include" />
+            <e p="DestroyOnAnimationFinish.cs" t="Include" />
+            <e p="MoveToTheSide.cs" t="Include" />
+            <e p="Spin.cs" t="Include" />
+          </e>
           <e p="AudioManager" t="Include">
             <e p="AudioManager.cs" t="Include" />
+            <e p="Sound.cs" t="Include" />
           </e>
           <e p="DailyRewards" t="Include">
             <e p="dailyGift.cs" t="Include" />
             <e p="DailyReward.cs" t="Include" />
             <e p="DailyReward2.cs" t="Include" />
+            <e p="DailyReward3.cs" t="Include" />
             <e p="Rewards.cs" t="Include" />
             <e p="TimedRewards.cs" t="Include" />
             <e p="TimeManager.cs" t="Include" />
@@ -372,7 +377,6 @@
           </e>
           <e p="GooglePlay" t="Include">
             <e p="PlayServices.cs" t="Include" />
-            <e p="Sound.cs" t="Include" />
           </e>
           <e p="MenuScript.cs" t="Include" />
           <e p="Monitazation" t="Include">
@@ -395,7 +399,6 @@
             <e p="shopScript.cs" t="Include" />
             <e p="swipeDetector.cs" t="Include" />
           </e>
-          <e p="Spin.cs" t="Include" />
         </e>
       </e>
       <e p="Block Master recover.sln" t="IncludeFlat" />

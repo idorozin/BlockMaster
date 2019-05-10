@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 45826737}
   - component: {fileID: 45826735}
   - component: {fileID: 45826734}
+  - component: {fileID: 45826736}
   m_Layer: 0
   m_Name: DailyRewards
   m_TagString: Untagged
@@ -235,6 +236,19 @@ MonoBehaviour:
   coolDown: 0
   TimeText: {fileID: 1038680781}
   Button: {fileID: 689536628}
+--- !u!114 &45826736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 45826733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8e5c3b1b677c74798f27665349fff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countDownLenght: 100
+  coolDown: 0
 --- !u!4 &45826737
 Transform:
   m_ObjectHideFlags: 0
@@ -270,11 +284,9 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: 2
-    clip: {fileID: 8300000, guid: a95267505e72bb343a6c13f90a55669d, type: 3}
-    loop: 1
+    clip: {fileID: 8300000, guid: 9cdef45420cea504cb54ebf728b71e7f, type: 3}
+    loop: 0
     source: {fileID: 0}
-  soundSource: {fileID: 0}
-  musicSource: {fileID: 0}
 --- !u!1 &100020600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,6 +1091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  time: 1
 --- !u!1 &279812024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,6 +1700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  time: 1
 --- !u!1 &363387829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  time: 1
 --- !u!1 &471448446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,6 +2460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  time: 1
 --- !u!1 &653461953
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,6 +2643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  time: 1
 --- !u!1 &689536628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2953,6 +2970,7 @@ GameObject:
   - component: {fileID: 825192998}
   - component: {fileID: 825193000}
   - component: {fileID: 825192999}
+  - component: {fileID: 825193001}
   m_Layer: 0
   m_Name: TimeManager
   m_TagString: Untagged
@@ -3027,6 +3045,19 @@ MonoBehaviour:
   coolDown: 0
   TimeText: {fileID: 1038680781}
   Button: {fileID: 689536628}
+--- !u!114 &825193001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 825192995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8e5c3b1b677c74798f27665349fff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countDownLenght: 1000
+  coolDown: 0
 --- !u!1 &853043526
 GameObject:
   m_ObjectHideFlags: 0
@@ -3149,6 +3180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  time: 1
 --- !u!1 &901071590
 GameObject:
   m_ObjectHideFlags: 0
@@ -3649,6 +3681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  time: 1
 --- !u!1 &962356921
 GameObject:
   m_ObjectHideFlags: 0
@@ -3856,6 +3889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  time: 1
 --- !u!1 &1006403288
 GameObject:
   m_ObjectHideFlags: 0
@@ -3898,6 +3932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  time: 1
 --- !u!212 &1006403291
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4107,6 +4142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  time: 1
 --- !u!1 &1111376798
 GameObject:
   m_ObjectHideFlags: 0
@@ -5288,6 +5324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  time: 1
 --- !u!212 &1543158891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6000,7 +6037,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1976035799
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9ca4c387b7a15314b9882626504cc037, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6055,6 +6092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  time: 1
 --- !u!212 &1777133900
 SpriteRenderer:
   m_ObjectHideFlags: 0

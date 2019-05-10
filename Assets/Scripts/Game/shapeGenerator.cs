@@ -9,6 +9,10 @@ public class ShapeGenerator : MonoBehaviour
 	public bool cannonLoaded=false;
 	[SerializeField]
 	private Transform spawningPos;
+    [SerializeField]
+    private Transform fireAnimPos;
+    [SerializeField]
+    private GameObject fireAnimation;
 	public Transform camera;
 	private int circle = 0;
 	[SerializeField]
@@ -50,13 +54,15 @@ public class ShapeGenerator : MonoBehaviour
 		//load the cannon with new shape
 		if(!cannonLoaded)
 		{
+			Instantiate(fireAnimation , fireAnimPos.position , transform.rotation);
 			if (circle > 15)
 			{
 				circle = 0;
 			}
-			shape = (GameObject)Instantiate(shapes[chanceArray[Random.Range(0,chanceArray.Length)]].prefab , spawningPos.position , Quaternion.identity); // todo transform.identity was pretty close but has centering isue
+			shape = (GameObject)Instantiate(shapes[chanceArray[Random.Range(0,chanceArray.Length)]].prefab , spawningPos.position , transform.rotation); // todo transform.identity was pretty close but has centering isue
 			shape.transform.parent=transform;
 			cannonLoaded=true;
+			
 			circle++;
 		}
 	}

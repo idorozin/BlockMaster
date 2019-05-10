@@ -9,21 +9,15 @@ public class AudioManager : MonoBehaviour
 	{
 		blockLand,
 		buttonClick,
-		lava,
+		cannonShot,
 	}
-
 	
 	public static AudioManager Instance;
 
 	[SerializeField]
 	private Sound[] sounds;
-
-	[SerializeField]
-	private AudioSource soundSource;
-	[SerializeField]
-	private AudioSource musicSource;
 	
-	void Awake()
+	private void Awake()
 	{
 		if (Instance == null)
 		{
@@ -32,11 +26,12 @@ public class AudioManager : MonoBehaviour
 		else
 		{
 			Destroy(gameObject);
+			return;
 		}
 		SetSources();
 	}
 
-	void SetSources()
+	private void SetSources()
 	{
 		foreach (var s in sounds)
 		{
@@ -46,12 +41,6 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-	private void Start()
-	{
-		PlaySound(SoundName.lava);
-		PlaySound(SoundName.blockLand);
-	}
-
 	public void PlaySound(SoundName sound)
 	{
 		if (!PlayerStats.Instance.soundOn)
@@ -59,8 +48,16 @@ public class AudioManager : MonoBehaviour
 		Sound s = GetSound(sound);
 		s.source.Play();
 	}
+	
+	
+	public void StopSound(SoundName sound)
+	{
+		Sound s = GetSound(sound);
+		if(s!=null)
+			s.source.Stop();
+	}
 
-	public Sound GetSound(SoundName sound)
+	private Sound GetSound(SoundName sound)
 	{
 		foreach (var s in sounds)
 		{

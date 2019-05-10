@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mime;
+﻿
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,13 +7,14 @@ public class ChallengeDisplay : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI descriptionText;
 	[SerializeField] private TextMeshProUGUI rewardText;
-	[SerializeField] private Sprite difficultyArt;
+	[SerializeField] private Image difficultyArt;
 	[SerializeField] private TextMeshProUGUI levelText;
+	[SerializeField]private Sprite[] difficultyArts;
 	
 	public void ShowChallenge(Challenge challenge)
 	{
 		descriptionText.text = challenge.description + Progress(challenge);
-		//difficultyArt.sprite = challenge.difficulty;
+		difficultyArt.sprite = difficultyArts[challenge.difficulty-1];
 		levelText.text = challenge.level.ToString();
 	}
 
@@ -27,6 +26,6 @@ public class ChallengeDisplay : MonoBehaviour
 
 	private string Progress(Challenge challenge)
 	{
-		return " ( " + (challenge.goal - challenge.progress) + " to go )";
+		return " \n( " + (challenge.goal - challenge.progress) + " to go )";
 	}
 }

@@ -106,7 +106,9 @@ public class ShapeBehaviour : MonoBehaviour {
 		}
 	}
 
-
-
-
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		AudioManager.Instance.PlaySound(AudioManager.SoundName.blockLand);
+	}
+	
 }

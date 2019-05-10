@@ -31,8 +31,13 @@ public class PlayerStats : MonoBehaviour
 			Destroy(gameObject);
 		}
 	}
-	
-	
+
+	[ContextMenu("file_path")]
+	public void printPath()
+	{
+		Debug.Log(Application.persistentDataPath + "/PlayerFile.json");
+	}
+
 	static string path;
 	
 	#region Save & Load

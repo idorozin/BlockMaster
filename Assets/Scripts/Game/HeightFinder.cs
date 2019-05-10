@@ -26,6 +26,7 @@ public class HeightFinder : MonoBehaviour {
 		height=0f;
 		score=0f;
 		timePassed=0f;
+		lives = 0;
 		OnScoreChanged();
 		InstantiateCannon();
 	}
@@ -35,6 +36,7 @@ public class HeightFinder : MonoBehaviour {
 		Vector3 spawningPos = new Vector3(camera.position.x,camera.position.y-3f,0f);
 		if(PlayerStats.Instance.lastCannon=="")
 			PlayerStats.Instance.lastCannon="default";
+		PlayerStats.Instance.lastCannon = "1";
 		string cannonFilePath="Cannons/"+PlayerStats.Instance.lastCannon;
 		Debug.Log(cannonFilePath+ "    " + spawningPos);
 		Instantiate(Resources.Load(cannonFilePath) , spawningPos , Quaternion.identity);

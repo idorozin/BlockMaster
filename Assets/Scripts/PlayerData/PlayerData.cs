@@ -12,6 +12,7 @@ public class PlayerData
         public float highScoreHeight=0;
         public TimePassed wheel = new TimePassed();
         public TimePassed gift = new TimePassed();
+        public TimePassed challenge = new TimePassed();
         public string wheelTime = "";
         public string giftTime = "";
         public int offsetW , offsetG , GiftIndex , challengeIndex=0;
@@ -43,4 +44,10 @@ public class PlayerData
             }
         }
 
+        public void IncrementChallengesAvailable(int n)
+        {
+            Debug.Log(ChallengesAvailable);
+            if(ChallengesAvailable<6)
+                ChallengesAvailable++;
+        }
     }

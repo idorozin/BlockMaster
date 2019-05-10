@@ -16,7 +16,7 @@ public class PlayerInput : MonoBehaviour {
 	// Use this for initialization
 	private void Start () {
 		predictionLine=GetComponent<PredictionLine>();
-		}
+	}
 	
 	// Update is called once per frame
 	private void Update ()
@@ -61,7 +61,7 @@ public class PlayerInput : MonoBehaviour {
 				if(ShapeGenerator.shape != null )
 				{
 					if(!loading)
-						Shoot(touch);
+						Shoot();
 				}
 				break;
 			} 
@@ -72,7 +72,7 @@ public class PlayerInput : MonoBehaviour {
 	
 	}
 	
-	private void Shoot(Touch touch) // shoots shape and loads the next one
+	private void Shoot() // shoots shape and loads the next one
 	{
 		ShapeGenerator.shape.GetComponent<Rigidbody2D>().isKinematic = false; // gravity effect on
 		Vector3 diff = Camera.main.ScreenToWorldPoint(aimPosition) - transform.position;
@@ -83,18 +83,9 @@ public class PlayerInput : MonoBehaviour {
 		loading=true;
 		//predictionLine.changeOpacity();
 		PlayerStats.Instance.ReportProgress(1 , "shot");
+		AudioManager.Instance.PlaySound(AudioManager.SoundName.cannonShot);
 		predictionLine.clearDots();
 		fingerMoved = false;
-	}
-
-	[ContextMenu("Mr Reporter")]
-	private void Reporter()
-	{
-		PlayerStats.Instance.ReportProgress(6 , "shot");
-	}[ContextMenu("Mr Shproter")]
-	private void EndGame()
-	{
-		HeightFinder.lives-=3;
 	}
 
 	private void Aim() // aims on touch

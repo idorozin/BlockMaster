@@ -58,7 +58,7 @@ public class DailyReward: MonoBehaviour
 			if(TimeText != null && coolDown > 0)
 			TimeText.GetComponent<Text>().text = SecsToTime();
 			timeText = SecsToTime();
-			yield return new WaitForSeconds(1);
+			yield return new WaitForSecondsRealtime(1);
 		}
 		StartCoroutine("EnableButton");
 	}

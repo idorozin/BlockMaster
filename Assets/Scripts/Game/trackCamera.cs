@@ -6,7 +6,7 @@ public class trackCamera : MonoBehaviour
 {
 
 	public float trackingSpeed = 0.1f;
-	
+	public float offset = 0;
 	// Update is called once per frame
 	void Update ()
 	{

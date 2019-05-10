@@ -223,8 +223,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   descriptionText: {fileID: 114085203280412752}
   rewardText: {fileID: 114926527901561924}
-  difficultyArt: {fileID: 0}
+  difficultyArt: {fileID: 114360530700410872}
   levelText: {fileID: 0}
+  difficultyArts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114360530700410872
 MonoBehaviour:
   m_ObjectHideFlags: 1

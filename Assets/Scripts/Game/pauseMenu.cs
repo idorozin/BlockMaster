@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Boo.Lang;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -83,6 +84,7 @@ public class pauseMenu : MonoBehaviour {
 		clickToStart.SetActive(false);
 		Time.timeScale = 1f;
 		GameIsPaused = false;
+		StartCoroutine(Camera.main.gameObject.GetComponent<CameraShake>().ShakeCamera());
 	} 
 	
 	public void LoadMainMenu()
@@ -114,6 +116,7 @@ public class pauseMenu : MonoBehaviour {
 			PlayerStats.Instance.money+=HeightFinder.score;
 			GameOverUi((HeightFinder.score));
 			DisplayCompletedChallenges();
+			rewards.Clear();
 			GameIsPaused = true;
 			PlayerStats.saveFile();
 		}

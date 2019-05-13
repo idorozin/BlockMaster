@@ -9,21 +9,28 @@ public class LavaBehaviour : MonoBehaviour
 	private float initialSpeed;
 	[SerializeField] 
 	private float maxSpeed=1000;
-	
+
+	private Transform height;
+
+	private void Start()
+	{
+		height = Camera.main.transform;
+	}
+
 	// Update is called once per frame
 	void Update () {
-		if(pauseMenu.GameIsPaused)
+		if(PauseMenu.GameIsPaused)
 			return;
 		transform.position = transform.position+Vector3.up*initialSpeed+new Vector3(0f,CalcSpeed(),0f);
-		if (transform.position.y > HeightFinder.height + 1.5f)
+		if (transform.position.y > height.transform.position.y)//(GameManager.height + 2f))
 		{
-			HeightFinder.lives = -3;
+			GameManager.lives = -3;
 		}
 	}
 
 	private float CalcSpeed()
 	{
-		return Math.Min(maxSpeed,((float) Math.Sqrt(HeightFinder.timePassed) * 0.5f + (float) Math.Sin(HeightFinder.timePassed) * 5f) *
+		return Math.Min(maxSpeed,((float) Math.Sqrt(GameManager.timePassed*0.5f) * 0.5f + (float) Math.Sin(GameManager.timePassed) * 5f) *
 		       0.001f);
 	}
 

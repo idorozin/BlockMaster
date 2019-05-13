@@ -344,6 +344,7 @@
             <e p="CameraShake.cs" t="Include" />
             <e p="DestroyOnAnimationFinish.cs" t="Include" />
             <e p="MoveToTheSide.cs" t="Include" />
+            <e p="ScrollingText.cs" t="Include" />
             <e p="Spin.cs" t="Include" />
           </e>
           <e p="AudioManager" t="Include">
@@ -363,8 +364,10 @@
             <e p="WheelOfFortune.cs" t="Include" />
           </e>
           <e p="Game" t="Include">
+            <e p="CannonController.cs" t="Include" />
+            <e p="DestroyShapes.cs" t="Include" />
+            <e p="GameManager.cs" t="Include" />
             <e p="HeartsUi.cs" t="Include" />
-            <e p="HeightFinder.cs" t="Include" />
             <e p="LavaBehaviour.cs" t="Include" />
             <e p="pauseMenu.cs" t="Include" />
             <e p="PlayerInput.cs" t="Include" />

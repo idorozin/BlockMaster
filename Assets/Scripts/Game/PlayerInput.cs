@@ -1,41 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using UnityEngine;
 
 public class PlayerInput : MonoBehaviour {
+	
 	private Vector3 initialPosition,aimPosition;
-	[SerializeField]
-	private int x,y,z,shootingPower;
-	double lastz,zf,current;
-	bool fingerMoved=false,loading,cantShoot;
-	float nextTime=0;
+	bool fingerMoved,loading;
+	float nextTime;
 	public float shootingSpeed=0.5f;
 	PredictionLine predictionLine;
+	private Camera camera_;
+	private CannonController cannonController;
 
-	// Use this for initialization
-	private void Start () {
-		predictionLine=GetComponent<PredictionLine>();
+
+	private void Awake()
+	{
+		cannonController = GetComponent<CannonController>();
+	}
+
+	private void Start () 
+	{
+		camera_ = Camera.main;
 	}
 	
-	// Update is called once per frame
 	private void Update ()
 	{
-		if(pauseMenu.GameIsPaused)
-			return;
+		if(PauseMenu.GameIsPaused) return;
 		
-		if(loading && Time.time<nextTime)
-		{
-			cantShoot = true;
-		
-		}
-		else
+		if(Time.time>nextTime)
 		{
 			nextTime=Time.time+shootingSpeed;
-			loading=false;
-			cantShoot = false;
-		}
-		
+			loading = false;
+		}	
 
 		if(Input.touchCount > 0)
 		{
@@ -45,62 +39,34 @@ public class PlayerInput : MonoBehaviour {
 			{
 				//follow the finger
 				case TouchPhase.Began:
-					initialPosition = new Vector3(touch.position.x,touch.position.y,0);
-					Camera.main.ScreenToWorldPoint(initialPosition);
+					initialPosition = GetWorldPoint(new Vector3(touch.position.x,touch.position.y,0));
 					initialPosition.Normalize();
-					aimPosition = new Vector3(touch.position.x,touch.position.y,0);
+					aimPosition = GetWorldPoint(new Vector3(touch.position.x,touch.position.y,0));
 					fingerMoved=true;
 				break;
 				//follow the finger
 				case TouchPhase.Moved:
-					aimPosition = new Vector3(touch.position.x,touch.position.y,0);
+					aimPosition = GetWorldPoint(new Vector3(touch.position.x,touch.position.y,0));
 					fingerMoved=true;
 				break;
 				//check if player can shoot and shoots
 				case TouchPhase.Ended:
-				if(ShapeGenerator.shape != null )
-				{
-					if(!loading)
-						Shoot();
-				}
+					if (!loading)
+					{
+						cannonController.Shoot(aimPosition);
+						loading=true;
+						fingerMoved = false;
+					}
 				break;
 			} 
 		}
-	 		if(fingerMoved){
-			Aim();
-		} 
-	
-	}
-	
-	private void Shoot() // shoots shape and loads the next one
-	{
-		ShapeGenerator.shape.GetComponent<Rigidbody2D>().isKinematic = false; // gravity effect on
-		Vector3 diff = Camera.main.ScreenToWorldPoint(aimPosition) - transform.position;
-		diff.Normalize();
-		ShapeGenerator.shape.transform.parent = null;
-		ShapeGenerator.shape.GetComponent<Rigidbody2D>().velocity=(diff)*16;
-		GetComponent<ShapeGenerator>().onCannonLoaded();
-		loading=true;
-		//predictionLine.changeOpacity();
-		PlayerStats.Instance.ReportProgress(1 , "shot");
-		AudioManager.Instance.PlaySound(AudioManager.SoundName.cannonShot);
-		predictionLine.clearDots();
-		fingerMoved = false;
+		if(fingerMoved)
+			cannonController.Aim(aimPosition);
 	}
 
-	private void Aim() // aims on touch
+	private Vector3 GetWorldPoint(Vector3 position)
 	{
-		Vector3 diff = Camera.main.ScreenToWorldPoint(aimPosition) - transform.position;
-		diff.Normalize();
-		float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
-		if (transform.childCount > 0)
-		{
-			Vector3 diff_ = Camera.main.ScreenToWorldPoint(aimPosition) - transform.position;
-			diff_.Normalize();
-			predictionLine.paintDotedLine(diff_ * 16, ShapeGenerator.shape.transform.position); // TODO improve
-		}
-
+		return camera_.ScreenToWorldPoint(position);
 	}
 
 

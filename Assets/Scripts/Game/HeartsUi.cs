@@ -5,16 +5,14 @@ using UnityEngine.UI;
 
 public class HeartsUi : MonoBehaviour
 {
-	public static HeartsUi heartsUi;
-
-	private void Awake()
-	{
-		heartsUi = this;
-	}
+	private int index;
 
 	// Use this for initialization
-	void Start () {
-		setInitialHearts(3);
+	void Start ()
+	{
+		index = 0;
+		SetInitialHearts(3);
+		ShapeBehaviour.ShapeFell += HeartsDown;
 	}
 
 	[SerializeField]
@@ -25,14 +23,23 @@ public class HeartsUi : MonoBehaviour
 	private Color fadedHeartColor;
 	
 	
-	public void setInitialHearts(int amount)
+	public void SetInitialHearts(int amount)
 	{
 		for (int i = 0; i < amount; i++)
 			Instantiate(heart,PanelHearts.transform);
 	}
 
-	public void heartsDown(int index)
+	public void HeartsDown()
 	{
-		PanelHearts.transform.GetChild(index).GetComponent<Image>().color = fadedHeartColor;
+		if(PanelHearts.transform.childCount <= index) return;
+		Transform t = PanelHearts.transform.GetChild(index);
+		if (t != null)
+			t.GetComponent<Image>().color = fadedHeartColor;
+		index++;
+	}
+
+	private void OnDisable()
+	{
+		ShapeBehaviour.ShapeFell -= HeartsDown;
 	}
 }

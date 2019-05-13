@@ -1,31 +1,25 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+
 public class ShapeGenerator : MonoBehaviour 
 {
-	
 	[SerializeField]
 	private List<Shape> shapes;
-	public bool cannonLoaded=false;
 	[SerializeField]
 	private Transform spawningPos;
-    [SerializeField]
-    private Transform fireAnimPos;
-    [SerializeField]
-    private GameObject fireAnimation;
-	public Transform camera;
-	private int circle = 0;
 	[SerializeField]
 	private int[] chanceArray;
-
-	public static GameObject shape;
 	
-	//call the initialization method
-	void Start ()
+	public GameObject shape;
+	public Transform camera_;
+	
+	private void Start ()
 	{
 		ChanceArray();
-		camera=GameObject.Find("Main Camera").transform;
-		cannonLoaded=false;
+		Debug.Log("LOAD");
+		LoadCannon();
+		camera_ = Camera.main.transform;
 	}
 
 	private void ChanceArray()
@@ -45,31 +39,18 @@ public class ShapeGenerator : MonoBehaviour
 		}
 	}
 
-
-	// Update is called once per frame
-	void Update () 
+	private void Update () 
 	{
-		transform.position = new Vector3(0f,camera.position.y-4f,0f);
-		
-		//load the cannon with new shape
-		if(!cannonLoaded)
-		{
-			Instantiate(fireAnimation , fireAnimPos.position , transform.rotation);
-			if (circle > 15)
-			{
-				circle = 0;
-			}
-			shape = (GameObject)Instantiate(shapes[chanceArray[Random.Range(0,chanceArray.Length)]].prefab , spawningPos.position , transform.rotation); // todo transform.identity was pretty close but has centering isue
-			shape.transform.parent=transform;
-			cannonLoaded=true;
-			
-			circle++;
-		}
+		if(shape==null) LoadCannon();
+		transform.position = new Vector3(0f,camera_.position.y-4f,0f);
 	}
-	
-	public void onCannonLoaded(){
-		cannonLoaded = !cannonLoaded;
-	}
-	
 
+	public void LoadCannon()
+	{
+		Debug.Log("LOADing");
+		//load the cannon with new shape
+		shape = (GameObject) Instantiate(shapes[chanceArray[Random.Range(0, chanceArray.Length)]].prefab, spawningPos.position, transform.rotation);
+		shape.transform.parent = transform;
+	}
+	
 }

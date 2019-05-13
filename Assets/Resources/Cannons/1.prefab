@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 114718841357247074}
   - component: {fileID: 114431816543916860}
   - component: {fileID: 114068811172078378}
+  - component: {fileID: 114560301519787218}
+  - component: {fileID: 114263353921341912}
   m_Layer: 0
   m_Name: 1
   m_TagString: Untagged
@@ -112,11 +114,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e805a84d5496767418e768e915b12bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  z: 0
-  shootingPower: 4
   shootingSpeed: 1.5
+--- !u!114 &114263353921341912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1274848222049794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f39961fa5d88da4a937a7ca185ecf3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 0.01
+  duaration: 1
 --- !u!114 &114431816543916860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,13 +150,27 @@ MonoBehaviour:
     chance: 2
   - prefab: {fileID: 1300665412586776, guid: efa5f4f6eeb242349a5c6554e9b94073, type: 2}
     chance: 1
-  cannonLoaded: 0
+  - prefab: {fileID: 1224304990937112, guid: df585082c34f2bc4e91599d786c2f406, type: 2}
+    chance: 1
   spawningPos: {fileID: 4040434866813770}
+  chanceArray: 
+  shape: {fileID: 0}
+  camera_: {fileID: 0}
+--- !u!114 &114560301519787218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1274848222049794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4230fc572f797fe47a7c992de93c07cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 16
   fireAnimPos: {fileID: 4477806741666702}
   fireAnimation: {fileID: 1173217915477354, guid: aecd8b61836ef694faaeef99f6a4a3d4,
     type: 2}
-  camera: {fileID: 0}
-  chanceArray: 
 --- !u!114 &114718841357247074
 MonoBehaviour:
   m_ObjectHideFlags: 1

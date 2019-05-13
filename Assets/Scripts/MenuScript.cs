@@ -19,7 +19,7 @@ public class MenuScript : MonoBehaviour
 	public void LoadGame()
 	{
 		Time.timeScale = 0f;
-		pauseMenu.GameIsPaused = true;
+		PauseMenu.GameIsPaused = true;
 		SceneManager.LoadScene("GameScene");
 	}
 	

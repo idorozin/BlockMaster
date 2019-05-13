@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
 
-	[SerializeField] private float magnitude= 0.02f;
-	[SerializeField] private float duaration = 1;
+	[SerializeField] private float magnitude;
+	[SerializeField] private float duaration;
 	
 
 	public IEnumerator ShakeCamera()

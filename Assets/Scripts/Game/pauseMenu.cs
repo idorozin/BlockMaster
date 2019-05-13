@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PauseMenu : MonoBehaviour {
+public class pauseMenu : MonoBehaviour {
 	
 	public static bool GameIsPaused = false;
 	public GameObject PauseMenuUI;
@@ -111,10 +111,10 @@ public class PauseMenu : MonoBehaviour {
 	
 	private void OnGameOver()
 	{
-		if(GameManager.lives<=-3){
-			GameManager.lives=0;
-			PlayerStats.Instance.money+=GameManager.score;
-			GameOverUi((GameManager.score));
+		if(HeightFinder.lives<=-3){
+			HeightFinder.lives=0;
+			PlayerStats.Instance.money+=HeightFinder.score;
+			GameOverUi((HeightFinder.score));
 			DisplayCompletedChallenges();
 			rewards.Clear();
 			GameIsPaused = true;

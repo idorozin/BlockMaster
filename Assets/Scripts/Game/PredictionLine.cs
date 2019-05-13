@@ -11,43 +11,32 @@ public class PredictionLine : MonoBehaviour {
 	private string dot_path="dot/dot_";
 	private float time_step=0.2f;
 	private int dot_num=20;
-	private List<GameObject> dots = new List<GameObject>();
-
-	private void Start()
-	{
-		GameObject dotPrefab = (GameObject)(Resources.Load(dot_path));
-		GameObject PredictionLine_ = new GameObject("PredictionLine");
-		Transform parent = PredictionLine_.transform;
-		Color color;
-		for(int i=0; i<dot_num;i++)
-		{
-				GameObject dot = Instantiate(dotPrefab , parent);
-				color = new Color(1f, 1f, 1f,1f-(float)i*0.1f); // first dot 0% transparent -> last dot 99% transparent
-				dot.GetComponent<SpriteRenderer>().color = color;
-				dot.SetActive(false);
-				dots.Add(dot);
-		}
-	}
-		
-		
-
+	private List<GameObject> dots;
 
 	//instantiate the dots
-	public void PaintDotedLine(Vector3 launch_velocity,Vector3 initial_position)
+	public void paintDotedLine(Vector3 launch_velocity,Vector3 initial_position)
 	{
-		clearDots();
-		
+		if(dots!=null){
+			foreach(GameObject dot_ in dots)
+				Destroy(dot_);
+		}
+		else
+			dots=new List<GameObject>();
 		Vector2 f_launch_velocity=new Vector2(launch_velocity.x,launch_velocity.y);
 		Vector2 f_initial_position=new Vector2(initial_position.x,initial_position.y);
-		int opacity = 0;
+		GameObject Dot = (GameObject)(Resources.Load(dot_path));
+		Vector3 pos = Dot.transform.position;
+		Color color = Dot.GetComponent<SpriteRenderer>().color;
+		
 		for(int i=0; i<dot_num;i++)
 		{
 			if(-0.8f<CalculatePosition(f_launch_velocity,f_initial_position,time_step*i).y)
 			{
-				GameObject dot = dots[opacity];
-				opacity++;
-				dot.SetActive(true);
-				dot.transform.position=CalculatePosition(f_launch_velocity,f_initial_position,time_step*i);
+				color = new Color(1f, 1f, 1f,1f-(float)i*0.1f); // first dot 0% transparent -> last dot 99% transparent
+				GameObject Dot_ = Instantiate(Dot);
+				Dot_.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f,1f-(float)i*0.1f); 
+				Dot_.transform.position=CalculatePosition(f_launch_velocity,f_initial_position,time_step*i);
+				dots.Add(Dot_);
 			}
 		}
 	}
@@ -62,8 +51,8 @@ public class PredictionLine : MonoBehaviour {
 	{
 		if (dots != null)
 		{
-			foreach (GameObject dot in dots)
-				dot.SetActive(false);
+			foreach (GameObject dot_ in dots)
+				Destroy(dot_);
 		}
 	}
 
@@ -88,11 +77,11 @@ public class PredictionLine : MonoBehaviour {
 		{
 			Vector3 maxdot;
 			maxdot = dots[0].transform.position;
-			foreach (GameObject dot_ in dots)
-			{
-				if (dot_ != null && dot_.transform.position.y > maxdot.y)
-					maxdot = dot_.transform.position;
-			}
+				foreach (GameObject dot_ in dots)
+				{
+					if (dot_ != null && dot_.transform.position.y > maxdot.y)
+						maxdot = dot_.transform.position;
+				}
 			return maxdot;
 		}
 

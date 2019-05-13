@@ -47,7 +47,7 @@ public class Challenge
         completed = true;
         isActive = false;
         //PlayerStats.Instance.challenges.Remove(this);
-        PauseMenu.rewards.Enqueue(this);
+        pauseMenu.rewards.Enqueue(this);
         PlayerStats.saveFile();
         //claimReward(reward);
     }

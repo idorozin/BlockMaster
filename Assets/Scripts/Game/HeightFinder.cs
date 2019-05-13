@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class HeightFinder : MonoBehaviour {
 	
 	public static float height=0f;
 	public static float score=0f;
@@ -18,11 +18,6 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private GameObject highScoresign;
 	[SerializeField] private TextMeshProUGUI text_;
 
-	private void Awake()
-	{
-		
-	}
-
 	// Use this for initialization
 	void Start ()
 	{
@@ -34,19 +29,8 @@ public class GameManager : MonoBehaviour {
 		lives = 0;
 		OnScoreChanged();
 		InstantiateCannon();
-		ShapeBehaviour.ShapeFell += HealthDown;
 	}
-
-	void HealthDown()
-	{
-		lives--;
-	}
-
-	private void OnDisable()
-	{
-		ShapeBehaviour.ShapeFell -= HealthDown;
-	}
-
+	
 	void InstantiateCannon () 
 	{
 		Vector3 spawningPos = new Vector3(camera.position.x,camera.position.y-3f,0f);
@@ -62,7 +46,6 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		rb.velocity = new Vector2(0,-2);
 		timePassed += Time.deltaTime;
-		surface.transform.position = new Vector3(surface.transform.position.x , DestroyShapes.height , surface.transform.position.z);
 	}
 	
 	void OnTriggerEnter2D(Collider2D col)
@@ -99,8 +82,7 @@ public class GameManager : MonoBehaviour {
 	{
 		if(score!=0 && score>fixedScore)
 			fixedScore=score;
-		//text_.text = fixedScore.ToString();
-		text_.GetComponent<ScrollingText>().SetNum((int)fixedScore);
+		text_.text=(fixedScore).ToString();
 //		PlayerStats.Instance.cs[PlayerStats.Instance.challengeIndex].setProcess((int)fixedScore , "record");
 	}
 

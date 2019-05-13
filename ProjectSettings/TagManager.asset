@@ -45,6 +45,9 @@ TagManager:
   - name: Other
     uniqueID: 2792805133
     locked: 0
+  - name: Platform
+    uniqueID: 1861682511
+    locked: 0
   - name: Trail_
     uniqueID: 1956214137
     locked: 0
@@ -53,9 +56,6 @@ TagManager:
     locked: 0
   - name: sky
     uniqueID: 2764296739
-    locked: 0
-  - name: Platform
-    uniqueID: 1861682511
     locked: 0
   - name: Shape
     uniqueID: 3362168865

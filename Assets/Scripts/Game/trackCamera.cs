@@ -10,11 +10,11 @@ public class trackCamera : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (GameManager.height < 0)
+		if (HeightFinder.height < 0)
 			return;
-		 if(GameManager.height > transform.position.y+0.1f)
+		 if(HeightFinder.height > transform.position.y+0.1f)
 			 transform.position = new Vector3(transform.position.x,transform.position.y+trackingSpeed,transform.position.z);
-		 if(GameManager.height < transform.position.y-0.1f)
+		 if(HeightFinder.height < transform.position.y-0.1f)
 			 transform.position = new Vector3(transform.position.x,transform.position.y-trackingSpeed,transform.position.z);
 		
 	}

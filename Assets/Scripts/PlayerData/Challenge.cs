@@ -1,5 +1,6 @@
 
 using System;
+using GooglePlayGames.Native.Cwrapper;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -15,13 +16,18 @@ public class Challenge
     public int level;
     public bool isActive;
     public bool completed;
-
-    public Challenge(string description, int goal, string action, int reward)
+    public bool oneRun;
+    
+    public void Activate()
     {
-        this.description = description;
-        this.goal = goal;
-        this.action = action;
-        this.reward = reward;
+        isActive = true;
+        if (oneRun)
+            GameManager.GameOver += OnGameOver;
+    }
+
+    public void OnGameOver()
+    {
+        progress = 0;
     }
 
     public void ReportProgress(int progress, string action)
@@ -49,6 +55,7 @@ public class Challenge
         //PlayerStats.Instance.challenges.Remove(this);
         PauseMenu.rewards.Enqueue(this);
         PlayerStats.saveFile();
+        GameManager.GameOver -= OnGameOver;
         //claimReward(reward);
     }
 

@@ -37,7 +37,7 @@ public class PlayerData
             {
                 if (!c.isActive && !c.completed)
                 {
-                    c.isActive = true;
+                    c.Activate();
                     ChallengesAvailable--;
                     return;
                 }

@@ -22,6 +22,10 @@ public class PlayerStats : MonoBehaviour
 			else saveFile();
 			loadFile();
 			Instance.challenges = new List<Challenge>(challenges);
+			for (int i = 0; i < 3; i++)
+			{
+				Instance.challenges[i].Activate();
+			}
 			Instance.ChallengesAvailable = 1;
 			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
 			DontDestroyOnLoad(gameObject);

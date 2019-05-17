@@ -27,6 +27,12 @@ public class PauseMenu : MonoBehaviour {
 		GameIsPaused = true;
 		DisplayChallenges();
 		rewards.Clear();
+		GameManager.GameOver += OnGameOver;
+	}
+
+	private void OnDisable()
+	{
+		GameManager.GameOver -= OnGameOver;
 	}
 
 	private void DisplayChallenges()
@@ -47,11 +53,6 @@ public class PauseMenu : MonoBehaviour {
 			GameObject challengeDisplay = Instantiate(ChallengeCompleteDisplayPrefab , ChallangesCompleteDisplayPanel.transform);
 			challengeDisplay.GetComponent<ChallengeDisplay>().ShowCompleteChallenge(c);
 		}
-	}
-
-	private void Update()
-	{
-		OnGameOver();
 	}
 
 	public void OnClickPause()
@@ -111,14 +112,12 @@ public class PauseMenu : MonoBehaviour {
 	
 	private void OnGameOver()
 	{
-		if(GameManager.lives<=-3){
-			GameManager.lives=0;
-			PlayerStats.Instance.money+=GameManager.score;
-			GameOverUi((GameManager.score));
-			DisplayCompletedChallenges();
-			rewards.Clear();
-			GameIsPaused = true;
-			PlayerStats.saveFile();
-		}
+		GameManager.Instance.lives=0;
+		PlayerStats.Instance.money+=GameManager.Instance.score;
+		GameOverUi((GameManager.Instance.score));
+		DisplayCompletedChallenges();
+		rewards.Clear();
+		GameIsPaused = true;
+		PlayerStats.saveFile();
 	}
 }

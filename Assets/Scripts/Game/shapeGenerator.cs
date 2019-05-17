@@ -17,7 +17,6 @@ public class ShapeGenerator : MonoBehaviour
 	private void Start ()
 	{
 		ChanceArray();
-		Debug.Log("LOAD");
 		LoadCannon();
 		camera_ = Camera.main.transform;
 	}
@@ -47,7 +46,6 @@ public class ShapeGenerator : MonoBehaviour
 
 	public void LoadCannon()
 	{
-		Debug.Log("LOADing");
 		//load the cannon with new shape
 		shape = (GameObject) Instantiate(shapes[chanceArray[Random.Range(0, chanceArray.Length)]].prefab, spawningPos.position, transform.rotation);
 		shape.transform.parent = transform;

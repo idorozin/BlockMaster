@@ -22,15 +22,15 @@ public class LavaBehaviour : MonoBehaviour
 		if(PauseMenu.GameIsPaused)
 			return;
 		transform.position = transform.position+Vector3.up*initialSpeed+new Vector3(0f,CalcSpeed(),0f);
-		if (transform.position.y > height.transform.position.y)//(GameManager.height + 2f))
+		if (transform.position.y > height.transform.position.y)//(GameManager.Instance.height + 2f))
 		{
-			GameManager.lives = -3;
+			GameManager.Instance.lives = -3;
 		}
 	}
 
 	private float CalcSpeed()
 	{
-		return Math.Min(maxSpeed,((float) Math.Sqrt(GameManager.timePassed*0.5f) * 0.5f + (float) Math.Sin(GameManager.timePassed) * 5f) *
+		return Math.Min(maxSpeed,((float) Math.Sqrt(GameManager.Instance.timePassed*0.5f) * 0.5f + (float) Math.Sin(GameManager.Instance.timePassed) * 5f) *
 		       0.001f);
 	}
 

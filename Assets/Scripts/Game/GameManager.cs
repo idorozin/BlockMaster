@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class GameManager : MonoBehaviour {
 	
-	public static float height=0f;
-	public static float score=0f;
-	public static float lives=0;
-	public static float timePassed;
+	public float height;
+	public float score;
+	public float lives;
+	public float timePassed;
 	private Transform camera;
 	Rigidbody2D rb;
 	public GameObject surface;
@@ -18,9 +19,14 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private GameObject highScoresign;
 	[SerializeField] private TextMeshProUGUI text_;
 
+	public static GameManager Instance;
+	private float minimumLives = -3f;
+
+	public static event Action GameOver = delegate {  };
+
 	private void Awake()
 	{
-		
+		Instance = this;
 	}
 
 	// Use this for initialization
@@ -28,10 +34,6 @@ public class GameManager : MonoBehaviour {
 	{
 		camera = GameObject.Find("Main Camera").transform;
 		rb = GetComponent<Rigidbody2D>();
-		height=0f;
-		score=0f;
-		timePassed=0f;
-		lives = 0;
 		OnScoreChanged();
 		InstantiateCannon();
 		ShapeBehaviour.ShapeFell += HealthDown;
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour {
 	void HealthDown()
 	{
 		lives--;
+		if (lives <= minimumLives)
+			GameOver();
 	}
 
 	private void OnDisable()

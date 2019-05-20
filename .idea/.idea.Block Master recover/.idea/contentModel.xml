@@ -399,6 +399,7 @@
           <e p="Settings.cs" t="Include" />
           <e p="Shop" t="Include">
             <e p="Item.cs" t="Include" />
+            <e p="ListWraper.cs" t="Include" />
             <e p="shopScript.cs" t="Include" />
             <e p="swipeDetector.cs" t="Include" />
           </e>

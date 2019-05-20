@@ -1,26 +1,25 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.U2D;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
-
 
 public class shopScript : MonoBehaviour
 {
 	private bool inItemsShop = false;
 	[SerializeField]
-	public List<Item[]> catagories = new List<Item[]>();
-	private Item[] items , cannons , particles;
+	public List<ListWraper> serializedItems = new List<ListWraper>();
+	public List<List<Item>> catagories = new List<List<Item>>();
+	private List<Item> items , cannons , particles;
 	[SerializeField]
 	private int currentItem=0 , currentType=0;
 	private const string Path = "Shop/Items/";
 	private GameObject item;
+	[SerializeField]
+	private Image itemImage;
 	public Text balance_text;
 	public GameObject lockedUi;
 	private Text lockedUiText;
+	
 	[SerializeField]
 	private Text priceText;
 	[SerializeField] 
@@ -31,22 +30,38 @@ public class shopScript : MonoBehaviour
 	// Use this for initialization
 	private void Start ()
 	{
-		cannons = new Item[2];
-		cannons[0]=new Item("1",20,10);
-		cannons[1]=new Item("2",10,40);
-		items = cannons;
-		catagories.Add(cannons);
-		particles = new Item[2];
-		particles[1]=new Item("DiamondLogo",20,10);
-		particles[0]=new Item("diamonds",10,40);
-		catagories.Add(particles);
+		foreach (var listWraper in serializedItems)
+		{
+			catagories.Add(listWraper.list);
+		}
+
+		items = catagories[currentType];
 		currentItem=0;
+		UpdateUI();
 		GetComponent<swipeDetector>().SwipeDetected += MoveToSwipeDirection;
-	
 	}
+	
 	private void Update(){ // TODO
 		balance_text.text=PlayerStats.Instance.money.ToString();
 	}
+	
+	[ContextMenu("MoveUp")]
+	public void up() {
+		MoveUp();
+	}
+	[ContextMenu("MoveDown")]
+	public void down() {
+		MoveDown();
+	}
+	[ContextMenu("MoveRight")]
+	public void right() {
+		MoveRight();
+	}
+	[ContextMenu("MoveLeft")]
+	public void left() {
+		MoveLeft();
+	}
+
 	private void MoveToSwipeDirection(string direction)
 	{
 		switch (direction)
@@ -72,34 +87,32 @@ public class shopScript : MonoBehaviour
 	{
 		if (currentItem - 1 < 0 || items[currentItem - 1] == null) return;
 		currentItem--;
-		CreateItem();
+		UpdateUI();
 	}
 
 	public void MoveRight()
 	{
-		if (currentItem + 1 > items.Length - 1 || items[currentItem + 1] == null) return;
+		if (currentItem + 1 > items.Count - 1 || items[currentItem + 1] == null) return;
 		currentItem++;
-		CreateItem();
+		UpdateUI();
 	}
 
 	public void MoveUp()
 	{
-		Debug.Log("UP");
 		if(currentType  + 1 > catagories.Count - 1 || catagories[currentType+1] == null) return;
 		currentType++;
 		currentItem = 0;
 		items = catagories[currentType];
-		CreateItem();
+		UpdateUI();
 	}
 	
 	public void MoveDown()
 	{
-		Debug.Log("Down");
 		if(currentType-1 < 0 || catagories[currentType-1] == null) return;
 		currentType--;
 		currentItem = 0;
 		items = catagories[currentType];
-		CreateItem();
+		UpdateUI();
 	}
 
 	#endregion
@@ -118,11 +131,9 @@ public class shopScript : MonoBehaviour
 			lockedUi.SetActive(false);
 	}
 
-	private void InstantiateItem(Item item_)
+	private void UpdateItem(Item item_)
 	{
-		var g = Resources.Load<SpriteRenderer>(Path + item_.Name);
-		GameObject itemPrefab = (g as SpriteRenderer).gameObject;
-		item = Instantiate(itemPrefab);
+		itemImage.sprite = item_.Sprite;
 		priceText.text = item_.Price.ToString();
 		nameText.text = item_.Name;
 	}
@@ -152,11 +163,10 @@ public class shopScript : MonoBehaviour
 		}
 	}
 
-	private void CreateItem()
+	private void UpdateUI()
 	{
-		Destroy(item);
 		SetButton();
-		InstantiateItem(items[currentItem]);
+		UpdateItem(items[currentItem]);
 		SetLockedUi();
 	}
 	
@@ -202,7 +212,7 @@ public class shopScript : MonoBehaviour
 		itemsShop.SetActive(true);
 		chooseShop.SetActive(false);
 		inShop = true;
-		CreateItem();
+		UpdateUI();
 	}
 
 	public void CloseItemsShop()

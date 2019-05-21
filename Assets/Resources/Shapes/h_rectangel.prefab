@@ -31,6 +31,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1770521725056092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4163858382269854}
+  m_Layer: 0
+  m_Name: circle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1838724380109062
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4144095008059870}
   m_Layer: 0
-  m_Name: circle
+  m_Name: circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +68,20 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838724380109062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.012, y: -0.0069999695, z: -0.045427743}
+  m_LocalPosition: {x: 0.5, y: -0.006999969, z: -0.045427743}
+  m_LocalScale: {x: 1, y: 0.9999998, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4998354684534330}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4163858382269854
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1770521725056092}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.49, y: -0.0069999695, z: -0.045427743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4998354684534330}
@@ -66,9 +94,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1308761141097490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.179023, y: 1.4207354, z: 0}
+  m_LocalPosition: {x: -1.8547885, y: -0.3829478, z: 0}
   m_LocalScale: {x: 0.5, y: 0.6, z: 1}
   m_Children:
+  - {fileID: 4163858382269854}
   - {fileID: 4144095008059870}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -152,7 +181,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1603126819
-  m_SortingLayer: 5
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Time: 0.5
   m_Parameters:
@@ -236,6 +265,7 @@ MonoBehaviour:
   onShape:
     serializedVersion: 2
     m_Bits: 256
+  gizmoColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &212064371973792684
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -269,7 +299,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 662298637
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8e271f8bec1a692478c42d1b750c8c16, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

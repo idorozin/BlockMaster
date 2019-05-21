@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class shopScript : MonoBehaviour
 {
 	private bool inItemsShop = false;
-	[SerializeField]
-	public List<ListWraper> serializedItems = new List<ListWraper>();
+	[SerializeField] private ItemsShop serializedItems;
 	public List<List<Item>> catagories = new List<List<Item>>();
 	private List<Item> items , cannons , particles;
 	[SerializeField]
@@ -30,7 +29,7 @@ public class shopScript : MonoBehaviour
 	// Use this for initialization
 	private void Start ()
 	{
-		foreach (var listWraper in serializedItems)
+		foreach (var listWraper in serializedItems.serializedItems)
 		{
 			catagories.Add(listWraper.list);
 		}
@@ -134,7 +133,7 @@ public class shopScript : MonoBehaviour
 	private void UpdateItem(Item item_)
 	{
 		itemImage.sprite = item_.Sprite;
-		priceText.text = item_.Price.ToString();
+		priceText.text = item_.Gold.ToString();
 		nameText.text = item_.Name;
 	}
 
@@ -180,9 +179,9 @@ public class shopScript : MonoBehaviour
 		if (items[currentItem].Score > PlayerStats.Instance.highScore || PlayerStats.Instance.ItemsOwned.Contains(items[currentItem].Name))
 			return;
 		
-		if(PlayerStats.Instance.money>=items[currentItem].Price){
+		if(PlayerStats.Instance.money>=items[currentItem].Gold){
 			PlayerStats.Instance.ItemsOwned.Add(items[currentItem].Name);
-			PlayerStats.Instance.money-=items[currentItem].Price;
+			PlayerStats.Instance.money-=items[currentItem].Gold;
 			Debug.Log("you bought the cannon");
 			PlayerStats.saveFile();
 		}

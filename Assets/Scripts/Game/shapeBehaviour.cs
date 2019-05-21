@@ -10,6 +10,7 @@ public class ShapeBehaviour : MonoBehaviour {
 	public bool isTouching=true;
 	
 	private Transform shape;
+	[Range(0,1)]
 	public float radius;
 	public LayerMask onShape;
 	private float nextTime=0;
@@ -118,7 +119,14 @@ public class ShapeBehaviour : MonoBehaviour {
 	}
 
 	private bool canPlaySound = true;
-	
-	
 
+	[SerializeField] private Color gizmoColor = Color.red;
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		foreach (Transform child in transform)
+		{
+			Gizmos.DrawWireSphere(child.transform.position , radius);
+		}
+	}
 }

@@ -398,7 +398,11 @@
           </e>
           <e p="Settings.cs" t="Include" />
           <e p="Shop" t="Include">
+            <e p="Editor" t="Include">
+              <e p="CustomCatalogEditor.cs" t="Include" />
+            </e>
             <e p="Item.cs" t="Include" />
+            <e p="ItemsShop.cs" t="Include" />
             <e p="ListWraper.cs" t="Include" />
             <e p="shopScript.cs" t="Include" />
             <e p="swipeDetector.cs" t="Include" />

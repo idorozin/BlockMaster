@@ -233,10 +233,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coll: {fileID: 61162296286557218}
   isTouching: 1
-  radius: 0.25
+  radius: 0.31
   onShape:
     serializedVersion: 2
     m_Bits: 256
+  gizmoColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114980777469870376
 MonoBehaviour:
   m_ObjectHideFlags: 1

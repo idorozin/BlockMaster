@@ -34,7 +34,7 @@ public class Rewards : MonoBehaviour
 		switch (type)
 		{
 			case "GOLD":
-				PlayerStats.Instance.money += Int32.Parse(desc);
+				PlayerStats.Instance.gold += Int32.Parse(desc);
 				break;
 			case "CANNON":
 				PlayerStats.Instance.ItemsOwned.Add(desc);

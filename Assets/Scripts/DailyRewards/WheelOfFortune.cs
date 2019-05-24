@@ -102,18 +102,14 @@ public class WheelOfFortune : MonoBehaviour
 	{
 		Rewards.Instance.CollectPrizeWithAnimation(Rewards.Reward.GOLD_50);
 		
-		
-		
-		
-		
 		if (prizeIndex == 1)
-			PlayerStats.Instance.money += 200;
+			PlayerStats.Instance.gold += 200;
 		else if(prizeIndex == 3)
-		PlayerStats.Instance.money+= 500;
+		PlayerStats.Instance.gold+= 500;
 		if (prizeIndex == 7)
-			PlayerStats.Instance.money += 100;
+			PlayerStats.Instance.gold += 100;
 		else if(prizeIndex == 6)
-			PlayerStats.Instance.money+=50 ;
+			PlayerStats.Instance.gold+=50 ;
 		PlayerStats.saveFile();
 	}
 	

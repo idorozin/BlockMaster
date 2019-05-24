@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 
-[CustomEditor(typeof(ItemsShop))]
+[CustomEditor(typeof(ItemsShopCatalog))]
 public class CustomCatalogEditor : Editor
 {
+   public Item.ItemType types;
    public override void OnInspectorGUI()
    {
-      ItemsShop itemsShop = (ItemsShop)target;
+      ItemsShopCatalog itemsShop = (ItemsShopCatalog)target;
       EditorGUILayout.BeginHorizontal();
       if (GUILayout.Button("Reset"))
       {
@@ -26,7 +27,7 @@ public class CustomCatalogEditor : Editor
       foreach (var category in itemsShop.serializedItems.ToList())
       {
          EditorGUILayout.BeginHorizontal();
-         category.name = EditorGUILayout.TextField(category.name);
+         category.type = (Item.ItemType)EditorGUILayout.EnumPopup(category.type);
          if (GUILayout.Button("Add Item"))
          {
             category.list.Add(new Item());
@@ -38,13 +39,13 @@ public class CustomCatalogEditor : Editor
          GUILayout.EndHorizontal();
          foreach (var item in category.list.ToList())
          {
-   
             EditorGUILayout.BeginHorizontal();
             item.Name = TextField("Name",item.Name);
             item.Gold = EditorGUILayout.IntField("Price",item.Gold);
             item.Diamonds = EditorGUILayout.IntField("Gems",item.Diamonds);
             item.Score = EditorGUILayout.IntField("Score",item.Score);
-            item.Sprite = (Sprite)EditorGUILayout.ObjectField("Sprite", item.Sprite, typeof(Sprite), allowSceneObjects: true);   
+            item.Icon = (Sprite)EditorGUILayout.ObjectField("Icon", item.Icon, typeof(Sprite), allowSceneObjects: true);
+            item.type = category.type;
             if (GUILayout.Button("X"))
             {
                category.list.Remove(item);

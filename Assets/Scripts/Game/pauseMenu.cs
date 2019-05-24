@@ -113,7 +113,7 @@ public class PauseMenu : MonoBehaviour {
 	private void OnGameOver()
 	{
 		GameManager.Instance.lives=0;
-		PlayerStats.Instance.money+=GameManager.Instance.score;
+		PlayerStats.Instance.gold+=(int)GameManager.Instance.score;
 		GameOverUi((GameManager.Instance.score));
 		DisplayCompletedChallenges();
 		rewards.Clear();

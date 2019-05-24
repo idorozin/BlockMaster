@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
 	Rigidbody2D rb;
 	public GameObject surface;
 	
+	public List<GameObject> shapes = new List<GameObject>();
+
 	float fixedScore=0;
 	[SerializeField] private GameObject highScoresign;
 	[SerializeField] private TextMeshProUGUI text_;
@@ -35,7 +37,6 @@ public class GameManager : MonoBehaviour {
 		camera = GameObject.Find("Main Camera").transform;
 		rb = GetComponent<Rigidbody2D>();
 		OnScoreChanged();
-		InstantiateCannon();
 		ShapeBehaviour.ShapeFell += HealthDown;
 	}
 
@@ -51,16 +52,6 @@ public class GameManager : MonoBehaviour {
 		ShapeBehaviour.ShapeFell -= HealthDown;
 	}
 
-	void InstantiateCannon () 
-	{
-		Vector3 spawningPos = new Vector3(camera.position.x,camera.position.y-3f,0f);
-		if(PlayerStats.Instance.lastCannon=="")
-			PlayerStats.Instance.lastCannon="default";
-		PlayerStats.Instance.lastCannon = "1";
-		string cannonFilePath="Cannons/"+PlayerStats.Instance.lastCannon;
-		Debug.Log(cannonFilePath+ "    " + spawningPos);
-		Instantiate(Resources.Load(cannonFilePath) , spawningPos , Quaternion.identity);
-	}
 	
 	// Update is called once per frame
 	void Update () {

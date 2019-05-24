@@ -8,7 +8,8 @@ public class PlayerData
         public float highScore=0;
         public string lastCannon="default";
         public List<string> ItemsOwned = new List<string>();
-        public float money=0;
+        public int gold=0;
+        public int diamonds=0;
         public float highScoreHeight=0;
         public TimePassed wheel = new TimePassed();
         public TimePassed gift = new TimePassed();

@@ -403,11 +403,13 @@
             </e>
             <e p="Item.cs" t="Include" />
             <e p="ItemsShop.cs" t="Include" />
+            <e p="ItemsShopCatalog.cs" t="Include" />
             <e p="ListWraper.cs" t="Include" />
-            <e p="shopScript.cs" t="Include" />
+            <e p="SelectShop.cs" t="Include" />
             <e p="swipeDetector.cs" t="Include" />
           </e>
         </e>
+        <e p="SetSkin.cs" t="Include" />
       </e>
       <e p="Block Master recover.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />

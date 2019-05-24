@@ -12,7 +12,7 @@ public class swipeDetector : MonoBehaviour
 	    
 	void Update ()
 	{
-		if (!shopScript.inShop)
+		if (!SelectShop.inShop)
 			return;
 		if (Input.touchCount > 0)
 		{

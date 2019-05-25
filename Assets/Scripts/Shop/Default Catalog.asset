@@ -11,20 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352cbcf3dff273c48910d05281843525, type: 3}
   m_Name: Default Catalog
   m_EditorClassIdentifier: 
-  serializedItems:
-  - type: 1
-    list:
-    - Name: Cannon 1
-      Sprite: {fileID: 21300000, guid: 9ca4c387b7a15314b9882626504cc037, type: 3}
-      Gold: 200
-      Diamonds: 150
-      Score: 13
-      type: 1
-    - Name: goodos
-      Sprite: {fileID: 0}
-      Gold: 0
-      Diamonds: 0
-      Score: 0
-      type: 1
-  - type: 0
-    list: []
+  serializedItems: []

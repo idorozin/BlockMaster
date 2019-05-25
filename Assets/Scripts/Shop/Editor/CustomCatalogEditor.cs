@@ -52,6 +52,8 @@ public class CustomCatalogEditor : Editor
             }
             GUILayout.EndHorizontal();
          }
+
+        EditorUtility.SetDirty(target);
          GUILayout.Space(50);
       }
    }

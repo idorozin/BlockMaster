@@ -28,6 +28,7 @@ public class Item
 		if(PlayerStats.Instance.gold >= Gold && PlayerStats.Instance.diamonds >= Diamonds){
 			PlayerStats.Instance.ItemsOwned.Add(Name);
 			PlayerStats.Instance.gold -= Gold;
+			PlayerStats.Instance.diamonds -= Diamonds;
 			PlayerStats.saveFile();
 		}
 	}

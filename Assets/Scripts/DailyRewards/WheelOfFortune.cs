@@ -100,7 +100,7 @@ public class WheelOfFortune : MonoBehaviour
 
 	void getPrize(int prizeIndex)
 	{
-		Rewards.Instance.CollectPrizeWithAnimation(Rewards.Reward.GOLD_50);
+		//RewardDialog.Instance.CollectPrizeWithAnimation();
 		
 		if (prizeIndex == 1)
 			PlayerStats.Instance.gold += 200;

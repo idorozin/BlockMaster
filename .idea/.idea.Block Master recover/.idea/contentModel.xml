@@ -344,6 +344,7 @@
             <e p="CameraShake.cs" t="Include" />
             <e p="DestroyOnAnimationFinish.cs" t="Include" />
             <e p="MoveToTheSide.cs" t="Include" />
+            <e p="NotflicationAnimation.cs" t="Include" />
             <e p="ScrollingText.cs" t="Include" />
             <e p="Spin.cs" t="Include" />
           </e>
@@ -356,7 +357,8 @@
             <e p="DailyReward.cs" t="Include" />
             <e p="DailyReward2.cs" t="Include" />
             <e p="DailyReward3.cs" t="Include" />
-            <e p="Rewards.cs" t="Include" />
+            <e p="Reward.cs" t="Include" />
+            <e p="RewardDialog.cs" t="Include" />
             <e p="TimedRewards.cs" t="Include" />
             <e p="TimeManager.cs" t="Include" />
             <e p="TimeText.cs" t="Include" />

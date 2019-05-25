@@ -41,13 +41,13 @@ public class MenuScript : MonoBehaviour
 	public void LoadDailyGift()
 	{
 		DailyGift.SetActive(true);
-		DailyGift.GetComponent<dailyGift>().loadGifts();
+		DailyGift.GetComponent<DailyGift>().UpdateUI();
 	}
 
 	public void unLoadDailyGift()
 	{
 		DailyGift.SetActive(false);
-		DailyGift.GetComponent<dailyGift>().destroyTicks();
+		DailyGift.GetComponent<DailyGift>().destroyTicks();
 	}
 
 	public void LoadChallanges()

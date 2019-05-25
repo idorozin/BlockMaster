@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class trackCamera : MonoBehaviour
+public class TrackCamera : MonoBehaviour
 {
 
 	public float trackingSpeed = 0.1f;

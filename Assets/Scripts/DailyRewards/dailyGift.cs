@@ -1,28 +1,39 @@
 ﻿
 using UnityEngine;
-
-public class dailyGift : MonoBehaviour
+using UnityEngine.UI;
+public class DailyGift : MonoBehaviour
 {
 	
 	[SerializeField] 
 	private Transform GiftPanel , TickPanel;
 	[SerializeField] 
-	private GameObject Tick;
+	private GameObject TickPrefab;
 	[SerializeField]
-	Rewards.Reward[] gifts = new Rewards.Reward[30];
+	Reward[] gifts = new Reward[30];
+	[SerializeField]
+	private GameObject EmptyGift;
+
+	[SerializeField]
+	private RewardDialog rewardDialog;
+	
 	private bool giftAllowed=true;
+	
 
 	private void OnMouseDown()
 	{
 		getGiftButton();
 	}
 
-	public void loadGifts()
+	public void UpdateUI()
 	{
 		for(int i=0;i<=PlayerStats.Instance.GiftIndex;i++)
-			Instantiate(Tick , TickPanel);
-		foreach (var t in gifts)
-			Instantiate(Resources.Load("Gifts/"+t) , GiftPanel);
+			Instantiate(TickPrefab , TickPanel);
+		foreach (var gift in gifts)
+		{
+			GameObject go = Instantiate(EmptyGift , GiftPanel);
+			go.GetComponent<Image>().sprite = gift.icon;
+
+		}
 	}
 
 	public void getGiftButton()
@@ -46,11 +57,13 @@ public class dailyGift : MonoBehaviour
 			PlayerStats.saveFile();
 	}
 
-	private void getGift(Rewards.Reward gift)
+	private void getGift(Reward gift)
 	{
-		Instantiate(Tick , TickPanel);
-		PlayerStats.Instance.GiftIndex++;
-		Rewards.Instance.CollectPrizeWithAnimation(Rewards.Reward.GOLD_50);
+		RewardDialog r = Instantiate(rewardDialog);
+		r.CollectPrizeWithAnimation(gift);
+		gift.Collect();
+		Instantiate(TickPrefab , TickPanel);
+		PlayerStats.Instance.GiftIndex++;	
 	}
 
 	public void destroyTicks()

@@ -20,6 +20,17 @@ public class Item
 		Cannon , Troll ,
 	}
 
+	public Item()
+	{
+
+	}
+	public Item(string name , Sprite icon)
+	{
+		this.Name = name;
+
+		this.Icon = icon;
+	}
+
 	public void Buy()
 	{
 		if (Score > PlayerStats.Instance.highScore || PlayerStats.Instance.ItemsOwned.Contains(Name))
@@ -37,8 +48,8 @@ public class Item
 	{
 		if (PlayerStats.Instance.lastCannon == Name || !PlayerStats.Instance.ItemsOwned.Contains(Name))
 			return;
-		if(type == ItemType.Cannon)
-			PlayerStats.Instance.lastCannon= Name;
+		//if(type == ItemType.Cannon)
+			PlayerStats.Instance.lastCannon = Name;
 		PlayerStats.saveFile();
 	}
 }

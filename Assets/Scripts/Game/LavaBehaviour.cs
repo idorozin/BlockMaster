@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class LavaBehaviour : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class LavaBehaviour : MonoBehaviour
 		transform.position = transform.position+Vector3.up*initialSpeed+new Vector3(0f,CalcSpeed(),0f);
 		if (transform.position.y > height.transform.position.y)//(GameManager.Instance.height + 2f))
 		{
-			GameManager.Instance.lives = -3;
+			GameManager.Instance.LavaReached();
 		}
 	}
 

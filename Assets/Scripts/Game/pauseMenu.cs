@@ -19,14 +19,12 @@ public class PauseMenu : MonoBehaviour {
 	public GameObject ChallangesCompleteDisplayPanel;
 	public GameObject ChallengeCompleteDisplayPrefab;
 	public GameObject Score;
-	public static Queue<Challenge> rewards = new Queue<Challenge>();
 
 	private void Start()
 	{
 		Time.timeScale = 0;
 		GameIsPaused = true;
 		DisplayChallenges();
-		rewards.Clear();
 		GameManager.GameOver += OnGameOver;
 	}
 
@@ -47,7 +45,7 @@ public class PauseMenu : MonoBehaviour {
 	}	
 	private void DisplayCompletedChallenges()
 	{
-		Challenge[] completedCs = rewards.ToArray();
+		Challenge[] completedCs = GameManager.Instance.challengesCompleted.ToArray();
 		foreach (var c in completedCs)
 		{
 			GameObject challengeDisplay = Instantiate(ChallengeCompleteDisplayPrefab , ChallangesCompleteDisplayPanel.transform);
@@ -116,7 +114,6 @@ public class PauseMenu : MonoBehaviour {
 		PlayerStats.Instance.gold+=(int)GameManager.Instance.score;
 		GameOverUi((GameManager.Instance.score));
 		DisplayCompletedChallenges();
-		rewards.Clear();
 		GameIsPaused = true;
 		PlayerStats.saveFile();
 	}

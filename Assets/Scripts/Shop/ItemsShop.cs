@@ -34,6 +34,7 @@ public class ItemsShop : MonoBehaviour
 			categories.Add(listWraper.list);
 		}
 		items = categories[currentType];
+		Debug.Log(items.Count);
 		currentItem=0;
 		UpdateUI();
 		detector.SwipeDetected += MoveToSwipeDirection;

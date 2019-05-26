@@ -5,21 +5,26 @@ using UnityEngine.Experimental.UIElements;
 [Serializable]
 public class PlayerData
     {
-        public float highScore=0;
+        public float highScore;
         public string lastCannon="default";
         public List<string> ItemsOwned = new List<string>();
-        public int gold=0;
-        public int diamonds=0;
-        public float highScoreHeight=0;
+        public int gold;
+        public int diamonds;
+        public float highScoreHeight;
         public TimePassed wheel = new TimePassed();
         public TimePassed gift = new TimePassed();
         public TimePassed challenge = new TimePassed();
         public string wheelTime = "";
         public string giftTime = "";
-        public int offsetW , offsetG , GiftIndex , challengeIndex=0;
+        public int offsetW , offsetG , GiftIndex;
         public int ChallengesAvailable;
         public bool musicOn=true, soundOn=true;
         public List<Challenge> challenges;
+
+        public class Challanges
+        {
+            public List<Challenge> challenges;
+        }
 
         public void ReportProgress(int progress , string action)
         {
@@ -40,6 +45,7 @@ public class PlayerData
                 {
                     c.Activate();
                     ChallengesAvailable--;
+                    PlayerStats.saveFile();
                     return;
                 }
             }
@@ -47,8 +53,8 @@ public class PlayerData
 
         public void IncrementChallengesAvailable(int n)
         {
-            Debug.Log(ChallengesAvailable);
-            if(ChallengesAvailable<6)
-                ChallengesAvailable++;
+            if(ChallengesAvailable>=6) return;
+            ChallengesAvailable+=n;
+            PlayerStats.saveFile();
         }
     }

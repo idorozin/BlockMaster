@@ -931,7 +931,7 @@ RectTransform:
   - {fileID: 158201529}
   - {fileID: 1528772402}
   m_Father: {fileID: 962356925}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1608,6 +1608,11 @@ Prefab:
         type: 2}
       propertyPath: challenges.Array.data[4].reward
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114483090269919786, guid: 79b7eaa22951d1e4ba1effe90ac362b5,
+        type: 2}
+      propertyPath: challenges.Array.data[0].oneRun
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79b7eaa22951d1e4ba1effe90ac362b5, type: 2}
@@ -3668,75 +3673,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   time: 1
---- !u!1 &934696876
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 934696879}
-  - component: {fileID: 934696878}
-  - component: {fileID: 934696877}
-  m_Layer: 5
-  m_Name: Tick
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &934696877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 934696876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 126874daac9d65849a5e35a30f04ccc2, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &934696878
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 934696876}
-  m_CullTransparentMesh: 0
---- !u!224 &934696879
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 934696876}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 962356925}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 57.670326, y: -127.56508}
-  m_SizeDelta: {x: 30, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &962356921
 GameObject:
   m_ObjectHideFlags: 0
@@ -3830,7 +3766,6 @@ RectTransform:
   - {fileID: 1248020156}
   - {fileID: 154936884}
   - {fileID: 653461957}
-  - {fileID: 934696879}
   - {fileID: 1648566021}
   - {fileID: 253570423}
   m_Father: {fileID: 0}
@@ -5621,7 +5556,7 @@ RectTransform:
   - {fileID: 903821155}
   - {fileID: 1420833229}
   m_Father: {fileID: 962356925}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5641,7 +5576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GiftPanel: {fileID: 1596570558}
   TickPanel: {fileID: 100020601}
-  TickPrefab: {fileID: 934696876}
+  TickPrefab: {fileID: 1284279322203838, guid: 5b9ef23bda210664992b92845fc79669, type: 2}
   gifts:
   - {fileID: 11400000, guid: 52793d4fc2d73ed46ac245257cc3657d, type: 2}
   - {fileID: 11400000, guid: 52793d4fc2d73ed46ac245257cc3657d, type: 2}
@@ -7035,6 +6970,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dc9f7b10da28044b7cb12da2ad3842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  challengeDisplay: {fileID: 1732121742279548, guid: 42be62ae69313fe479e710d4a556f3ad,
+    type: 2}
+  contentPanel: {fileID: 2106175631}
 --- !u!1 &2123464710
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,20 +15,22 @@ public class PlayerStats : MonoBehaviour
 	{
 		if (Instance == null)
 		{
-
 			Instance = new PlayerData();
 			path = Application.persistentDataPath + "/PlayerFile.json";
 			if (File.Exists(Application.persistentDataPath + "/PlayerFile.json")) Debug.Log("file exists");
 			else saveFile();
 			loadFile();
-			Instance.challenges = new List<Challenge>(challenges);
-			for (int i = 0; i < 3; i++)
-			{
-				Instance.challenges[i].Activate();
-			}
-			Instance.ChallengesAvailable = 1;
-			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
+			//if (Instance.challenges == null)
+			//{
+				Instance.challenges = new List<Challenge>(challenges);
+				for (int i = 0; i < 3; i++)
+				{
+					Instance.challenges[i].Activate();
+				}
+				Instance.ChallengesAvailable = 1;
+			//}
 			DontDestroyOnLoad(gameObject);
+			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
 		}
 		else
 		{

@@ -5,34 +5,39 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-public class GameManager : MonoBehaviour {
-	
+public class GameManager : MonoBehaviour
+{
+	public static GameManager Instance;
+
 	public float height;
 	public float score;
 	public float lives;
 	public float timePassed;
-	private Transform camera;
-	Rigidbody2D rb;
-	public GameObject surface;
-	
+
 	public List<GameObject> shapes = new List<GameObject>();
 
-	float fixedScore=0;
-	[SerializeField] private GameObject highScoresign;
-	[SerializeField] private TextMeshProUGUI text_;
-
-	public static GameManager Instance;
+	public Queue<Challenge> challengesCompleted = new Queue<Challenge>();
+	public NotflicationAnimation anim;
+	
+	public static event Action GameOver = delegate { };
+	public static event Action NewGame = delegate { };
+	
 	private float minimumLives = -3f;
-
-	public static event Action GameOver = delegate {  };
+	private Rigidbody2D rb;
+	private Transform camera;
+	private float fixedScore = 0;
+	[SerializeField] private GameObject surface;
+	[SerializeField] private GameObject highScoresign;
+	[SerializeField] private TextMeshProUGUI text_;	
 
 	private void Awake()
 	{
+		NewGame();
 		Instance = this;
 	}
 
 	// Use this for initialization
-	void Start ()
+	void Start()
 	{
 		camera = GameObject.Find("Main Camera").transform;
 		rb = GetComponent<Rigidbody2D>();
@@ -47,13 +52,23 @@ public class GameManager : MonoBehaviour {
 			GameOver();
 	}
 
+	public void LavaReached()
+	{
+		GameOver();
+	}
+
 	private void OnDisable()
 	{
 		ShapeBehaviour.ShapeFell -= HealthDown;
 	}
 
-	
-	// Update is called once per frame
+	public void ChallengeComplete(Challenge c)
+	{
+		anim.animate(c);
+	}
+
+
+// Update is called once per frame
 	void Update () {
 		rb.velocity = new Vector2(0,-2);
 		timePassed += Time.deltaTime;

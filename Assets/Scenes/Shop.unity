@@ -748,7 +748,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1576477567}
         m_MethodName: UseButton
         m_Mode: 1
         m_Arguments:
@@ -1192,7 +1192,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1683503324}
         m_MethodName: BackButton
         m_Mode: 1
         m_Arguments:
@@ -1505,7 +1505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detector: {fileID: 1683503326}
-  serializedItems: {fileID: 11400000, guid: e6224ee7d8da9db4f94e0f105f06d02d, type: 2}
+  serializedItems: {fileID: 11400000, guid: 2eae72889d5920244b582b05805c7a0f, type: 2}
   goldBalance: {fileID: 653989154}
   diamondBalance: {fileID: 0}
   lockedUi: {fileID: 166489098}
@@ -2475,7 +2475,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1576477567}
         m_MethodName: BuyButton
         m_Mode: 1
         m_Arguments:

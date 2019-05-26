@@ -1,0 +1,1239 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ItemsShop5
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 352cbcf3dff273c48910d05281843525,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.size
+    value: 50
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[0].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[0].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[0].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[0].Gold
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[0].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[0].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[1].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[1].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[1].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[1].Gold
+    value: 50
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[1].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[1].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[2].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[2].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[2].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[2].Gold
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[2].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[2].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[3].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[3].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[3].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[3].Gold
+    value: 125
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[3].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[3].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[4].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[4].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[4].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[4].Gold
+    value: 170
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[4].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[4].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[5].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[5].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[5].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[5].Gold
+    value: 225
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[5].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[5].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[6].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[6].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[6].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[6].Gold
+    value: 300
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[6].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[6].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[7].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[7].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[7].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[7].Gold
+    value: 425
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[7].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[7].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[8].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[8].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[8].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[8].Gold
+    value: 550
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[8].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[8].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[9].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[9].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[9].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[9].Gold
+    value: 700
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[9].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[9].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[10].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[10].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[10].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[10].Gold
+    value: 850
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[10].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[10].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[11].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[11].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[11].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[11].Gold
+    value: 1000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[11].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[11].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[12].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[12].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[12].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[12].Gold
+    value: 1150
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[12].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[12].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[13].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[13].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[13].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[13].Gold
+    value: 1200
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[13].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[13].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[14].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[14].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[14].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[14].Gold
+    value: 1425
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[14].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[14].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[15].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[15].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[15].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[15].Gold
+    value: 1500
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[15].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[15].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[16].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[16].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[16].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[16].Gold
+    value: 2000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[16].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[16].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[17].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[17].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[17].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[17].Gold
+    value: 3000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[17].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[17].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[18].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[18].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[18].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[18].Gold
+    value: 5000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[18].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[18].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[19].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[19].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[19].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[19].Gold
+    value: 10000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[19].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[19].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[20].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[20].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[20].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[20].Gold
+    value: 602
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[20].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[20].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[21].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[21].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[21].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[21].Gold
+    value: 400
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[21].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[21].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[22].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[22].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[22].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[22].Gold
+    value: 517
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[22].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[22].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[23].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[23].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[23].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[23].Gold
+    value: 205
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[23].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[23].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[24].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[24].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[24].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[24].Gold
+    value: 431
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[24].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[24].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[25].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[25].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[25].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[25].Gold
+    value: 380
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[25].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[25].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[26].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[26].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[26].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[26].Gold
+    value: 248
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[26].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[26].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[27].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[27].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[27].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[27].Gold
+    value: 437
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[27].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[27].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[28].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[28].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[28].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[28].Gold
+    value: 251
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[28].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[28].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[29].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[29].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[29].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[29].Gold
+    value: 479
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[29].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[29].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[30].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[30].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[30].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[30].Gold
+    value: 515
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[30].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[30].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[31].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[31].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[31].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[31].Gold
+    value: 744
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[31].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[31].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[32].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[32].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[32].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[32].Gold
+    value: 526
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[32].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[32].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[33].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[33].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[33].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[33].Gold
+    value: 125
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[33].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[33].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[34].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[34].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[34].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[34].Gold
+    value: 250
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[34].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[34].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[35].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[35].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[35].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[35].Gold
+    value: 375
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[35].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[35].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[36].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[36].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[36].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[36].Gold
+    value: 500
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[36].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[36].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[37].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[37].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[37].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[37].Gold
+    value: 625
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[37].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[37].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[38].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[38].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[38].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[38].Gold
+    value: 750
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[38].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[38].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[39].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[39].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[39].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[39].Gold
+    value: 875
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[39].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[39].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[40].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[40].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[40].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[40].Gold
+    value: 1000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[40].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[40].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[41].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[41].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[41].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[41].Gold
+    value: 1125
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[41].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[41].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[42].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[42].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[42].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[42].Gold
+    value: 1250
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[42].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[42].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[43].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[43].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[43].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[43].Gold
+    value: 1375
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[43].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[43].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[44].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[44].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[44].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[44].Gold
+    value: 1500
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[44].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[44].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[45].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[45].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[45].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[45].Gold
+    value: 1625
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[45].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[45].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[46].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[46].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[46].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[46].Gold
+    value: 1750
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[46].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[46].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[47].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[47].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[47].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[47].Gold
+    value: 1875
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[47].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[47].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[48].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[48].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[48].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[48].Gold
+    value: 2000
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[48].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[48].Score
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[49].Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[49].Icon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[49].type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[49].Gold
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[49].Diamonds
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: serializedItems.Array.data[0].list.Array.data[49].Score
+    value: 0
+    objectReference: {fileID: 0}

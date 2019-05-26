@@ -17,15 +17,18 @@ public class Challenge
     public bool isActive;
     public bool completed;
     public bool oneRun;
-    
+
     public void Activate()
     {
         isActive = true;
         if (oneRun)
-            GameManager.GameOver += OnGameOver;
+        {
+            description += " In One Run!";
+            GameManager.NewGame += OnNewGame;
+        }
     }
 
-    public void OnGameOver()
+    public void OnNewGame()
     {
         progress = 0;
     }
@@ -33,29 +36,30 @@ public class Challenge
     public void ReportProgress(int progress, string action)
     {
         if (this.action == action) this.progress += progress;
-        if (this.progress > goal) NextChallange();
+        if (this.progress >= goal) ChallengeCompleted();
+        else PlayerStats.saveFile();
     }
 
     public void setProcess(int process, string action)
     {
         if (this.action == action && process > this.progress) this.progress = process;
-        if (this.progress > goal) NextChallange();
+        if (this.progress >= goal) ChallengeCompleted();
     }
 
     public void skipChallange()
     {
     }
 
-    public void NextChallange()
+    private void ChallengeCompleted()
     {
         PlayerStats.Instance.ActivateChallenge();
-        PlayerStats.Instance.challengeIndex++;
         completed = true;
         isActive = false;
         //PlayerStats.Instance.challenges.Remove(this);
-        PauseMenu.rewards.Enqueue(this);
         PlayerStats.saveFile();
-        GameManager.GameOver -= OnGameOver;
+        GameManager.GameOver -= OnNewGame;
+        GameManager.Instance.challengesCompleted.Enqueue(this);
+        GameManager.Instance.ChallengeComplete(this);
         //claimReward(reward);
     }
 

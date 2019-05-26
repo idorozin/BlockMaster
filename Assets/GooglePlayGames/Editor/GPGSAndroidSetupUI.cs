@@ -353,7 +353,7 @@ namespace GooglePlayGames.Editor
             currentId = PlayerSettings.GetApplicationIdentifier(
                 BuildTargetGroup.Android);
 #else
-            currentId = PlayerSettings.bundleIdentifier;
+            currentId = PlayerSettings.applicationIdentifier;
 #endif
             if (!string.IsNullOrEmpty(packageName))
             {
@@ -364,7 +364,7 @@ namespace GooglePlayGames.Editor
                     PlayerSettings.SetApplicationIdentifier(
                         BuildTargetGroup.Android, packageName);
 #else
-                    PlayerSettings.bundleIdentifier = packageName;
+                    PlayerSettings.applicationIdentifier = packageName;
 #endif
                 }
                 else if (currentId != packageName)
@@ -382,7 +382,7 @@ namespace GooglePlayGames.Editor
                         PlayerSettings.SetApplicationIdentifier(
                             BuildTargetGroup.Android, packageName);
 #else
-                        PlayerSettings.bundleIdentifier = packageName;
+                        PlayerSettings.applicationIdentifier = packageName;
 #endif
                     }
                 }

@@ -54,7 +54,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98bb0ecea2f9ae8478f5ec307cedeeeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  shapes: []
+  spawningPos: {fileID: 0}
+  chanceArray: 
+  shape: {fileID: 0}
+  camera_: {fileID: 0}
 --- !u!114 &114768625780397160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,10 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e805a84d5496767418e768e915b12bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  z: 0
-  shootingPower: 4
   shootingSpeed: 1
 --- !u!114 &114776931326333616
 MonoBehaviour:

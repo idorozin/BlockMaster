@@ -398,6 +398,7 @@
             <e p="PlayerStats.cs" t="Include" />
             <e p="TimePassed.cs" t="Include" />
           </e>
+          <e p="SetSkin.cs" t="Include" />
           <e p="Settings.cs" t="Include" />
           <e p="Shop" t="Include">
             <e p="Editor" t="Include">
@@ -411,7 +412,6 @@
             <e p="swipeDetector.cs" t="Include" />
           </e>
         </e>
-        <e p="SetSkin.cs" t="Include" />
       </e>
       <e p="Block Master recover.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />

@@ -16,7 +16,7 @@ public class DailyReward3: MonoBehaviour
 			return;
 		initilized = true;
 		coolDown = 2;
-		StartCoroutine("ResetTimer");
+		StartCoroutine("CountDown");
 	}
 	
 	//reset the timer every roll
@@ -58,7 +58,8 @@ public class DailyReward3: MonoBehaviour
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		if (coolDown <= 0)
 		{
-			PlayerStats.Instance.IncrementChallengesAvailable(1);
+			Debug.Log(Math.Abs(coolDown/countDownLenght) + 1);
+			PlayerStats.Instance.IncrementChallengesAvailable(Math.Abs(coolDown/countDownLenght));
 			StartCoroutine("ResetTimer");
 			yield break;
 		}

@@ -32,6 +32,7 @@ public class DailyReward2: MonoBehaviour
 	//reset the timer every roll
 	public IEnumerator resetTimer()
 	{
+		Debug.Log("Daily Reward 2  - Reset Timer");
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		PlayerStats.Instance.offsetG = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
 		coolDown = countDownLenght;
@@ -69,9 +70,11 @@ public class DailyReward2: MonoBehaviour
 		//validate 
 		if (TimeManager.Instance.GetHtmlFromUri("http://google.com") == "")
 			yield break;
+		Debug.Log("Daily Reward 2  - enable button");
 		yield return TimeManager.Instance.StartCoroutine("getTime");
-		if (coolDown <= 0 && TimeText != null)
+		if (coolDown <= 0)
 		{
+			Debug.Log("Daily Reward 2 allowed");
 			GiftAllowed = true;
 			yield break;
 		}

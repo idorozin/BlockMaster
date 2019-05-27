@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class ItemsShop : MonoBehaviour
 {
@@ -13,17 +14,18 @@ public class ItemsShop : MonoBehaviour
 	private int currentItem=0 , currentType=0;
 	
 	[SerializeField]
-	private Text goldBalance;
+	private TextMeshProUGUI goldBalance;
 	[SerializeField]
-	private Text diamondBalance;
+	private TextMeshProUGUI diamondBalance;
 	[SerializeField]
-	private GameObject lockedUi;
+	private TextMeshProUGUI priceText;
+	[SerializeField] 
+	private TextMeshProUGUI nameText;
 	[SerializeField]
 	private Image itemImage;
 	[SerializeField]
-	private Text priceText;
-	[SerializeField] 
-	private Text nameText;
+	private GameObject lockedUi;
+
 
 	
 	// Use this for initialization
@@ -145,9 +147,9 @@ public class ItemsShop : MonoBehaviour
 	private void SetButton()
 	{
 		if(buy==null)
-			buy = GameObject.Find("ItemsShop").transform.Find("buy").gameObject;
+			buy = GameObject.Find("ItemsShop").transform.Find("shopRoomSofy").gameObject.transform.Find("buy").gameObject;
 		if(use==null)
-			use = GameObject.Find("ItemsShop").transform.Find("use").gameObject;
+			use = GameObject.Find("ItemsShop").transform.Find("shopRoomSofy").gameObject.transform.Find("use").gameObject;
 		
 		bool owned = PlayerStats.Instance.ItemsOwned.Contains(items[currentItem].Name);
 		if (owned)

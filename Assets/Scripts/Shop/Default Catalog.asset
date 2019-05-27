@@ -4,42 +4,11 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 352cbcf3dff273c48910d05281843525, type: 3}
   m_Name: Default Catalog
   m_EditorClassIdentifier: 
-  serializedItems:
-  - type: 0
-    list:
-    - Name: asdasda
-      Icon: {fileID: 0}
-      type: 0
-      Gold: 0
-      Diamonds: 0
-      Score: 0
-  - type: 0
-    list: []
-  - type: 0
-    list:
-    - Name: sdasdasd
-      Icon: {fileID: 0}
-      type: 0
-      Gold: 0
-      Diamonds: 0
-      Score: 0
-    - Name: 
-      Icon: {fileID: 0}
-      type: 0
-      Gold: 12312
-      Diamonds: 123
-      Score: 0
-    - Name: 
-      Icon: {fileID: 0}
-      type: 0
-      Gold: 0
-      Diamonds: 0
-      Score: 0
+  serializedItems: []

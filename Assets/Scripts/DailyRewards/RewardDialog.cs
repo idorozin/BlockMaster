@@ -6,16 +6,16 @@ using UnityEngine.UI;
 
 public class RewardDialog : MonoBehaviour
 {
-	public static Reward p;
+	public static Reward_ p;
 
 	[SerializeField]
 	private Image rewardIcon;
 	
-	public void CollectPrize(Reward reward)
+	public void CollectPrize(Reward_ reward)
 	{
 	}
 
-	public void CollectPrizeWithAnimation(Reward reward)
+	public void CollectPrizeWithAnimation(Reward_ reward)
 	{
 		CollectPrize(reward);
 		rewardIcon.sprite = reward.icon;

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Experimental.U2D;
 
 public class ItemsShop : MonoBehaviour
 {
@@ -25,6 +25,8 @@ public class ItemsShop : MonoBehaviour
 	private Image itemImage;
 	[SerializeField]
 	private GameObject lockedUi;
+	[SerializeField]
+	private GameObject lock_;
 
 
 	
@@ -86,15 +88,19 @@ public class ItemsShop : MonoBehaviour
 
 	private void MoveLeft()
 	{
-		if (currentItem - 1 < 0 || items[currentItem - 1] == null) return;
-		currentItem--;
+		if (currentItem < 1)
+			currentItem = items.Count - 1;
+		else
+			currentItem--;
 		UpdateUI();
 	}
 
 	public void MoveRight()
 	{
-		if (currentItem + 1 > items.Count - 1 || items[currentItem + 1] == null) return;
-		currentItem++;
+		if (currentItem + 1 >= items.Count)
+			currentItem = 0;
+		else
+			currentItem++;
 		UpdateUI();
 	}
 
@@ -120,16 +126,34 @@ public class ItemsShop : MonoBehaviour
 
 	#region Create
 
-	private void SetLockedUi()
+	private void SetLockedUi(Item item)
 	{
-		if (items[currentItem].Score > PlayerStats.Instance.highScore)
+		if (item.Score > PlayerStats.Instance.highScore)
 		{
+			lock_.SetActive(true);
 			lockedUi.SetActive(true);
 			Text lockedUiText = lockedUi.GetComponent<Text>();
-			lockedUiText.text = "To unlock the \n cannon reach to \n " + items[currentItem].Score + "points";
+			lockedUiText.text = "To unlock the \n cannon reach to \n " + item.Score + "points";
 		}
 		else
-			lockedUi.SetActive(false);
+		{
+			if (!PlayerStats.Instance.ItemsUnlocked.Contains(item.Name))
+			{
+				lock_.SetActive(true);
+				lockedUi.SetActive(false);
+			}
+			else
+			{
+				lock_.SetActive(false);
+				lockedUi.SetActive(false);
+			}
+		}
+	}
+
+	public void TryUnlock()
+	{
+		if(items[currentItem].Unlock())
+			SetLockedUi(items[currentItem]);
 	}
 
 	private void UpdateItem(Item item)
@@ -144,14 +168,14 @@ public class ItemsShop : MonoBehaviour
 
 	// TODO
 	private GameObject buy, use; 
-	private void SetButton()
+	private void SetButton(Item item)
 	{
 		if(buy==null)
 			buy = GameObject.Find("ItemsShop").transform.Find("shopRoomSofy").gameObject.transform.Find("buy").gameObject;
 		if(use==null)
 			use = GameObject.Find("ItemsShop").transform.Find("shopRoomSofy").gameObject.transform.Find("use").gameObject;
 		
-		bool owned = PlayerStats.Instance.ItemsOwned.Contains(items[currentItem].Name);
+		bool owned = PlayerStats.Instance.ItemsOwned.Contains(item.Name);
 		if (owned)
 		{
 			if(buy.activeSelf)
@@ -168,9 +192,9 @@ public class ItemsShop : MonoBehaviour
 
 	private void UpdateUI()
 	{
-		SetButton();
+		SetButton(items[currentItem]);
 		UpdateItem(items[currentItem]);
-		SetLockedUi();
+		SetLockedUi(items[currentItem]);
 	}
 	
 
@@ -181,8 +205,7 @@ public class ItemsShop : MonoBehaviour
 	public void BuyButton()
 	{
 		items[currentItem].Buy();
-		SetButton();
-		
+		SetButton(items[currentItem]);
 	}
 	
 	public void UseButton()

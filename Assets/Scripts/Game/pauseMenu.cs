@@ -110,11 +110,10 @@ public class PauseMenu : MonoBehaviour {
 	
 	private void OnGameOver()
 	{
-		GameManager.Instance.lives=0;
+		GameIsPaused = true;
 		PlayerStats.Instance.gold+=(int)GameManager.Instance.score;
 		GameOverUi((GameManager.Instance.score));
 		DisplayCompletedChallenges();
-		GameIsPaused = true;
 		PlayerStats.saveFile();
 	}
 }

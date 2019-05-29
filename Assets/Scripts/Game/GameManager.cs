@@ -47,13 +47,19 @@ public class GameManager : MonoBehaviour
 
 	void HealthDown()
 	{
+		if (PauseMenu.GameIsPaused)
+			return;
 		lives--;
 		if (lives <= minimumLives)
+		{
+			Debug.Log("HEALTH Down game over");
 			GameOver();
+		}
 	}
 
 	public void LavaReached()
 	{
+		Debug.Log("Lava game over");
 		GameOver();
 	}
 

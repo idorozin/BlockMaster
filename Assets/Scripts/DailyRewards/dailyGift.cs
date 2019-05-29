@@ -9,7 +9,7 @@ public class DailyGift : MonoBehaviour
 	[SerializeField] 
 	private GameObject TickPrefab;
 	[SerializeField]
-	Reward[] gifts = new Reward[30];
+	Reward_[] gifts = new Reward_[30];
 	[SerializeField]
 	private GameObject EmptyGift;
 
@@ -57,7 +57,7 @@ public class DailyGift : MonoBehaviour
 			PlayerStats.saveFile();
 	}
 
-	private void getGift(Reward gift)
+	private void getGift(Reward_ gift)
 	{
 		RewardDialog r = Instantiate(rewardDialog);
 		r.CollectPrizeWithAnimation(gift);

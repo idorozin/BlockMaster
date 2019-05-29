@@ -70,11 +70,9 @@ public class DailyReward2: MonoBehaviour
 		//validate 
 		if (TimeManager.Instance.GetHtmlFromUri("http://google.com") == "")
 			yield break;
-		Debug.Log("Daily Reward 2  - enable button");
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		if (coolDown <= 0)
 		{
-			Debug.Log("Daily Reward 2 allowed");
 			GiftAllowed = true;
 			yield break;
 		}

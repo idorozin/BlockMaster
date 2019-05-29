@@ -32,7 +32,6 @@ public class DailyReward: MonoBehaviour
 	public IEnumerator ResetTimer()
 	{
 		coolDown = countDownLenght;
-		Debug.Log("Daily Reward 1  - Reset Timer");
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		PlayerStats.Instance.wheel.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
 		PlayerStats.Instance.wheel.startTime = TimeManager.Instance.getFullTime();
@@ -70,7 +69,6 @@ public class DailyReward: MonoBehaviour
 	{
 		if(TimeText!=null){TimeText.GetComponent<Text>().text = "READY!";timeText = "READY";}
 		//validate 
-		Debug.Log("Daily Reward 1  - Enable Button");
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		if (coolDown <= 0)
 		{

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu]
-public class Reward : ScriptableObject
+public class Reward_ : ScriptableObject
 {
     public int gold;
     public int diamonds;

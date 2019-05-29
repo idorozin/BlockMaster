@@ -31,18 +31,16 @@ public class ShapeBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-			if(triggerOff)
-			{
-
-				isTouching = IsTouchingShapes(); //is the shape touching another shape?
-			}			
-			
-			//if the shape isn't touching another shape and its falling turn boxcoll on
-			TurnOnCollider();
-			//wait period of time and freezes the rigidbody
-			FreezeRigidbody();
-			//check if the shape fell down if it did , Destroy game object and lives--
-			HealthDown();		
+		if(triggerOff)
+		{
+			isTouching = IsTouchingShapes(); //is the shape touching another shape?
+		}			
+		//if the shape isn't touching another shape and its falling turn boxcoll on
+		TurnOnCollider();
+		//wait period of time and freezes the rigidbody
+		FreezeRigidbody();
+		//check if the shape fell down if it did , Destroy game object and lives--
+		HealthDown();		
 	}
 	
 	//return the first child
@@ -98,7 +96,7 @@ public class ShapeBehaviour : MonoBehaviour {
 
 	private void HealthDown()
 	{
-		if(!triggerOff && transform.position.y<-3)
+		if(!triggerOff && transform.position.y<-5)
 		{
 			ShapeFell();
 			Destroy(gameObject);

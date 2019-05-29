@@ -8,6 +8,7 @@ public class PlayerData
         public float highScore;
         public string lastCannon="default";
         public List<string> ItemsOwned = new List<string>();
+        public List<string> ItemsUnlocked = new List<string>(); 
         public int gold;
         public int diamonds;
         public float highScoreHeight;

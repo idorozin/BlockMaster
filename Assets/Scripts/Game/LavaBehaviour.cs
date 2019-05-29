@@ -23,7 +23,7 @@ public class LavaBehaviour : MonoBehaviour
 		if(PauseMenu.GameIsPaused)
 			return;
 		transform.position = transform.position+Vector3.up*initialSpeed+new Vector3(0f,CalcSpeed(),0f);
-		if (transform.position.y > height.transform.position.y)//(GameManager.Instance.height + 2f))
+		if (transform.position.y > GameManager.Instance.height + 2f)//(GameManager.Instance.height + 2f))
 		{
 			GameManager.Instance.LavaReached();
 		}

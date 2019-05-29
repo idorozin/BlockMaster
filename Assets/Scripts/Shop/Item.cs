@@ -13,6 +13,7 @@ public class Item
 	public int Gold;
 	public int Diamonds;
 	public int Score;
+	public bool Locked = true;
 
 	
 	public enum ItemType
@@ -20,14 +21,10 @@ public class Item
 		Cannon , Troll ,
 	}
 
-	public Item()
-	{
-
-	}
+	public Item(){}
 	public Item(string name , Sprite icon)
 	{
 		this.Name = name;
-
 		this.Icon = icon;
 	}
 
@@ -52,4 +49,21 @@ public class Item
 			PlayerStats.Instance.lastCannon = Name;
 		PlayerStats.saveFile();
 	}
+
+	public bool Unlock()
+	{
+		if (Score <= PlayerStats.Instance.highScore)
+		{
+			Locked = false;
+			PlayerStats.Instance.ItemsUnlocked.Add(Name);
+			PlayerStats.saveFile();
+		}
+		return !Locked;
+	}
+
+	public class Item2 : Item
+	{
+		public TrailEffect trail;
+	}
+
 }

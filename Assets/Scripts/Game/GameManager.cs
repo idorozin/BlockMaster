@@ -23,12 +23,16 @@ public class GameManager : MonoBehaviour
 	public static event Action NewGame = delegate { };
 	
 	private float minimumLives = -3f;
-	private Rigidbody2D rb;
+	private Rigidbody2D rb2d;
 	private Transform camera;
 	private float fixedScore = 0;
 	[SerializeField] private GameObject surface;
 	[SerializeField] private GameObject highScoresign;
-	[SerializeField] private TextMeshProUGUI text_;	
+	[SerializeField] private TextMeshProUGUI text_;
+
+	private bool reviveUsed = false;
+	
+	private float startHeight;
 
 	private void Awake()
 	{
@@ -39,12 +43,21 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		startHeight = surface.transform.position.y;
 		camera = GameObject.Find("Main Camera").transform;
-		rb = GetComponent<Rigidbody2D>();
+		rb2d = GetComponent<Rigidbody2D>();
 		OnScoreChanged();
 		ShapeBehaviour.ShapeFell += HealthDown;
 	}
+	
+	private void OnDisable()
+	{
+		ShapeBehaviour.ShapeFell -= HealthDown;
+	}
 
+	[SerializeField] private GameObject revive;
+	[SerializeField] private Transform canvasPause;
+	
 	void HealthDown()
 	{
 		if (PauseMenu.GameIsPaused)
@@ -52,20 +65,27 @@ public class GameManager : MonoBehaviour
 		lives--;
 		if (lives <= minimumLives)
 		{
-			Debug.Log("HEALTH Down game over");
-			GameOver();
+			TryRevive();
 		}
 	}
 
 	public void LavaReached()
 	{
-		Debug.Log("Lava game over");
-		GameOver();
+		TryRevive();
 	}
 
-	private void OnDisable()
+	private void TryRevive()
 	{
-		ShapeBehaviour.ShapeFell -= HealthDown;
+		if (!reviveUsed && fixedScore > 50 && (PlayerStats.Instance.gold > 10 || AdManager.Instance.CanPlayRewarded()))
+		{
+			reviveUsed = true;
+			PauseMenu.GameIsPaused = true;
+			Instantiate(revive, canvasPause);
+		}
+		else
+		{
+			GameOver();
+		}
 	}
 
 	public void ChallengeComplete(Challenge c)
@@ -73,45 +93,44 @@ public class GameManager : MonoBehaviour
 		anim.animate(c);
 	}
 
-
-// Update is called once per frame
 	void Update () {
-		rb.velocity = new Vector2(0,-2);
+		rb2d.velocity = new Vector2(0,-2);
 		timePassed += Time.deltaTime;
 		surface.transform.position = new Vector3(surface.transform.position.x , DestroyShapes.height , surface.transform.position.z);
 	}
 	
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if(col.gameObject.GetComponent<Rigidbody2D>() !=null && col.gameObject.GetComponent<Rigidbody2D>().velocity.x<0.1 && col.gameObject.GetComponent<Rigidbody2D>().velocity.y<0.1 && col.gameObject.GetComponent<Rigidbody2D>().velocity.x>-0.1 && col.gameObject.GetComponent<Rigidbody2D>().velocity.y>-0.1 && col.isTrigger==false)
+		Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D>();
+		if(col.gameObject.name != surface.name && rb !=null && rb.velocity.x<0.1 && rb.velocity.y<0.1 && rb.velocity.x>-0.1 && rb.velocity.y>-0.1 && col.isTrigger==false)
 		{
-			if (col.gameObject.name != surface.name && col.transform.position.y > surface.transform.position.y)
-				score=(float)Math.Round((col.transform.position.y-surface.transform.position.y)*10);
-			if(col.gameObject.name != surface.name && transform.position.y>0)
+			if (col.transform.position.y > startHeight)
+				score=(float)Math.Round((col.transform.position.y-startHeight)*10);
+			if(transform.position.y>0)
 				height=col.transform.position.y;
 		}
-		rb.position = new Vector3(camera.position.x,camera.position.y+5f,camera.position.z);
+		rb2d.position = new Vector3(camera.position.x,camera.position.y+5f,camera.position.z);
 		OnScoreChanged();
 	}
 
 	#region Score
 	
-	private float getHighScoreSignHeight()
+	private float GetHighScoreSignHeight()
 	{
 		return PlayerStats.Instance.highScoreHeight;
 	}
 
-	private void updateStats()
+	private void UpdateStats()
 	{
 		if(fixedScore>PlayerStats.Instance.highScore){
-			PlayerStats.Instance.highScore=fixedScore;
+			PlayerStats.Instance.highScore = fixedScore;
 			PlayerStats.Instance.highScoreHeight = height;
 			PlayerStats.saveFile();
 			PlayServices.Instance.addScoreToLeaderboard("",(int)fixedScore);
 		}
 	}
 
-	private void setScore()
+	private void SetScore()
 	{
 		if(score!=0 && score>fixedScore)
 			fixedScore=score;
@@ -123,11 +142,11 @@ public class GameManager : MonoBehaviour
 	private void OnScoreChanged()
 	{
 		//set the current score
-		setScore();
+		SetScore();
 		// every time record is bitten save the file and push to leaderboard
-		updateStats();
+		UpdateStats();
 		//sign to show where is your highScore
-		highScoresign.transform.position=new Vector3(highScoresign.transform.position.x,getHighScoreSignHeight(),0f);
+		highScoresign.transform.position = new Vector3(highScoresign.transform.position.x,GetHighScoreSignHeight(),0f);
 	}
 	
 	#endregion

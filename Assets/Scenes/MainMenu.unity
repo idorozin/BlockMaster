@@ -336,6 +336,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1384881935435052, guid: 79b7eaa22951d1e4ba1effe90ac362b5,
     type: 2}
   m_PrefabInternal: {fileID: 320107252}
+--- !u!114 &91000399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91000398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19eacd913795e3446bd53b0e6cdffa5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cannons: {fileID: 11400000, guid: b2e5f7c97441ce144a154c157a0088f8, type: 2}
 --- !u!114 &91000403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +368,18 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9cdef45420cea504cb54ebf728b71e7f, type: 3}
     loop: 0
     source: {fileID: 0}
+--- !u!114 &91000405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91000398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a516415226262c240b42a79a07a07be2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumTimeBetweenAds: 30
 --- !u!1 &129653357
 GameObject:
   m_ObjectHideFlags: 0

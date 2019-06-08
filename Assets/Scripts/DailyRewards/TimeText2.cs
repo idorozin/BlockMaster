@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class TimeText2 : MonoBehaviour
 {
-	// Use this for initialization
 	private void Update()
 	{
 		Debug.Log("poop");

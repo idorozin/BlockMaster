@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour
 			Instance = new PlayerData();
 			path = Application.persistentDataPath + "/PlayerFile.json";
 			if (File.Exists(Application.persistentDataPath + "/PlayerFile.json")) Debug.Log("file exists");
-			else saveFile();
+				else saveFile();
 			loadFile();
 			//if (Instance.challenges == null)
 			//{
@@ -29,6 +29,7 @@ public class PlayerStats : MonoBehaviour
 				}
 				Instance.ChallengesAvailable = 1;
 			//}
+			Instance.gold += 50;
 			DontDestroyOnLoad(gameObject);
 			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
 		}
@@ -56,6 +57,14 @@ public class PlayerStats : MonoBehaviour
 		//Serialize object
 		Newtonsoft.Json.JsonConvert.PopulateObject(fileString , Instance);			
 		saveFile();
+	}
+	
+	[ContextMenu("Reset_")]
+	public void ResetFile()
+	{
+		//parse this class to json string
+		//save json file
+		File.Delete(path); 
 	}
 	
 	public static void saveFile()

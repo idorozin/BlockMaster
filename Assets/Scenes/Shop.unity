@@ -1734,7 +1734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detector: {fileID: 1683503326}
-  serializedItems: {fileID: 11400000, guid: 2eae72889d5920244b582b05805c7a0f, type: 2}
+  serializedItems: {fileID: 11400000, guid: b2e5f7c97441ce144a154c157a0088f8, type: 2}
   goldBalance: {fileID: 899516905}
   diamondBalance: {fileID: 0}
   priceText: {fileID: 665357288}

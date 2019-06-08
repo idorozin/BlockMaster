@@ -8,7 +8,7 @@ public class ItemsShop : MonoBehaviour
 {
 	[SerializeField]
 	private swipeDetector detector; 
-	[SerializeField] private ItemsShopCatalog serializedItems;
+	[SerializeField] private Category serializedItems;
 	public List<List<Item>> categories = new List<List<Item>>();
 	private List<Item> items;
 	private int currentItem=0 , currentType=0;
@@ -33,10 +33,7 @@ public class ItemsShop : MonoBehaviour
 	// Use this for initialization
 	private void Start ()
 	{
-		foreach (var listWraper in serializedItems.serializedItems)
-		{
-			categories.Add(listWraper.list);
-		}
+		categories.Add(serializedItems.serializedItems);
 		items = categories[currentType];
 		Debug.Log(items.Count);
 		currentItem=0;
@@ -137,7 +134,7 @@ public class ItemsShop : MonoBehaviour
 		}
 		else
 		{
-			if (!PlayerStats.Instance.ItemsUnlocked.Contains(item.Name))
+			if (!PlayerStats.Instance.ItemsUnlocked.Contains(currentItem))
 			{
 				lock_.SetActive(true);
 				lockedUi.SetActive(false);
@@ -152,7 +149,7 @@ public class ItemsShop : MonoBehaviour
 
 	public void TryUnlock()
 	{
-		if(items[currentItem].Unlock())
+		if(items[currentItem].Unlock(currentItem))
 			SetLockedUi(items[currentItem]);
 	}
 
@@ -175,7 +172,7 @@ public class ItemsShop : MonoBehaviour
 		if(use==null)
 			use = GameObject.Find("ItemsShop").transform.Find("shopRoomSofy").gameObject.transform.Find("use").gameObject;
 		
-		bool owned = PlayerStats.Instance.ItemsOwned.Contains(item.Name);
+		bool owned = PlayerStats.Instance.ItemsOwned.Contains(currentItem);
 		if (owned)
 		{
 			if(buy.activeSelf)
@@ -204,13 +201,13 @@ public class ItemsShop : MonoBehaviour
 
 	public void BuyButton()
 	{
-		items[currentItem].Buy();
+		items[currentItem].Buy(currentItem);
 		SetButton(items[currentItem]);
 	}
 	
 	public void UseButton()
 	{
-		items[currentItem].Use();
+		items[currentItem].Use(currentItem);
 	} 
 
 

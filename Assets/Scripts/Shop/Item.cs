@@ -28,34 +28,34 @@ public class Item
 		this.Icon = icon;
 	}
 
-	public void Buy()
+	public void Buy(int index)
 	{
-		if (Score > PlayerStats.Instance.highScore || PlayerStats.Instance.ItemsOwned.Contains(Name))
+		if (Score > PlayerStats.Instance.highScore || PlayerStats.Instance.ItemsOwned.Contains(index))
 			return;
 		
 		if(PlayerStats.Instance.gold >= Gold && PlayerStats.Instance.diamonds >= Diamonds){
-			PlayerStats.Instance.ItemsOwned.Add(Name);
+			PlayerStats.Instance.ItemsOwned.Add(index);
 			PlayerStats.Instance.gold -= Gold;
 			PlayerStats.Instance.diamonds -= Diamonds;
 			PlayerStats.saveFile();
 		}
 	}
 
-	public void Use()
+	public void Use(int index)
 	{
-		if (PlayerStats.Instance.lastCannon == Name || !PlayerStats.Instance.ItemsOwned.Contains(Name))
+		if (PlayerStats.Instance.lastCannon == index || !PlayerStats.Instance.ItemsOwned.Contains(index))
 			return;
 		//if(type == ItemType.Cannon)
-			PlayerStats.Instance.lastCannon = Name;
+			PlayerStats.Instance.lastCannon = index;
 		PlayerStats.saveFile();
 	}
 
-	public bool Unlock()
+	public bool Unlock(int index)
 	{
 		if (Score <= PlayerStats.Instance.highScore)
 		{
 			Locked = false;
-			PlayerStats.Instance.ItemsUnlocked.Add(Name);
+			PlayerStats.Instance.ItemsUnlocked.Add(index);
 			PlayerStats.saveFile();
 		}
 		return !Locked;

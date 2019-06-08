@@ -16,6 +16,8 @@ public class DailyReward3: MonoBehaviour
 			return;
 		initilized = true;
 		coolDown = 2;
+		if (string.IsNullOrEmpty(PlayerStats.Instance.challenge.startTime))
+			PlayerStats.Instance.challenge.startTime = "06-01-2016 19:12:07";
 		StartCoroutine("CountDown");
 	}
 	

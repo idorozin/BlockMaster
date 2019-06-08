@@ -12,7 +12,8 @@ public class TimeManager : MonoBehaviour
 	private string path="www.korystudios.com/realtime.php";
 	private string time="";
 	private int sec, min, hour, day , month , year;
-	private DateTime baseDate,currentDate,dateTime;
+	private DateTime currentDate,dateTime;
+	public DateTime baseDate;
 
 	public static TimeManager Instance;
 	

@@ -6,9 +6,9 @@ using UnityEngine.Experimental.UIElements;
 public class PlayerData
     {
         public float highScore;
-        public string lastCannon="default";
-        public List<string> ItemsOwned = new List<string>();
-        public List<string> ItemsUnlocked = new List<string>(); 
+        public int lastCannon= 0;
+        public List<int> ItemsOwned = new List<int>();
+        public List<int> ItemsUnlocked = new List<int>(); 
         public int gold;
         public int diamonds;
         public float highScoreHeight;

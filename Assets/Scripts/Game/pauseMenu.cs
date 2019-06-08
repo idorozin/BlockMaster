@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour {
 	
-	public static bool GameIsPaused = false;
+	public static bool GameIsPaused = true;
 	public GameObject PauseMenuUI;
 	public GameObject GameOverUI;
 	public GameObject clickToStart;
@@ -110,6 +110,7 @@ public class PauseMenu : MonoBehaviour {
 	
 	private void OnGameOver()
 	{
+		AdManager.Instance.ShowInterstitial();
 		GameIsPaused = true;
 		PlayerStats.Instance.gold+=(int)GameManager.Instance.score;
 		GameOverUi((GameManager.Instance.score));

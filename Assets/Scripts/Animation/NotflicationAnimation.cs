@@ -89,5 +89,6 @@ public class NotflicationAnimation : MonoBehaviour
 			yield return new WaitForSeconds(speed);
 		}
 		animateCoroutine = null;
+		Destroy(notflication);
 	}
 }

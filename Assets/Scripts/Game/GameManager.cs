@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 	public float lives;
 	public float timePassed;
 
+	public bool recordBroke;
+	
 	public List<GameObject> shapes = new List<GameObject>();
 
 	public Queue<Challenge> challengesCompleted = new Queue<Challenge>();
@@ -76,6 +78,7 @@ public class GameManager : MonoBehaviour
 
 	private void TryRevive()
 	{
+		Debug.Log("TryRevive");
 		if (!reviveUsed && fixedScore > 50 && (PlayerStats.Instance.gold > 10 || AdManager.Instance.CanPlayRewarded()))
 		{
 			reviveUsed = true;

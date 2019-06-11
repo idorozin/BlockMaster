@@ -47,7 +47,7 @@ public class MenuScript : MonoBehaviour
 	public void unLoadDailyGift()
 	{
 		DailyGift.SetActive(false);
-		DailyGift.GetComponent<DailyGift>().destroyTicks();
+		DailyGift.GetComponent<DailyGift>().ResetPanels();
 	}
 
 	public void LoadChallanges()
@@ -67,6 +67,17 @@ public class MenuScript : MonoBehaviour
 		WheelOfFortune.SetActive(false);
 	}
 
+	public void LoadCredits()
+	{
+		Settings.SetActive(false);
+		credits.SetActive(true);
+	}
+	public void UnLoadCredits()
+	{
+		credits.SetActive(false);
+		Settings.SetActive(true);
+	}
+
 	#endregion
 	
 	
@@ -80,6 +91,8 @@ public class MenuScript : MonoBehaviour
 	private GameObject DailyGift;
 	[SerializeField] 
 	private GameObject ChallangesCanvas;
+	[SerializeField] 
+	private GameObject credits;
      	
 	 public void setRecordText()
      {

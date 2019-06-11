@@ -8,10 +8,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4516a206d5fbb1a4588ab6d3f14f4504, type: 3}
+  m_Script: {fileID: 0}
   m_Name: GOLD50
-  m_EditorClassIdentifier: 
-  gold: 50
-  diamonds: 0
-  cannon: 0
-  icon: {fileID: 21300000, guid: a9fde3a2c3e6f2643964142264d9e883, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::Gold
+  icon: {fileID: 21300000, guid: fdc4e9d9e7631c94ab4adb4aba25eaed, type: 3}
+  amount: 50
+  faceColor:
+    serializedVersion: 2
+    rgba: 4278251263
+  outlineColor:
+    serializedVersion: 2
+    rgba: 4278236671
+  prefab: {fileID: 1047418264052310, guid: 87d407ce396ec8a48b40b79dddec881d, type: 2}

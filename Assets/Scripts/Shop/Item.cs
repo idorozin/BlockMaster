@@ -54,11 +54,10 @@ public class Item
 	{
 		if (Score <= PlayerStats.Instance.highScore)
 		{
-			Locked = false;
 			PlayerStats.Instance.ItemsUnlocked.Add(index);
 			PlayerStats.saveFile();
 		}
-		return !Locked;
+		return true;
 	}
 
 	public class Item2 : Item

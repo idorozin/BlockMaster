@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,22 +11,29 @@ public class RewardDialog : MonoBehaviour
 
 	[SerializeField]
 	private Image rewardIcon;
+	[SerializeField]
+	private TextMeshProUGUI rewardText;
 	
-	public void CollectPrize(Reward_ reward)
-	{
-	}
 
 	public void CollectPrizeWithAnimation(Reward_ reward)
 	{
-		CollectPrize(reward);
-		rewardIcon.sprite = reward.icon;
+		reward.Show(rewardIcon , rewardText);
 		p = reward;
 	}
 
 	public void MultiplyPrizeButton()
 	{
-	//	if(RewardedAd)
-	//		collectPrize(p);
+		AdManager.Instance.ShowRewarded(handleFailed , handleSuccess);
+	}
+
+	void handleFailed(object sender , EventArgs e)
+	{
+		gameObject.SetActive(false);
+
+	}	
+	void handleSuccess(object sender , EventArgs e)
+	{
+		p.Collect();
 		gameObject.SetActive(false);
 	}
 

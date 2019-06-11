@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using Boo.Lang;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,8 +13,8 @@ public class PauseMenu : MonoBehaviour {
 	public GameObject PauseMenuUI;
 	public GameObject GameOverUI;
 	public GameObject clickToStart;
-	public Text gameOverScore;
-	public Text gameOverMoney;
+	public TextMeshProUGUI gameOverScore;
+	public TextMeshProUGUI gameOverMoney;
 	public GameObject ChallangesDisplayPanel;
 	public GameObject ChallengeDisplayPrefab;
 	public GameObject ChallangesCompleteDisplayPanel;
@@ -104,7 +105,7 @@ public class PauseMenu : MonoBehaviour {
 	{
 		GameOverUI.SetActive(true);
 		gameOverScore.text=score.ToString();
-		gameOverMoney.text = "+"+(score/10).ToString()+" (coins)";
+		gameOverMoney.text = (score/10).ToString()+" (coins)";
 		Score.SetActive(false);
 	}
 	

@@ -10,7 +10,11 @@ public class WheelOfFortune : MonoBehaviour
 	private JointMotor2D motor;
 	public static bool rollAllowed=true;
 	[SerializeField]
-	private int startSpeed=600, stopSpeed=50 , prizeIndex;
+	private int startSpeed=600, stopSpeed=50 , prizeIndex;	
+	[SerializeField]
+	private RewardDialog rewardDialog;
+	[SerializeField]
+	private Reward_[] rewards;
 	
 	private void Awake()
 	{
@@ -45,7 +49,6 @@ public class WheelOfFortune : MonoBehaviour
 		for (int i = startSpeed; i > 0; i=i-stopSpeed/2)
 		{
 			motor.motorSpeed = i;
-			Debug.Log(motor.motorSpeed);
 			motor.maxMotorTorque = 10000;
 			wheelJoint.motor = motor;
 			yield return new WaitForSeconds(0.5f);
@@ -53,7 +56,6 @@ public class WheelOfFortune : MonoBehaviour
 
 		for (int i = (int)motor.motorSpeed; i > 0; i-=10)
 		{
-			Debug.Log(motor.motorSpeed);
 			motor.motorSpeed = i;
 			motor.maxMotorTorque = 10000;
 			wheelJoint.motor = motor;
@@ -62,7 +64,6 @@ public class WheelOfFortune : MonoBehaviour
 		
 		for (int i = (int)motor.motorSpeed; i > 0; i--)
 		{
-			Debug.Log(motor.motorSpeed);
 			motor.motorSpeed = i;
 			motor.maxMotorTorque = 10000;
 			wheelJoint.motor = motor;
@@ -76,40 +77,33 @@ public class WheelOfFortune : MonoBehaviour
 		getPrize(prizeIndex);
 		rollAllowed = true;
 	}
-
+	
 	int getPrizeIndex(int angel)
 	{
+		Debug.Log(angel);
 		if (angel >= 0 && angel < 47)
-			return 1;
+			return 0;
 		if (angel >= 47 && angel < 100)
-			return 2;
+			return 1;
 		if (angel >= 100 && angel < 139)
-			return 3;
+			return 2;
 		if (angel >= 139 && angel < 180)
-			return 4;
+			return 3;
 		if (angel >= 180 && angel < 227)
-			return 5;
+			return 4;
 		if (angel >= 227 && angel < 270)
-			return 6;
+			return 5;
 		if (angel >= 270 && angel < 320)
-			return 7;
+			return 6;
 		if (angel >= 320 && angel <= 360)
-			return 8;
+			return 7;
 		return -999;
 	}
 
 	void getPrize(int prizeIndex)
 	{
-		//RewardDialog.Instance.CollectPrizeWithAnimation();
-		
-		if (prizeIndex == 1)
-			PlayerStats.Instance.gold += 200;
-		else if(prizeIndex == 3)
-		PlayerStats.Instance.gold+= 500;
-		if (prizeIndex == 7)
-			PlayerStats.Instance.gold += 100;
-		else if(prizeIndex == 6)
-			PlayerStats.Instance.gold+=50 ;
+		RewardDialog r = Instantiate(rewardDialog);
+		r.CollectPrizeWithAnimation(rewards[prizeIndex]);
 		PlayerStats.saveFile();
 	}
 	

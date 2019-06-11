@@ -93,6 +93,7 @@ public class AdManager : MonoBehaviour
         AdRequest request = new AdRequest.Builder().Build();
         // Load the rewarded ad with the request.
         this.rewardedAd.LoadAd(request);
+        Debug.Log("RequestRewarded");
     }
 
     public void ShowInterstitial(EventArgs handle)

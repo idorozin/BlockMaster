@@ -35,7 +35,6 @@ public class ItemsShop : MonoBehaviour
 	{
 		categories.Add(serializedItems.serializedItems);
 		items = categories[currentType];
-		Debug.Log(items.Count);
 		currentItem=0;
 		UpdateUI();
 		detector.SwipeDetected += MoveToSwipeDirection;
@@ -129,6 +128,7 @@ public class ItemsShop : MonoBehaviour
 		{
 			lock_.SetActive(true);
 			lockedUi.SetActive(true);
+			lock_.GetComponent<Button>().enabled = false;
 			Text lockedUiText = lockedUi.GetComponent<Text>();
 			lockedUiText.text = "To unlock the \n cannon reach to \n " + item.Score + "points";
 		}
@@ -137,6 +137,7 @@ public class ItemsShop : MonoBehaviour
 			if (!PlayerStats.Instance.ItemsUnlocked.Contains(currentItem))
 			{
 				lock_.SetActive(true);
+				lock_.GetComponent<Button>().enabled = true;
 				lockedUi.SetActive(false);
 			}
 			else
@@ -163,15 +164,10 @@ public class ItemsShop : MonoBehaviour
 		nameText.text = item.Name;
 	}
 
-	// TODO
+	[SerializeField]
 	private GameObject buy, use; 
 	private void SetButton(Item item)
-	{
-		if(buy==null)
-			buy = GameObject.Find("ItemsShop").transform.Find("shopRoomSofy").gameObject.transform.Find("buy").gameObject;
-		if(use==null)
-			use = GameObject.Find("ItemsShop").transform.Find("shopRoomSofy").gameObject.transform.Find("use").gameObject;
-		
+	{	
 		bool owned = PlayerStats.Instance.ItemsOwned.Contains(currentItem);
 		if (owned)
 		{
@@ -196,7 +192,6 @@ public class ItemsShop : MonoBehaviour
 	
 
 	#endregion
-	//TODO
 	#region Buttons
 
 	public void BuyButton()

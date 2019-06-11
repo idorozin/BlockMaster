@@ -1,4 +1,6 @@
 ﻿
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class DailyGift : MonoBehaviour
@@ -11,7 +13,9 @@ public class DailyGift : MonoBehaviour
 	[SerializeField]
 	Reward_[] gifts = new Reward_[30];
 	[SerializeField]
-	private GameObject EmptyGift;
+	private GameObject emptyGiftText;
+	[SerializeField]
+	private GameObject emptyGiftImage;
 
 	[SerializeField]
 	private RewardDialog rewardDialog;
@@ -26,13 +30,11 @@ public class DailyGift : MonoBehaviour
 
 	public void UpdateUI()
 	{
-		for(int i=0;i<=PlayerStats.Instance.GiftIndex;i++)
+		for(int i=0;i<PlayerStats.Instance.GiftIndex;i++)
 			Instantiate(TickPrefab , TickPanel);
 		foreach (var gift in gifts)
-		{
-			GameObject go = Instantiate(EmptyGift , GiftPanel);
-			go.GetComponent<Image>().sprite = gift.icon;
-
+		{	
+			gift.Show(GiftPanel);
 		}
 	}
 
@@ -50,11 +52,15 @@ public class DailyGift : MonoBehaviour
 
 		DailyReward2.GiftAllowed = false;
 		GameObject.Find("TimeManager").GetComponent<DailyReward2>().StartCoroutine("resetTimer");
-		if (PlayerStats.Instance.GiftIndex >= gifts.Length-1)
-				PlayerStats.Instance.GiftIndex = 0;
-			getGift(gifts[PlayerStats.Instance.GiftIndex]);
-			PlayerStats.Instance.GiftIndex++;
-			PlayerStats.saveFile();
+		if (PlayerStats.Instance.GiftIndex >= gifts.Length - 1)
+		{
+			PlayerStats.Instance.GiftIndex = 0;
+			ResetPanels();
+		}
+
+		getGift(gifts[PlayerStats.Instance.GiftIndex]);
+		PlayerStats.Instance.GiftIndex++;
+		PlayerStats.saveFile();
 	}
 
 	private void getGift(Reward_ gift)
@@ -63,10 +69,9 @@ public class DailyGift : MonoBehaviour
 		r.CollectPrizeWithAnimation(gift);
 		gift.Collect();
 		Instantiate(TickPrefab , TickPanel);
-		PlayerStats.Instance.GiftIndex++;	
 	}
 
-	public void destroyTicks()
+	public void ResetPanels()
 	{
 		foreach (Transform child in GiftPanel)
 		{

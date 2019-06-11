@@ -6,10 +6,7 @@ using UnityEditor;
 
 public class NativeShare : MonoBehaviour {
 
-
-	
-	//TODO : NOT working on all android versions D:
-	public void shareButtonPress()
+	public void ShareButtonPress()
 	{
 		if (!Application.isEditor)
 		{	

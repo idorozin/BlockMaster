@@ -13,7 +13,7 @@ public class SetSkin : MonoBehaviour
 	void Start ()
 	{
 		if(type == "cannon")
-			GetComponent<SpriteRenderer>().sprite = AssetsManager.Instance.GetLastCannon();
+			GetComponent<SpriteRenderer>().sprite = AssetDatabase.Instance.GetLastCannon();
 		
 	}
 }

@@ -13,10 +13,21 @@ public class CustomCatalogEditor : Editor
 {
    public Item.ItemType types;
    public bool stop = false;
+   public bool animation;
+   public bool trai;
    private string path;
    public override void OnInspectorGUI()
    {
       Category category = (Category)target;
+
+      foreach (var v in category.serializedItems)
+      {
+         if (v.Animator != null)
+         {
+            animation = true;
+            break;
+         }
+      }
 
       EditorGUILayout.BeginHorizontal();
       path = TextField("Path" , path);
@@ -25,7 +36,7 @@ public class CustomCatalogEditor : Editor
          Sprite[] textures = Resources.LoadAll<Sprite>(path);
          foreach (Sprite texture in textures)
          {
-            category.serializedItems.Add(new Item(texture.name , texture));
+               category.serializedItems.Add(new Item(texture.name , texture));
          }
       }
 
@@ -34,7 +45,7 @@ public class CustomCatalogEditor : Editor
          if(category.serializedItems.Count > 0 && EditorUtility.DisplayDialog("", "Are you sure?" ,"Reset" , "Cancel"))
             category.serializedItems.Clear();
       }
-
+      animation = EditorGUILayout.Toggle("animation" ,animation);
       EditorGUILayout.EndHorizontal();
       GUILayout.Space(20);
      // category.type = TextField("Name",category.type);
@@ -50,7 +61,11 @@ public class CustomCatalogEditor : Editor
          item.Gold = EditorGUILayout.IntField("Price",item.Gold);
          item.Diamonds = EditorGUILayout.IntField("Gems",item.Diamonds);
          item.Score = EditorGUILayout.IntField("Score",item.Score);
-         item.Icon = (Sprite)EditorGUILayout.ObjectField("Icon", item.Icon, typeof(Sprite), allowSceneObjects: true);
+         if (animation)
+            item.Animator = (RuntimeAnimatorController) EditorGUILayout.ObjectField("Controller", item.Animator, 
+               typeof(RuntimeAnimatorController), allowSceneObjects: true);
+         else
+            item.Icon = (Sprite)EditorGUILayout.ObjectField("Icon", item.Icon, typeof(Sprite), allowSceneObjects: true);  
          //item.type = category.type;
          if (GUILayout.Button("X"))
          {
@@ -63,7 +78,7 @@ public class CustomCatalogEditor : Editor
    }
 
 
-   public static string TextField(string label, string text)
+   private static string TextField(string label, string text)
    {
       var textDimensions = GUI.skin.label.CalcSize(new GUIContent(label));
       EditorGUIUtility.labelWidth = textDimensions.x;

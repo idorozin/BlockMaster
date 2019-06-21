@@ -8,8 +8,7 @@ public class ItemsShop : MonoBehaviour
 {
 	[SerializeField]
 	private swipeDetector detector; 
-	[SerializeField] private Category serializedItems;
-	public List<List<Item>> categories = new List<List<Item>>();
+	private List<List<Item>> categories = new List<List<Item>>();
 	private List<Item> items;
 	private int currentItem=0 , currentType=0;
 	
@@ -33,7 +32,14 @@ public class ItemsShop : MonoBehaviour
 	// Use this for initialization
 	private void Start ()
 	{
-		categories.Add(serializedItems.serializedItems);
+		if(AssetDatabase.Instance.cannons != null)
+			categories.Add(AssetDatabase.Instance.cannons.serializedItems);		
+		if(AssetDatabase.Instance.platforms != null)
+			categories.Add(AssetDatabase.Instance.platforms.serializedItems);		
+		if(AssetDatabase.Instance.trails != null)
+			categories.Add(AssetDatabase.Instance.trails.serializedItems);		
+		if(AssetDatabase.Instance.flames != null)
+			categories.Add(AssetDatabase.Instance.flames.serializedItems);
 		items = categories[currentType];
 		currentItem=0;
 		UpdateUI();
@@ -157,6 +163,8 @@ public class ItemsShop : MonoBehaviour
 	private void UpdateItem(Item item)
 	{
 		itemImage.sprite = item.Icon;
+		itemImage.GetComponent<ImageCanvasAnimator>().SetConroller(item.Animator);
+		
 		if (item.Gold > item.Diamonds)
 			priceText.text = item.Gold.ToString();
 		else

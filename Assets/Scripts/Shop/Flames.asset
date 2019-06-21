@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662b8a26a701e154c98c4cfe822a5695, type: 3}
+  m_Name: Flames
+  m_EditorClassIdentifier: 
+  serializedItems:
+  - Name: 1
+    Icon: {fileID: 0}
+    type: 0
+    Gold: 0
+    Diamonds: 0
+    Score: 0
+    Animator: {fileID: 9100000, guid: e25dd54194971e0429bb90da8365df9a, type: 2}
+  - Name: 2
+    Icon: {fileID: 0}
+    type: 0
+    Gold: 0
+    Diamonds: 0
+    Score: 0
+    Animator: {fileID: 9100000, guid: 0fef9685af9dd3d439acc013d82fa5b4, type: 2}
+  - Name: 3
+    Icon: {fileID: 0}
+    type: 0
+    Gold: 0
+    Diamonds: 0
+    Score: 0
+    Animator: {fileID: 9100000, guid: 1c6119e91c534094c8c66f590b7000ad, type: 2}
+  - Name: 4
+    Icon: {fileID: 0}
+    type: 0
+    Gold: 0
+    Diamonds: 0
+    Score: 0
+    Animator: {fileID: 9100000, guid: e820bcb1214119d4fa297a5c708738f2, type: 2}

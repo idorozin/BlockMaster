@@ -11,4 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662b8a26a701e154c98c4cfe822a5695, type: 3}
   m_Name: Platformes
   m_EditorClassIdentifier: 
-  serializedItems: []
+  serializedItems:
+  - Name: 
+    Icon: {fileID: 0}
+    type: 0
+    Gold: 0
+    Diamonds: 0
+    Score: 0
+    Animator: {fileID: 0}

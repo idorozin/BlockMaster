@@ -413,12 +413,13 @@
             <e p="CameraShake.cs" t="Include" />
             <e p="DestroyOnAnimationFinish.cs" t="Include" />
             <e p="FlyAnimation.cs" t="Include" />
+            <e p="ImageCanvasAnimator.cs" t="Include" />
             <e p="MoveToTheSide.cs" t="Include" />
             <e p="NotflicationAnimation.cs" t="Include" />
             <e p="ScrollingText.cs" t="Include" />
             <e p="Spin.cs" t="Include" />
           </e>
-          <e p="AssetsManager.cs" t="Include" />
+          <e p="AssetDatabase.cs" t="Include" />
           <e p="AudioManager" t="Include">
             <e p="AudioManager.cs" t="Include" />
             <e p="Sound.cs" t="Include" />

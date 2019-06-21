@@ -417,6 +417,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannons: {fileID: 11400000, guid: b2e5f7c97441ce144a154c157a0088f8, type: 2}
+  platforms: {fileID: 0}
+  trails: {fileID: 0}
+  flames: {fileID: 11400000, guid: dfac9b9610b239e45bd6ef15d524254f, type: 2}
 --- !u!114 &91000403
 MonoBehaviour:
   m_ObjectHideFlags: 0

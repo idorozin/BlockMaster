@@ -6,15 +6,34 @@ using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoBehaviour
 {
+    [Header("EndScreen")]
     [SerializeField] 
-    private GameObject share, double_, cannon, tip;
+    private GameObject share, double_, cannon, tip , others;
     [SerializeField] 
-    private TextMeshProUGUI record, coins , tipText;
+    private TextMeshProUGUI record, coins , tipText;    
+    [Header("challenges")]
+    [SerializeField] 
+    private GameObject challengesDisplay;
+
 
     private NativeShare nativeShare;
 
     private void Start()
     {
+        if (GameManager.Instance.challengesCompleted.Count > 0)
+        {
+            challengesDisplay.SetActive(true);
+        }
+        else
+        {
+            SetEndGameUI();
+        }
+    }
+
+    private void SetEndGameUI()
+    {
+        others.SetActive(true);
+        Debug.Log("Set End...");
         tipText.text = "nice tip";
         nativeShare = GetComponent<NativeShare>();
         int count = 0;
@@ -23,7 +42,7 @@ public class GameOverUI : MonoBehaviour
             share.SetActive(true);
             count++;
         }
-        if (AssetsManager.Instance.CanBuyItem())
+        if (AssetDatabase.Instance.CanBuyItem())
         {
             cannon.SetActive(true);
             count++;
@@ -52,5 +71,11 @@ public class GameOverUI : MonoBehaviour
     {
         SceneManager.LoadScene("Shop");
     }
-  
+
+    public void Continue()
+    {
+        challengesDisplay.SetActive(false);
+        SetEndGameUI();
+    }
+
 }

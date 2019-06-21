@@ -1,9 +1,9 @@
 ﻿
 using UnityEngine;
 
-public class AssetsManager : MonoBehaviour
+public class AssetDatabase : MonoBehaviour
 {
-	public static AssetsManager Instance;
+	public static AssetDatabase Instance;
 	private void Awake()
 	{
 		if (Instance == null)
@@ -18,6 +18,8 @@ public class AssetsManager : MonoBehaviour
 
 	public Category cannons;
 	public Category platforms;
+	public Category trails;
+	public Category flames;
 
 	public Sprite GetLastCannon()
 	{

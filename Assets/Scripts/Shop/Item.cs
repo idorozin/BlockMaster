@@ -13,8 +13,7 @@ public class Item
 	public int Gold;
 	public int Diamonds;
 	public int Score;
-	public bool Locked = true;
-
+	public RuntimeAnimatorController Animator;
 	
 	public enum ItemType
 	{
@@ -26,6 +25,12 @@ public class Item
 	{
 		this.Name = name;
 		this.Icon = icon;
+	}	
+	public Item(string name , Sprite icon , RuntimeAnimatorController animator)
+	{
+		this.Name = name;
+		this.Icon = icon;
+		this.Animator = animator;
 	}
 
 	public void Buy(int index)
@@ -58,11 +63,6 @@ public class Item
 			PlayerStats.saveFile();
 		}
 		return true;
-	}
-
-	public class Item2 : Item
-	{
-		public TrailEffect trail;
 	}
 
 }

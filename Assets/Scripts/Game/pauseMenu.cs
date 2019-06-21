@@ -105,7 +105,7 @@ public class PauseMenu : MonoBehaviour {
 	{
 		GameOverUI.SetActive(true);
 		gameOverScore.text=score.ToString();
-		gameOverMoney.text = (score/10).ToString()+" (coins)";
+		gameOverMoney.text = (score/10).ToString();
 		Score.SetActive(false);
 	}
 	

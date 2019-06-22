@@ -2,18 +2,32 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SetSkin : MonoBehaviour
 {
 	private SpriteRenderer sprite;
 
-	[SerializeField] private string path = "Cannons/";
-	private string type = "cannon";
+	[SerializeField]
+	private Image image;
+
+	[SerializeField]
+	private SpriteRenderer renderer;
+
+	public string type = "cannon";
 	
 	void Start ()
 	{
-		if(type == "cannon")
-			GetComponent<SpriteRenderer>().sprite = AssetDatabase.Instance.GetLastCannon();
-		
+		if (type == "cannon")
+		{
+			if (image != null)
+			{
+				image.sprite = AssetDatabase.Instance.GetLastCannon();
+			}	
+			else if (renderer != null)
+			{
+				renderer.sprite = AssetDatabase.Instance.GetLastCannon();
+			}
+		}
 	}
 }

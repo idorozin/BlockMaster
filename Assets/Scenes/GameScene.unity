@@ -4686,6 +4686,7 @@ GameObject:
   - component: {fileID: 1068022053}
   - component: {fileID: 1068022052}
   - component: {fileID: 1068022054}
+  - component: {fileID: 1068022055}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -4767,6 +4768,17 @@ MonoBehaviour:
   coins: {fileID: 1483532677}
   tipText: {fileID: 722802325}
   challengesDisplay: {fileID: 272010838}
+--- !u!114 &1068022055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1068022050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32dfc3ac9fcaa2429f6e68aaa0f6394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1074723689
 GameObject:
   m_ObjectHideFlags: 0
@@ -6859,6 +6871,7 @@ MonoBehaviour:
   lives: 0
   timePassed: 0
   recordBroke: 0
+  oldRecord: 0
   shapes: []
   anim: {fileID: 1181826780}
   surface: {fileID: 1098985330}
@@ -8393,9 +8406,19 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.1078875
       objectReference: {fileID: 0}
+    - target: {fileID: 114917249376306220, guid: 5713a2f3e7a057e46b1c97a9b434e80e,
+        type: 2}
+      propertyPath: renderer
+      value: 
+      objectReference: {fileID: 1657000996}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5713a2f3e7a057e46b1c97a9b434e80e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!212 &1657000996 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 212987232680421690, guid: 5713a2f3e7a057e46b1c97a9b434e80e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1657000995}
 --- !u!1 &1658455832
 GameObject:
   m_ObjectHideFlags: 0

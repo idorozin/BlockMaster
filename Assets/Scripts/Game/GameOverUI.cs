@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -8,12 +9,22 @@ public class GameOverUI : MonoBehaviour
 {
     [Header("EndScreen")]
     [SerializeField] 
-    private GameObject share, double_, cannon, tip , others;
+    private GameObject share;
+    [SerializeField] 
+    private GameObject double_;
+    [SerializeField] 
+    private GameObject cannon;
+    [SerializeField] 
+    private GameObject tip;
+    [SerializeField] 
+    private GameObject others;
     [SerializeField] 
     private TextMeshProUGUI record, coins , tipText;    
     [Header("challenges")]
     [SerializeField] 
     private GameObject challengesDisplay;
+
+    [SerializeField] private Tips tips;
 
 
     private NativeShare nativeShare;
@@ -33,13 +44,12 @@ public class GameOverUI : MonoBehaviour
     private void SetEndGameUI()
     {
         others.SetActive(true);
-        Debug.Log("Set End...");
-        tipText.text = "nice tip";
         nativeShare = GetComponent<NativeShare>();
         int count = 0;
         if (GameManager.Instance.recordBroke)
         {
             share.SetActive(true);
+            record.text = PlayerStats.Instance.highScore + "(" + GameManager.Instance.oldRecord + ")";
             count++;
         }
         if (AssetDatabase.Instance.CanBuyItem())
@@ -54,7 +64,11 @@ public class GameOverUI : MonoBehaviour
             count++;
         }
         if (count < 3)
+        {
+            tips = (Tips)Resources.Load("Tips");
+            tipText.text = tips.GetRandomSentence();
             tip.SetActive(true);
+        }
     }
 
     public void Share()
@@ -64,9 +78,14 @@ public class GameOverUI : MonoBehaviour
     
     public void Double()
     {
+        AdManager.Instance.ShowRewarded(WatchedAd);
+    }
+
+    private void WatchedAd(object sender , EventArgs e)
+    {
         PlayerStats.Instance.gold += (int)GameManager.Instance.score;
     }
-    
+
     public void Buy()
     {
         SceneManager.LoadScene("Shop");

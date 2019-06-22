@@ -25,7 +25,7 @@ public class ImageCanvasAnimator : MonoBehaviour
         
     }
 
-    public void SetConroller (RuntimeAnimatorController controller)
+    public void SetController (RuntimeAnimatorController controller)
     {
         if(controller == null)
             return;

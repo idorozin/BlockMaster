@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 	public float timePassed;
 
 	public bool recordBroke;
+	public int oldRecord;
 	
 	public List<GameObject> shapes = new List<GameObject>();
 
@@ -125,7 +126,10 @@ public class GameManager : MonoBehaviour
 
 	private void UpdateStats()
 	{
-		if(fixedScore>PlayerStats.Instance.highScore){
+		if(fixedScore>PlayerStats.Instance.highScore)
+		{
+			oldRecord = (int)PlayerStats.Instance.highScore;
+			recordBroke = true;
 			PlayerStats.Instance.highScore = fixedScore;
 			PlayerStats.Instance.highScoreHeight = height;
 			PlayerStats.saveFile();

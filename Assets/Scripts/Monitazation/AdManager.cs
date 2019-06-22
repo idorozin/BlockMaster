@@ -135,6 +135,13 @@ public class AdManager : MonoBehaviour
         rewardedAd.OnAdFailedToShow += handleFailed;
         if (rewardedAd.IsLoaded())
             rewardedAd.Show();
+    }  
+    
+    public void ShowRewarded(EventHandler<Reward> handleReward)
+    {
+        rewardedAd.OnUserEarnedReward += handleReward;
+        if (rewardedAd.IsLoaded())
+            rewardedAd.Show();
     }
 
     private void ReloadInterstitial(object sender , EventArgs e)

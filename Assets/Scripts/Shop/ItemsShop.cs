@@ -163,7 +163,7 @@ public class ItemsShop : MonoBehaviour
 	private void UpdateItem(Item item)
 	{
 		itemImage.sprite = item.Icon;
-		itemImage.GetComponent<ImageCanvasAnimator>().SetConroller(item.Animator);
+		itemImage.GetComponent<ImageCanvasAnimator>().SetController(item.Animator);
 		
 		if (item.Gold > item.Diamonds)
 			priceText.text = item.Gold.ToString();

@@ -454,6 +454,7 @@
             <e p="Shape.cs" t="Include" />
             <e p="shapeBehaviour.cs" t="Include" />
             <e p="shapeGenerator.cs" t="Include" />
+            <e p="Tips.cs" t="Include" />
             <e p="trackCamera.cs" t="Include" />
             <e p="trailEffect.cs" t="Include" />
           </e>

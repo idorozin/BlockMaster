@@ -4,8 +4,7 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -13,59 +12,31 @@ MonoBehaviour:
   m_Name: Flames
   m_EditorClassIdentifier: 
   serializedItems:
-  - Name: Rocket engine
+  - Name: 1
     Icon: {fileID: 0}
     type: 0
     Gold: 0
     Diamonds: 0
     Score: 0
-    Animator: {fileID: 9100000, guid: e40833ebb091c06499c8587643b57072, type: 2}
-  - Name: Heavy rocket engine
+    Animator: {fileID: 9100000, guid: e25dd54194971e0429bb90da8365df9a, type: 2}
+  - Name: 2
     Icon: {fileID: 0}
     type: 0
     Gold: 0
-    Diamonds: 5
-    Score: 50
-    Animator: {fileID: 9100000, guid: a456d1d2987cd044f92f08befa178017, type: 2}
-  - Name: Fairy engine
+    Diamonds: 0
+    Score: 0
+    Animator: {fileID: 9100000, guid: 0fef9685af9dd3d439acc013d82fa5b4, type: 2}
+  - Name: 3
     Icon: {fileID: 0}
     type: 0
     Gold: 0
-    Diamonds: 10
-    Score: 150
-    Animator: {fileID: 9100000, guid: 56cce8d3b275e1442a8cb84008f17671, type: 2}
-  - Name: Neutron engine
+    Diamonds: 0
+    Score: 0
+    Animator: {fileID: 9100000, guid: 1c6119e91c534094c8c66f590b7000ad, type: 2}
+  - Name: 4
     Icon: {fileID: 0}
     type: 0
     Gold: 0
-    Diamonds: 15
-    Score: 250
-    Animator: {fileID: 9100000, guid: 4fd0c138b4c197948aa93d955e873862, type: 2}
-  - Name: Bio fuel engine
-    Icon: {fileID: 0}
-    type: 0
-    Gold: 0
-    Diamonds: 25
-    Score: 400
-    Animator: {fileID: 9100000, guid: 7184a445f91d01f40a776d0d26919948, type: 2}
-  - Name: Ghost engine
-    Icon: {fileID: 0}
-    type: 0
-    Gold: 0
-    Diamonds: 45
-    Score: 700
-    Animator: {fileID: 9100000, guid: 05a8d5efe3d1cbc408dab58c6d894464, type: 2}
-  - Name: Anti-material engine
-    Icon: {fileID: 0}
-    type: 0
-    Gold: 0
-    Diamonds: 70
-    Score: 1000
-    Animator: {fileID: 9100000, guid: 50e7ba0da38d99b49b1d9be22273f39e, type: 2}
-  - Name: Dark matter engine
-    Icon: {fileID: 0}
-    type: 0
-    Gold: 0
-    Diamonds: 100
-    Score: 1500
-    Animator: {fileID: 9100000, guid: 2e42b6e1167a12c48a4809bff71390ea, type: 2}
+    Diamonds: 0
+    Score: 0
+    Animator: {fileID: 9100000, guid: e820bcb1214119d4fa297a5c708738f2, type: 2}

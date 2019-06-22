@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb8493f04716f144a0addf59e685409, type: 3}
   m_Name: Tips
   m_EditorClassIdentifier: 
-  sentences: []
+  sentences:
+  - text: don't drink water after eating watermelon
+  - text: "To build a height building you should build a wide base\r\n"
+  - text: "Complex shapes are better to shoot to the center\r\n"
+  - text: Quadratic shapes are better to shoot sideways
+  - text: "It is better to lose 1 life than shoot a complex shape that will not allow
+      you to continue building the tower\r\n"

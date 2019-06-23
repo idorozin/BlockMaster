@@ -140,7 +140,7 @@ public class ItemsShop : MonoBehaviour
 		}
 		else
 		{
-			if (!PlayerStats.Instance.ItemsUnlocked.Contains(currentItem))
+			if (!item.Unlocked())
 			{
 				lock_.SetActive(true);
 				lock_.GetComponent<Button>().enabled = true;
@@ -156,7 +156,7 @@ public class ItemsShop : MonoBehaviour
 
 	public void TryUnlock()
 	{
-		if(items[currentItem].Unlock(currentItem))
+		if(items[currentItem].Unlock())
 			SetLockedUi(items[currentItem]);
 	}
 
@@ -176,7 +176,7 @@ public class ItemsShop : MonoBehaviour
 	private GameObject buy, use; 
 	private void SetButton(Item item)
 	{	
-		bool owned = PlayerStats.Instance.ItemsOwned.Contains(currentItem);
+		bool owned = PlayerStats.Instance.ItemsOwned.Contains(item.Id);
 		if (owned)
 		{
 			if(buy.activeSelf)
@@ -204,13 +204,13 @@ public class ItemsShop : MonoBehaviour
 
 	public void BuyButton()
 	{
-		items[currentItem].Buy(currentItem);
+		items[currentItem].Buy();
 		SetButton(items[currentItem]);
 	}
 	
 	public void UseButton()
 	{
-		items[currentItem].Use(currentItem);
+		items[currentItem].Use();
 	} 
 
 

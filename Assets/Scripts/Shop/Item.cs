@@ -13,6 +13,7 @@ public class Item
 	public int Gold;
 	public int Diamonds;
 	public int Score;
+	public int Id;
 	public RuntimeAnimatorController Animator;
 	
 	public enum ItemType
@@ -33,36 +34,41 @@ public class Item
 		this.Animator = animator;
 	}
 
-	public void Buy(int index)
+	public void Buy()
 	{
-		if (Score > PlayerStats.Instance.highScore || PlayerStats.Instance.ItemsOwned.Contains(index))
+		if (Score > PlayerStats.Instance.highScore || PlayerStats.Instance.ItemsOwned.Contains(Id))
 			return;
 		
 		if(PlayerStats.Instance.gold >= Gold && PlayerStats.Instance.diamonds >= Diamonds){
-			PlayerStats.Instance.ItemsOwned.Add(index);
+			PlayerStats.Instance.ItemsOwned.Add(Id);
 			PlayerStats.Instance.gold -= Gold;
 			PlayerStats.Instance.diamonds -= Diamonds;
 			PlayerStats.saveFile();
 		}
 	}
 
-	public void Use(int index)
+	public void Use()
 	{
-		if (PlayerStats.Instance.lastCannon == index || !PlayerStats.Instance.ItemsOwned.Contains(index))
+		if (PlayerStats.Instance.lastCannon == Id || !PlayerStats.Instance.ItemsOwned.Contains(Id))
 			return;
 		//if(type == ItemType.Cannon)
-			PlayerStats.Instance.lastCannon = index;
+			PlayerStats.Instance.lastCannon = Id;
 		PlayerStats.saveFile();
 	}
 
-	public bool Unlock(int index)
+	public bool Unlock()
 	{
 		if (Score <= PlayerStats.Instance.highScore)
 		{
-			PlayerStats.Instance.ItemsUnlocked.Add(index);
+			PlayerStats.Instance.ItemsUnlocked.Add(Id);
 			PlayerStats.saveFile();
 		}
 		return true;
+	}
+
+	public bool Unlocked()
+	{
+		return PlayerStats.Instance.ItemsUnlocked.Contains(Id);
 	}
 
 }

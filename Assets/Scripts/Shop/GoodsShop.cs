@@ -150,7 +150,7 @@ public class GoodsShop : MonoBehaviour
 
 	public void TryUnlock()
 	{
-		if(items[currentItem].Unlock(currentItem))
+		if(items[currentItem].Unlock())
 			SetLockedUi(items[currentItem]);
 	}
 
@@ -196,13 +196,13 @@ public class GoodsShop : MonoBehaviour
 
 	public void BuyButton()
 	{
-		items[currentItem].Buy(currentItem);
+		items[currentItem].Buy();
 		SetButton(items[currentItem]);
 	}
 	
 	public void UseButton()
 	{
-		items[currentItem].Use(currentItem);
+		items[currentItem].Use();
 	} 
 
 

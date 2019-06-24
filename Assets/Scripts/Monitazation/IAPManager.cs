@@ -6,7 +6,9 @@ using UnityEngine.Purchasing;
 
 public class IAPManager : MonoBehaviour, IStoreListener
 {
- 
+    [SerializeField]
+    private IAP[] products;
+    
     private static IStoreController m_StoreController;          // The Unity Purchasing system.
     private static IExtensionProvider m_StoreExtensionProvider; // The store-specific Purchasing subsystems.
     
@@ -38,7 +40,10 @@ public class IAPManager : MonoBehaviour, IStoreListener
         
         // Create a builder, first passing in a suite of Unity provided stores.
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
-        builder.AddProduct(kProductIDConsumable, ProductType.NonConsumable);
+        foreach (var product in products)
+        {
+            builder.AddProduct(product.ProductId, product.ProductType);
+        }
         
         // Kick off the remainder of the set-up with an asynchrounous call, passing the configuration 
         // and this class' instance. Expect a response either in OnInitialized or OnInitializeFailed.
@@ -50,11 +55,11 @@ public class IAPManager : MonoBehaviour, IStoreListener
         return m_StoreController != null && m_StoreExtensionProvider != null;
     }
      
-    public void BuyProductName()
+    public void BuyProductById(string id)
     {
         // Buy the consumable product using its general identifier. Expect a response either 
         // through ProcessPurchase or OnPurchaseFailed asynchronously.
-        BuyProductID(kProductIDConsumable);
+        BuyProductID(id);
     } 
   
     void BuyProductID(string productId)
@@ -146,17 +151,22 @@ public class IAPManager : MonoBehaviour, IStoreListener
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) 
     {
         // A consumable product has been purchased by this user.
-        if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable, StringComparison.Ordinal))
+        bool productRecognized = false;
+        foreach (IAP product in products)
         {
-            Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-            // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
+            if (String.Equals(args.purchasedProduct.definition.id, product.ProductId, StringComparison.Ordinal))
+            {
+                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+                product.Collect();
+                productRecognized = true;
+                break;
+            }
         }
         // Or ... an unknown product has been purchased by this user. Fill in additional products here....
-        else 
+        if(!productRecognized) 
         {
             Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
         }
-
         // Return a flag indicating whether this product has completely been received, or if the application needs 
         // to be reminded of this purchase at next app launch. Use PurchaseProcessingResult.Pending when still 
         // saving purchased products to the cloud, and when that save is delayed. 

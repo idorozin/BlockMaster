@@ -17,13 +17,10 @@ public class CannonController : MonoBehaviour
 		predictionLine = GetComponent<PredictionLine>();
 		shapeGenerator = GetComponent<ShapeGenerator>();
 		shapesParent = new GameObject("Shapes");
-		shapesParent.AddComponent<CameraShake>();
-		cameraShake = shapesParent.GetComponent<CameraShake>();
 	}
 
 	public void Shoot(Vector3 aimPosition) // shoots shape and loads the next one
 	{
-		StartCoroutine(cameraShake.ShakeCamera());
 		Vector3 diff = aimPosition - transform.position;
 		diff.Normalize();
 		shapeGenerator.shape.GetComponent<Rigidbody2D>().isKinematic = false; // gravity effect on

@@ -33,15 +33,6 @@ public class NotflicationAnimation : MonoBehaviour
 		camera = Camera.main;
 	}
 
-	[ContextMenu("animate")]
-	public void Animatee()
-	{
-		GameObject notfi = Instantiate(c);
-		animationQueue.Enqueue(Animate(notfi));
-		if (animateCoroutine == null)
-			animateCoroutine = StartCoroutine(AnimateInOrder());
-	}
-
 	public void animate(Challenge not)
 	{
 		Debug.Log(not.description);

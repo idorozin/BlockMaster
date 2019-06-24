@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 	private Transform camera;
 	private float fixedScore = 0;
 	[SerializeField] private GameObject surface;
-	[SerializeField] private GameObject highScoresign;
+	[SerializeField] private GameObject highScoreSign;
 	[SerializeField] private TextMeshProUGUI text_;
 
 	private bool reviveUsed = false;
@@ -49,12 +49,14 @@ public class GameManager : MonoBehaviour
 		startHeight = surface.transform.position.y;
 		camera = GameObject.Find("Main Camera").transform;
 		rb2d = GetComponent<Rigidbody2D>();
-		OnScoreChanged();
+		OnScoreChanged(-1);
 		ShapeBehaviour.ShapeFell += HealthDown;
+		HeightFinder.ScoreChanged += OnScoreChanged;
 	}
 	
 	private void OnDisable()
 	{
+		HeightFinder.ScoreChanged -= OnScoreChanged;
 		ShapeBehaviour.ShapeFell -= HealthDown;
 	}
 
@@ -79,7 +81,6 @@ public class GameManager : MonoBehaviour
 
 	private void TryRevive()
 	{
-		Debug.Log("TryRevive");
 		if (!reviveUsed && fixedScore > 50 && (PlayerStats.Instance.gold > 10 || AdManager.Instance.CanPlayRewarded()))
 		{
 			reviveUsed = true;
@@ -98,24 +99,11 @@ public class GameManager : MonoBehaviour
 	}
 
 	void Update () {
-		rb2d.velocity = new Vector2(0,-2);
 		timePassed += Time.deltaTime;
 		surface.transform.position = new Vector3(surface.transform.position.x , DestroyShapes.height , surface.transform.position.z);
 	}
 	
-	void OnTriggerEnter2D(Collider2D col)
-	{
-		Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D>();
-		if(col.gameObject.name != surface.name && rb !=null && rb.velocity.x<0.1 && rb.velocity.y<0.1 && rb.velocity.x>-0.1 && rb.velocity.y>-0.1 && col.isTrigger==false)
-		{
-			if (col.transform.position.y > startHeight)
-				score=(float)Math.Round((col.transform.position.y-startHeight)*10);
-			if(transform.position.y>0)
-				height=col.transform.position.y;
-		}
-		rb2d.position = new Vector3(camera.position.x,camera.position.y+5f,camera.position.z);
-		OnScoreChanged();
-	}
+
 
 	#region Score
 	
@@ -134,6 +122,8 @@ public class GameManager : MonoBehaviour
 			PlayerStats.Instance.highScoreHeight = height;
 			PlayerStats.saveFile();
 			PlayServices.Instance.addScoreToLeaderboard("",(int)fixedScore);
+			//play animation
+			highScoreSign.SetActive(false);
 		}
 	}
 
@@ -141,19 +131,22 @@ public class GameManager : MonoBehaviour
 	{
 		if(score!=0 && score>fixedScore)
 			fixedScore=score;
-		//text_.text = fixedScore.ToString();
 		text_.GetComponent<ScrollingText>().SetNum((int)fixedScore);
-//		PlayerStats.Instance.cs[PlayerStats.Instance.challengeIndex].setProcess((int)fixedScore , "record");
+		//PlayerStats.Instance.cs[PlayerStats.Instance.challengeIndex].setProcess((int)fixedScore , "record");
 	}
 
-	private void OnScoreChanged()
-	{
+	private void OnScoreChanged(float height)
+	{  
+		if (height > startHeight)
+			score=(float)Math.Round((height-startHeight)*10);
+		this.height = height;
 		//set the current score
 		SetScore();
 		// every time record is bitten save the file and push to leaderboard
 		UpdateStats();
 		//sign to show where is your highScore
-		highScoresign.transform.position = new Vector3(highScoresign.transform.position.x,GetHighScoreSignHeight(),0f);
+		if(!recordBroke)
+			highScoreSign.transform.position = new Vector3(highScoreSign.transform.position.x,GetHighScoreSignHeight(),0f);
 	}
 	
 	#endregion

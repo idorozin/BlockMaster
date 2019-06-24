@@ -4768,6 +4768,7 @@ MonoBehaviour:
   coins: {fileID: 1483532677}
   tipText: {fileID: 722802325}
   challengesDisplay: {fileID: 272010838}
+  tips: {fileID: 0}
 --- !u!114 &1068022055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5081,6 +5082,7 @@ GameObject:
   - component: {fileID: 1098985333}
   - component: {fileID: 1098985332}
   - component: {fileID: 1098985331}
+  - component: {fileID: 1098985334}
   m_Layer: 0
   m_Name: surface
   m_TagString: shapes
@@ -5147,6 +5149,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1098985334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1098985330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7170d02cc74b2d46b3266797167a23c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0.4900218
+  y: 0
+  z: 0
+  smoothSpeed: 0
 --- !u!1 &1103824781
 GameObject:
   m_ObjectHideFlags: 0
@@ -6803,8 +6820,9 @@ GameObject:
   - component: {fileID: 1283844109}
   - component: {fileID: 1283844108}
   - component: {fileID: 1283844107}
+  - component: {fileID: 1283844113}
   m_Layer: 0
-  m_Name: HeightScanner
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6875,7 +6893,7 @@ MonoBehaviour:
   shapes: []
   anim: {fileID: 1181826780}
   surface: {fileID: 1098985330}
-  highScoresign: {fileID: 261576647}
+  highScoreSign: {fileID: 261576647}
   text_: {fileID: 512170391}
   revive: {fileID: 1563404953040448, guid: dce0c4a81b28e0d42885475b4796c673, type: 2}
   canvasPause: {fileID: 1181826778}
@@ -6934,6 +6952,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1283844113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1283844106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707e80127b6b4830bdfbe7784c2cba81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 1283844108}
+  surface: {fileID: 1098985330}
+  camera: {fileID: 519420032}
 --- !u!1 &1393390968
 GameObject:
   m_ObjectHideFlags: 0

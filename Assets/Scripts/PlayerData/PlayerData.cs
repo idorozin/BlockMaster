@@ -21,7 +21,7 @@ public class PlayerData
         public int ChallengesAvailable;
         public bool musicOn=true, soundOn=true;
         public List<Challenge> challenges;
-
+        public bool noAds;
         public class Challanges
         {
             public List<Challenge> challenges;

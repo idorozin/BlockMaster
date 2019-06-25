@@ -417,6 +417,7 @@
             <e p="MoveToTheSide.cs" t="Include" />
             <e p="NotflicationAnimation.cs" t="Include" />
             <e p="ScrollingText.cs" t="Include" />
+            <e p="SlideToDirection.cs" t="Include" />
             <e p="Spin.cs" t="Include" />
           </e>
           <e p="AssetDatabase.cs" t="Include" />
@@ -499,7 +500,6 @@
             <e p="SelectShop.cs" t="Include" />
             <e p="swipeDetector.cs" t="Include" />
           </e>
-          <e p="SlideToDirection.cs" t="Include" />
         </e>
       </e>
       <e p="Block Master recover.sln" t="IncludeFlat" />

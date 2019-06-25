@@ -1,14 +1,32 @@
 using UnityEngine;
 using UnityEngine.Purchasing;
-
-public class IAP : Countable
+[System.Serializable]
+public class IAP
 {
     public string ProductId;
     public ProductType ProductType;
+    public ProductTypes Type;
+    public int Amount;
 
-    public override void Collect()
+    public void Collect()
     {
-        PlayerStats.Instance.gold += amount;
+        if (Type == ProductTypes.Diamonds)
+        {
+            PlayerStats.Instance.diamonds += Amount;
+        }
+        if (Type == ProductTypes.Gold)
+        {
+            PlayerStats.Instance.gold += Amount;
+        }
+        if (Type == ProductTypes.NoAds)
+        {
+            PlayerStats.Instance.noAds = true;
+        }
+    }
+
+    public enum ProductTypes
+    {
+        Gold , Diamonds , NoAds
     }
 
 }

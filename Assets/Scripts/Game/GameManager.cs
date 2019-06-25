@@ -98,16 +98,24 @@ public class GameManager : MonoBehaviour
 		anim.animate(c);
 	}
 
-	void Update () {
+	void Update ()
+    {
 		timePassed += Time.deltaTime;
-		surface.transform.position = new Vector3(surface.transform.position.x , DestroyShapes.height , surface.transform.position.z);
 	}
-	
+
+    public void Surface()
+    {
+        PauseMenu.GameIsPaused = true;
+        Debug.Log("surf");
+        surface.transform.position = new Vector3(surface.transform.position.x, height, surface.transform.position.z);
+        TrackCamera.height = surface.transform.position.y + 1f;
+    }
 
 
-	#region Score
-	
-	private float GetHighScoreSignHeight()
+
+    #region Score
+
+    private float GetHighScoreSignHeight()
 	{
 		return PlayerStats.Instance.highScoreHeight;
 	}
@@ -136,7 +144,8 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void OnScoreChanged(float height)
-	{  
+	{
+        TrackCamera.height = height;
 		if (height > startHeight)
 			score=(float)Math.Round((height-startHeight)*10);
 		this.height = height;

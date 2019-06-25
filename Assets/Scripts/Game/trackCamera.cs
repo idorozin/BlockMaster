@@ -7,14 +7,16 @@ public class TrackCamera : MonoBehaviour
 
 	public float trackingSpeed = 0.1f;
 	public float offset = 0;
+
+    public static float height = 0f;
 	// Update is called once per frame
 	void Update ()
 	{
-		if (GameManager.Instance.height < 0)
+		if (height < 0)
 			return;
-		 if(GameManager.Instance.height > transform.position.y+0.1f)
+		 if(height > transform.position.y+0.1f)
 			 transform.position = new Vector3(transform.position.x,transform.position.y+trackingSpeed,transform.position.z);
-		 if(GameManager.Instance.height < transform.position.y-0.1f)
+		 if(height < transform.position.y-0.1f)
 			 transform.position = new Vector3(transform.position.x,transform.position.y-trackingSpeed,transform.position.z);
 		
 	}

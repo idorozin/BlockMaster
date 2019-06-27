@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-	private string path="www.korystudios.com/realtime.php";
+	private string path="http://35.242.248.201/realtime.php";
 	private string time="";
 	private int sec, min, hour, day , month , year;
 	private DateTime currentDate,dateTime;

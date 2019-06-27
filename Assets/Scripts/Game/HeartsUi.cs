@@ -25,6 +25,7 @@ public class HeartsUi : MonoBehaviour
 	
 	public void SetInitialHearts(int amount)
 	{
+		index = 0;
 		foreach (Transform child in PanelHearts.transform)
 		{
 			Destroy(child.gameObject);

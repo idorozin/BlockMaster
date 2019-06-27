@@ -32,15 +32,23 @@ public class DestroyShapes : MonoBehaviour
 		GameManager.Instance.shapes.Add(obj);
 		if (shapesCount >= levels[level%(levels.Length)])
 		{
-            GameManager.Instance.Surface();
-            foreach (var s in GameManager.Instance.shapes)
-			{
-                s.GetComponent<Collider2D>().enabled = false;
-                s.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-			}
-			level += 1;
-			shapesCount = 0;
+			GameManager.Instance.surface_();
 		}
+	}
+
+	public static void Destroyall()
+	{
+		foreach (var s in GameManager.Instance.shapes)
+		{
+			if (s != null)
+			{
+				s.GetComponent<SpriteRenderer>().sortingLayerName = "sky";
+				s.GetComponent<Collider2D>().enabled = false;
+				s.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+			}
+		}
+		level += 1;
+		shapesCount = 0;
 	}
 
 }

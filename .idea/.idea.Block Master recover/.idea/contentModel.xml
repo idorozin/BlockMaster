@@ -421,6 +421,7 @@
             <e p="Spin.cs" t="Include" />
           </e>
           <e p="AssetDatabase.cs" t="Include" />
+          <e p="AssetDatabaseHelper.cs" t="Include" />
           <e p="AudioManager" t="Include">
             <e p="AudioManager.cs" t="Include" />
             <e p="Sound.cs" t="Include" />

@@ -49,7 +49,7 @@ public class GameOverUI : MonoBehaviour
         if (GameManager.Instance.recordBroke)
         {
             share.SetActive(true);
-            record.text = PlayerStats.Instance.highScore + "(" + GameManager.Instance.oldRecord + ")";
+            record.text = PlayerStats.Instance.highScore + "(+" + (PlayerStats.Instance.highScore - GameManager.Instance.oldRecord) + ")";
             count++;
         }
         if (AssetDatabase.Instance.CanBuyItem())

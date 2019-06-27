@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 		startHeight = surface.transform.position.y;
 		camera = GameObject.Find("Main Camera").transform;
 		rb2d = GetComponent<Rigidbody2D>();
-		OnScoreChanged(-1);
+		OnScoreChanged(-1.2f);
 		ShapeBehaviour.ShapeFell += HealthDown;
 		HeightFinder.ScoreChanged += OnScoreChanged;
 	}
@@ -103,12 +103,17 @@ public class GameManager : MonoBehaviour
 		timePassed += Time.deltaTime;
 	}
 
-    public void Surface()
+    public IEnumerator Surface()
     {
         PauseMenu.GameIsPaused = true;
-        Debug.Log("surf");
-        surface.transform.position = new Vector3(surface.transform.position.x, height, surface.transform.position.z);
-        TrackCamera.height = surface.transform.position.y + 1f;
+	    yield return new WaitForSeconds(3f);
+        surface.GetComponent<SlideToDirection>().SlideToVector3(new Vector3(surface.transform.position.x, height, surface.transform.position.z));
+	    PauseMenu.GameIsPaused = false;
+	    DestroyShapes.Destroyall();
+    }
+    public void surface_()
+    {
+	    StartCoroutine(Surface());
     }
 
 
@@ -124,14 +129,17 @@ public class GameManager : MonoBehaviour
 	{
 		if(fixedScore>PlayerStats.Instance.highScore)
 		{
-			oldRecord = (int)PlayerStats.Instance.highScore;
-			recordBroke = true;
 			PlayerStats.Instance.highScore = fixedScore;
 			PlayerStats.Instance.highScoreHeight = height;
 			PlayerStats.saveFile();
 			PlayServices.Instance.addScoreToLeaderboard("",(int)fixedScore);
+			if (!recordBroke)
+			{
+				oldRecord = (int) PlayerStats.Instance.highScore;
+				recordBroke = true;
+			}
+
 			//play animation
-			highScoreSign.SetActive(false);
 		}
 	}
 

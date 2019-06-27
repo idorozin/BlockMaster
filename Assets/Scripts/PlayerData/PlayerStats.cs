@@ -18,7 +18,11 @@ public class PlayerStats : MonoBehaviour
 			Instance = new PlayerData();
 			path = Application.persistentDataPath + "/PlayerFile.json";
 			if (File.Exists(Application.persistentDataPath + "/PlayerFile.json")) Debug.Log("file exists");
-				else saveFile();
+			else
+			{
+				saveFile();
+			}
+
 			loadFile();
 			//if (Instance.challenges == null)
 			//{
@@ -64,7 +68,7 @@ public class PlayerStats : MonoBehaviour
 	{
 		//parse this class to json string
 		//save json file
-		File.Delete(path); 
+		File.Delete(Application.persistentDataPath + "/PlayerFile.json"); 
 	}
 	
 	public static void saveFile()

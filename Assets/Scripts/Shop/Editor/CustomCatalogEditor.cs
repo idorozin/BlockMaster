@@ -6,6 +6,8 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using UnityEditor.Experimental.UIElements;
+using UnityEngine.Assertions.Comparers;
 using UnityEngine.UI;
 
 [CustomEditor(typeof(Category))]
@@ -16,6 +18,8 @@ public class CustomCatalogEditor : Editor
    public bool animation;
    public bool trai;
    private string path;
+
+   private GameObject passer;
    public override void OnInspectorGUI()
    {
       Category category = (Category)target;
@@ -31,7 +35,7 @@ public class CustomCatalogEditor : Editor
 
       EditorGUILayout.BeginHorizontal();
       path = TextField("Path" , path);
-      if (GUILayout.Button("Load From Folder"))
+      if (GUILayout.Button("Load From Folder") && category.serializedItems.Count > 0 && EditorUtility.DisplayDialog("", "Are you sure?" ,"Load" , "Cancel"))
       {
          Sprite[] textures = Resources.LoadAll<Sprite>(path);
          foreach (Sprite texture in textures)
@@ -45,15 +49,30 @@ public class CustomCatalogEditor : Editor
          if(category.serializedItems.Count > 0 && EditorUtility.DisplayDialog("", "Are you sure?" ,"Reset" , "Cancel"))
             category.serializedItems.Clear();
       }
-      animation = EditorGUILayout.Toggle("animation" ,animation);
       EditorGUILayout.EndHorizontal();
+      EditorGUILayout.BeginHorizontal();
+      EditorGUIUtility.LookLikeControls(50.0f);
+      passer = (GameObject)EditorGUILayout.ObjectField("rect", passer, typeof(GameObject) , allowSceneObjects:true);
+      if (GUILayout.Button("Update Values"))
+      {
+         RectTransform rect = passer.GetComponent<RectTransform>();
+         category.x = rect.position.x;
+         category.y = rect.position.y;
+         category.width = rect.sizeDelta.x;
+         category.height = rect.sizeDelta.y;
+         category.rotation = rect.eulerAngles.z;
+      }
+      animation = EditorGUILayout.Toggle("animation", animation);
+      category.type = (Item.ItemType)EditorGUILayout.EnumPopup("Type", category.type);
+      EditorGUILayout.EndHorizontal();
+
       GUILayout.Space(20);
      // category.type = TextField("Name",category.type);
       if (GUILayout.Button("Add Item"))
       {
          category.serializedItems.Add(new Item());
       }
-      
+
       foreach (var item in category.serializedItems)
       {
          EditorGUILayout.BeginHorizontal();
@@ -61,6 +80,7 @@ public class CustomCatalogEditor : Editor
          item.Gold = EditorGUILayout.IntField("Price",item.Gold);
          item.Diamonds = EditorGUILayout.IntField("Gems",item.Diamonds);
          item.Score = EditorGUILayout.IntField("Score",item.Score);
+         item.type = category.type;
          if (animation)
             item.Animator = (RuntimeAnimatorController) EditorGUILayout.ObjectField("Controller", item.Animator, 
                typeof(RuntimeAnimatorController), allowSceneObjects: true);

@@ -10,16 +10,21 @@ public class SetSkin : MonoBehaviour
 
 	[SerializeField]
 	private Image image;
-
 	[SerializeField]
-	private SpriteRenderer renderer;
+	private SpriteRenderer renderer;	
+	[SerializeField]
+	private Animator animator;
 
-	public string type = "cannon";
+	public Item.ItemType type;
 	
 	void Start ()
 	{
-		if (type == "cannon")
+		Sprite sprite;
+		if (type == Item.ItemType.Cannon)
 		{
+			sprite = AssetDatabase.Instance.GetLastCannon();
+			if(sprite == null)
+				return;
 			if (image != null)
 			{
 				image.sprite = AssetDatabase.Instance.GetLastCannon();
@@ -28,6 +33,30 @@ public class SetSkin : MonoBehaviour
 			{
 				renderer.sprite = AssetDatabase.Instance.GetLastCannon();
 			}
+		}		
+		if (type == Item.ItemType.Platform)
+		{
+			sprite = AssetDatabase.Instance.GetLastPlatform();
+			if(sprite == null)
+				return;
+			if (image != null)
+			{
+				image.sprite = AssetDatabase.Instance.GetLastPlatform();
+			}	
+			else if (renderer != null)
+			{
+				renderer.sprite = AssetDatabase.Instance.GetLastPlatform();
+			}
+		}	
+		if (type == Item.ItemType.Engine)
+		{
+			var anim = AssetDatabase.Instance.GetLastFlame();
+			if(anim == null)
+				return;
+			if (animator != null)
+			{
+				animator.runtimeAnimatorController = AssetDatabase.Instance.GetLastFlame();
+			}	
 		}
 	}
 }

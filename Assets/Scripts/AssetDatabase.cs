@@ -1,9 +1,14 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using GooglePlayGames.Native.Cwrapper;
+using UnityEngine.Experimental.AI;
+
 public class AssetDatabase : MonoBehaviour
 {
 	public static AssetDatabase Instance;
+
 	private void Awake()
 	{
 		if (Instance == null)
@@ -19,92 +24,69 @@ public class AssetDatabase : MonoBehaviour
 	public Category cannons;
 	public Category platforms;
 	public Category trails;
-	public Category flames;
+	public Category flames;	
 
 	public Sprite GetLastCannon()
 	{
-		return cannons.serializedItems.First(cannon => cannon.Id  == PlayerStats.Instance.lastCannon).Icon;
-		//cannons.serializedItems.Find(PlayerStats.Instance.lastCannon);
+		if (PlayerStats.Instance.lastCannon == 0)
+			return null;
+		return cannons.serializedItems.First(cannon => cannon.Id == PlayerStats.Instance.lastCannon).Icon;
+	}	
+	public Sprite GetLastPlatform()
+	{
+		if (PlayerStats.Instance.lastPlatform == 0)
+			return null;
+		return platforms.serializedItems.First(platform => platform.Id == PlayerStats.Instance.lastPlatform).Icon;
+	}	
+	public TrailRenderer GetLastTrail()
+	{
+		//return trails.serializedItems.First(cannon => cannon.Id  == PlayerStats.Instance.lastTrail).Icon;
+		return null;
+	}	
+	public RuntimeAnimatorController GetLastFlame()
+	{
+		if (PlayerStats.Instance.lastFlame == 0)
+			return null;
+		return flames.serializedItems.First(flame => flame.Id == PlayerStats.Instance.lastFlame).Animator;
 	}
+	
 
 	public bool CanBuyItem()
 	{
-		return CanBuyItem(cannons);
+		return CanBuyItem(cannons) || CanBuyItem(platforms) || CanBuyItem(trails) || CanBuyItem(flames);
 	}
 
-	private bool CanBuyItem(Category cannons)
+	private bool CanBuyItem(Category c)
 	{
-		foreach (Item item in cannons.serializedItems)
+		if (c == null)
+			return false;
+		foreach (Item item in c.serializedItems)
 		{
-			if (PlayerStats.Instance.gold >= item.Gold)
+			if (PlayerStats.Instance.gold >= item.Gold && item.Score <= PlayerStats.Instance.highScore)
 				return true;
 		}
 		return false;
 	}
-
+	
+	private void OnValidate()
+	{
+		List<Category> categories = new List<Category>();
+		categories.Add(cannons);
+		categories.Add(platforms);
+		categories.Add(trails);
+		categories.Add(flames);
+		AssetDatabaseHelper.categories = categories;
+	}
+	
 	[ContextMenu("SetIds")]
 	public void SetIds()
 	{
-		SetIds(cannons);
-		SetIds(platforms);
-		SetIds(trails);
-		SetIds(flames);
-	}
-	public void SetIds(Category c)
-	{
-		ResetIds(c);
-		int i=0;
-		if(c == null)
-			return;
-		foreach(Item item in c.serializedItems)
-		{
-			bool idDoesntExists = false;
-			while(!idDoesntExists)
-			{
-				idDoesntExists = true;
-				foreach(Item item_ in c.serializedItems)
-				{
-					if(item_.Id == i)
-					{
-						idDoesntExists = false;
-						i++;
-						break;
-					}
-				}
-			}
-			item.Id = i;
-		}
-	}
-
-
+		AssetDatabaseHelper.SetIds();
+	}	
 	[ContextMenu("PrintIds")]
-	public void printIds()
+	public void PrintIds()
 	{
-		PrintIds(cannons);
-		PrintIds(platforms);
-		PrintIds(trails);
-		PrintIds(flames);
+		AssetDatabaseHelper.PrintIds();
 	}
-
-	void PrintIds(Category c)
-	{
-		if(c==null)
-			return;
-		foreach(Item item in c.serializedItems)
-		{
-			Debug.Log(item.Id + " : " + item.Name);
-		}
-	}
-
-	void ResetIds(Category c)
-	{
-		if(c==null)
-			return;
-		foreach(Item item in c.serializedItems)
-		{
-			item.Id = 0;
-		}
-	}
-
 
 }

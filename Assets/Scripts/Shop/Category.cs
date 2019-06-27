@@ -6,4 +6,8 @@ using UnityEngine;
 public class Category : ScriptableObject
 {
 	public List<Item> serializedItems = new List<Item>();
+
+	public Item.ItemType type;
+
+	public float  x ,y, width, height , rotation;
 }

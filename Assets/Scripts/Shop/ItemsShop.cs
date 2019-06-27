@@ -8,7 +8,7 @@ public class ItemsShop : MonoBehaviour
 {
 	[SerializeField]
 	private swipeDetector detector; 
-	private List<List<Item>> categories = new List<List<Item>>();
+	private List<Category> categories = new List<Category>();
 	private List<Item> items;
 	private int currentItem=0 , currentType=0;
 	
@@ -27,21 +27,23 @@ public class ItemsShop : MonoBehaviour
 	[SerializeField]
 	private GameObject lock_;
 
+	public RectTransform transform;
 
-	
+
 	// Use this for initialization
 	private void Start ()
 	{
 		if(AssetDatabase.Instance.cannons != null)
-			categories.Add(AssetDatabase.Instance.cannons.serializedItems);		
+			categories.Add(AssetDatabase.Instance.cannons);		
 		if(AssetDatabase.Instance.platforms != null)
-			categories.Add(AssetDatabase.Instance.platforms.serializedItems);		
+			categories.Add(AssetDatabase.Instance.platforms);		
 		if(AssetDatabase.Instance.trails != null)
-			categories.Add(AssetDatabase.Instance.trails.serializedItems);		
+			categories.Add(AssetDatabase.Instance.trails);		
 		if(AssetDatabase.Instance.flames != null)
-			categories.Add(AssetDatabase.Instance.flames.serializedItems);
-		items = categories[currentType];
+			categories.Add(AssetDatabase.Instance.flames);
+		items = categories[currentType].serializedItems;
 		currentItem=0;
+		AdjustUI();
 		UpdateUI();
 		detector.SwipeDetected += MoveToSwipeDirection;
 	}
@@ -108,20 +110,31 @@ public class ItemsShop : MonoBehaviour
 
 	public void MoveUp()
 	{
-		if(currentType+ 1 > categories.Count - 1 || categories[currentType+1].Count==0) return;
+		if(currentType+ 1 > categories.Count - 1 || categories[currentType+1].serializedItems.Count==0) return;
 		currentType++;
 		currentItem = 0;
-		items = categories[currentType];
+		items = categories[currentType].serializedItems;
+		AdjustUI();
 		UpdateUI();
 	}
 	
 	public void MoveDown()
 	{
-		if(currentType-1 < 0 || categories[currentType-1].Count==0) return;
+		if(currentType-1 < 0 || categories[currentType-1].serializedItems.Count==0) return;
 		currentType--;
 		currentItem = 0;
-		items = categories[currentType];
+		items = categories[currentType].serializedItems;
+		AdjustUI();
 		UpdateUI();
+	}
+
+	private void AdjustUI()
+	{
+		Category c = categories[currentType];
+		itemImage.rectTransform.sizeDelta = new Vector2(c.width , c.height);
+		//itemImage.rectTransform.position = new Vector2(c.x , c.y);
+		itemImage.rectTransform.rotation = Quaternion.identity;
+		itemImage.rectTransform.Rotate(0 ,0 , c.rotation);
 	}
 
 	#endregion
@@ -156,8 +169,11 @@ public class ItemsShop : MonoBehaviour
 
 	public void TryUnlock()
 	{
-		if(items[currentItem].Unlock())
+		if (items[currentItem].Unlock())
+		{
 			SetLockedUi(items[currentItem]);
+			SetButton(items[currentItem]);
+		}
 	}
 
 	private void UpdateItem(Item item)
@@ -175,7 +191,18 @@ public class ItemsShop : MonoBehaviour
 	[SerializeField]
 	private GameObject buy, use; 
 	private void SetButton(Item item)
-	{	
+	{
+		if (!item.Unlocked())
+		{
+			buy.GetComponent<Button>().enabled = false;
+			use.GetComponent<Button>().enabled = false;
+		}		
+		else
+		{
+			buy.GetComponent<Button>().enabled = true;
+			use.GetComponent<Button>().enabled = true;
+		}
+
 		bool owned = PlayerStats.Instance.ItemsOwned.Contains(item.Id);
 		if (owned)
 		{

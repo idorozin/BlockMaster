@@ -14,8 +14,11 @@ public class Challanges : MonoBehaviour
 	{
 		foreach (Challenge challenge in PlayerStats.Instance.challenges)
 		{
-			GameObject go = Instantiate(challengeDisplay , contentPanel);
-			go.GetComponent<ChallengeDisplay>().ShowCompleteChallenge(challenge);
+			if (challenge.completed)
+			{
+				GameObject go = Instantiate(challengeDisplay, contentPanel);
+				go.GetComponent<ChallengeDisplay>().ShowChallengeOnBoard(challenge);
+			}
 		}
 	}
 }

@@ -33,7 +33,6 @@ public class AdManager : MonoBehaviour
         //MobileAds.Initialize(appId);
         RequestInterstitial();
         RequestRewarded();
-        RequestBanner();
     }
 
 
@@ -89,6 +88,7 @@ public class AdManager : MonoBehaviour
         #endif
         this.rewardedAd = new RewardedAd(adUnitId);
         rewardedAd.OnAdClosed += ReloadRewarded;
+        rewardedAd.OnUserEarnedReward += ReloadRewarded;
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
         // Load the rewarded ad with the request.
@@ -146,13 +146,11 @@ public class AdManager : MonoBehaviour
 
     private void ReloadInterstitial(object sender , EventArgs e)
     {
-        RequestInterstitial(); 
+        RequestInterstitial();
     } 
     private void ReloadRewarded(object sender , EventArgs e)
     {
         RequestRewarded();
     }
     
-    
-
 }

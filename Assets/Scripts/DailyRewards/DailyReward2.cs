@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DailyReward2: MonoBehaviour
 {
 	[SerializeField]
-	private int countDownLenght=500,coolDown;
+	private int countDownLenght=500,coolDown,resetTime;
 
 	[SerializeField] private GameObject TimeText, Button;
 	public static string timeText;
@@ -73,6 +73,8 @@ public class DailyReward2: MonoBehaviour
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		if (coolDown <= 0)
 		{
+			if (Math.Abs(coolDown) > resetTime)
+				PlayerStats.Instance.GiftIndex = 0;
 			GiftAllowed = true;
 			yield break;
 		}

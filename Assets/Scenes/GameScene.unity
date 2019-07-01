@@ -5167,7 +5167,7 @@ MonoBehaviour:
   x: 0.4900218
   y: 3
   z: 0
-  anima: 0
+  anima: 1
   smoothSpeed: 0.03
 --- !u!1 &1103824781
 GameObject:
@@ -8578,6 +8578,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212987232680421690, guid: 5713a2f3e7a057e46b1c97a9b434e80e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: deef2b5265f472740a11d573b888564e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5713a2f3e7a057e46b1c97a9b434e80e, type: 2}
   m_IsPrefabAsset: 0

@@ -39,6 +39,12 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
+		if (!PlayerStats.Instance.soundOn)
+		{
+			AudioListener.pause = true;
+			AudioListener.volume = 0;
+		}
+
 		NewGame();
 		Instance = this;
 	}

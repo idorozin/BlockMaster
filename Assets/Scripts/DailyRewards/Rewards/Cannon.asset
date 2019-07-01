@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 6969bef290f14cf99bf5f90e338de5c0, type: 3}
   m_Name: Cannon
   m_EditorClassIdentifier: Assembly-CSharp::Cannon
   icon: {fileID: 21300000, guid: 265f21ee33014274891c9e6e2be886de, type: 3}

@@ -41,6 +41,7 @@ public class MenuScript : MonoBehaviour
 	public void LoadDailyGift()
 	{
 		DailyGift.SetActive(true);
+		DailyGift.GetComponent<DailyGift>().ResetPanels();
 		DailyGift.GetComponent<DailyGift>().UpdateUI();
 	}
 

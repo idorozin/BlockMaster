@@ -28,18 +28,17 @@ public class RewardDialog : MonoBehaviour
 
 	void handleFailed(object sender , EventArgs e)
 	{
-		gameObject.SetActive(false);
-
+		Destroy(gameObject);
 	}	
 	void handleSuccess(object sender , EventArgs e)
 	{
 		p.Collect();
-		gameObject.SetActive(false);
+		Destroy(gameObject);
 	}
 
 	public void CollectButton()
 	{
-		gameObject.SetActive(false);
+		Destroy(gameObject);
 	}
 
 }

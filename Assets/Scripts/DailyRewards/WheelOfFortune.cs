@@ -25,9 +25,11 @@ public class WheelOfFortune : MonoBehaviour
 
 	public void OnMouseDown()
 	{
-/*		if (!rollAllowed || !DailyReward.RollAllowed)
-			return;*/
-/*		if (Application.internetReachability == NetworkReachability.NotReachable)
+		Debug.Log(!rollAllowed);
+		Debug.Log(!DailyReward.RollAllowed);
+		if (!rollAllowed || !DailyReward.RollAllowed)
+			return;
+		if (Application.internetReachability == NetworkReachability.NotReachable)
 			return;
 		startSpeed = UnityEngine.Random.Range(400 , 800);
 		stopSpeed = UnityEngine.Random.Range(50 ,100);
@@ -35,7 +37,7 @@ public class WheelOfFortune : MonoBehaviour
 		motor.maxMotorTorque = 10000;
 		wheelJoint.motor = motor;
 		DailyReward.RollAllowed = false;
-		GameObject.Find("TimeManager").GetComponent<DailyReward>().StartCoroutine("ResetTimer");*/
+		GameObject.Find("TimeManager").GetComponent<DailyReward>().StartCoroutine("ResetTimer");
 		StartCoroutine(roll(startSpeed));
 	}
 
@@ -58,17 +60,21 @@ public class WheelOfFortune : MonoBehaviour
 			motor.maxMotorTorque = 10000;
 			wheelJoint.motor = motor;
 			speed -= (startAngle / (int)angle);
-			speed = speed > 0 ? speed : (int)angle;
+			speed = speed > 200 ? speed : 200;
 			if(Math.Abs(transform.GetChild(0).rotation.eulerAngles.z - g) < 100)
 				angle -= Math.Abs(transform.GetChild(0).rotation.eulerAngles.z - g);
-			Debug.Log(startAngle - angle);
 			g = transform.GetChild(0).rotation.eulerAngles.z; 
 			yield return null;
 		}
 
-		while (transform.GetChild(0).rotation.eulerAngles.z < 299
-		       || transform.GetChild(0).rotation.eulerAngles.z > 300)
+		int speedo = 200;
+		while (transform.GetChild(0).rotation.eulerAngles.z < 298
+		       || transform.GetChild(0).rotation.eulerAngles.z > 301)
 		{
+			speedo -= 10;
+			motor.motorSpeed = speedo > 20 ? speedo : 20;
+			motor.maxMotorTorque = 10000;
+			wheelJoint.motor = motor;
 			yield return null;
 		}
 
@@ -104,9 +110,9 @@ public class WheelOfFortune : MonoBehaviour
 		prizeIndex = (int)Math.Round(transform.GetChild(0).eulerAngles.z);
 		prizeIndex=getPrizeIndex(prizeIndex);
 		getPrize(prizeIndex);*/
+		rollAllowed = true;
 		prizeIndex = getPrizeIndex(300);
 		getPrize(prizeIndex);
-		rollAllowed = true;
 	}
 	
 	int getPrizeIndex(int angel)

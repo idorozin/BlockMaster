@@ -8,7 +8,6 @@ public class TimeText2 : MonoBehaviour
 {
 	private void Update()
 	{
-		Debug.Log("poop");
 		gameObject.GetComponent<TextMeshProUGUI>().text = DailyReward.timeText;
 		if(gameObject.GetComponent<TextMeshProUGUI>().text=="")
 		{

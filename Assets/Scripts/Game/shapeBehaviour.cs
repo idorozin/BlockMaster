@@ -106,7 +106,7 @@ public class ShapeBehaviour : MonoBehaviour {
 	private void OnCollisionEnter2D(Collision2D other)
 	{
 		if(!canPlaySound) return;
-		//AudioManager.Instance.PlaySound(AudioManager.SoundName.blockLand);
+		AudioManager.Instance.PlaySound(AudioManager.SoundName.blockLand);
 		//StartCoroutine(played());
 	}
 	private IEnumerator played()

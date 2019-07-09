@@ -266,8 +266,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 57
+  m_fontSizeBase: 57
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -346,6 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   descriptionText: {fileID: 114305942813555978}
   rewardText: {fileID: 0}
+  progressText: {fileID: 0}
   difficultyArt: {fileID: 114049214236938836}
   levelText: {fileID: 114210817769852724}
   difficultyArts:
@@ -440,8 +441,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -183.7, y: 4.9}
-  m_SizeDelta: {x: 564.8, y: 155.1}
+  m_AnchoredPosition: {x: -230.5, y: -4.4}
+  m_SizeDelta: {x: 622.2, y: 166.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224827101699459530
 RectTransform:

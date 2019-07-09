@@ -7,7 +7,9 @@ public class Tips : ScriptableObject
 
     public string GetRandomSentence()
     {
-        return sentences[UnityEngine.Random.Range(0, sentences.Length - 1)].text;
+        if(sentences.Length != 0)
+            return sentences[UnityEngine.Random.Range(0, sentences.Length - 1)].text;
+        return null;
     }
 }
 

@@ -12,10 +12,8 @@ public class ScrollingText : MonoBehaviour
     
     public void SetNum(int num)
     {
-        if (gameObject.activeSelf)
-        {
+            gameObject.SetActive(true);
             StartCoroutine(SlideToNum(num));
-        }
     }
 
     private IEnumerator SlideToNum(int num)

@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using Boo.Lang;
 using Newtonsoft.Json;
 
 public class PlayerStats : MonoBehaviour
@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
 	public static PlayerData Instance;
 
 	[SerializeField]
-	private List<Challenge> challenges;
+	private ChallengesTemplates templates;
 
 	void Awake()
 	{
@@ -26,12 +26,19 @@ public class PlayerStats : MonoBehaviour
 			loadFile();
 			//if (Instance.challenges == null)
 			//{
-				Instance.challenges = new List<Challenge>(challenges);
+			Instance.challenges = new System.Collections.Generic.List<Challenge>(templates.Challenges);		
+				foreach (var c in Instance.challenges)
+				{
+					c.progress = 0;
+					c.isActive = false;
+				}
+				//Instance.challenges = new List<Challenge>(challenges);
 				for (int i = 0; i < 3; i++)
 				{
 					Instance.challenges[i].Activate();
 				}
 				Instance.ChallengesAvailable = 1;
+			
 			//}
 			Instance.gold += 50;
 			DontDestroyOnLoad(gameObject);

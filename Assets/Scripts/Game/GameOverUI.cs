@@ -22,15 +22,26 @@ public class GameOverUI : MonoBehaviour
     private TextMeshProUGUI record, coins , tipText;    
     [Header("challenges")]
     [SerializeField] 
+    private GameObject challengesPanel;   
+    [SerializeField] 
     private GameObject challengesDisplay;
 
     [SerializeField] private Tips tips;
 
 
-    private NativeShare nativeShare;
 
-    private void Start()
+
+    private NativeShare nativeShare;
+    
+    [SerializeField]
+    private GameObject scrollingText;
+
+
+    private void OnEnable()
     {
+/*        GameObject go = (GameObject)Instantiate(scrollingText,transform);
+        go.transform.position = scrollingText.transform.position;
+        go.GetComponent<ScrollingText>().SetNum(20);*/
         if (GameManager.Instance.challengesCompleted.Count > 0)
         {
             challengesDisplay.SetActive(true);
@@ -93,7 +104,13 @@ public class GameOverUI : MonoBehaviour
 
     public void Continue()
     {
-        challengesDisplay.SetActive(false);
+        StartCoroutine(Delay());
+    }
+
+    private IEnumerator Delay()
+    {
+        challengesPanel.GetComponent<AnimatedLayout>().Ondisable();
+        yield return new WaitForSecondsRealtime(1f);
         SetEndGameUI();
     }
 

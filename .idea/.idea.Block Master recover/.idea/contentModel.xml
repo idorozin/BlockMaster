@@ -424,12 +424,18 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Animation" t="Include">
+            <e p="AnimatedCard.cs" t="Include" />
+            <e p="AnimatedLayout.cs" t="Include" />
             <e p="CameraShake.cs" t="Include" />
             <e p="DestroyOnAnimationFinish.cs" t="Include" />
+            <e p="Effect.cs" t="Include" />
+            <e p="FadeOut.cs" t="Include" />
             <e p="FlyAnimation.cs" t="Include" />
             <e p="ImageCanvasAnimator.cs" t="Include" />
+            <e p="MoveIn.cs" t="Include" />
             <e p="MoveToTheSide.cs" t="Include" />
             <e p="NotflicationAnimation.cs" t="Include" />
+            <e p="ScaleIn.cs" t="Include" />
             <e p="ScrollingText.cs" t="Include" />
             <e p="SlideToDirection.cs" t="Include" />
             <e p="Spin.cs" t="Include" />
@@ -494,6 +500,10 @@
             <e p="NativeShare.cs" t="Include" />
           </e>
           <e p="PlayerData" t="Include">
+            <e p="Challanges" t="Include">
+              <e p="ChallengesTemplates.cs" t="Include" />
+              <e p="ExtensionMethodHelper.cs" t="Include" />
+            </e>
             <e p="Challanges.cs" t="Include" />
             <e p="Challenge.cs" t="Include" />
             <e p="ChallengeDisplay.cs" t="Include" />

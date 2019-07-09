@@ -23,8 +23,12 @@ public class PlayerData
         public int offsetW , offsetG , GiftIndex;
         public int ChallengesAvailable;
         public bool musicOn=true, soundOn=true;
-        public List<Challenge> challenges;
         public bool noAds;
+
+        
+        public List<Challenge> challenges;
+        public ChallengesTemplates templates;
+        
         public class Challanges
         {
             public List<Challenge> challenges;
@@ -41,6 +45,7 @@ public class PlayerData
 
         public void ActivateChallenge()
         {
+            Debug.Log("ACTTIVATEE");
             if (ChallengesAvailable <= 0)
                 return;
             foreach (var c in challenges)

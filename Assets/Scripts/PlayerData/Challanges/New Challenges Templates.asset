@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b0e27481b64c34e8a0c54768ee4fe2, type: 3}
+  m_Name: New Challenges Templates
+  m_EditorClassIdentifier: 
+  Challenges:
+  - description: Shoot %s Shapes!
+    reward: 0
+    action: shot
+    goal: 10
+    oneRun: 0
+    timeToComplete: 0
+    difficulty: 0
+    level: 0
+    progress: 0
+    isActive: 1
+    completed: 0
+    timePassed: 0
+  - description: Reach to %s meters!
+    reward: 0
+    action: 
+    goal: 100
+    oneRun: 0
+    timeToComplete: 0
+    difficulty: 0
+    level: 0
+    progress: 0
+    isActive: 1
+    completed: 0
+    timePassed: 0
+  - description: Reach to %s meters!
+    reward: 0
+    action: 
+    goal: 50
+    oneRun: 1
+    timeToComplete: 30
+    difficulty: 0
+    level: 0
+    progress: 0
+    isActive: 1
+    completed: 0
+    timePassed: 0
+  - description: Shoot %s Rectangles!
+    reward: 0
+    action: 
+    goal: 5
+    oneRun: 1
+    timeToComplete: 0
+    difficulty: 0
+    level: 0
+    progress: 0
+    isActive: 0
+    completed: 0
+    timePassed: 0

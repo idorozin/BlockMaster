@@ -15,7 +15,7 @@ public class ChallengeDisplay : MonoBehaviour
 	
 	public void ShowChallenge(Challenge challenge)
 	{
-		descriptionText.text = challenge.description + Progress(challenge);
+		descriptionText.text = challenge + Progress(challenge);
 		if (Math.Max(0, (challenge.difficulty - 1) % difficultyArts.Length) == 0 && difficultyArt!=null)
 			difficultyArt.rectTransform.sizeDelta = new Vector2(110 , 110);
 		else
@@ -28,7 +28,7 @@ public class ChallengeDisplay : MonoBehaviour
 	
 	public void ShowChallengeOnBoard(Challenge challenge)
 	{
-		descriptionText.text = challenge.description;
+		descriptionText.text = challenge + "";
 		progressText.text = challenge.goal + "/" + challenge.goal;
 		rewardText.text = challenge.reward.ToString();
 		levelText.text = challenge.level.ToString();
@@ -36,7 +36,7 @@ public class ChallengeDisplay : MonoBehaviour
 
 	public void ShowCompleteChallenge(Challenge challenge)
 	{
-		descriptionText.text = challenge.description;
+		descriptionText.text = challenge + "";
 		rewardText.text = challenge.reward.ToString();
 	}
 

@@ -59,14 +59,15 @@ public class NotflicationAnimation : MonoBehaviour
 		float screenHeight = canvas.GetComponent<RectTransform>().rect.height/2;
 		float sizeY = notflication.GetComponent<RectTransform>().rect.height/2;
 		Vector3 startPos = parent.localPosition;
-		GameObject go = Instantiate(notflication , canvas.transform);
+		GameObject go = Instantiate(notflication, canvas.transform);
 		go.transform.SetParent(parent);
 		go.transform.localPosition = new Vector3(
 			0f,
 			screenHeight + sizeY,
 			0f
 		);
-		parent.DOMoveY(transform.position.y - (sizeY * 2), 1f);
+		Debug.Log(screenHeight + sizeY);
+		parent.DOMoveY(-parent.transform.localPosition.y + (sizeY * 2), 1f);
 		Destroy(go , timeTillDestroy);
 		yield return new WaitForSeconds(pauseTime);
 		while (parent.localPosition.y < startPos.y)

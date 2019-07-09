@@ -43,7 +43,9 @@ public class PauseMenu : MonoBehaviour {
 				challengeDisplay.GetComponent<ChallengeDisplay>().ShowChallenge(c);
 			}
 		}
-	}	
+	}
+
+	[SerializeField] private AnimatedLayout animatedLayout;
 	private void DisplayCompletedChallenges()
 	{
 		Challenge[] completedCs = GameManager.Instance.challengesCompleted.ToArray();
@@ -100,7 +102,7 @@ public class PauseMenu : MonoBehaviour {
 		GameOverUI.SetActive(false);
 		
 	}
-
+	
 	public void GameOverUi(float score)
 	{
 		GameOverUI.SetActive(true);
@@ -114,8 +116,8 @@ public class PauseMenu : MonoBehaviour {
 		AdManager.Instance.ShowInterstitial();
 		GameIsPaused = true;
 		PlayerStats.Instance.gold+=(int)GameManager.Instance.score;
-		GameOverUi((GameManager.Instance.score));
 		DisplayCompletedChallenges();
+		GameOverUi((GameManager.Instance.score));
 		PlayerStats.saveFile();
 	}
 }

@@ -11,19 +11,26 @@ public class Challenge
     public int reward;
     public string action;
     public int goal;
-    public int progress;
+    public bool oneRun;
+    public float timeToComplete;
     public int difficulty;
     public int level;
-    public bool isActive;
+    
+    [HideInInspector]
+    public int progress;
+    [HideInInspector]
+    public bool isActive = false;
+    [HideInInspector]
     public bool completed;
-    public bool oneRun;
+    [HideInInspector]
+    public bool timePassed = false;
 
     public void Activate()
     {
+        Debug.Log("ACTIVATE");
         isActive = true;
         if (oneRun)
         {
-            description += " In One Run!";
             GameManager.NewGame += OnNewGame;
         }
     }
@@ -31,13 +38,23 @@ public class Challenge
     public void OnNewGame()
     {
         progress = 0;
+        if (timeToComplete > 0)
+        {
+            timePassed = false;
+            ExtensionMethods.DisableAfterTimePassed(this);
+        }
     }
 
     public void ReportProgress(int progress, string action)
     {
-        if (this.action == action) this.progress += progress;
-        if (this.progress >= goal) ChallengeCompleted();
-        else PlayerStats.saveFile();
+        if(timePassed || this.action != action)
+            return;
+        Debug.Log(this.progress + " / " + goal + action);
+        this.progress += progress;
+        if (this.progress >= goal) 
+            ChallengeCompleted();
+        else 
+            PlayerStats.saveFile();
     }
 
     public void setProcess(int process, string action)
@@ -65,6 +82,10 @@ public class Challenge
 
     public override string ToString()
     {
-        return description;
+        if(!oneRun)        
+            return description.Replace("%s" , ""+goal);
+        if((int)timeToComplete == 0)
+            return description.Replace("%s" , ""+goal) + " In One Run!";
+        return description.Replace("%s", "" + goal) + " In " + timeToComplete + " seconds!";
     }
 }

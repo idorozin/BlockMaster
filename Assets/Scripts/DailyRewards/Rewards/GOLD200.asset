@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: GOLD200
   m_EditorClassIdentifier: Assembly-CSharp::Gold
   icon: {fileID: 21300000, guid: fdc4e9d9e7631c94ab4adb4aba25eaed, type: 3}
-  amount: 200
+  amount: 300
   faceColor:
     serializedVersion: 2
     rgba: 4278251263

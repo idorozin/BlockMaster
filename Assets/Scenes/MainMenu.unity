@@ -384,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimumTimeBetweenAds: 30
+  texting: {fileID: 0}
 --- !u!1 &129653357
 GameObject:
   m_ObjectHideFlags: 0
@@ -7217,7 +7218,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2123464715}
-        m_MethodName: shareButtonPress
+        m_MethodName: ShareButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

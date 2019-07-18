@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HeartsUi : MonoBehaviour
 {
-	private int index;
+	private int index = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -36,11 +36,15 @@ public class HeartsUi : MonoBehaviour
 
 	public void HeartsDown()
 	{
+		if(PauseMenu.GameIsPaused)
+			return;
 		if(PanelHearts.transform.childCount <= index) return;
 		Transform t = PanelHearts.transform.GetChild(index);
 		if (t != null)
+		{
 			t.GetComponent<Image>().color = fadedHeartColor;
-		index++;
+			index++;
+		}
 	}
 
 	private void OnDisable()

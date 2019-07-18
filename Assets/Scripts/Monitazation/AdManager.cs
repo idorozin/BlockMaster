@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using GoogleMobileAds.Api;
+using TMPro;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
@@ -59,12 +60,11 @@ public class AdManager : MonoBehaviour
     }
 
     private BannerView bannerView;
-
     private void RequestBanner()
     {
-#if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/6300978111";
-#elif UNITY_IPHONE
+        #if UNITY_ANDROID
+            string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+        #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/1033173712";
         #else
             string adUnitId = "unexpected_platform";
@@ -79,9 +79,9 @@ public class AdManager : MonoBehaviour
 
     private void RequestRewarded()
     {
-#if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/5224354917";
-#elif UNITY_IPHONE
+        #if UNITY_ANDROID
+            string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+        #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/5224354917";
         #else
             string adUnitId = "unexpected_platform";
@@ -121,13 +121,14 @@ public class AdManager : MonoBehaviour
 
     public bool CanPlayRewarded()
     {
-        return rewardedAd.IsLoaded();
+        return rewardedAd!=null && rewardedAd.IsLoaded();
     }
 
     public void ShowBanner(EventArgs e)
     {
         bannerView.Show();
     }
+
 
     public void ShowRewarded(EventHandler<AdErrorEventArgs> handleFailed, EventHandler<Reward> handleReward)
     {

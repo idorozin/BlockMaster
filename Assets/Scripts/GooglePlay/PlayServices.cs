@@ -4,6 +4,7 @@ using System.Collections;
 using System.Net.Mime;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,13 +38,9 @@ public class PlayServices : MonoBehaviour
     {
         if (success) {
             Debug.Log("(Lollygagger) Signed in!");
-            
-            // Change sign-in button text
-            
-            // Show the user's name
+
         } else {
             Debug.Log("(Lollygagger) Sign-in failed...");
-            
             // Show failure message
         }
     }

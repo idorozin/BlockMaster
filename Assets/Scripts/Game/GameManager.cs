@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using GooglePlayGames.Native.Cwrapper;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Analytics;
@@ -109,12 +110,28 @@ public class GameManager : MonoBehaviour
 		timePassed += Time.deltaTime;
 	}
 
+	public bool NextLevel = false;
+	
     public IEnumerator Surface()
     {
-        PauseMenu.GameIsPaused = true;
+        NextLevel = true;
 	    yield return new WaitForSeconds(3f);
-        surface.GetComponent<SlideToDirection>().SlideToVector3(new Vector3(surface.transform.position.x, height, surface.transform.position.z));
-	    PauseMenu.GameIsPaused = false;
+	    bool shapesMoving = true;
+	    while (shapesMoving)
+	    {
+		    shapesMoving = false;
+		    foreach (var shape in shapes)
+		    {
+			    if (shape != null)
+			    {
+				    shapesMoving = !HeightFinder.IsNotMoving(shape.GetComponent<Rigidbody2D>());
+				    if (shapesMoving)
+					    break;
+			    }
+		    }
+		    yield return null;
+	    }
+	    surface.GetComponent<SlideToDirection>().SlideToVector3(new Vector3(surface.transform.position.x, height, surface.transform.position.z));
 	    DestroyShapes.Destroyall();
     }
     public void surface_()

@@ -20,7 +20,7 @@ public class LavaBehaviour : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
-		if(PauseMenu.GameIsPaused)
+		if(PauseMenu.GameIsPaused || GameManager.Instance.NextLevel)
 			return;
 		transform.position = transform.position+Vector3.up*initialSpeed+new Vector3(0f,CalcSpeed(),0f);
 		if (transform.position.y > GameManager.Instance.height + 2f)//(GameManager.Instance.height + 2f))

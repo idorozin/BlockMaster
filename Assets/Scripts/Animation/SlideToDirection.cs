@@ -26,15 +26,15 @@ public class SlideToDirection : MonoBehaviour {
 
 	public void SlideToVector3(Vector3 desiredPosition)
 	{
-		transform.DOMove(desiredPosition, 2, false).SetEase(Ease.InOutCubic);
+		transform.DOMove(desiredPosition, 2, false).SetEase(Ease.InOutCubic).OnComplete(OnSlideEnd);
 		if(anima)
 			StartCoroutine(anim());
-		PauseMenu.GameIsPaused = true;
+		GameManager.Instance.NextLevel = true;		
 	}
 
 	void OnSlideEnd()
 	{
-		PauseMenu.GameIsPaused = false;
+		GameManager.Instance.NextLevel = false;
 	}
 
 

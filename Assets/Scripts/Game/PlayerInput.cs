@@ -25,7 +25,7 @@ public class PlayerInput : MonoBehaviour
 
 	private void Update()
 	{
-		if (PauseMenu.GameIsPaused) return;
+		if (PauseMenu.GameIsPaused || GameManager.Instance.NextLevel) return;
 
 		if (Time.time > nextTime)
 		{

@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 public class HeightFinder : MonoBehaviour
@@ -25,12 +26,19 @@ public class HeightFinder : MonoBehaviour
         Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D>();
         if(col.gameObject.name != surface.name && rb !=null && rb.constraints != RigidbodyConstraints2D.FreezeAll&&rb.velocity.x<0.1 && rb.velocity.y<0.1 && rb.velocity.x>-0.1 && rb.velocity.y>-0.1 && col.isTrigger==false)
         {
-            if (transform.position.y > 0)
-            {
-                ScoreChanged(col.transform.position.y);
-            }
-
+            if(transform.position.y > 0)
+            ScoreChanged(col.transform.position.y);
         }
         rb2d.position = new Vector3(camera.position.x,camera.position.y+5f,camera.position.z);  
+    }
+
+    public static bool IsNotMoving(Rigidbody2D rb)
+    {
+        return rb == null ||
+               rb.constraints == RigidbodyConstraints2D.FreezeAll || 
+               (rb.velocity.x < 0.05 && rb.velocity.y < 0.05 &&
+               rb.velocity.x > -0.05 && rb.velocity.y > -0.05 && 
+                rb.velocity.magnitude < 0.05 &&
+                !rb.gameObject.GetComponent<Collider2D>().isTrigger);
     }
 }

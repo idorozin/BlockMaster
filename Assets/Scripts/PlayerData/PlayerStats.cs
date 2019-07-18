@@ -33,7 +33,7 @@ public class PlayerStats : MonoBehaviour
 					c.isActive = false;
 				}
 				//Instance.challenges = new List<Challenge>(challenges);
-				for (int i = 0; i < 3; i++)
+				for (int i = 0; i < 1; i++)
 				{
 					Instance.challenges[i].Activate();
 				}

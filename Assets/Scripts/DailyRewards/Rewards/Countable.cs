@@ -12,7 +12,7 @@ public class Countable : Reward_
 
     protected virtual void OnEnable()
     {
-        Debug.Log("load prefab");
+        if(prefab==null)
         prefab = Resources.Load<GameObject>("Gifts/Gift");
     }
     

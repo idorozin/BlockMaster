@@ -77,8 +77,8 @@ MonoBehaviour:
     Id: 8
     Animator: {fileID: 9100000, guid: 2e42b6e1167a12c48a4809bff71390ea, type: 2}
   type: 2
-  x: 0
-  y: 0
-  width: 0
-  height: 0
-  rotation: 0
+  x: 549.1
+  y: 524
+  width: 445.7
+  height: 429.9
+  rotation: 29.049997

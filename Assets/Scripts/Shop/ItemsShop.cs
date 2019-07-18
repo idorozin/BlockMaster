@@ -130,11 +130,11 @@ public class ItemsShop : MonoBehaviour
 
 	private void AdjustUI()
 	{
-		Category c = categories[currentType];
+		/*Category c = categories[currentType];
 		itemImage.rectTransform.sizeDelta = new Vector2(c.width , c.height);
 		//itemImage.rectTransform.position = new Vector2(c.x , c.y);
 		itemImage.rectTransform.rotation = Quaternion.identity;
-		itemImage.rectTransform.Rotate(0 ,0 , c.rotation);
+		itemImage.rectTransform.Rotate(0 ,0 , c.rotation);*/
 	}
 
 	#endregion
@@ -178,7 +178,12 @@ public class ItemsShop : MonoBehaviour
 
 	private void UpdateItem(Item item)
 	{
-		itemImage.sprite = item.Icon;
+		if (item.Animator == null)
+		{
+			itemImage.sprite = item.Icon;
+			Debug.Log("icon");
+		}
+
 		itemImage.GetComponent<ImageCanvasAnimator>().SetController(item.Animator);
 		
 		if (item.Gold > item.Diamonds)

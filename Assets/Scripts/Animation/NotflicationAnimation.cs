@@ -67,7 +67,7 @@ public class NotflicationAnimation : MonoBehaviour
 			0f
 		);
 		Debug.Log(screenHeight + sizeY);
-		parent.DOMoveY(-parent.transform.localPosition.y + (sizeY * 2), 1f);
+		parent.DOMoveY(-parent.transform.localPosition.y + (sizeY * 2) - 300, 1f);
 		Destroy(go , timeTillDestroy);
 		yield return new WaitForSeconds(pauseTime);
 		while (parent.localPosition.y < startPos.y)

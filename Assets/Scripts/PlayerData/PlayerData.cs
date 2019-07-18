@@ -45,13 +45,31 @@ public class PlayerData
 
         public void ActivateChallenge()
         {
-            Debug.Log("ACTTIVATEE");
             if (ChallengesAvailable <= 0)
                 return;
             foreach (var c in challenges)
             {
                 if (!c.isActive && !c.completed)
                 {
+                    Debug.Log("activate");
+                    c.Activate();
+                    ChallengesAvailable--;
+                    PlayerStats.saveFile();
+                    return;
+                }
+            }
+
+            foreach (var c in challenges)
+            {
+                c.NextLevel();
+            }
+            
+            foreach (var c in challenges)
+            {
+                Debug.Log(!c.isActive + " " + !c.completed);
+                if (!c.isActive && !c.completed)
+                {
+                    Debug.Log("activate");
                     c.Activate();
                     ChallengesAvailable--;
                     PlayerStats.saveFile();

@@ -34,6 +34,13 @@ public class Challenge
             GameManager.NewGame += OnNewGame;
         }
     }
+    
+    public void NextLevel()
+    {
+        completed = false;
+        goal = (int)Math.Round((double) (goal * 1.2));
+        Debug.Log("re activate");
+    }
 
     public void OnNewGame()
     {

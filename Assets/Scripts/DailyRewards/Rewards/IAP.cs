@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.Purchasing;
-[System.Serializable]
-public class IAP
+[CreateAssetMenu]
+public class IAP : ScriptableObject
 {
     public string ProductId;
     public ProductType ProductType;
     public ProductTypes Type;
     public int Amount;
+    public double Price;
+    
 
     public void Collect()
     {

@@ -42,7 +42,8 @@ public class SelectShop : MonoBehaviour {
         inShop = true;
     }
     
-    public void BackButton(){
+    public void BackButton()
+    {
             SceneManager.LoadScene("MainMenu");         
     }
 

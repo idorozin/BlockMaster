@@ -439,6 +439,8 @@
             <e p="ScrollingText.cs" t="Include" />
             <e p="SlideToDirection.cs" t="Include" />
             <e p="Spin.cs" t="Include" />
+            <e p="Star.cs" t="Include" />
+            <e p="StarGenerator.cs" t="Include" />
           </e>
           <e p="AssetDatabase.cs" t="Include" />
           <e p="AssetDatabaseHelper.cs" t="Include" />
@@ -457,7 +459,6 @@
               <e p="Countable.cs" t="Include" />
               <e p="Diamonds.cs" t="Include" />
               <e p="Gold.cs" t="Include" />
-              <e p="IAP.cs" t="Include" />
               <e p="Reward_.cs" t="Include" />
             </e>
             <e p="TimedRewards.cs" t="Include" />
@@ -494,7 +495,9 @@
           <e p="MenuScript.cs" t="Include" />
           <e p="Monitazation" t="Include">
             <e p="AdManager.cs" t="Include" />
+            <e p="IAP.cs" t="Include" />
             <e p="IAPManager.cs" t="Include" />
+            <e p="Package.cs" t="Include" />
           </e>
           <e p="NativeShare" t="Include">
             <e p="NativeShare.cs" t="Include" />

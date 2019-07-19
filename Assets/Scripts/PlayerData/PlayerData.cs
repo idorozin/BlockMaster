@@ -26,7 +26,7 @@ public class PlayerData
         public bool noAds;
 
         
-        public List<Challenge> challenges;
+        public List<Challenge> challenges = new List<Challenge>();
         public ChallengesTemplates templates;
         
         public class Challanges

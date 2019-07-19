@@ -8,9 +8,10 @@ public class IAP : ScriptableObject
     public ProductTypes Type;
     public int Amount;
     public double Price;
+    public GameObject Image;
     
 
-    public void Collect()
+    public virtual void Collect()
     {
         if (Type == ProductTypes.Diamonds)
         {
@@ -28,7 +29,7 @@ public class IAP : ScriptableObject
 
     public enum ProductTypes
     {
-        Gold , Diamonds , NoAds
+        Gold , Diamonds , NoAds , Package
     }
 
 }

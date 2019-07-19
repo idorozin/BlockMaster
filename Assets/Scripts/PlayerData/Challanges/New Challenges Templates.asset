@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Challenges:
   - description: Shoot %s Shapes!
-    reward: 0
+    reward: 10
     action: shot
     goal: 2
     oneRun: 0
@@ -21,11 +21,11 @@ MonoBehaviour:
     difficulty: 0
     level: 0
     progress: 0
-    isActive: 1
-    completed: 1
+    isActive: 0
+    completed: 0
     timePassed: 0
   - description: Reach to %s meters!
-    reward: 0
+    reward: 10
     action: 
     goal: 100
     oneRun: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
     completed: 0
     timePassed: 0
   - description: Reach to %s meters!
-    reward: 0
+    reward: 10
     action: shot
     goal: 1
     oneRun: 1
@@ -46,10 +46,10 @@ MonoBehaviour:
     level: 0
     progress: 0
     isActive: 0
-    completed: 1
-    timePassed: 1
+    completed: 0
+    timePassed: 0
   - description: Shoot %s Rectangles!
-    reward: 0
+    reward: 10
     action: 
     goal: 5
     oneRun: 1

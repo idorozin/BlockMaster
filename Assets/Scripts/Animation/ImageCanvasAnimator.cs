@@ -34,7 +34,6 @@ public class ImageCanvasAnimator : MonoBehaviour
     IEnumerator s(RuntimeAnimatorController controller)
     {
         yield return null;
-        yield return null;
         animator.runtimeAnimatorController = controller;
     }
 

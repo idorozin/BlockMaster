@@ -3,7 +3,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu]
 public class Reward_ : ScriptableObject
 {
     public Sprite icon;

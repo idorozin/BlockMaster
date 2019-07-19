@@ -11,9 +11,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
     
     private static IStoreController m_StoreController;          // The Unity Purchasing system.
     private static IExtensionProvider m_StoreExtensionProvider; // The store-specific Purchasing subsystems.
-    
-    public static string kProductIDConsumable = "consumable";   
-    
+        
     public static IAPManager Instance;
     private void Awake()
     {

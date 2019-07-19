@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.IO;
-using Boo.Lang;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 public class PlayerStats : MonoBehaviour
@@ -24,23 +24,19 @@ public class PlayerStats : MonoBehaviour
 			}
 
 			loadFile();
-			//if (Instance.challenges == null)
-			//{
-			Instance.challenges = new System.Collections.Generic.List<Challenge>(templates.Challenges);		
-				foreach (var c in Instance.challenges)
+			if (Instance.challenges == null)
+			{
+				Instance.challenges = new List<Challenge>();
+				foreach (Challenge c in templates.Challenges)
 				{
-					c.progress = 0;
-					c.isActive = false;
+					Instance.challenges.Add(new Challenge(c));
 				}
-				//Instance.challenges = new List<Challenge>(challenges);
-				for (int i = 0; i < 1; i++)
+				for (int i = 0; i < 3; i++)
 				{
 					Instance.challenges[i].Activate();
 				}
-				Instance.ChallengesAvailable = 1;
-			
-			//}
-			Instance.gold += 50;
+				Instance.ChallengesAvailable = 1;		
+			}
 			DontDestroyOnLoad(gameObject);
 			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
 		}

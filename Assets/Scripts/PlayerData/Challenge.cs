@@ -25,6 +25,20 @@ public class Challenge
     [HideInInspector]
     public bool timePassed = false;
 
+    public Challenge(Challenge c)
+    {
+        if(c == null)
+            return;
+        description = c.description;
+        reward = c.reward;
+        action = c.action;
+        goal = c.goal;
+        oneRun = c.oneRun;
+        timeToComplete = c.timeToComplete;
+        difficulty = c.difficulty;
+        level = c.level;
+    }
+
     public void Activate()
     {
         Debug.Log("ACTIVATE");

@@ -9,4 +9,6 @@ public class Shape
     public GameObject prefab;
     [SerializeField]
     public int chance;
+    [SerializeField] 
+    public string name;
 }

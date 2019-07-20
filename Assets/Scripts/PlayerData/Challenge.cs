@@ -15,6 +15,7 @@ public class Challenge
     public float timeToComplete;
     public int difficulty;
     public int level;
+    public bool incrementable = true;
     
     [HideInInspector]
     public int progress;
@@ -24,6 +25,8 @@ public class Challenge
     public bool completed;
     [HideInInspector]
     public bool timePassed = false;
+
+    public static event Action<Challenge> OnChallengeCompleted = delegate {  };
 
     public Challenge(Challenge c)
     {
@@ -37,10 +40,13 @@ public class Challenge
         timeToComplete = c.timeToComplete;
         difficulty = c.difficulty;
         level = c.level;
+        incrementable = c.incrementable;
     }
 
     public void Activate()
     {
+        Debug.Log(this);
+        Debug.Log(incrementable);
         Debug.Log("ACTIVATE");
         isActive = true;
         if (oneRun)
@@ -53,7 +59,6 @@ public class Challenge
     {
         completed = false;
         goal = (int)Math.Round((double) (goal * 1.2));
-        Debug.Log("re activate");
     }
 
     public void OnNewGame()
@@ -70,18 +75,14 @@ public class Challenge
     {
         if(timePassed || this.action != action)
             return;
-        Debug.Log(this.progress + " / " + goal + action);
-        this.progress += progress;
+        if (incrementable)
+            this.progress += progress;
+        else
+            this.progress = progress;
         if (this.progress >= goal) 
             ChallengeCompleted();
         else 
             PlayerStats.saveFile();
-    }
-
-    public void setProcess(int process, string action)
-    {
-        if (this.action == action && process > this.progress) this.progress = process;
-        if (this.progress >= goal) ChallengeCompleted();
     }
 
     public void skipChallange()
@@ -90,14 +91,13 @@ public class Challenge
 
     private void ChallengeCompleted()
     {
-        PlayerStats.Instance.ActivateChallenge();
         completed = true;
         isActive = false;
-        //PlayerStats.Instance.challenges.Remove(this);
         PlayerStats.saveFile();
         GameManager.GameOver -= OnNewGame;
         GameManager.Instance.challengesCompleted.Enqueue(this);
         GameManager.Instance.ChallengeComplete(this);
+        //OnChallengeCompleted(this);
         //claimReward(reward);
     }
 
@@ -107,6 +107,6 @@ public class Challenge
             return description.Replace("%s" , ""+goal);
         if((int)timeToComplete == 0)
             return description.Replace("%s" , ""+goal) + " In One Run!";
-        return description.Replace("%s", "" + goal) + " In " + timeToComplete + " seconds!";
+        return description.Replace("%s", ""+ goal) + " In " + timeToComplete + " seconds!";
     }
 }

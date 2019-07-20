@@ -295,7 +295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.032333333, y: 0.555}
   m_AnchorMax: {x: 0.9472963, y: 0.93528813}
-  m_AnchoredPosition: {x: 11, y: 6.796936}
+  m_AnchoredPosition: {x: 11, y: 6.796875}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &52444432
@@ -384,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimumTimeBetweenAds: 30
+  info: 
 --- !u!1 &129653357
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,11 +3571,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3806,6 +3807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d15077129c7a14889020ac3b56726c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
   recordText: {fileID: 1588190082}
   WheelOfFortune: {fileID: 154936883}
   Settings: {fileID: 653461953}
@@ -6526,11 +6528,11 @@ MonoBehaviour:
   rewards:
   - {fileID: 11400000, guid: 2736c562ae57b74418be71aab5ec74f6, type: 2}
   - {fileID: 11400000, guid: 8ef903d0358948a48a404c9673edda7d, type: 2}
-  - {fileID: 11400000, guid: 31662ab1d4868c74fa1eaa6a48c557ec, type: 2}
-  - {fileID: 11400000, guid: ef8c76aeb5f1dbc48b4daeae3989d5c3, type: 2}
+  - {fileID: 11400000, guid: 4099bf41c8f67de41a0752b9911ea3ae, type: 2}
+  - {fileID: 11400000, guid: 342a77091ad98f8488b71ced0ebb2343, type: 2}
   - {fileID: 11400000, guid: ec2e809341a5ea74794442f66f440bf0, type: 2}
   - {fileID: 11400000, guid: 62aef45f357f8ff42b909b994970eeca, type: 2}
-  - {fileID: 11400000, guid: ef8c76aeb5f1dbc48b4daeae3989d5c3, type: 2}
+  - {fileID: 11400000, guid: 15ac0e19caa14f14297bab19f5a286ef, type: 2}
   - {fileID: 11400000, guid: 9731f4cedec2210429f855297721e3d5, type: 2}
   testing: 0
   fullCircles: 4

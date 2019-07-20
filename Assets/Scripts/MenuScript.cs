@@ -80,8 +80,13 @@ public class MenuScript : MonoBehaviour
 	}
 
 	#endregion
-	
-	
+
+	[SerializeField] private TextMeshProUGUI text;
+	public void blab()
+	{
+		text.text = AdManager.Instance.info;
+	}
+
 	[SerializeField]
      private GameObject recordText;
 	[SerializeField]

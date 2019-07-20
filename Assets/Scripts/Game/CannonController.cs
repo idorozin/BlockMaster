@@ -27,6 +27,7 @@ public class CannonController : MonoBehaviour
 		shapeGenerator.shape.transform.parent = shapesParent.transform;
 		shapeGenerator.shape.GetComponent<Rigidbody2D>().velocity=(diff)*power;
 		predictionLine.clearDots();
+		PlayerStats.Instance.ReportProgress(1 , shapeGenerator.shape.name);
 		PlayerStats.Instance.ReportProgress(1 , "shot");
 		AudioManager.Instance.PlaySound(AudioManager.SoundName.cannonShot);
 		DestroyShapes.NewShape(shapeGenerator.shape);

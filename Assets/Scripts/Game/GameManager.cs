@@ -59,12 +59,14 @@ public class GameManager : MonoBehaviour
 		OnScoreChanged(-1.2f);
 		ShapeBehaviour.ShapeFell += HealthDown;
 		HeightFinder.ScoreChanged += OnScoreChanged;
+		Challenge.OnChallengeCompleted += ChallengeComplete;
 	}
 	
 	private void OnDisable()
 	{
 		HeightFinder.ScoreChanged -= OnScoreChanged;
 		ShapeBehaviour.ShapeFell -= HealthDown;
+		Challenge.OnChallengeCompleted -= ChallengeComplete;
 	}
 
 	[SerializeField] private GameObject revive;
@@ -168,8 +170,11 @@ public class GameManager : MonoBehaviour
 
 	private void SetScore()
 	{
-		if(score!=0 && score>fixedScore)
-			fixedScore=score;
+		if (score != 0 && score > fixedScore)
+		{
+			fixedScore = score;
+			PlayerStats.Instance.ReportProgress((int)fixedScore,"score");
+		}
 		text_.GetComponent<ScrollingText>().SetNum((int)fixedScore);
 		//PlayerStats.Instance.cs[PlayerStats.Instance.challengeIndex].setProcess((int)fixedScore , "record");
 	}

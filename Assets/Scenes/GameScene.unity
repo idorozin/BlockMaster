@@ -8791,6 +8791,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: deef2b5265f472740a11d573b888564e,
         type: 3}
+    - target: {fileID: 114431816543916860, guid: 5713a2f3e7a057e46b1c97a9b434e80e,
+        type: 2}
+      propertyPath: shapes.Array.data[1].name
+      value: Rectangle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5713a2f3e7a057e46b1c97a9b434e80e, type: 2}
   m_IsPrefabAsset: 0

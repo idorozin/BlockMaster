@@ -47,8 +47,10 @@ public class ShapeGenerator : MonoBehaviour
 	public void LoadCannon()
 	{
 		//load the cannon with new shape
-		shape = (GameObject) Instantiate(shapes[chanceArray[Random.Range(0, chanceArray.Length)]].prefab, spawningPos.position, transform.rotation);
+		Shape randomShape = shapes[chanceArray[Random.Range(0, chanceArray.Length)]];
+		shape = (GameObject) Instantiate(randomShape.prefab, spawningPos.position, transform.rotation);
 		shape.transform.parent = transform;
+		shape.gameObject.name = randomShape.name;
 	}
 	
 }

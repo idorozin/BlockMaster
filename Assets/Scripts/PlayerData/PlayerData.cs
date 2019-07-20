@@ -26,7 +26,7 @@ public class PlayerData
         public bool noAds;
 
         
-        public List<Challenge> challenges = new List<Challenge>();
+        public List<Challenge> challenges;
         public ChallengesTemplates templates;
         
         public class Challanges
@@ -51,7 +51,6 @@ public class PlayerData
             {
                 if (!c.isActive && !c.completed)
                 {
-                    Debug.Log("activate");
                     c.Activate();
                     ChallengesAvailable--;
                     PlayerStats.saveFile();
@@ -61,15 +60,14 @@ public class PlayerData
 
             foreach (var c in challenges)
             {
-                c.NextLevel();
+                if(c.completed)
+                    c.NextLevel();
             }
             
             foreach (var c in challenges)
             {
-                Debug.Log(!c.isActive + " " + !c.completed);
                 if (!c.isActive && !c.completed)
                 {
-                    Debug.Log("activate");
                     c.Activate();
                     ChallengesAvailable--;
                     PlayerStats.saveFile();

@@ -15,47 +15,51 @@ MonoBehaviour:
   - description: Shoot %s Shapes!
     reward: 10
     action: shot
-    goal: 2
+    goal: 10
     oneRun: 0
     timeToComplete: 10
     difficulty: 0
     level: 0
+    incrementable: 1
     progress: 0
     isActive: 0
     completed: 0
     timePassed: 0
   - description: Reach to %s meters!
-    reward: 10
-    action: 
+    reward: 100
+    action: score
     goal: 100
     oneRun: 0
     timeToComplete: 0
     difficulty: 0
     level: 0
+    incrementable: 0
     progress: 0
     isActive: 0
     completed: 0
     timePassed: 0
   - description: Reach to %s meters!
     reward: 10
-    action: shot
-    goal: 1
+    action: score
+    goal: 50
     oneRun: 1
-    timeToComplete: 5
+    timeToComplete: 20
     difficulty: 0
     level: 0
+    incrementable: 0
     progress: 0
     isActive: 0
     completed: 0
     timePassed: 0
   - description: Shoot %s Rectangles!
     reward: 10
-    action: 
+    action: Rectangle
     goal: 5
     oneRun: 1
     timeToComplete: 0
     difficulty: 0
     level: 0
+    incrementable: 1
     progress: 0
     isActive: 0
     completed: 0

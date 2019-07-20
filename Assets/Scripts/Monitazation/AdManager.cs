@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections;
+using System.IO.IsolatedStorage;
 using UnityEngine;
 using GoogleMobileAds.Api;
 using TMPro;
@@ -17,12 +18,18 @@ public class AdManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Start()
     {
-        Debug.Log("START");
 #if UNITY_ANDROID
         string appId = "ca-app-pub-4356027285942374~1457037501";
 #elif UNITY_IPHONE
@@ -76,7 +83,7 @@ public class AdManager : MonoBehaviour
     }
 
     private RewardedAd rewardedAd;
-
+    public string info = "";
     private void RequestRewarded()
     {
         #if UNITY_ANDROID
@@ -86,14 +93,14 @@ public class AdManager : MonoBehaviour
         #else
             string adUnitId = "unexpected_platform";
         #endif
+        info += "request ";
         this.rewardedAd = new RewardedAd(adUnitId);
         rewardedAd.OnAdClosed += ReloadRewarded;
-        rewardedAd.OnUserEarnedReward += ReloadRewarded;
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
         // Load the rewarded ad with the request.
         this.rewardedAd.LoadAd(request);
-        Debug.Log("RequestRewarded");
+        info += "load ";
     }
 
     public void ShowInterstitial(EventArgs handle)
@@ -132,6 +139,8 @@ public class AdManager : MonoBehaviour
 
     public void ShowRewarded(EventHandler<AdErrorEventArgs> handleFailed, EventHandler<Reward> handleReward)
     {
+        info += "tryshow ";
+        info += "null: " + rewardedAd == null + " loaded: " + rewardedAd.IsLoaded();
         rewardedAd.OnUserEarnedReward += handleReward;
         rewardedAd.OnAdFailedToShow += handleFailed;
         if (rewardedAd.IsLoaded())
@@ -151,6 +160,7 @@ public class AdManager : MonoBehaviour
     } 
     private void ReloadRewarded(object sender , EventArgs e)
     {
+        info += "reload ";
         RequestRewarded();
     }
     

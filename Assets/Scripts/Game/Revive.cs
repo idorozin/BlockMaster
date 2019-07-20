@@ -85,7 +85,7 @@ public class Revive : MonoBehaviour
 	}	
 	void RevivePlayer()
 	{
-		hearts.SetInitialHearts((int)Math.Abs(GameManager.Instance.lives));
+		hearts.SetInitialHearts(3);
 		GameManager.Instance.lives = 0;
 		if(lava.position.y > Camera.main.transform.position.y)
 			lava.position += Vector3.down * 3;

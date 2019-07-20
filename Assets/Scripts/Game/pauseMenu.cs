@@ -53,6 +53,7 @@ public class PauseMenu : MonoBehaviour {
 		{
 			GameObject challengeDisplay = Instantiate(ChallengeCompleteDisplayPrefab , ChallangesCompleteDisplayPanel.transform);
 			challengeDisplay.GetComponent<ChallengeDisplay>().ShowCompleteChallenge(c);
+			PlayerStats.Instance.ActivateChallenge();
 		}
 	}
 

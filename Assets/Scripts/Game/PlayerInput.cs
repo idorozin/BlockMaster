@@ -42,7 +42,6 @@ public class PlayerInput : MonoBehaviour
 				//follow the finger
 				case TouchPhase.Began:
 					initialPosition = GetWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));
-					initialPosition.Normalize();
 					aimPosition = GetWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));
 					fingerMoved = true;
 					began = true;
@@ -56,7 +55,7 @@ public class PlayerInput : MonoBehaviour
 				case TouchPhase.Ended:
 					if (!loading && began)
 					{
-						cannonController.Shoot(aimPosition);
+						cannonController.Shoot(initialPosition,aimPosition);
 						loading = true;
 						fingerMoved = false;
 						began = false;
@@ -67,7 +66,7 @@ public class PlayerInput : MonoBehaviour
 		}
 
 		if (fingerMoved)
-			cannonController.Aim(aimPosition);
+			cannonController.Aim(initialPosition,aimPosition);
 	}
 
 	private Vector3 GetWorldPoint(Vector3 position)
@@ -79,6 +78,16 @@ public class PlayerInput : MonoBehaviour
 	public void Report()
 	{
 		PlayerStats.Instance.ReportProgress(5 , "shot");
+	}
+	[ContextMenu("reportRect")]
+	public void Reportrect()
+	{
+		PlayerStats.Instance.ReportProgress(5 , "Rectangle");
+	}
+	[ContextMenu("reportreach")]
+	public void Reportreach()
+	{
+		PlayerStats.Instance.ReportProgress(100 , "score");
 	}
 
 

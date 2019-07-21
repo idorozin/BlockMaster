@@ -45,10 +45,8 @@ public class Challenge
 
     public void Activate()
     {
-        Debug.Log(this);
-        Debug.Log(incrementable);
-        Debug.Log("ACTIVATE");
         isActive = true;
+        progress = 0;
         if (oneRun)
         {
             GameManager.NewGame += OnNewGame;
@@ -75,10 +73,12 @@ public class Challenge
     {
         if(timePassed || this.action != action)
             return;
+        Debug.Log(action + " " + incrementable);
         if (incrementable)
             this.progress += progress;
         else
             this.progress = progress;
+        Debug.Log(progress +" "+goal);
         if (this.progress >= goal) 
             ChallengeCompleted();
         else 

@@ -14,9 +14,7 @@ public class NotflicationAnimation : MonoBehaviour
 	[SerializeField] 
 	private Transform parent;
 	[SerializeField]
-	private float speed;
-	[SerializeField]
-	private float step;
+	private float dauration;
 	[SerializeField] 
 	private float timeTillDestroy = 1f;
 	[SerializeField] 
@@ -37,14 +35,22 @@ public class NotflicationAnimation : MonoBehaviour
 
 	public void animate(Challenge not)
 	{
-		Debug.Log(not.description);
 		GameObject notfi = Instantiate(c);
 		notfi.GetComponent<ChallengeDisplay>().ShowCompleteChallenge(not);
 		animationQueue.Enqueue(Animate(notfi));
 		if (animateCoroutine == null)
 			animateCoroutine = StartCoroutine(AnimateInOrder());
 	}
-	
+
+	[ContextMenu("anim")]
+	public void anim()
+	{
+		GameObject notfi = Instantiate(c);
+		animationQueue.Enqueue(Animate(notfi));
+		if (animateCoroutine == null)
+			animateCoroutine = StartCoroutine(AnimateInOrder());
+	}
+
 	private IEnumerator AnimateInOrder ()
 	{
 		while (animationQueue.Any())
@@ -56,6 +62,7 @@ public class NotflicationAnimation : MonoBehaviour
 
 	private IEnumerator Animate (GameObject notflication)
 	{
+		Debug.Log("animate");
 		float screenHeight = canvas.GetComponent<RectTransform>().rect.height/2;
 		float sizeY = notflication.GetComponent<RectTransform>().rect.height/2;
 		Vector3 startPos = parent.localPosition;
@@ -67,16 +74,13 @@ public class NotflicationAnimation : MonoBehaviour
 			0f
 		);
 		Debug.Log(screenHeight + sizeY);
-		parent.DOLocalMoveY(- (sizeY * 2) , 1f);
-		Destroy(go , timeTillDestroy);
+		parent.gameObject.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0,- (sizeY * 2)) , dauration);
+		yield return new WaitForSecondsRealtime(dauration);
 		yield return new WaitForSeconds(pauseTime);
-		while (parent.localPosition.y < startPos.y)
-		{
-			//if(go!=null)
-				//go.transform.localPosition = go.transform.localPosition + Vector3.up * step;
-			parent.localPosition = parent.localPosition + Vector3.up * step;
-			yield return null;
-		}
+		parent.gameObject.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0,startPos.y) , dauration);
+		yield return new WaitForSecondsRealtime(dauration);
+		Destroy(go);
+		yield return new WaitForSecondsRealtime(0.1f);
 		animateCoroutine = null;
 		Destroy(notflication);
 	}

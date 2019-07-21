@@ -33,8 +33,6 @@ public class DailyReward3: MonoBehaviour
 		UpdateTime();
 		PlayerStats.saveFile();
 		StartCoroutine("CountDown");
-
-		Debug.Log(PlayerStats.Instance.challenge.startTime);
 	}
 
 	public void UpdateTime() // updates countDown with internet time
@@ -57,11 +55,12 @@ public class DailyReward3: MonoBehaviour
 	IEnumerator EnableButton()
 	{
 		//validate 
+		Debug.Log(coolDown);
 		yield return TimeManager.Instance.StartCoroutine("getTime");
+		Debug.Log(coolDown);
 		if (coolDown <= 0)
 		{
-			Debug.Log(Math.Abs(coolDown/countDownLenght) + 1);
-			PlayerStats.Instance.IncrementChallengesAvailable(Math.Abs(coolDown/countDownLenght));
+			PlayerStats.Instance.IncrementChallengesAvailable(Math.Max(1,Math.Abs((int)coolDown/(int)3600)));
 			StartCoroutine("ResetTimer");
 			yield break;
 		}

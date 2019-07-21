@@ -39,16 +39,17 @@ public class PredictionLine : MonoBehaviour {
 		
 		Vector2 f_launch_velocity=new Vector2(launch_velocity.x,launch_velocity.y);
 		Vector2 f_initial_position=new Vector2(initial_position.x,initial_position.y);
+		//Debug.Log(f_initial_position +" " + f_launch_velocity);
 		int opacity = 0;
 		for(int i=0; i<dot_num;i++)
 		{
-			if(-0.8f<CalculatePosition(f_launch_velocity,f_initial_position,time_step*i).y)
-			{
+			/*if(-0.8f<CalculatePosition(f_launch_velocity,f_initial_position,time_step*i).y)
+			{*/
 				GameObject dot = dots[opacity];
 				opacity++;
 				dot.SetActive(true);
 				dot.transform.position=CalculatePosition(f_launch_velocity,f_initial_position,time_step*i);
-			}
+			//}
 		}
 	}
 	

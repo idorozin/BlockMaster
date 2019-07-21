@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Purchasing;
+using UnityEngine.UI;
+
 [CreateAssetMenu]
 public class IAP : ScriptableObject
 {
@@ -8,7 +10,7 @@ public class IAP : ScriptableObject
     public ProductTypes Type;
     public int Amount;
     public double Price;
-    public GameObject Image;
+    public Image Image;
     
 
     public virtual void Collect()

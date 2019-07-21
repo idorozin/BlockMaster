@@ -424,28 +424,32 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Animation" t="Include">
-            <e p="AnimatedCard.cs" t="Include" />
-            <e p="AnimatedLayout.cs" t="Include" />
             <e p="CameraShake.cs" t="Include" />
             <e p="DestroyOnAnimationFinish.cs" t="Include" />
-            <e p="Effect.cs" t="Include" />
-            <e p="FadeOut.cs" t="Include" />
             <e p="FlyAnimation.cs" t="Include" />
             <e p="ImageCanvasAnimator.cs" t="Include" />
-            <e p="MoveIn.cs" t="Include" />
             <e p="MoveToTheSide.cs" t="Include" />
             <e p="NotflicationAnimation.cs" t="Include" />
-            <e p="ScaleIn.cs" t="Include" />
             <e p="ScrollingText.cs" t="Include" />
             <e p="SlideToDirection.cs" t="Include" />
             <e p="Spin.cs" t="Include" />
             <e p="Star.cs" t="Include" />
             <e p="StarGenerator.cs" t="Include" />
+            <e p="UIEffects" t="Include">
+              <e p="AnimatedLayout.cs" t="Include" />
+              <e p="Effect.cs" t="Include" />
+              <e p="FadeOut.cs" t="Include" />
+              <e p="MoveTO.cs" t="Include" />
+              <e p="MoveUpAndDown.cs" t="Include" />
+              <e p="Scale.cs" t="Include" />
+            </e>
           </e>
           <e p="AssetDatabase.cs" t="Include" />
           <e p="AssetDatabaseHelper.cs" t="Include" />
           <e p="AudioManager" t="Include">
             <e p="AudioManager.cs" t="Include" />
+            <e p="ButtonSounds.cs" t="Include" />
+            <e p="OnEnableSound.cs" t="Include" />
             <e p="Sound.cs" t="Include" />
           </e>
           <e p="DailyRewards" t="Include">

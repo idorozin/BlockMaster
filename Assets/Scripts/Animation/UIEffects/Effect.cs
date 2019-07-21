@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public abstract class Effect : MonoBehaviour {
 	
-	protected Image image;
 
 	[SerializeField]
 	protected float duration = 1f;
@@ -15,7 +14,6 @@ public abstract class Effect : MonoBehaviour {
 	
 	protected virtual void OnEnable()
 	{
-		image = GetComponent<Image>();
 		StartCoroutine(Animate());
 	}
 	

@@ -75,11 +75,29 @@ public class PlayerData
                 }
             }
         }
+        
 
         public void IncrementChallengesAvailable(int n)
         {
-            if(ChallengesAvailable>=6) return;
-            ChallengesAvailable+=n;
+            Debug.Log(ChallengesAvailable);
+            ChallengesAvailable = Math.Min(ChallengesAvailable+n,6);
+            Debug.Log(3 - ChallengesActive());
+            for (int i = 0; i < 3 - ChallengesActive(); i++)
+            {
+                ActivateChallenge();
+            }
             PlayerStats.saveFile();
+        }
+
+        private int ChallengesActive()
+        {
+            int count=0;
+            foreach (var c in challenges)
+            {
+                if (c.isActive)
+                    count++;
+            }
+
+            return count;
         }
     }

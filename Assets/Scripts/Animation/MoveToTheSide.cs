@@ -16,7 +16,6 @@ public class MoveToTheSide : MonoBehaviour
 	{
 		if (camera == null) camera = Camera.main;
 		borders = camera.ScreenToWorldPoint(new Vector3(Screen.width,0f,0f));
-		Debug.Log(borders);
 		height = transform.position.y;
 	}
 

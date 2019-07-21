@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
 		blockLand,
 		buttonClick,
 		cannonShot,
+		challengeComplete,
 	}
 	
 	public static AudioManager Instance;

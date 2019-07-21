@@ -38,7 +38,6 @@ public class TimeManager : MonoBehaviour
 		WWW www = new WWW(path);
 		yield return www;
 		time = www.text;
-		Debug.Log(time);
 		if(!string.IsNullOrEmpty(time))
 			setCurrentTime();
 		if(SceneManager.GetActiveScene().name == "MenuScene")
@@ -55,7 +54,6 @@ public class TimeManager : MonoBehaviour
 		min = int.Parse(timePeriods[1]);
 		sec = int.Parse(timePeriods[2]);
 		timePeriods = currentTime[0].Split('-');
-		Debug.Log(hour +":"+ min +":"+ sec);
 		day = int.Parse(timePeriods[1]);
 		month = int.Parse(timePeriods[0]);
 		year = int.Parse(timePeriods[2]);

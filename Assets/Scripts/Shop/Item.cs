@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Boo.Lang;
@@ -16,6 +17,8 @@ public class Item
 	public int Score;
 	public int Id;
 	public RuntimeAnimatorController Animator;
+	
+	public static event Action onPurchase = delegate {  };
 	
 	public enum ItemType
 	{
@@ -54,6 +57,7 @@ public class Item
 			PlayerStats.Instance.gold -= Gold;
 			PlayerStats.Instance.diamonds -= Diamonds;
 			PlayerStats.saveFile();
+			onPurchase();
 		}
 	}
 

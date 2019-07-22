@@ -48,10 +48,6 @@ public class DailyReward: MonoBehaviour
 
 	IEnumerator CountDown()
 	{
-		while (!DailyReward2.run)
-		{
-			yield return null;
-		}
 		while (coolDown > 0 || coolDown > countDownLenght+1)
 		{
 			coolDown = TimeRemaining();

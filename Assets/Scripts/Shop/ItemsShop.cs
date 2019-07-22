@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -46,10 +47,6 @@ public class ItemsShop : MonoBehaviour
 		AdjustUI();
 		UpdateUI();
 		detector.SwipeDetected += MoveToSwipeDirection;
-	}
-	
-	private void Update(){ // TODO
-		goldBalance.text=PlayerStats.Instance.gold.ToString();
 	}
 	
 	[ContextMenu("MoveUp")]

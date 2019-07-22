@@ -4,6 +4,7 @@ public class PlayerInput : MonoBehaviour
 {
 
 	private Vector3 initialPosition, aimPosition;
+	private Vector3 cameraInitialPosition;
 	bool fingerMoved, loading;
 	float nextTime;
 	public float shootingSpeed = 0.5f;
@@ -22,6 +23,7 @@ public class PlayerInput : MonoBehaviour
 	{
 		camera_ = Camera.main;
 	}
+
 
 	private void Update()
 	{
@@ -42,12 +44,15 @@ public class PlayerInput : MonoBehaviour
 				//follow the finger
 				case TouchPhase.Began:
 					initialPosition = GetWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));
+					cameraInitialPosition = camera_.transform.position;
 					aimPosition = GetWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));
 					fingerMoved = true;
 					began = true;
 					break;
 				//follow the finger
 				case TouchPhase.Moved:
+					if(!began)
+						break;
 					aimPosition = GetWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));
 					fingerMoved = true;
 					break;
@@ -71,7 +76,8 @@ public class PlayerInput : MonoBehaviour
 
 	private Vector3 GetWorldPoint(Vector3 position)
 	{
-		return camera_.ScreenToWorldPoint(position);
+		Vector3 diff = camera_.transform.position - cameraInitialPosition;
+		return camera_.ScreenToWorldPoint(position) - diff;
 	}
 
 	[ContextMenu("report")]

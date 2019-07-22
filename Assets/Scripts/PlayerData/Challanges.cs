@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public class Challanges : MonoBehaviour
 {
 	[SerializeField]
-	private GameObject challengeDisplay;
+	private GameObject challengeDisplay;	
+	[SerializeField]
+	private GameObject challengeCompleteDisplay;
 
 	[SerializeField] 
 	private Transform contentPanel;
@@ -15,6 +17,14 @@ public class Challanges : MonoBehaviour
 		foreach (Challenge challenge in PlayerStats.Instance.challenges)
 		{
 			if (challenge.completed)
+			{
+				GameObject go = Instantiate(challengeCompleteDisplay, contentPanel);
+				go.GetComponent<ChallengeDisplay>().ShowChallengeOnBoard(challenge);
+			}
+		}
+		foreach (Challenge challenge in PlayerStats.Instance.challenges)
+		{
+			if (!challenge.completed)
 			{
 				GameObject go = Instantiate(challengeDisplay, contentPanel);
 				go.GetComponent<ChallengeDisplay>().ShowChallengeOnBoard(challenge);

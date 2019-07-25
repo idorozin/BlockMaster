@@ -44,15 +44,38 @@ public class PlayServices : MonoBehaviour
             // Show failure message
         }
     }
+    
+    public void TryAgain()
+    {
+        triedAgain = true;
+        PlayGamesPlatform.Instance.Authenticate(TryAgainCallback, false);
+    }
+    
+    public void TryAgainCallback(bool success)
+    {
+        if (success) {
+            if (PlayGamesPlatform.Instance.localUser.authenticated) 
+            {
+                PlayGamesPlatform.Instance.ShowLeaderboardUI();
+            }
+        } else {
+            Debug.Log("(Lollygagger) Sign-in failed...");
+            // Show failure message
+        }
+    }
 
+    private bool triedAgain = false;
 
     #region Leaderboards
     public void ShowLeaderboards() {
-        if (PlayGamesPlatform.Instance.localUser.authenticated) {
+        if (PlayGamesPlatform.Instance.localUser.authenticated) 
+        {
             PlayGamesPlatform.Instance.ShowLeaderboardUI();
         }
-        else {
-            Debug.Log("Cannot show leaderboard: not authenticated");
+        else 
+        {
+            if(!triedAgain)
+                TryAgain();
         }
     }
 

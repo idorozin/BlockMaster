@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Boo.Lang;
+using GooglePlayGames.Native.Cwrapper;
 using UnityEngine;
 
 [System.Serializable]
@@ -52,7 +53,8 @@ public class Item
 	{
 		if (Score > PlayerStats.Instance.highScore || PlayerStats.Instance.ItemsOwned.Contains(Id))
 			return;	
-		if(PlayerStats.Instance.gold >= Gold && PlayerStats.Instance.diamonds >= Diamonds){
+		if(PlayerStats.Instance.gold >= Gold && PlayerStats.Instance.diamonds >= Diamonds)
+		{
 			PlayerStats.Instance.ItemsOwned.Add(Id);
 			PlayerStats.Instance.gold -= Gold;
 			PlayerStats.Instance.diamonds -= Diamonds;
@@ -80,6 +82,7 @@ public class Item
 				PlayerStats.Instance.lastTrail = Id;
 				break;
 		}
+		PlayerStats.saveFile();
 	}
 
 	public bool Unlock()

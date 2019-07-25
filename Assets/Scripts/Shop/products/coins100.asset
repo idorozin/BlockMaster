@@ -16,3 +16,6 @@ MonoBehaviour:
   Type: 0
   Amount: 100
   Price: 0.99
+  Image: {fileID: 21300000, guid: 4baa7cc4be4215a44af2829466b17c76, type: 3}
+  size: {x: 0, y: 0}
+  position: {x: 0, y: 0}

@@ -254,8 +254,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9859a64ad2ae4cc49a37a16678d808d7, type: 2}
+  m_sharedMaterial: {fileID: 21153115209632918, guid: 9859a64ad2ae4cc49a37a16678d808d7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -566,11 +567,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -820,7 +821,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a9fde3a2c3e6f2643964142264d9e883, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fdc4e9d9e7631c94ab4adb4aba25eaed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -901,7 +902,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a9fde3a2c3e6f2643964142264d9e883, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fdc4e9d9e7631c94ab4adb4aba25eaed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1107,7 +1108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -148.20001, y: -114.5}
+  m_AnchoredPosition: {x: -148.20001, y: -99}
   m_SizeDelta: {x: 152.4, y: 206}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224119251277215058
@@ -1179,8 +1180,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -106, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -122, y: -13}
+  m_SizeDelta: {x: 113, y: 152}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224678230907124848
 RectTransform:
@@ -1235,8 +1236,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -106, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -121.99998, y: -12.999977}
+  m_SizeDelta: {x: 113, y: 152}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224803861545032092
 RectTransform:
@@ -1296,6 +1297,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.5, y: 0}
-  m_SizeDelta: {x: 1081, y: 567.4}
+  m_AnchoredPosition: {x: 1, y: 0}
+  m_SizeDelta: {x: 1103.9, y: 567.4}
   m_Pivot: {x: 0.5, y: 0.5}

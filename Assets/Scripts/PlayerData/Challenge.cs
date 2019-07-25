@@ -1,5 +1,6 @@
 
 using System;
+using Boo.Lang;
 using GooglePlayGames.Native.Cwrapper;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -16,6 +17,7 @@ public class Challenge
     public int difficulty;
     public int level;
     public bool incrementable = true;
+    public List<int> previousGoals;
     
     [HideInInspector]
     public int progress;
@@ -41,10 +43,13 @@ public class Challenge
         difficulty = c.difficulty;
         level = c.level;
         incrementable = c.incrementable;
+        previousGoals = new List<int>();
     }
 
     public void Activate()
     {
+        if(PlayerStats.Instance.ChallengesActive() >= 3)
+            return;
         isActive = true;
         progress = 0;
         if (oneRun)
@@ -73,12 +78,10 @@ public class Challenge
     {
         if(timePassed || this.action != action)
             return;
-        Debug.Log(action + " " + incrementable);
         if (incrementable)
             this.progress += progress;
         else
             this.progress = progress;
-        Debug.Log(progress +" "+goal);
         if (this.progress >= goal) 
             ChallengeCompleted();
         else 
@@ -95,13 +98,23 @@ public class Challenge
         isActive = false;
         PlayerStats.saveFile();
         GameManager.GameOver -= OnNewGame;
-        GameManager.Instance.challengesCompleted.Enqueue(this);
         GameManager.Instance.ChallengeComplete(this);
+        PlayerStats.Instance.gold += reward;
+        previousGoals.Add(goal);
         //OnChallengeCompleted(this);
         //claimReward(reward);
     }
 
     public override string ToString()
+    {
+        if(!oneRun)        
+            return description.Replace("%s" , ""+goal);
+        if((int)timeToComplete == 0)
+            return description.Replace("%s" , ""+goal) + " In One Run!";
+        return description.Replace("%s", ""+ goal) + " In " + timeToComplete + " seconds!";
+    }
+    
+    public string ToString(int goal)
     {
         if(!oneRun)        
             return description.Replace("%s" , ""+goal);

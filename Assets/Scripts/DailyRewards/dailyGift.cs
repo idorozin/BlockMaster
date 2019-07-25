@@ -19,6 +19,8 @@ public class DailyGift : MonoBehaviour
 
 	[SerializeField]
 	private RewardDialog rewardDialog;
+
+	[SerializeField] private GameObject offline;
 	
 	private bool giftAllowed=true;
 	
@@ -41,7 +43,11 @@ public class DailyGift : MonoBehaviour
 	public void getGiftButton()
 	{
 		if (Application.internetReachability == NetworkReachability.NotReachable)
+		{
+			offline.SetActive(true);
 			return;
+		}
+
 		if(DailyReward2.timeText=="READY!" && !DailyReward2.GiftAllowed)
 			GameObject.Find("TimeManager").GetComponent<DailyReward2>().StartCoroutine("enableButton");
 		if (!giftAllowed || !DailyReward2.GiftAllowed)

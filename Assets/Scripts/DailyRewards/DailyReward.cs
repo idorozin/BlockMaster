@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DailyReward: MonoBehaviour
@@ -19,7 +21,7 @@ public class DailyReward: MonoBehaviour
 			return;
 		if (PlayerStats.Instance.wheel.startTime == "")
 		{
-			TimeText.GetComponent<Text>().text = "READY!";
+			TimeText.GetComponent<TextMeshProUGUI>().text = "READY!";
 			RollAllowed = true;
 			return;
 		}
@@ -51,8 +53,10 @@ public class DailyReward: MonoBehaviour
 		while (coolDown > 0 || coolDown > countDownLenght+1)
 		{
 			coolDown = TimeRemaining();
+			if(TimeText == null && SceneManager.GetActiveScene().name == "MainMenu")
+				TimeText = GameObject.Find("Timer2");
 			if(TimeText != null && coolDown > 0)
-			TimeText.GetComponent<Text>().text = SecsToTime();
+			TimeText.GetComponent<TextMeshProUGUI>().text = SecsToTime();
 			timeText = SecsToTime();
 			yield return new WaitForSecondsRealtime(1);
 		}
@@ -63,7 +67,7 @@ public class DailyReward: MonoBehaviour
 	// true => button enabled false => button disabled and count down continouse with updated time. 
 	IEnumerator EnableButton()
 	{
-		if(TimeText!=null){TimeText.GetComponent<Text>().text = "READY!";timeText = "READY";}
+		if(TimeText!=null){TimeText.GetComponent<TextMeshProUGUI>().text = "READY!";timeText = "READY!";}
 		//validate 
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		if (coolDown <= 0)

@@ -34,17 +34,19 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameObject highScoreSign;
 	[SerializeField] private TextMeshProUGUI text_;
 
+	private int goldEarned;
+
 	private bool reviveUsed = false;
 	
 	private float startHeight;
 
 	private void Awake()
 	{
-		if (!PlayerStats.Instance.soundOn)
-		{
-			AudioListener.pause = true;
-			AudioListener.volume = 0;
-		}
+		/*if (!PlayerStats.Instance.soundOn)
+		{*/
+			AudioListener.pause = false;
+			AudioListener.volume = 1;
+		//}
 
 		NewGame();
 		Instance = this;
@@ -105,6 +107,8 @@ public class GameManager : MonoBehaviour
 	public void ChallengeComplete(Challenge c)
 	{
 		anim.animate(c);
+		challengesCompleted.Enqueue(c);
+		goldEarned += c.reward;
 	}
 
 	void Update ()
@@ -131,6 +135,7 @@ public class GameManager : MonoBehaviour
 					    break;
 			    }
 		    }
+		    Debug.Log(shapesMoving);
 		    yield return null;
 	    }
 	    surface.GetComponent<SlideToDirection>().SlideToVector3(new Vector3(surface.transform.position.x, height, surface.transform.position.z));

@@ -74,9 +74,10 @@ public class PlayerInput : MonoBehaviour
 			cannonController.Aim(initialPosition,aimPosition);
 	}
 
+	private Vector3 diff;
 	private Vector3 GetWorldPoint(Vector3 position)
 	{
-		Vector3 diff = camera_.transform.position - cameraInitialPosition;
+		diff = camera_.transform.position - cameraInitialPosition;
 		return camera_.ScreenToWorldPoint(position) - diff;
 	}
 

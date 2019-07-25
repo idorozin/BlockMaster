@@ -9,6 +9,9 @@ public class DailyReward3: MonoBehaviour
 	[SerializeField]
 	private int countDownLenght=500,coolDown;
 	private bool initilized=false;
+	private bool isRunning;
+
+	public static int timeRemaining;
 	
 	private void Start()
 	{
@@ -45,6 +48,7 @@ public class DailyReward3: MonoBehaviour
 		while (coolDown > 0 || coolDown > countDownLenght+1)
 		{
 			coolDown = TimeRemaining();
+			timeRemaining = TimeRemaining();
 			yield return new WaitForSecondsRealtime(1);
 		}
 		StartCoroutine("EnableButton");

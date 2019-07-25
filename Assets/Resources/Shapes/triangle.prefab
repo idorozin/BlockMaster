@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114527134416074286}
   - component: {fileID: 50641431827011894}
   - component: {fileID: 96983842717975864}
-  - component: {fileID: 60281591390280214}
+  - component: {fileID: 60344957068992702}
   m_Layer: 0
   m_Name: triangle
   m_TagString: Untagged
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1564665401428594}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.218, z: 0}
+  m_LocalPosition: {x: 0, y: 0.49, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_Children: []
   m_Father: {fileID: 4794824681394348}
@@ -111,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1289142507793614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.117, z: 0}
+  m_LocalPosition: {x: 0, y: -0.173, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_Children: []
   m_Father: {fileID: 4794824681394348}
@@ -124,8 +124,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1224304990937112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.497, y: 1.157, z: 0}
+  m_LocalScale: {x: 0.5097, y: 0.5097, z: 0.5097}
   m_Children:
   - {fileID: 4798071758549354}
   - {fileID: 4078953125719012}
@@ -141,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1586343162716080}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.308, y: -0.312, z: 0}
+  m_LocalPosition: {x: 0.606, y: -0.624, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_Children: []
   m_Father: {fileID: 4794824681394348}
@@ -154,7 +154,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1563550910669088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.303, y: -0.303, z: 0}
+  m_LocalPosition: {x: -0.615, y: -0.628, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_Children: []
   m_Father: {fileID: 4794824681394348}
@@ -180,7 +180,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60281591390280214
+--- !u!60 &60344957068992702
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,7 +196,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.95, y: 0.82}
+    oldSize: {x: 1.86, y: 1.61}
     newSize: {x: 0.95, y: 0.82}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -204,25 +204,23 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.25510025, y: -0.025006115}
-      - {x: 0.13106608, y: 0.18909915}
-      - {x: 0.06815338, y: 0.30945998}
-      - {x: 0.04269576, y: 0.3480928}
-      - {x: 0.01945448, y: 0.3721321}
-      - {x: -0.0028680563, y: 0.41464454}
-      - {x: -0.01106596, y: 0.39838845}
-      - {x: -0.0864135, y: 0.27684164}
-      - {x: -0.19081867, y: 0.087099195}
-      - {x: -0.2545104, y: -0.0429793}
-      - {x: -0.3187437, y: -0.13393389}
-      - {x: -0.3648299, y: -0.20819815}
-      - {x: -0.39874363, y: -0.2692892}
-      - {x: -0.42995858, y: -0.3154624}
-      - {x: -0.461066, y: -0.3823223}
-      - {x: -0.475, y: -0.41}
-      - {x: 0.475, y: -0.41}
-      - {x: 0.4587438, y: -0.37232232}
-      - {x: 0.38480973, y: -0.2692893}
+    - - {x: 0.61, y: -0.205}
+      - {x: 0.089999996, y: 0.695}
+      - {x: 0.049999997, y: 0.765}
+      - {x: 0.01, y: 0.805}
+      - {x: -0.02, y: 0.805}
+      - {x: -0.04, y: 0.79499996}
+      - {x: -0.22999999, y: 0.465}
+      - {x: -0.45, y: 0.085}
+      - {x: -0.53, y: -0.055}
+      - {x: -0.64, y: -0.24499999}
+      - {x: -0.71, y: -0.36499998}
+      - {x: -0.78999996, y: -0.505}
+      - {x: -0.93, y: -0.755}
+      - {x: -0.93, y: -0.805}
+      - {x: 0.93, y: -0.805}
+      - {x: 0.93, y: -0.775}
+      - {x: 0.91999996, y: -0.72499996}
 --- !u!96 &96983842717975864
 TrailRenderer:
   serializedVersion: 2
@@ -377,7 +375,7 @@ SpriteRenderer:
   m_SortingLayerID: 662298637
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f27f8540cd4bc5b449ad0fa83efa97e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e13b96fd271e496438f2c8a28b603359, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

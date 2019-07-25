@@ -10,4 +10,6 @@ public class Sound
      public bool loop;
      [HideInInspector]
      public AudioSource source;
+     [Range(0,1)]
+     public float volume = 1f;
 }

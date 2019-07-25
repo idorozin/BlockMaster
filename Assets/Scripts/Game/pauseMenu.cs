@@ -19,12 +19,14 @@ public class PauseMenu : MonoBehaviour {
 	public GameObject ChallengeDisplayPrefab;
 	public GameObject ChallangesCompleteDisplayPanel;
 	public GameObject ChallengeCompleteDisplayPrefab;
+	public GameObject ChallengeOpen;
 	public GameObject Score;
 
 	private void Start()
 	{
 		Time.timeScale = 0;
 		GameIsPaused = true;
+		PlayerStats.Instance.ActivateChallenge();
 		DisplayChallenges();
 		GameManager.GameOver += OnGameOver;
 	}
@@ -38,14 +40,19 @@ public class PauseMenu : MonoBehaviour {
 	{
 		foreach (var c in PlayerStats.Instance.challenges)
 		{
-			if(c.isActive){
+			if(c.isActive)
+			{
 				GameObject challengeDisplay = Instantiate(ChallengeDisplayPrefab , ChallangesDisplayPanel.transform);
 				challengeDisplay.GetComponent<ChallengeDisplay>().ShowChallenge(c);
 			}
 		}
+		
+		if (ChallangesDisplayPanel.transform.childCount < 3)
+		{
+			Instantiate(ChallengeOpen, ChallangesDisplayPanel.transform);
+		}
 	}
 
-	[SerializeField] private AnimatedLayout animatedLayout;
 	private void DisplayCompletedChallenges()
 	{
 		Challenge[] completedCs = GameManager.Instance.challengesCompleted.ToArray();
@@ -53,7 +60,6 @@ public class PauseMenu : MonoBehaviour {
 		{
 			GameObject challengeDisplay = Instantiate(ChallengeCompleteDisplayPrefab , ChallangesCompleteDisplayPanel.transform);
 			challengeDisplay.GetComponent<ChallengeDisplay>().ShowCompleteChallenge(c);
-			PlayerStats.Instance.ActivateChallenge();
 		}
 	}
 
@@ -73,12 +79,16 @@ public class PauseMenu : MonoBehaviour {
 	{
 		PauseMenuUI.SetActive(false);
 		Time.timeScale = 1f;
+		AudioListener.pause = false;
+		AudioListener.volume = 1;
 		GameIsPaused = false;
 	}
 	public void Pause()
 	{
 		PauseMenuUI.SetActive(true);
 		Time.timeScale = 0f;
+		AudioListener.pause = true;
+		AudioListener.volume = 0;
 		GameIsPaused = true;
 	}
 
@@ -93,6 +103,8 @@ public class PauseMenu : MonoBehaviour {
 	public void LoadMainMenu()
 	{
 		SceneManager.LoadScene("MainMenu");
+		AudioListener.pause = false;
+		AudioListener.volume = 1;
 		Time.timeScale = 1f;
 		GameIsPaused = false;
 	}

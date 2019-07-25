@@ -18,7 +18,7 @@ MonoBehaviour:
     Gold: 25000
     Diamonds: 75
     Score: 10000
-    Id: 0
+    Id: 59
     Animator: {fileID: 0}
   - Name: Colors of the Wind
     Icon: {fileID: 21300000, guid: cd741339c963ed64dbbcf8e80e5ff88a, type: 3}
@@ -26,7 +26,7 @@ MonoBehaviour:
     Gold: 15000
     Diamonds: 50
     Score: 8000
-    Id: 0
+    Id: 60
     Animator: {fileID: 0}
   - Name: Green Day
     Icon: {fileID: 21300000, guid: eba3c8b9fbf50174c9b3d4e563999ca9, type: 3}
@@ -34,7 +34,7 @@ MonoBehaviour:
     Gold: 10000
     Diamonds: 30
     Score: 6000
-    Id: 0
+    Id: 61
     Animator: {fileID: 0}
   - Name: The wall
     Icon: {fileID: 21300000, guid: 623be66be9dc98744a4f0449105d02ea, type: 3}
@@ -42,7 +42,7 @@ MonoBehaviour:
     Gold: 250
     Diamonds: 3
     Score: 100
-    Id: 0
+    Id: 62
     Animator: {fileID: 0}
   - Name: Crocodile Rock
     Icon: {fileID: 21300000, guid: c6578083742dbb24eba0eb466d9fed66, type: 3}
@@ -50,7 +50,7 @@ MonoBehaviour:
     Gold: 500
     Diamonds: 5
     Score: 250
-    Id: 0
+    Id: 63
     Animator: {fileID: 0}
   - Name: WALLS
     Icon: {fileID: 21300000, guid: 7a7bc5482a146c64fb27299c65b8ba34, type: 3}
@@ -58,7 +58,7 @@ MonoBehaviour:
     Gold: 700
     Diamonds: 7
     Score: 500
-    Id: 0
+    Id: 64
     Animator: {fileID: 0}
   - Name: Zebra
     Icon: {fileID: 21300000, guid: 643b0d70349144c45bac918631e59f9a, type: 3}
@@ -66,7 +66,7 @@ MonoBehaviour:
     Gold: 1250
     Diamonds: 10
     Score: 1000
-    Id: 0
+    Id: 65
     Animator: {fileID: 0}
   - Name: You in the army now
     Icon: {fileID: 21300000, guid: bbd2efb0ebee19440b2cd6b1008b7e6d, type: 3}
@@ -74,7 +74,7 @@ MonoBehaviour:
     Gold: 2000
     Diamonds: 12
     Score: 1500
-    Id: 0
+    Id: 66
     Animator: {fileID: 0}
   - Name: Dissipates
     Icon: {fileID: 21300000, guid: 810151e4d35a31f44bd5ad8c51bcc8ba, type: 3}
@@ -82,11 +82,11 @@ MonoBehaviour:
     Gold: 3000
     Diamonds: 15
     Score: 2000
-    Id: 0
+    Id: 67
     Animator: {fileID: 0}
   type: 1
-  x: 549.1
-  y: 664.7
-  width: 954.1
-  height: 1058.7
+  x: 159.11601
+  y: 137.24681
+  width: 802.9
+  height: 891
   rotation: 0

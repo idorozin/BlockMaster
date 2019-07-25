@@ -23,17 +23,12 @@ public class PlayerData
         public int offsetW , offsetG , GiftIndex;
         public int ChallengesAvailable;
         public bool musicOn=true, soundOn=true;
-        public bool noAds;
+        public bool noAds = false;
 
         
         public List<Challenge> challenges;
         public ChallengesTemplates templates;
         
-        public class Challanges
-        {
-            public List<Challenge> challenges;
-        }
-
         public void ReportProgress(int progress , string action)
         {
             foreach (Challenge c in challenges)
@@ -45,33 +40,34 @@ public class PlayerData
 
         public void ActivateChallenge()
         {
-            if (ChallengesAvailable <= 0)
-                return;
-            foreach (var c in challenges)
+            while (!(ChallengesAvailable <= 0 || ChallengesActive() >= 3))
             {
-                if (!c.isActive && !c.completed)
+                foreach (var c in challenges)
                 {
-                    c.Activate();
-                    ChallengesAvailable--;
-                    PlayerStats.saveFile();
-                    return;
+                    if (!c.isActive && !c.completed)
+                    {
+                        c.Activate();
+                        ChallengesAvailable--;
+                        PlayerStats.saveFile();
+                        break;
+                    }
                 }
-            }
 
-            foreach (var c in challenges)
-            {
-                if(c.completed)
-                    c.NextLevel();
-            }
-            
-            foreach (var c in challenges)
-            {
-                if (!c.isActive && !c.completed)
+                foreach (var c in challenges)
                 {
-                    c.Activate();
-                    ChallengesAvailable--;
-                    PlayerStats.saveFile();
-                    return;
+                    if (c.completed)
+                        c.NextLevel();
+                }
+
+                foreach (var c in challenges)
+                {
+                    if (!c.isActive && !c.completed)
+                    {
+                        c.Activate();
+                        ChallengesAvailable--;
+                        PlayerStats.saveFile();
+                        break;
+                    }
                 }
             }
         }
@@ -79,9 +75,8 @@ public class PlayerData
 
         public void IncrementChallengesAvailable(int n)
         {
-            Debug.Log(ChallengesAvailable);
-            ChallengesAvailable = Math.Min(ChallengesAvailable+n,6);
-            Debug.Log(3 - ChallengesActive());
+            ChallengesAvailable = Math.Min(ChallengesAvailable+n,2);
+            
             for (int i = 0; i < 3 - ChallengesActive(); i++)
             {
                 ActivateChallenge();
@@ -89,7 +84,7 @@ public class PlayerData
             PlayerStats.saveFile();
         }
 
-        private int ChallengesActive()
+        public int ChallengesActive()
         {
             int count=0;
             foreach (var c in challenges)

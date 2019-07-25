@@ -12,10 +12,11 @@ public class ChallengeDisplay : MonoBehaviour
 	[SerializeField] private Image difficultyArt;
 	[SerializeField] private TextMeshProUGUI levelText;
 	[SerializeField]private Sprite[] difficultyArts;
+	[SerializeField] private ProgressBar progressBar;
 	
 	public void ShowChallenge(Challenge challenge)
 	{
-		descriptionText.text = challenge + Progress(challenge);
+		descriptionText.text = challenge + " \n" + Progress(challenge);
 		if (Math.Max(0, (challenge.difficulty - 1) % difficultyArts.Length) == 0 && difficultyArt!=null)
 			difficultyArt.rectTransform.sizeDelta = new Vector2(110 , 110);
 		else
@@ -26,12 +27,26 @@ public class ChallengeDisplay : MonoBehaviour
 		levelText.text = challenge.level.ToString();
 	}	
 	
-	public void ShowChallengeOnBoard(Challenge challenge)
+	public void ShowChallengeOnBoard(Challenge challenge, int level ,int goal = -1)
 	{
-		descriptionText.text = challenge + "";
-		progressText.text = challenge.goal + "/" + challenge.goal;
+		if (goal == -1)
+		{
+			goal = challenge.goal;
+			progressBar.maximum = goal;
+			progressBar.current = challenge.progress;
+			if(challenge.incrementable)
+				progressText.text = challenge.progress + "/" + challenge.goal;
+			else
+				progressText.text = " best " + challenge.progress;
+			descriptionText.text = challenge + "";
+		}
+		else
+		{
+			descriptionText.text = challenge.ToString(goal);
+			progressText.text = goal + "/" + goal;
+		}
 		rewardText.text = challenge.reward.ToString();
-		levelText.text = challenge.level.ToString();
+		levelText.text = level + "";
 	}
 
 	public void ShowCompleteChallenge(Challenge challenge)
@@ -42,6 +57,8 @@ public class ChallengeDisplay : MonoBehaviour
 
 	private string Progress(Challenge challenge)
 	{
-		return " \n( " + (challenge.goal - challenge.progress) + " to go )";
+		if(challenge.incrementable)
+			return  " ( " + (challenge.goal - challenge.progress) + " to go )";
+		return " ( " + "best: " + (challenge.progress) + " ) ";
 	}
 }

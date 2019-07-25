@@ -121,6 +121,9 @@ public class TimeManager : MonoBehaviour
 		}
 		return html;
 	}
-
+	public static string SecsToTime(int coolDown) // convert seconds to time format 00:00:00
+	{
+		return coolDown / 60 / 60 + ":" + coolDown / 60 % 60 + ":" + coolDown % 60;
+	}
 	
 }

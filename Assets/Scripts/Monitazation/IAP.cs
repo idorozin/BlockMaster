@@ -10,8 +10,10 @@ public class IAP : ScriptableObject
     public ProductTypes Type;
     public int Amount;
     public double Price;
-    public Image Image;
-    
+    public Sprite Image;
+    public Vector2 size;
+    public Vector2 position;
+
 
     public virtual void Collect()
     {
@@ -27,6 +29,11 @@ public class IAP : ScriptableObject
         {
             PlayerStats.Instance.noAds = true;
         }
+    }
+
+    public void Buy()
+    {
+        IAPManager.Instance.BuyProductById(ProductId);
     }
 
     public enum ProductTypes

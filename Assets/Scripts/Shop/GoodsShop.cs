@@ -8,42 +8,46 @@ public class GoodsShop : MonoBehaviour
 {
 	[SerializeField]
 	private swipeDetector detector; 
-	[SerializeField] private Category serializedItems;
-	public List<List<Item>> categories = new List<List<Item>>();
-	private List<Item> items;
+	public List<List<IAP>> categories = new List<List<IAP>>();
+	private List<IAP> items;
 	private int currentItem=0 , currentType=0;
 	
 	[SerializeField]
-	private TextMeshProUGUI goldBalance;
-	[SerializeField]
-	private TextMeshProUGUI diamondBalance;
-	[SerializeField]
 	private TextMeshProUGUI priceText;
 	[SerializeField] 
-	private TextMeshProUGUI nameText;
+	private TextMeshProUGUI amount;
 	[SerializeField]
-	private Image itemImage;
+	private Image itemImage;		
 	[SerializeField]
-	private GameObject lockedUi;
+	private Image type;	
 	[SerializeField]
-	private GameObject lock_;
+	private Sprite gold;	
+	[SerializeField]
+	private Sprite diamond;
 
 
-	
 	// Use this for initialization
 	private void Start ()
 	{
-		categories.Add(serializedItems.serializedItems);
+		categories.Add(new List<IAP>());
+		categories.Add(new List<IAP>());
+		foreach (var iap in IAPManager.Instance.products)
+		{
+			if (iap.Type == IAP.ProductTypes.Gold)
+			{
+				categories[0].Add(iap);
+			}
+			else if (iap.Type == IAP.ProductTypes.Diamonds)
+			{
+				categories[1].Add(iap);
+			}
+		}
 		items = categories[currentType];
 		currentItem=0;
 		UpdateUI();
 		detector.SwipeDetected += MoveToSwipeDirection;
 	}
-	
-	private void Update(){ // TODO
-		goldBalance.text=PlayerStats.Instance.gold.ToString();
-	}
-	
+
 	[ContextMenu("MoveUp")]
 	public void up() {
 		MoveUp();
@@ -122,89 +126,38 @@ public class GoodsShop : MonoBehaviour
 
 	#region Create
 
-	private void SetLockedUi(Item item)
+	private void UpdateItem(IAP item)
 	{
-		if (item.Score > PlayerStats.Instance.highScore)
+		if (item.Image != null)
 		{
-			lock_.SetActive(true);
-			lockedUi.SetActive(true);
-			lock_.GetComponent<Button>().enabled = false;
-			Text lockedUiText = lockedUi.GetComponent<Text>();
-			lockedUiText.text = "To unlock the \n cannon reach to \n " + item.Score + "points";
+			itemImage.sprite = item.Image;
+			itemImage.rectTransform.sizeDelta = item.size;
+			itemImage.rectTransform.anchoredPosition = item.position;
+			itemImage.rectTransform.rotation = Quaternion.identity;
 		}
+
+		if (item.Type == IAP.ProductTypes.Gold)
+			type.sprite = gold;
 		else
-		{
-			if (!PlayerStats.Instance.ItemsUnlocked.Contains(currentItem))
-			{
-				lock_.SetActive(true);
-				lock_.GetComponent<Button>().enabled = true;
-				lockedUi.SetActive(false);
-			}
-			else
-			{
-				lock_.SetActive(false);
-				lockedUi.SetActive(false);
-			}
-		}
-	}
+			type.sprite = diamond;
+		priceText.text = item.Price + "";
+		amount.text = item.Amount + "";
 
-	public void TryUnlock()
-	{
-		if(items[currentItem].Unlock())
-			SetLockedUi(items[currentItem]);
-	}
-
-	private void UpdateItem(Item item)
-	{
-		itemImage.sprite = item.Icon;
-		if (item.Gold > item.Diamonds)
-			priceText.text = item.Gold.ToString();
-		else
-			priceText.text = item.Diamonds.ToString();
-		nameText.text = item.Name;
-	}
-
-	[SerializeField]
-	private GameObject buy, use; 
-	private void SetButton(Item item)
-	{	
-		bool owned = PlayerStats.Instance.ItemsOwned.Contains(currentItem);
-		if (owned)
-		{
-			if(buy.activeSelf)
-			buy.SetActive(false);
-			use.SetActive(true);
-		}
-		if (!owned)
-		{
-			buy.SetActive(true);
-			if(use.activeSelf)
-			use.SetActive(false);
-		}
 	}
 
 	private void UpdateUI()
 	{
-		SetButton(items[currentItem]);
 		UpdateItem(items[currentItem]);
-		SetLockedUi(items[currentItem]);
 	}
 	
-
 	#endregion
+	
 	#region Buttons
 
 	public void BuyButton()
 	{
 		items[currentItem].Buy();
-		SetButton(items[currentItem]);
 	}
-	
-	public void UseButton()
-	{
-		items[currentItem].Use();
-	} 
-
 
 	#endregion
 }

@@ -16,14 +16,14 @@ public class PlayerStats : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = new PlayerData();
-			path = Application.persistentDataPath + "/PlayerFile.json";
-			if (File.Exists(Application.persistentDataPath + "/PlayerFile.json")) Debug.Log("file exists");
+			path = Application.persistentDataPath + "/PlayerFile_.json";
+			if (File.Exists(path)) 
+				Debug.Log("file exists");
 			else
-			{
 				saveFile();
-			}
-
+			
 			loadFile();
+			
 			if (Instance.challenges == null)
 			{
 				Instance.challenges = new List<Challenge>();
@@ -35,8 +35,9 @@ public class PlayerStats : MonoBehaviour
 				{
 					Instance.challenges[i].Activate();
 				}
-				Instance.ChallengesAvailable = 1;		
+				Instance.ChallengesAvailable = 2;		
 			}
+
 			DontDestroyOnLoad(gameObject);
 			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
 		}
@@ -71,7 +72,7 @@ public class PlayerStats : MonoBehaviour
 	{
 		//parse this class to json string
 		//save json file
-		File.Delete(Application.persistentDataPath + "/PlayerFile.json"); 
+		File.Delete(Application.persistentDataPath + "/PlayerFile_.json"); 
 	}
 	
 	public static void saveFile()

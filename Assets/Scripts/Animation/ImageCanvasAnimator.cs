@@ -27,7 +27,10 @@ public class ImageCanvasAnimator : MonoBehaviour
     //TODO make the animation change smoothly without the coroutine (if possible)
     public void SetController (RuntimeAnimatorController controller)
     {
-        StartCoroutine(s(controller));
+        if(controller==null)
+            animator.runtimeAnimatorController = controller;
+        else
+            StartCoroutine(s(controller));
         // set the controller
     }
 

@@ -14,10 +14,6 @@ public class ItemsShop : MonoBehaviour
 	private int currentItem=0 , currentType=0;
 	
 	[SerializeField]
-	private TextMeshProUGUI goldBalance;
-	[SerializeField]
-	private TextMeshProUGUI diamondBalance;
-	[SerializeField]
 	private TextMeshProUGUI priceText;
 	[SerializeField] 
 	private TextMeshProUGUI nameText;
@@ -27,6 +23,15 @@ public class ItemsShop : MonoBehaviour
 	private GameObject lockedUi;
 	[SerializeField]
 	private GameObject lock_;
+
+	[SerializeField] private Image type;
+	[SerializeField]
+	private	GameObject secondPrice;
+	[SerializeField]
+	private TextMeshProUGUI secondPriceText;
+
+	[SerializeField] private Sprite gold;
+	[SerializeField] private Sprite dia;
 
 	public RectTransform transform;
 
@@ -145,7 +150,7 @@ public class ItemsShop : MonoBehaviour
 			lock_.SetActive(true);
 			lockedUi.SetActive(true);
 			lock_.GetComponent<Button>().enabled = false;
-			Text lockedUiText = lockedUi.GetComponent<Text>();
+			TextMeshProUGUI lockedUiText = lockedUi.GetComponent<TextMeshProUGUI>();
 			lockedUiText.text = "To unlock the \n cannon reach to \n " + item.Score + "points";
 		}
 		else
@@ -178,20 +183,33 @@ public class ItemsShop : MonoBehaviour
 		if (item.Animator == null)
 		{
 			itemImage.sprite = item.Icon;
-			Debug.Log("icon");
 		}
 
 		itemImage.GetComponent<ImageCanvasAnimator>().SetController(item.Animator);
-		
-		if (item.Gold > item.Diamonds)
+		secondPrice.SetActive(false);
+
+		if (item.Gold >= item.Diamonds)
+		{
 			priceText.text = item.Gold.ToString();
+			type.sprite = gold;
+			if (item.Diamonds > 0)
+			{
+				secondPrice.SetActive(true);
+				secondPriceText.text = item.Diamonds.ToString();
+			}
+		}
 		else
+		{
 			priceText.text = item.Diamonds.ToString();
+			type.sprite = dia;
+		}
+
 		nameText.text = item.Name;
 	}
 
 	[SerializeField]
-	private GameObject buy, use; 
+	private GameObject buy, use;
+
 	private void SetButton(Item item)
 	{
 		if (!item.Unlocked())

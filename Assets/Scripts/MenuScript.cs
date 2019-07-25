@@ -51,11 +51,10 @@ public class MenuScript : MonoBehaviour
 		DailyGift.GetComponent<DailyGift>().ResetPanels();
 	}
 
-	public void LoadChallanges()
+	public void LoadChallenges()
 	{
+		PlayerStats.Instance.ActivateChallenge();
 		ChallangesCanvas.SetActive(true);
-		//Debug.Log(Challanges.Instance);
-		//Challanges.Instance.LoadChallanges();
 	}
 
 	public void unLoadChallanges()
@@ -65,7 +64,8 @@ public class MenuScript : MonoBehaviour
 
 	public void unLoadWheelOfFortune()
 	{
-		WheelOfFortune.SetActive(false);
+		if(WheelOfFortune.rollAllowed)
+			wheelOfFortune.SetActive(false);
 	}
 
 	public void LoadCredits()
@@ -85,7 +85,7 @@ public class MenuScript : MonoBehaviour
 	[SerializeField]
      private GameObject recordText;
 	[SerializeField]
-	private GameObject WheelOfFortune;
+	private GameObject wheelOfFortune;
 	[SerializeField]
 	private GameObject Settings;
 	[SerializeField]
@@ -98,7 +98,7 @@ public class MenuScript : MonoBehaviour
 	 public void setRecordText()
      {
 		if(PlayerStats.Instance!=null)
-     	recordText.GetComponent<TextMeshProUGUI>().text = PlayerStats.Instance.highScore.ToString();
+     		recordText.GetComponent<TextMeshProUGUI>().text = PlayerStats.Instance.highScore.ToString();
      }
     
      void Start()
@@ -106,7 +106,7 @@ public class MenuScript : MonoBehaviour
      	setRecordText();
      }
 	public void LoadWheelOfFortune(){
-		WheelOfFortune.SetActive(true);
+		wheelOfFortune.SetActive(true);
 	}
 
 

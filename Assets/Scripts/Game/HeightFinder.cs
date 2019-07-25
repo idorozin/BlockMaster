@@ -18,7 +18,7 @@ public class HeightFinder : MonoBehaviour
 
     void Update()
     {
-        rb2d.velocity = new Vector2(0, -2);
+        rb2d.velocity = new Vector2(0, -4);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -27,9 +27,9 @@ public class HeightFinder : MonoBehaviour
         if(col.gameObject.name != surface.name && rb !=null && rb.constraints != RigidbodyConstraints2D.FreezeAll&&rb.velocity.x<0.1 && rb.velocity.y<0.1 && rb.velocity.x>-0.1 && rb.velocity.y>-0.1 && col.isTrigger==false)
         {
             if(transform.position.y > 0)
-            ScoreChanged(col.transform.position.y);
+                ScoreChanged(transform.position.y - 0.905f);
         }
-        rb2d.position = new Vector3(camera.position.x,camera.position.y+5f,camera.position.z);  
+        rb2d.position = new Vector3(camera.position.x,camera.position.y+4f,camera.position.z);  
     }
 
     public static bool IsNotMoving(Rigidbody2D rb)

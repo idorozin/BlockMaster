@@ -16,8 +16,10 @@ public class WheelOfFortune : MonoBehaviour
 	[SerializeField]
 	private Reward_[] rewards;
 
-	private bool rollAllowed = true;
+	public static bool rollAllowed = true;
 	public bool testing;
+
+	[SerializeField] private GameObject offline;
 
 	public void OnMouseDown()
 	{
@@ -27,8 +29,11 @@ public class WheelOfFortune : MonoBehaviour
 			if (!DailyReward.RollAllowed)
 				return;
 		if (Application.internetReachability == NetworkReachability.NotReachable)
+		{
+			offline.SetActive(true);
 			return;
-		startSpeed = UnityEngine.Random.Range(400, 800);
+		}
+			startSpeed = UnityEngine.Random.Range(400, 800);
 		stopSpeed = UnityEngine.Random.Range(50, 100);
 		DailyReward.RollAllowed = false;
 		GameObject.Find("TimeManager").GetComponent<DailyReward>().StartCoroutine("ResetTimer");

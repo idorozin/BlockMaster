@@ -139,7 +139,10 @@ public class AdManager : MonoBehaviour
         rewardedAd.OnUserEarnedReward += handleReward;
         rewardedAd.OnAdFailedToShow += handleFailed;
         if (rewardedAd.IsLoaded())
+        {
+            timePassedTillLastAd = 0;
             rewardedAd.Show();
+        }
     }  
     
     public void ShowRewarded(EventHandler<Reward> handleReward)

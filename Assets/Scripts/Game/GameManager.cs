@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameObject highScoreSign;
 	[SerializeField] private TextMeshProUGUI text_;
 
-	private int goldEarned;
+	public int goldEarned;
 
 	private bool reviveUsed = false;
 	
@@ -117,17 +117,20 @@ public class GameManager : MonoBehaviour
 	}
 
 	public bool NextLevel = false;
-	
+	[SerializeField] private GameObject pigoom;
     public IEnumerator Surface()
     {
         NextLevel = true;
-	    yield return new WaitForSeconds(3f);
+	    yield return new WaitForSeconds(2.7f);
 	    bool shapesMoving = true;
+	    int count = 0;
 	    while (shapesMoving)
 	    {
 		    shapesMoving = false;
+		    count++;
 		    foreach (var shape in shapes)
 		    {
+			    count++;
 			    if (shape != null)
 			    {
 				    shapesMoving = !HeightFinder.IsNotMoving(shape.GetComponent<Rigidbody2D>());
@@ -135,10 +138,13 @@ public class GameManager : MonoBehaviour
 					    break;
 			    }
 		    }
-		    Debug.Log(shapesMoving);
 		    yield return null;
 	    }
+	    if(count > 3)
+		    yield return new WaitForSeconds(0.3f);
 	    surface.GetComponent<SlideToDirection>().SlideToVector3(new Vector3(surface.transform.position.x, height, surface.transform.position.z));
+	    Instantiate(pigoom, new Vector3(surface.transform.position.x, surface.transform.position.y + 0.905f, surface.transform.position.z),
+		    Quaternion.identity);
 	    DestroyShapes.Destroyall();
     }
     public void surface_()
@@ -163,6 +169,7 @@ public class GameManager : MonoBehaviour
 			PlayerStats.Instance.highScoreHeight = height;
 			PlayerStats.saveFile();
 			PlayServices.Instance.addScoreToLeaderboard("",(int)fixedScore);
+			AudioManager.Instance.PlaySound(AudioManager.SoundName.NewRecord);
 			if (!recordBroke)
 			{
 				oldRecord = (int) PlayerStats.Instance.highScore;

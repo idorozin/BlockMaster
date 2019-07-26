@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6969bef290f14cf99bf5f90e338de5c0, type: 3}
   m_Name: Cannon
   m_EditorClassIdentifier: Assembly-CSharp::Cannon
-  icon: {fileID: 21300000, guid: 265f21ee33014274891c9e6e2be886de, type: 3}
-  name: 
+  icon: {fileID: 21300000, guid: 68fab5d67711dd94c883ee3cb47158e4, type: 3}
+  sound: 5
+  maxPrice: 1000
+  prefab: {fileID: 1557817976129896, guid: bdaa67ea078525a42afe794dbc7a8fdc, type: 2}

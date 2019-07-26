@@ -18,6 +18,8 @@ public class RewardDialog : MonoBehaviour
 	public void CollectPrizeWithAnimation(Reward_ reward)
 	{
 		reward.Show(rewardIcon , rewardText);
+		reward.Collect();
+		AudioManager.Instance.PlaySound(reward.sound);
 		p = reward;
 	}
 
@@ -28,16 +30,19 @@ public class RewardDialog : MonoBehaviour
 
 	void handleFailed(object sender , EventArgs e)
 	{
+		AudioManager.Instance.StopSound(p.sound);
 		Destroy(gameObject);
 	}	
 	void handleSuccess(object sender , EventArgs e)
 	{
 		p.Collect();
+		AudioManager.Instance.StopSound(p.sound);
 		Destroy(gameObject);
 	}
 
 	public void CollectButton()
 	{
+		AudioManager.Instance.StopSound(p.sound);
 		Destroy(gameObject);
 	}
 

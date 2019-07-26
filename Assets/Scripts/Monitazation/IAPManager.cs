@@ -22,7 +22,6 @@ public class IAPManager : MonoBehaviour, IStoreListener
         // If we haven't set up the Unity Purchasing reference
         if (m_StoreController == null)
         {
-            Debug.Log("init");
             // Begin to configure our connection to Purchasing
             InitializePurchasing();
         }
@@ -32,16 +31,13 @@ public class IAPManager : MonoBehaviour, IStoreListener
         // If we have already connected to Purchasing ...
         if (IsInitialized())
         {
-            Debug.Log("aleady init");
             // ... we are done here.
             return;
         }
-        Debug.Log("yesss");
         // Create a builder, first passing in a suite of Unity provided stores.
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
         foreach (var product in products)
         {
-            Debug.Log("adding product");
             builder.AddProduct(product.ProductId, product.ProductType);
         }
         

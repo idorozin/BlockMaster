@@ -23,7 +23,9 @@ public class DailyGift : MonoBehaviour
 	[SerializeField] private GameObject offline;
 	
 	private bool giftAllowed=true;
-	
+	[SerializeField]
+	private bool testing;
+
 
 	private void OnMouseDown()
 	{
@@ -32,6 +34,7 @@ public class DailyGift : MonoBehaviour
 
 	public void UpdateUI()
 	{
+		Debug.Log(PlayerStats.Instance.GiftIndex);
 		for(int i=0;i<PlayerStats.Instance.GiftIndex;i++)
 			Instantiate(TickPrefab , TickPanel);
 		foreach (var gift in gifts)
@@ -42,31 +45,33 @@ public class DailyGift : MonoBehaviour
 
 	public void getGiftButton()
 	{
-		if (Application.internetReachability == NetworkReachability.NotReachable)
+		if (!testing)
 		{
-			offline.SetActive(true);
-			return;
+			if (Application.internetReachability == NetworkReachability.NotReachable)
+			{
+				offline.SetActive(true);
+				return;
+			}
+
+			if (DailyReward2.timeText == "READY!" && !DailyReward2.GiftAllowed)
+				GameObject.Find("TimeManager").GetComponent<DailyReward2>().StartCoroutine("enableButton");
+			if (!giftAllowed || !DailyReward2.GiftAllowed)
+			{
+				Debug.Log("returned");
+				return;
+			}
+
+			DailyReward2.GiftAllowed = false;
+			GameObject.Find("TimeManager").GetComponent<DailyReward2>().StartCoroutine("resetTimer");
 		}
 
-		if(DailyReward2.timeText=="READY!" && !DailyReward2.GiftAllowed)
-			GameObject.Find("TimeManager").GetComponent<DailyReward2>().StartCoroutine("enableButton");
-		if (!giftAllowed || !DailyReward2.GiftAllowed)
-		{
-			Debug.Log("returned");
-			return;
-		}
-
-		DailyReward2.GiftAllowed = false;
-		GameObject.Find("TimeManager").GetComponent<DailyReward2>().StartCoroutine("resetTimer");
-		if (PlayerStats.Instance.GiftIndex >= gifts.Length - 1)
+		if (PlayerStats.Instance.GiftIndex >= gifts.Length)
 		{
 			PlayerStats.Instance.GiftIndex = 0;
 			ResetPanels();
+			UpdateUI();
 		}
-
 		getGift(gifts[PlayerStats.Instance.GiftIndex]);
-		PlayerStats.Instance.GiftIndex++;
-		PlayerStats.saveFile();
 	}
 
 	private void getGift(Reward_ gift)
@@ -74,6 +79,8 @@ public class DailyGift : MonoBehaviour
 		RewardDialog r = Instantiate(rewardDialog);
 		r.CollectPrizeWithAnimation(gift);
 		gift.Collect();
+		PlayerStats.Instance.GiftIndex++;
+		PlayerStats.saveFile();
 		Instantiate(TickPrefab , TickPanel);
 	}
 

@@ -26,6 +26,9 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] 
     private GameObject challengesDisplay;
 
+    [SerializeField] private TextMeshProUGUI gold;
+    [SerializeField] private TextMeshProUGUI score;
+
     [SerializeField] private Tips tips;
 
 
@@ -33,8 +36,6 @@ public class GameOverUI : MonoBehaviour
 
     private NativeShare nativeShare;
     
-    [SerializeField]
-    private GameObject scrollingText;
 
 
     private void OnEnable()
@@ -55,6 +56,7 @@ public class GameOverUI : MonoBehaviour
     private void SetEndGameUI()
     {
         others.SetActive(true);
+        StartCoroutine(SetMoney());
         nativeShare = GetComponent<NativeShare>();
         int count = 0;
         if (GameManager.Instance.recordBroke)
@@ -102,9 +104,23 @@ public class GameOverUI : MonoBehaviour
         SceneManager.LoadScene("Shop");
     }
 
+    private bool once = false;
     public void Continue()
     {
-        StartCoroutine(Delay());
+        if (!once)
+        {
+            StartCoroutine(Delay());
+            once = true;
+        }
+    }
+
+    private IEnumerator SetMoney()
+    {
+        score.text=GameManager.Instance.score.ToString();
+        gold.text = PlayerStats.Instance.gold - GameManager.Instance.goldEarned + "";
+        yield return new WaitForSecondsRealtime(1f);
+        AudioManager.Instance.PlaySound(AudioManager.SoundName.coins);
+        gold.gameObject.GetComponent<ScrollingText>().SetNum(PlayerStats.Instance.gold , PlayerStats.Instance.gold - GameManager.Instance.goldEarned);
     }
 
     private IEnumerator Delay()

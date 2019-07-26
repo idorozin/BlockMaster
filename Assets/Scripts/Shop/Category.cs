@@ -10,4 +10,8 @@ public class Category : ScriptableObject
 	public Item.ItemType type;
 
 	public float  x ,y, width, height , rotation;
+	public IEnumerator<object> GetEnumerator()
+	{
+		throw new System.NotImplementedException();
+	}
 }

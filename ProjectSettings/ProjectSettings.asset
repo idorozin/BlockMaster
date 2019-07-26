@@ -241,12 +241,12 @@ PlayerSettings:
   clonedFromGUID: fe97a795c6621624a9fc94fd2443b1a8
   templatePackageId: com.unity.template.2d@1.0.0
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  AndroidTargetArchitectures: 5
+  AndroidTargetArchitectures: 7
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: C:/Users/IDO/Desktop/blockmaster.keystore
   AndroidKeyaliasName: blockmaster
-  AndroidBuildApkPerCpuArchitecture: 0
+  AndroidBuildApkPerCpuArchitecture: 1
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   AndroidEnableTango: 0
@@ -668,12 +668,13 @@ PlayerSettings:
   scriptingDefineSymbols:
     4: NO_GPGS
   platformArchitecture: {}
-  scriptingBackend: {}
+  scriptingBackend:
+    Android: 1
   il2cppCompilerConfiguration: {}
   incrementalIl2cppBuild: {}
   allowUnsafeCode: 0
   additionalIl2CppArgs: 
-  scriptingRuntimeVersion: 0
+  scriptingRuntimeVersion: 1
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
@@ -749,7 +750,7 @@ PlayerSettings:
     Hub: 0
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: 521f5482-aca3-46c7-a7d9-fa86e5c400c5
   projectName: KaraK
   organizationId: unity_3ptkbnw6tg4-fg

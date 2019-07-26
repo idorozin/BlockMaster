@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Name: DIAMOND3
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: e08f3c3511736214aa2dee388495b93d, type: 3}
+  sound: 5
   amount: 3
-  faceColor:
-    serializedVersion: 2
-    rgba: 4294963456
-  outlineColor:
-    serializedVersion: 2
-    rgba: 4294937344
+  material: {fileID: 2100000, guid: 3b885cc94f2b91547995cc3a48d7a942, type: 2}
   prefab: {fileID: 1047418264052310, guid: 87d407ce396ec8a48b40b79dddec881d, type: 2}

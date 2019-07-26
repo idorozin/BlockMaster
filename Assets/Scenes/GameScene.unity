@@ -3228,8 +3228,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -66.8, y: 0.65003}
-  m_SizeDelta: {x: 637.3, y: 155.2}
+  m_AnchoredPosition: {x: -76.59996, y: -0.000022888002}
+  m_SizeDelta: {x: 617.7, y: 215.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &722802325
 MonoBehaviour:
@@ -3278,14 +3278,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 67.15
+  m_fontSize: 66.75
   m_fontSizeBase: 67.15
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 513
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3296,7 +3296,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 23
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -3327,7 +3327,7 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -4634,7 +4634,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -5189,8 +5189,9 @@ MonoBehaviour:
   tipText: {fileID: 722802325}
   challengesPanel: {fileID: 1462621358}
   challengesDisplay: {fileID: 272010838}
+  gold: {fileID: 879020852}
+  score: {fileID: 1220350707}
   tips: {fileID: 0}
-  scrollingText: {fileID: 879020850}
 --- !u!114 &1068022055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6850,7 +6851,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -7582,9 +7583,11 @@ MonoBehaviour:
   surface: {fileID: 1098985330}
   highScoreSign: {fileID: 261576647}
   text_: {fileID: 512170391}
+  goldEarned: 0
   revive: {fileID: 1563404953040448, guid: dce0c4a81b28e0d42885475b4796c673, type: 2}
   canvasPause: {fileID: 1181826778}
   NextLevel: 0
+  pigoom: {fileID: 1610229418037056, guid: 75ac4eeae3311884da8881f9d66067db, type: 2}
 --- !u!23 &1283844110
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10603,7 +10606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -211.21568}
+  m_AnchoredPosition: {x: 540, y: -870.09656}
   m_SizeDelta: {x: 1082, y: 215.6}
   m_Pivot: {x: 0.5, y: 0.5000001}
 --- !u!114 &1891442801
@@ -11456,7 +11459,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}

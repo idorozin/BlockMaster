@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Name: GOLD300
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: fdc4e9d9e7631c94ab4adb4aba25eaed, type: 3}
-  amount: 0
-  faceColor:
-    serializedVersion: 2
-    rgba: 4278251263
-  outlineColor:
-    serializedVersion: 2
-    rgba: 4278236671
+  sound: 5
+  amount: 300
+  material: {fileID: 2100000, guid: 3cb56e9c719f7334a8bcca42085d5ea7, type: 2}
   prefab: {fileID: 1047418264052310, guid: 87d407ce396ec8a48b40b79dddec881d, type: 2}

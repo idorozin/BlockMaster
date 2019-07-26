@@ -1,9 +1,11 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using GooglePlayGames.Native.Cwrapper;
 using UnityEngine.Experimental.AI;
+using Random = UnityEngine.Random;
 
 public class AssetDatabase : MonoBehaviour
 {
@@ -31,7 +33,28 @@ public class AssetDatabase : MonoBehaviour
 		if (PlayerStats.Instance.lastCannon == 0)
 			return null;
 		return cannons.serializedItems.First(cannon => cannon.Id == PlayerStats.Instance.lastCannon).Icon;
+	}
+	
+	public Item GetRandomCannon()
+	{
+		var cannons = from c in this.cannons.serializedItems
+			where c.Gold < 500 where !PlayerStats.Instance.ItemsOwned.Contains(c.Id)
+			select c;
+		Item cannon = null;
+		int m = cannons.Count();
+		int r = Random.Range(0, m);
+		int i = 0;
+		foreach (var c in cannons)
+		{
+			i++;
+			if (i == r)
+			{
+				cannon = c;
+			}
+		}
+		return cannon;
 	}	
+	
 	public Sprite GetLastPlatform()
 	{
 		if (PlayerStats.Instance.lastPlatform == 0)

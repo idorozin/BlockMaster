@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Reward_ : ScriptableObject
 {
     public Sprite icon;
+    public AudioManager.SoundName sound;
 
     public virtual void Collect()
     {

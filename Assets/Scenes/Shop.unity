@@ -1322,14 +1322,6 @@ MonoBehaviour:
   type: {fileID: 1702468178}
   gold: {fileID: 21300000, guid: fdc4e9d9e7631c94ab4adb4aba25eaed, type: 3}
   diamond: {fileID: 0}
-  golds:
-  - {fileID: 11400000, guid: 3d8bf01288bc3a740959dc5e828975c0, type: 2}
-  - {fileID: 11400000, guid: d1e986d494e932b4195ac762827fff5a, type: 2}
-  - {fileID: 11400000, guid: c0a8f9de9d95b314d8f624eb7dffa4e6, type: 2}
-  diamondss:
-  - {fileID: 11400000, guid: 88d8e3b95df38ca48afd0b31b7d5700e, type: 2}
-  - {fileID: 11400000, guid: 08f0c20b9ad395348a4ec23eb119b405, type: 2}
-  - {fileID: 11400000, guid: 2dfb8522494db7645889e2de3aa09815, type: 2}
 --- !u!1 &665357285
 GameObject:
   m_ObjectHideFlags: 0
@@ -4133,7 +4125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2096577518
 RectTransform:
   m_ObjectHideFlags: 0

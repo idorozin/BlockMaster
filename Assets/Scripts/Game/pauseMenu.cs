@@ -120,7 +120,7 @@ public class PauseMenu : MonoBehaviour {
 	{
 		GameOverUI.SetActive(true);
 		gameOverScore.text=score.ToString();
-		gameOverMoney.text = (score/10).ToString();
+		gameOverMoney.text = GameManager.Instance.goldEarned + Math.Round(score/10).ToString();
 		Score.SetActive(false);
 	}
 	
@@ -128,7 +128,7 @@ public class PauseMenu : MonoBehaviour {
 	{
 		AdManager.Instance.ShowInterstitial();
 		GameIsPaused = true;
-		PlayerStats.Instance.gold+=(int)GameManager.Instance.score;
+		PlayerStats.Instance.gold+=(int)Math.Round(GameManager.Instance.score/10);
 		DisplayCompletedChallenges();
 		GameOverUi((GameManager.Instance.score));
 		PlayerStats.saveFile();

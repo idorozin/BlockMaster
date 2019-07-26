@@ -5,17 +5,13 @@ using UnityEngine.UI;
 [CreateAssetMenuAttribute(menuName = "Rewards/Cannon")]
 public class Cannon : Reward_
 {
-    public new string name;
-    private GameObject prefab;
-    
-    private void OnEnable()
-    {
-        prefab = (GameObject)Resources.Load("Gifts/GiftNoText");
-    }
+    public int maxPrice;
+    public GameObject prefab;
+    private TextMeshProUGUI text;
     
     public override void Collect()
     {
-        PlayerStats.Instance.ItemsOwned.Add(13);
+        
     }
 
     public override void Show(Transform giftPanel)
@@ -23,10 +19,13 @@ public class Cannon : Reward_
         GameObject go = Instantiate(prefab, giftPanel);
         go.GetComponentInChildren<Image>().sprite = icon;
     }
+
+    private Item item;
     
     public override void Show(Image img , TextMeshProUGUI text)
     {
-        img.sprite = icon;
+        item = AssetDatabase.Instance.GetRandomCannon();   
+        img.sprite = item.Icon;
         text.text = "";
     }  
 }

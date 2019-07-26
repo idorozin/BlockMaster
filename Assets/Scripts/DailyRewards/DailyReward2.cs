@@ -90,7 +90,16 @@ public class DailyReward2: MonoBehaviour
 
 	public string secsToTime() // convert seconds to time format 00:00:00
 	{
-		return coolDown / 60 / 60 + ":" + coolDown / 60 % 60 + ":" + coolDown % 60;
+		TimeSpan t = TimeSpan.FromSeconds(coolDown);
+
+		//here backslash is must to tell that colon is
+		//not the part of format, it just a character that we want in output
+		
+		string answer = string.Format("{0:D2}:{1:D2}:{2:D2}", 
+			t.Hours, 
+			t.Minutes, 
+			t.Seconds);
+		return answer;
 	}
 		
 

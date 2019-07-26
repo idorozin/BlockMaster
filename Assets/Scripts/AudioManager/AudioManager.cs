@@ -10,7 +10,10 @@ public class AudioManager : MonoBehaviour
 		blockLand,
 		buttonClick,
 		cannonShot,
-		challengeComplete,
+		ChallengeComplete,
+		coins,
+		DiamondWin,
+		NewRecord
 	}
 	
 	public static AudioManager Instance;
@@ -61,6 +64,7 @@ public class AudioManager : MonoBehaviour
 
 	private Sound GetSound(SoundName sound)
 	{
+		Debug.Log(sound);
 		foreach (var s in sounds)
 		{
 			if(s.name == sound)

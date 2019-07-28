@@ -143,8 +143,7 @@
             </e>
           </e>
           <e p="Editor" t="Include">
-            <e p="ForceNoGpgsForIOS.cs" t="Include" />
-            <e p="GooglePlayGamesPlugin_v0.9.50.txt" t="Include" />
+            <e p="GooglePlayGamesPlugin_v0.9.64.txt" t="Include" />
             <e p="GooglePlayGamesPluginDependencies.xml" t="Include" />
             <e p="GPGSAndroidSetupUI.cs" t="Include" />
             <e p="GPGSDocsUI.cs" t="Include" />
@@ -186,7 +185,6 @@
           </e>
           <e p="Platforms" t="Include">
             <e p="Android" t="Include">
-              <e p="AndroidClient.cs" t="Include" />
               <e p="AndroidTokenClient.cs" t="Include" />
               <e p="Developers" t="Include">
                 <e p="JavaInterfaceProxy.cs" t="Include" />
@@ -216,11 +214,6 @@
                 </e>
               </e>
             </e>
-            <e p="IClientImpl.cs" t="Include" />
-            <e p="IOS" t="Include">
-              <e p="IOSClient.cs" t="Include" />
-              <e p="IOSTokenClient.cs" t="Include" />
-            </e>
             <e p="Native" t="Include">
               <e p="CallbackUtils.cs" t="Include" />
               <e p="ConversionUtils.cs" t="Include" />
@@ -236,7 +229,6 @@
                 <e p="EventManager.cs" t="Include" />
                 <e p="GameServices.cs" t="Include" />
                 <e p="InternalHooks.cs" t="Include" />
-                <e p="IosPlatformConfiguration.cs" t="Include" />
                 <e p="Leaderboard.cs" t="Include" />
                 <e p="LeaderboardManager.cs" t="Include" />
                 <e p="MessageListenerHelper.cs" t="Include" />
@@ -293,7 +285,6 @@
                 <e p="EventManager.cs" t="Include" />
                 <e p="GameServices.cs" t="Include" />
                 <e p="GameServicesBuilder.cs" t="Include" />
-                <e p="IosPlatformConfiguration.cs" t="Include" />
                 <e p="LeaderboardManager.cs" t="Include" />
                 <e p="MultiplayerInvitation.cs" t="Include" />
                 <e p="MultiplayerParticipant.cs" t="Include" />
@@ -338,6 +329,12 @@
                 <e p="TurnBasedMatchConfigBuilder.cs" t="Include" />
                 <e p="VideoManager.cs" t="Include" />
               </e>
+              <e p="Platforms" t="Include">
+                <e p="Android" t="Include">
+                  <e p="AndroidClient.cs" t="Include" />
+                </e>
+                <e p="IClientImpl.cs" t="Include" />
+              </e>
               <e p="UnsupportedSavedGamesClient.cs" t="Include" />
             </e>
             <e p="NearbyConnectionClientFactory.cs" t="Include" />
@@ -356,7 +353,7 @@
         <e p="GPGSIds.cs" t="Include" />
         <e p="PlayServicesResolver" t="Include">
           <e p="Editor" t="Include">
-            <e p="play-services-resolver_v1.2.111.0.txt" t="Include" />
+            <e p="play-services-resolver_v1.2.105.0.txt" t="Include" />
           </e>
         </e>
         <e p="Plugins" t="Include">

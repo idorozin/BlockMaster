@@ -146,7 +146,7 @@
           <entry key="asset" value="1" />
           <entry key="cs" value="757" />
           <entry key="shader" value="1" />
-          <entry key="xml" value="8" />
+          <entry key="xml" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -154,7 +154,7 @@
           <entry key="C#" value="757" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="ShaderLab" value="1" />
-          <entry key="XML" value="8" />
+          <entry key="XML" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -263,11 +263,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/SimpleAndroidNotifications/NotificationExample.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="667">
-              <caret line="49" column="44" lean-forward="true" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+              <caret line="49" column="44" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
               <folding>
                 <marker date="1544042713000" expanded="false" signature="6:32" ph="..." />
                 <marker date="1544042713000" expanded="true" signature="77:1615" ph="{...}" />
@@ -280,6 +280,15 @@
                 <marker date="1544042713000" expanded="true" signature="947:1433" ph="{...}" />
                 <marker date="1544042713000" expanded="true" signature="1542:1607" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/GooglePlayGames/Plugins/Android/GooglePlayGamesManifest.plugin/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -309,31 +318,6 @@
                 <marker date="1563968558944" expanded="true" signature="3144:3178" ph="{...}" />
                 <marker date="1563968558944" expanded="true" signature="3211:3230" ph="{...}" />
                 <marker date="1563968558944" expanded="true" signature="3338:3422" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/PlayerData/PlayerData.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="37" />
-              <folding>
-                <marker date="1564069812969" expanded="false" signature="6:109" ph="..." />
-                <marker date="1564069812969" expanded="true" signature="1096:1278" ph="{...}" />
-                <marker date="1564069812969" expanded="true" signature="1154:1268" ph="{...}" />
-                <marker date="1564069812969" expanded="true" signature="1319:2288" ph="{...}" />
-                <marker date="1564069812969" expanded="true" signature="1404:2278" ph="{...}" />
-                <marker date="1564069812969" expanded="true" signature="1464:1761" ph="{...}" />
-                <marker date="1564069812969" expanded="true" signature="1535:1743" ph="{...}" />
-                <marker date="1564069812969" expanded="true" signature="1808:1920" ph="{...}" />
-                <marker date="1564069812969" expanded="true" signature="1967:2264" ph="{...}" />
-                <marker date="1564069812969" expanded="true" signature="2038:2246" ph="{...}" />
-                <marker date="1564069812969" expanded="true" signature="2354:2618" ph="{...}" />
-                <marker date="1564069812969" expanded="true" signature="2507:2572" ph="{...}" />
-                <marker date="1564069812969" expanded="true" signature="2657:2860" ph="{...}" />
-                <marker date="1564069812969" expanded="true" signature="2734:2823" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -886,12 +870,12 @@
       <workItem from="1564180870566" duration="1267000" />
       <workItem from="1564221034296" duration="871000" />
       <workItem from="1564252857112" duration="6418000" />
-      <workItem from="1564330442863" duration="3316000" />
+      <workItem from="1564330442863" duration="3335000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="648521000" />
+    <option name="totallyTimeSpent" value="648540000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1137,13 +1121,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/N/NotflicationManager.cs" />
-    <entry file="file://$PROJECT_DIR$/Assets/GooglePlayGames/Plugins/Android/GooglePlayGamesManifest.plugin/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Shop/ItemsShop.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-905">
@@ -1450,7 +1427,7 @@
     <entry file="file://$PROJECT_DIR$/Assets/SimpleAndroidNotifications/NotificationExample.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="667">
-          <caret line="49" column="44" lean-forward="true" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+          <caret line="49" column="44" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
           <folding>
             <marker date="1544042713000" expanded="false" signature="6:32" ph="..." />
             <marker date="1544042713000" expanded="true" signature="77:1615" ph="{...}" />
@@ -1463,6 +1440,13 @@
             <marker date="1544042713000" expanded="true" signature="947:1433" ph="{...}" />
             <marker date="1544042713000" expanded="true" signature="1542:1607" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/GooglePlayGames/Plugins/Android/GooglePlayGamesManifest.plugin/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
         </state>
       </provider>
     </entry>

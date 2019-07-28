@@ -476,9 +476,6 @@
             <e p="TimeManager.cs" t="Include" />
             <e p="WheelOfFortune.cs" t="Include" />
           </e>
-          <e p="Editor" t="Include">
-            <e p="Build.cs" t="Include" />
-          </e>
           <e p="Game" t="Include">
             <e p="CannonController.cs" t="Include" />
             <e p="DestroyShapes.cs" t="Include" />
@@ -516,13 +513,13 @@
           </e>
           <e p="PlayerData" t="Include">
             <e p="Challanges" t="Include">
+              <e p="Challanges.cs" t="Include" />
+              <e p="Challenge.cs" t="Include" />
+              <e p="ChallengeDisplay.cs" t="Include" />
               <e p="ChallengesTemplates.cs" t="Include" />
               <e p="ExtensionMethodHelper.cs" t="Include" />
               <e p="NextChallenge.cs" t="Include" />
             </e>
-            <e p="Challanges.cs" t="Include" />
-            <e p="Challenge.cs" t="Include" />
-            <e p="ChallengeDisplay.cs" t="Include" />
             <e p="PlayerData.cs" t="Include" />
             <e p="PlayerStats.cs" t="Include" />
             <e p="TimePassed.cs" t="Include" />
@@ -543,6 +540,12 @@
             <e p="SelectShop.cs" t="Include" />
             <e p="swipeDetector.cs" t="Include" />
           </e>
+        </e>
+        <e p="SimpleAndroidNotifications" t="Include">
+          <e p="NotificationExample.cs" t="Include" />
+          <e p="NotificationIcon.cs" t="Include" />
+          <e p="NotificationManager.cs" t="Include" />
+          <e p="NotificationParams.cs" t="Include" />
         </e>
       </e>
       <e p="Block Master recover.sln" t="IncludeFlat" />

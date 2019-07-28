@@ -169,9 +169,9 @@ public class GameManager : MonoBehaviour
 			PlayerStats.Instance.highScoreHeight = height;
 			PlayerStats.saveFile();
 			PlayServices.Instance.addScoreToLeaderboard("",(int)fixedScore);
-			AudioManager.Instance.PlaySound(AudioManager.SoundName.NewRecord);
 			if (!recordBroke)
 			{
+				AudioManager.Instance.PlaySound(AudioManager.SoundName.NewRecord);
 				oldRecord = (int) PlayerStats.Instance.highScore;
 				recordBroke = true;
 			}

@@ -44,10 +44,11 @@ public class NextChallenge : MonoBehaviour
 		DailyReward3 dr = FindObjectOfType<DailyReward3>();
 		if (dr != null)
 		{
-			StartCoroutine(dr.ResetTimer());
 			dr.StopAllCoroutines();
+			StartCoroutine(dr.ResetTimer());
 		}
 		PlayerStats.Instance.IncrementChallengesAvailable(1);
+		SceneManager.LoadScene("GameScene");
 	}
 
 }

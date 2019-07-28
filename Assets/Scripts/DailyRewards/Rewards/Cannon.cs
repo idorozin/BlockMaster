@@ -11,7 +11,7 @@ public class Cannon : Reward_
     
     public override void Collect()
     {
-        
+        PlayerStats.Instance.ItemsOwned.Add(item.Id);
     }
 
     public override void Show(Transform giftPanel)

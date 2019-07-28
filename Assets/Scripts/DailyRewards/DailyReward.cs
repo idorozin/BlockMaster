@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.SimpleAndroidNotifications;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,6 +34,7 @@ public class DailyReward: MonoBehaviour
 	//reset the timer every roll
 	public IEnumerator ResetTimer()
 	{
+		NotificationManager.SendWithAppIcon(TimeSpan.FromSeconds(countDownLenght) , "Block Master" , "Your daily reward is ready!" , Color.cyan);
 		coolDown = countDownLenght;
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		PlayerStats.Instance.wheel.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();

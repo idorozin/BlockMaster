@@ -4,12 +4,12 @@ using System.Collections.Generic;
  using System.IO;
  using System.Net;
  using System.Runtime.InteropServices;
-using UnityEngine;
+ using UnityEngine;
  using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour
 {
-	private string path="http://35.242.248.201/realtime.php";
+	private string path="https://script.google.com/macros/s/AKfycbyd5AcbAnWi2Yn0xhFRbyzS4qMq1VucMVgVvhul5XqS9HkAyJY/exec";
 	private string time="";
 	private int sec, min, hour, day , month , year;
 	private DateTime currentDate,dateTime;
@@ -48,42 +48,45 @@ public class TimeManager : MonoBehaviour
 
 	public void setCurrentTime() // get the value of current secs,mins,hours,days in second from the beggining of the month
 	{
-		string[] currentTime = time.Split(' ');
-		string[] timePeriods = currentTime[1].Split(':');
-		hour = int.Parse(timePeriods[0]);
-		min = int.Parse(timePeriods[1]);
-		sec = int.Parse(timePeriods[2]);
-		timePeriods = currentTime[0].Split('-');
-		day = int.Parse(timePeriods[1]);
-		month = int.Parse(timePeriods[0]);
-		year = int.Parse(timePeriods[2]);
-		currentDate = new DateTime(year,month,day,hour,min,sec);
+		FakeDate d = JsonUtility.FromJson<FakeDate>(time);
+		currentDate = new DateTime(d.year , d.month , d.day , d.hours , d.minutes , d.seconds);
+	}
+
+	struct FakeDate
+	{
+		public int hours;
+		public int minutes;
+		public int seconds;
+		public int day;
+		public int month;
+		public int year;
 	}
 
 	public string getFullTime()
 	{
 		return time;
 	}
+	
+	public DateTime GetFullTime()
+	{
+		return currentDate;
+	}
 
 	public int getTimeInSecs() // current time in seconds
 	{
 		return (int)(currentDate-baseDate).TotalSeconds;
 	}
+	public int getTimeInSecs(DateTime time)
+	{
+		dateTime = time;
+		return (int)(dateTime-baseDate).TotalSeconds;
+	} // time(string) to seconds
 	public int getTimeInSecs(string time)
 	{
 		if (time == "")
 			time = this.time;
-		
-		string[] currentTime = time.Split(' ');
-		string[] timePeriods = currentTime[1].Split(':');
-		int hour_ = int.Parse(timePeriods[0]);
-		int min_ = int.Parse(timePeriods[1]);
-		int sec_ = int.Parse(timePeriods[2]);
-		timePeriods =  currentTime[0].Split('-');
-		int day_ = int.Parse(timePeriods[1]);
-		int month_ = int.Parse(timePeriods[0]);
-		int year_ = int.Parse(timePeriods[2]);
-		dateTime = new DateTime(year_,month_,day_,hour_,min_,sec_);
+		FakeDate d = JsonUtility.FromJson<FakeDate>(time);
+		dateTime = new DateTime(d.year , d.month , d.day , d.hours , d.minutes , d.seconds);
 		return (int)(dateTime-baseDate).TotalSeconds;
 	} // time(string) to seconds
 

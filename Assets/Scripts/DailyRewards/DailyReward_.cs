@@ -7,23 +7,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class DailyReward: MonoBehaviour
+public abstract class DailyReward_ : MonoBehaviour
 {
 	[SerializeField]
 	private int countDownLenght=500,coolDown;
-	public static bool RollAllowed=false;
-	public static string timeText;
+	private TimePassed timePassed = new TimePassed();
 	[SerializeField] private GameObject TimeText, Button;
 	private bool initilized=false;
+	public static string timeText;
+
+
 	
 	private void Start()
 	{
 		if (initilized)
 			return;
-		if (PlayerStats.Instance.wheel.startTime == DateTime.MinValue)
+		if (timePassed.startTime == DateTime.MinValue)
 		{
 			TimeText.GetComponent<TextMeshProUGUI>().text = "READY!";
-			RollAllowed = true;
 			return;
 		}
 		initilized = true;
@@ -37,17 +38,15 @@ public class DailyReward: MonoBehaviour
 		NotificationManager.SendWithAppIcon(TimeSpan.FromSeconds(countDownLenght) , "Block Master" , "Wheel Of Fortune is ready , come try your luck!" , Color.cyan);
 		coolDown = countDownLenght;
 		yield return TimeManager.Instance.StartCoroutine("getTime");
-		PlayerStats.Instance.wheel.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now) - TimeManager.Instance.getTimeInSecs();
-		PlayerStats.Instance.wheel.startTime = TimeManager.Instance.GetFullTime();
+		timePassed.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now) - TimeManager.Instance.getTimeInSecs();
+		timePassed.startTime = TimeManager.Instance.GetFullTime();
 		PlayerStats.saveFile();
-		StartCoroutine("CountDown");
-
-		Debug.Log(PlayerStats.Instance.wheel.startTime);
+		StartCoroutine(CountDown());
 	}
 
 	public void UpdateTime() // updates countDown with internet time
 	{
-		coolDown = (countDownLenght) - (TimeManager.Instance.getTimeInSecs() - TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.wheel.startTime));
+		coolDown = (countDownLenght) - (TimeManager.Instance.getTimeInSecs() - TimeManager.Instance.getTimeInSecs(timePassed.startTime));
 	}
 
 	IEnumerator CountDown()
@@ -55,10 +54,6 @@ public class DailyReward: MonoBehaviour
 		while (coolDown > 0 || coolDown > countDownLenght+1)
 		{
 			coolDown = TimeRemaining();
-			if(TimeText == null && SceneManager.GetActiveScene().name == "MainMenu")
-				TimeText = GameObject.Find("Timer2");
-			if(TimeText != null && coolDown > 0)
-			TimeText.GetComponent<TextMeshProUGUI>().text = SecsToTime();
 			timeText = SecsToTime();
 			yield return new WaitForSecondsRealtime(1);
 		}
@@ -74,14 +69,23 @@ public class DailyReward: MonoBehaviour
 		yield return TimeManager.Instance.StartCoroutine("getTime");
 		if (coolDown <= 0)
 		{
-			RollAllowed = true;
+			OnTimePassed();
 			yield break;
 		}
-		PlayerStats.Instance.wheel.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now) - TimeManager.Instance.getTimeInSecs();
+		timePassed.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now) - TimeManager.Instance.getTimeInSecs();
 		PlayerStats.saveFile();
 		//start timer again
 		StartCoroutine("CountDown");
 
+	}
+
+	protected abstract void OnTimePassed();
+
+
+	int TimeRemaining()
+	{
+		return countDownLenght - (-TimeManager.Instance.getTimeInSecs(timePassed.startTime) + 
+		                          TimeManager.Instance.getTimeInSecs(DateTime.Now)) + timePassed.offset;
 	}
 
 	public string SecsToTime() // convert seconds to time format 00:00:00
@@ -90,11 +94,7 @@ public class DailyReward: MonoBehaviour
 	}
 		
 
-	int TimeRemaining()
-	{
-		return countDownLenght - (-TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.wheel.startTime) + 
-		                  TimeManager.Instance.getTimeInSecs(DateTime.Now)) + PlayerStats.Instance.wheel.offset;
-	}
+
 
 
 }

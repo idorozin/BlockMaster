@@ -34,7 +34,7 @@ public static class ExtensionMethods
 
 	public static IEnumerator DisableAfterTimePassed_(Challenge c)
 	{
-		yield return new WaitForSeconds(c.timeToComplete);
+		yield return new WaitForSeconds(c.timeToComplete);	
 		c.timePassed = true;
 	}
 }

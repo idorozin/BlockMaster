@@ -460,6 +460,7 @@
             <e p="DailyReward.cs" t="Include" />
             <e p="DailyReward2.cs" t="Include" />
             <e p="DailyReward3.cs" t="Include" />
+            <e p="DailyReward_.cs" t="Include" />
             <e p="RewardDialog.cs" t="Include" />
             <e p="Rewards" t="Include">
               <e p="Cannon.cs" t="Include" />
@@ -469,9 +470,9 @@
               <e p="RandomReward.cs" t="Include" />
               <e p="Reward_.cs" t="Include" />
             </e>
-            <e p="TimedRewards.cs" t="Include" />
             <e p="TimeManager.cs" t="Include" />
             <e p="WheelOfFortune.cs" t="Include" />
+            <e p="XDA.cs" t="Include" />
           </e>
           <e p="Game" t="Include">
             <e p="CannonController.cs" t="Include" />
@@ -533,7 +534,6 @@
             <e p="Item.cs" t="Include" />
             <e p="ItemsShop.cs" t="Include" />
             <e p="ListWraper.cs" t="Include" />
-            <e p="NewBehaviourScript.cs" t="Include" />
             <e p="SelectShop.cs" t="Include" />
             <e p="swipeDetector.cs" t="Include" />
           </e>

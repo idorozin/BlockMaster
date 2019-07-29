@@ -18,14 +18,11 @@ public class PlayerData
         public TimePassed wheel = new TimePassed();
         public TimePassed gift = new TimePassed();
         public TimePassed challenge = new TimePassed();
-        public string wheelTime = "";
-        public string giftTime = "";
-        public int offsetW , offsetG , GiftIndex;
+        public int GiftIndex;
         public int ChallengesAvailable;
         public bool musicOn=true, soundOn=true;
         public bool noAds = false;
 
-        
         public List<Challenge> challenges;
         public ChallengesTemplates templates;
         
@@ -94,5 +91,17 @@ public class PlayerData
             }
 
             return count;
+        }       
+        
+        public void SubscribeToNewGame()
+        {
+            foreach (var c in challenges)
+            {
+                if (c.isActive)
+                {
+                    Debug.Log(c.oneRun);
+                    c.SubscribeToNewGame();
+                }
+            }
         }
     }

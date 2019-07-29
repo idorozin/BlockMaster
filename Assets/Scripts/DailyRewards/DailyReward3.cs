@@ -19,8 +19,12 @@ public class DailyReward3: MonoBehaviour
 			return;
 		initilized = true;
 		coolDown = 2;
-		if (string.IsNullOrEmpty(PlayerStats.Instance.challenge.startTime))
-			PlayerStats.Instance.challenge.startTime = "06-01-2016 19:12:07";
+		if (PlayerStats.Instance.challenge.startTime == DateTime.MinValue)
+		{
+			PlayerStats.Instance.challenge.startTime = new DateTime(2010 , 10 ,1);
+			Debug.Log(PlayerStats.Instance.challenge.startTime);
+		}
+
 		StartCoroutine("CountDown");
 	}
 	
@@ -31,8 +35,8 @@ public class DailyReward3: MonoBehaviour
 			yield break;
 		coolDown = countDownLenght;
 		yield return TimeManager.Instance.StartCoroutine("getTime");
-		PlayerStats.Instance.challenge.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
-		PlayerStats.Instance.challenge.startTime = TimeManager.Instance.getFullTime();
+		PlayerStats.Instance.challenge.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now) - TimeManager.Instance.getTimeInSecs();
+		PlayerStats.Instance.challenge.startTime = TimeManager.Instance.GetFullTime();
 		UpdateTime();
 		PlayerStats.saveFile();
 		StartCoroutine("CountDown");
@@ -68,7 +72,7 @@ public class DailyReward3: MonoBehaviour
 			StartCoroutine("ResetTimer");
 			yield break;
 		}
-		PlayerStats.Instance.challenge.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
+		PlayerStats.Instance.challenge.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now) - TimeManager.Instance.getTimeInSecs();
 		PlayerStats.saveFile();
 		//start timer again
 		StartCoroutine("CountDown");
@@ -84,7 +88,7 @@ public class DailyReward3: MonoBehaviour
 	int TimeRemaining()
 	{
 		return countDownLenght - (-TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.challenge.startTime) + 
-		                  TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss"))) + PlayerStats.Instance.challenge.offset;
+		                  TimeManager.Instance.getTimeInSecs(DateTime.Now)) + PlayerStats.Instance.challenge.offset;
 	}
 
 

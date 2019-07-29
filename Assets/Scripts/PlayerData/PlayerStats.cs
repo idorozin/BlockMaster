@@ -37,7 +37,7 @@ public class PlayerStats : MonoBehaviour
 				}
 				Instance.ChallengesAvailable = 2;		
 			}
-
+			Instance.SubscribeToNewGame();
 			DontDestroyOnLoad(gameObject);
 			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
 		}
@@ -63,7 +63,7 @@ public class PlayerStats : MonoBehaviour
 		string fileString = File.ReadAllText(path);
 		Debug.Log(fileString);
 		//Serialize object
-		Newtonsoft.Json.JsonConvert.PopulateObject(fileString , Instance);			
+		JsonConvert.PopulateObject(fileString , Instance);			
 		saveFile();
 	}
 	
@@ -78,7 +78,7 @@ public class PlayerStats : MonoBehaviour
 	public static void saveFile()
 	{
 		//parse this class to json string
-		string playerStats = Newtonsoft.Json.JsonConvert.SerializeObject(Instance);
+		string playerStats = JsonConvert.SerializeObject(Instance);
 		//save json file
 		File.WriteAllText(path , playerStats); 
 	}

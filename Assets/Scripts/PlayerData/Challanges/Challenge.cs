@@ -57,7 +57,15 @@ public class Challenge
             GameManager.NewGame += OnNewGame;
         }
     }
-    
+
+    public void SubscribeToNewGame()
+    {
+        if (oneRun)
+        {
+            GameManager.NewGame += OnNewGame;
+        }
+    }
+
     public void NextLevel()
     {
         completed = false;

@@ -20,8 +20,8 @@ public class DailyReward2: MonoBehaviour
 	{
 		if(initilized)
 			return;
-		Debug.Log(PlayerStats.Instance.giftTime + "GIFT");
-		if (PlayerStats.Instance.giftTime == "")
+		Debug.Log(PlayerStats.Instance.gift.startTime + "GIFT");
+		if (PlayerStats.Instance.gift.startTime == DateTime.MinValue)
 		{
 			TimeText.GetComponent<TextMeshProUGUI>().text = "READY!";
 			GiftAllowed = true;
@@ -37,23 +37,22 @@ public class DailyReward2: MonoBehaviour
 	{
 		NotificationManager.SendWithAppIcon(TimeSpan.FromSeconds(countDownLenght) , "Block Master" , "Your daily reward is ready!" , Color.cyan);
 		yield return TimeManager.Instance.StartCoroutine("getTime");
-		PlayerStats.Instance.offsetG = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
+		PlayerStats.Instance.gift.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now) - TimeManager.Instance.getTimeInSecs();
 		coolDown = countDownLenght;
-		PlayerStats.Instance.giftTime = TimeManager.Instance.getFullTime();
+		PlayerStats.Instance.gift.startTime = TimeManager.Instance.GetFullTime();
 		PlayerStats.saveFile();
 		StartCoroutine("CountDown");
-
-		Debug.Log(PlayerStats.Instance.giftTime);
 	}
 
 	public void updateTime() // updates countDown with internet time
 	{
-		coolDown = (countDownLenght) - (TimeManager.Instance.getTimeInSecs() - TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.giftTime));
+		coolDown = (countDownLenght) - (TimeManager.Instance.getTimeInSecs() - TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.gift.startTime));
 	}
 
 	IEnumerator CountDown()
 	{
 		run = true;
+		Debug.Log(timeRemaining());
 		while (coolDown > 0 || coolDown > countDownLenght+1)
 		{
 			coolDown = timeRemaining();
@@ -83,7 +82,7 @@ public class DailyReward2: MonoBehaviour
 			GiftAllowed = true;
 			yield break;
 		}
-		PlayerStats.Instance.offsetG = TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss")) - TimeManager.Instance.getTimeInSecs();
+		PlayerStats.Instance.gift.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now) - TimeManager.Instance.getTimeInSecs();
 		PlayerStats.saveFile();
 		//start timer again
 		StartCoroutine("CountDown");
@@ -106,8 +105,8 @@ public class DailyReward2: MonoBehaviour
 
 	int timeRemaining()
 	{
-		return countDownLenght - (-TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.giftTime) + 
-		                  TimeManager.Instance.getTimeInSecs(DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss"))) + PlayerStats.Instance.offsetG;
+		return countDownLenght - (-TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.gift.startTime) + 
+		                  TimeManager.Instance.getTimeInSecs(DateTime.Now)) + PlayerStats.Instance.gift.offset;
 	}
 
 

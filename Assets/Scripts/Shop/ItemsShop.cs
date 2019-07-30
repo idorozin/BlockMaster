@@ -145,6 +145,13 @@ public class ItemsShop : MonoBehaviour
 
 	private void SetLockedUi(Item item)
 	{
+		bool owned = PlayerStats.Instance.ItemsOwned.Contains(item.Id);
+		if (owned)
+		{
+			lock_.SetActive(false);
+			lockedUi.SetActive(false);
+			return;
+		}
 		if (item.Score > PlayerStats.Instance.highScore)
 		{
 			lock_.SetActive(true);

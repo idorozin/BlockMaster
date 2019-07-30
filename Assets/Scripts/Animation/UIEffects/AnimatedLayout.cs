@@ -82,7 +82,6 @@ public class AnimatedLayout : MonoBehaviour
         {
             float screenHeight = canvas.GetComponent<RectTransform>().rect.height;
             float sizeY = obj.GetComponent<RectTransform>().rect.height/2;
-            Debug.Log(screenHeight + sizeY); 
             //obj.transform.localPosition = new Vector3(0f , screenHeight+sizeY , 0f);
             obj.transform.DOMoveY(screenHeight+sizeY+1f ,outDuration).SetEase(ease);
             //obj.SetActive(true);

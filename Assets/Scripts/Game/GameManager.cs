@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using GooglePlayGames.Native.Cwrapper;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance;
 
 	public float height;
-	public float score;
+	public int score;
 	public float lives;
 	public float timePassed;
 
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
 	private float minimumLives = -3f;
 	private Rigidbody2D rb2d;
 	private Transform camera;
-	private float fixedScore = 0;
+	public int fixedScore = 0;
 	[SerializeField] private GameObject surface;
 	[SerializeField] private GameObject highScoreSign;
 	[SerializeField] private TextMeshProUGUI text_;
@@ -40,13 +41,15 @@ public class GameManager : MonoBehaviour
 	
 	private float startHeight;
 
+	public GameObject timer;
+
 	private void Awake()
 	{
-		/*if (!PlayerStats.Instance.soundOn)
-		{*/
+		if (!PlayerStats.Instance.soundOn)
+		{
 			AudioListener.pause = false;
 			AudioListener.volume = 1;
-		//}
+		}
 
 		NewGame();
 		Instance = this;
@@ -100,6 +103,10 @@ public class GameManager : MonoBehaviour
 		}
 		else
 		{
+			var goldEarenByHeight = (int) fixedScore /  10;
+			goldEarned += goldEarenByHeight;
+			PlayerStats.Instance.gold += goldEarenByHeight;
+			PlayerStats.saveFile();
 			GameOver();
 		}
 	}
@@ -118,6 +125,7 @@ public class GameManager : MonoBehaviour
 
 	public bool NextLevel = false;
 	[SerializeField] private GameObject pigoom;
+	
     public IEnumerator Surface()
     {
         NextLevel = true;
@@ -147,6 +155,7 @@ public class GameManager : MonoBehaviour
 		    Quaternion.identity);
 	    DestroyShapes.Destroyall();
     }
+	
     public void surface_()
     {
 	    StartCoroutine(Surface());
@@ -165,18 +174,17 @@ public class GameManager : MonoBehaviour
 	{
 		if(fixedScore>PlayerStats.Instance.highScore)
 		{
+			if (!recordBroke)
+			{
+				//play animation
+				AudioManager.Instance.PlaySound(AudioManager.SoundName.NewRecord);
+				oldRecord = PlayerStats.Instance.highScore;
+				recordBroke = true;
+			}
 			PlayerStats.Instance.highScore = fixedScore;
 			PlayerStats.Instance.highScoreHeight = height;
 			PlayerStats.saveFile();
-			PlayServices.Instance.addScoreToLeaderboard("",(int)fixedScore);
-			if (!recordBroke)
-			{
-				AudioManager.Instance.PlaySound(AudioManager.SoundName.NewRecord);
-				oldRecord = (int) PlayerStats.Instance.highScore;
-				recordBroke = true;
-			}
-
-			//play animation
+			PlayServices.Instance.addScoreToLeaderboard("",fixedScore);
 		}
 	}
 
@@ -185,17 +193,16 @@ public class GameManager : MonoBehaviour
 		if (score != 0 && score > fixedScore)
 		{
 			fixedScore = score;
-			PlayerStats.Instance.ReportProgress((int)fixedScore,"score");
+			PlayerStats.Instance.ReportProgress(fixedScore,"score");
 		}
-		text_.GetComponent<ScrollingText>().SetNum((int)fixedScore);
-		//PlayerStats.Instance.cs[PlayerStats.Instance.challengeIndex].setProcess((int)fixedScore , "record");
+		text_.GetComponent<ScrollingText>().SetNum(fixedScore);
 	}
 
 	private void OnScoreChanged(float height)
 	{
         TrackCamera.height = height;
 		if (height > startHeight)
-			score=(float)Math.Round((height-startHeight)*10);
+			score=(int)Math.Round((height-startHeight)*10);
 		this.height = height;
 		//set the current score
 		SetScore();

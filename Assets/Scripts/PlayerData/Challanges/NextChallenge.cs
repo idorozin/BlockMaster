@@ -19,12 +19,11 @@ public class NextChallenge : MonoBehaviour
 	IEnumerator CountDown(int timeRemaining)
 	{
 		countDown = timeRemaining;
-		Debug.Log(countDown);
 		while (countDown > 0)
 		{
 			yield return new WaitForSecondsRealtime(1f);
 			countDown--;
-			text.text = "next challenge in : " + TimeManager.SecsToTime(countDown);
+			text.text = "next challenge in : " + ExtensionMethods.SecsToTime(countDown);
 		}
 		SceneManager.LoadScene("GameScene");
 	}

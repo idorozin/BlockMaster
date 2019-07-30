@@ -31,11 +31,8 @@ public class PlayerStats : MonoBehaviour
 				{
 					Instance.challenges.Add(new Challenge(c));
 				}
-				for (int i = 0; i < 3; i++)
-				{
-					Instance.challenges[i].Activate();
-				}
-				Instance.ChallengesAvailable = 2;		
+				Instance.ChallengesAvailable = 5;		
+				Instance.ActivateChallenge();
 			}
 			Instance.SubscribeToNewGame();
 			DontDestroyOnLoad(gameObject);

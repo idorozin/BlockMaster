@@ -10,22 +10,31 @@ public class ScrollingText : MonoBehaviour
 
     private int initialNum=0;
     
+    
     public void SetNum(int num)
     {
         gameObject.SetActive(true);
-        //StopAllCoroutines(); // ?
-        StartCoroutine(SlideToNum(num));
+        this.num = num;
+        if (!isRunning)
+        {
+            StartCoroutine(SlideToNum());
+        }
     }    
     public void SetNum(int num , int initialNum)
     {
         this.initialNum = initialNum;
+        this.num = num;
         gameObject.SetActive(true);
         text.text = initialNum.ToString();
-        StartCoroutine(SlideToNum(num));
+        if(!isRunning)
+            StartCoroutine(SlideToNum());
     }
 
-    private IEnumerator SlideToNum(int num)
+    private bool isRunning;
+    private int num;
+    private IEnumerator SlideToNum()
     {
+        isRunning = true;
         while (initialNum < num)
         {
             initialNum++;
@@ -38,5 +47,6 @@ public class ScrollingText : MonoBehaviour
             text.text = initialNum.ToString();
             yield return new WaitForSecondsRealtime(animationSpeed);
         }
+        isRunning = false;
     }
 }

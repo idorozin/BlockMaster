@@ -58,10 +58,11 @@ public class DailyReward: MonoBehaviour
 			if(TimeText == null && SceneManager.GetActiveScene().name == "MainMenu")
 				TimeText = GameObject.Find("Timer2");
 			if(TimeText != null && coolDown > 0)
-			TimeText.GetComponent<TextMeshProUGUI>().text = SecsToTime();
-			timeText = SecsToTime();
+			TimeText.GetComponent<TextMeshProUGUI>().text = ExtensionMethods.SecsToTime(coolDown);
+			timeText = ExtensionMethods.SecsToTime(coolDown);
 			yield return new WaitForSecondsRealtime(1);
 		}
+		Debug.Log("countDown");
 		StartCoroutine("EnableButton");
 	}
 
@@ -83,12 +84,6 @@ public class DailyReward: MonoBehaviour
 		StartCoroutine("CountDown");
 
 	}
-
-	public string SecsToTime() // convert seconds to time format 00:00:00
-	{
-		return coolDown / 60 / 60 + ":" + coolDown / 60 % 60 + ":" + coolDown % 60;
-	}
-		
 
 	int TimeRemaining()
 	{

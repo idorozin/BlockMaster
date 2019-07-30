@@ -34,7 +34,6 @@ public class DailyGift : MonoBehaviour
 
 	public void UpdateUI()
 	{
-		Debug.Log(PlayerStats.Instance.GiftIndex);
 		for(int i=0;i<PlayerStats.Instance.GiftIndex;i++)
 			Instantiate(TickPrefab , TickPanel);
 		foreach (var gift in gifts)

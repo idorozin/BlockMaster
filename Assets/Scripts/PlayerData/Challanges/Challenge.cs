@@ -48,8 +48,9 @@ public class Challenge
 
     public void Activate()
     {
-        if(PlayerStats.Instance.ChallengesActive() >= 3)
-            return;
+        //if(PlayerStats.Instance.ChallengesActive() >= 3)
+        //    return;
+        Debug.Log("active" + " " + this);
         isActive = true;
         progress = 0;
         if (oneRun)
@@ -86,31 +87,28 @@ public class Challenge
     {
         if(timePassed || this.action != action)
             return;
+        
         if (incrementable)
             this.progress += progress;
         else
             this.progress = progress;
+        
         if (this.progress >= goal) 
             ChallengeCompleted();
         else 
             PlayerStats.saveFile();
     }
 
-    public void skipChallange()
-    {
-    }
-
     private void ChallengeCompleted()
     {
         completed = true;
         isActive = false;
-        PlayerStats.saveFile();
-        GameManager.GameOver -= OnNewGame;
+        if(oneRun)
+            GameManager.GameOver -= OnNewGame;
         GameManager.Instance.ChallengeComplete(this);
         PlayerStats.Instance.gold += reward;
         previousGoals.Add(goal);
-        //OnChallengeCompleted(this);
-        //claimReward(reward);
+        PlayerStats.saveFile();
     }
 
     public override string ToString()

@@ -79,12 +79,6 @@ public class DailyReward3: MonoBehaviour
 
 	}
 
-	public string SecsToTime() // convert seconds to time format 00:00:00
-	{
-		return coolDown / 60 / 60 + ":" + coolDown / 60 % 60 + ":" + coolDown % 60;
-	}
-		
-
 	int TimeRemaining()
 	{
 		return countDownLenght - (-TimeManager.Instance.getTimeInSecs(PlayerStats.Instance.challenge.startTime) + 

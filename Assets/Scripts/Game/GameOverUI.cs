@@ -20,14 +20,22 @@ public class GameOverUI : MonoBehaviour
     private GameObject others;
     [SerializeField] 
     private TextMeshProUGUI record, coins , tipText;    
-    [Header("challenges")]
+    [SerializeField] 
+    private TextMeshProUGUI gold;
+    [SerializeField] 
+    private TextMeshProUGUI score;
+
+    [Space] 
+    [SerializeField] 
+    private GameObject watchAd;
+    [SerializeField] 
+    private GameObject doubled;
+    
+    [Header("Challenges")]
     [SerializeField] 
     private GameObject challengesPanel;   
     [SerializeField] 
     private GameObject challengesDisplay;
-
-    [SerializeField] private TextMeshProUGUI gold;
-    [SerializeField] private TextMeshProUGUI score;
 
     [SerializeField] private Tips tips;
 
@@ -40,9 +48,6 @@ public class GameOverUI : MonoBehaviour
 
     private void OnEnable()
     {
-/*        GameObject go = (GameObject)Instantiate(scrollingText,transform);
-        go.transform.position = scrollingText.transform.position;
-        go.GetComponent<ScrollingText>().SetNum(20);*/
         if (GameManager.Instance.challengesCompleted.Count > 0)
         {
             challengesDisplay.SetActive(true);
@@ -56,7 +61,10 @@ public class GameOverUI : MonoBehaviour
     private void SetEndGameUI()
     {
         others.SetActive(true);
+        
         StartCoroutine(SetMoney());
+        score.text=GameManager.Instance.fixedScore.ToString();
+        
         nativeShare = GetComponent<NativeShare>();
         int count = 0;
         if (GameManager.Instance.recordBroke)
@@ -70,10 +78,10 @@ public class GameOverUI : MonoBehaviour
             cannon.SetActive(true);
             count++;
         }
-        if (GameManager.Instance.score > 50)
+        if (GameManager.Instance.score > 50 && AdManager.Instance.CanPlayRewarded())
         {
             double_.SetActive(true);
-            coins.text = "(" + GameManager.Instance.score + ")"; 
+            coins.text = "(" + GameManager.Instance.goldEarned + ")";
             count++;
         }
         if (count < 3)
@@ -87,16 +95,22 @@ public class GameOverUI : MonoBehaviour
     public void Share()
     {
         nativeShare.ShareButtonPress();
-    } 
-    
+    }
+
+    private bool once_;
     public void Double()
     {
+        if (once_) return;
+        once_ = true;
         AdManager.Instance.ShowRewarded(WatchedAd);
     }
 
     private void WatchedAd(object sender , EventArgs e)
     {
-        PlayerStats.Instance.gold += (int)GameManager.Instance.score;
+        PlayerStats.Instance.gold += GameManager.Instance.goldEarned;
+        watchAd.SetActive(false);
+        doubled.SetActive(true);
+        StartCoroutine(SetMoney(0f));
     }
 
     public void Buy()
@@ -104,23 +118,23 @@ public class GameOverUI : MonoBehaviour
         SceneManager.LoadScene("Shop");
     }
 
-    private bool once = false;
+    private bool once;
     public void Continue()
     {
-        if (!once)
-        {
-            StartCoroutine(Delay());
-            once = true;
-        }
+        if (once) return;
+        StartCoroutine(Delay());
+        once = true;
     }
 
-    private IEnumerator SetMoney()
+    private IEnumerator SetMoney(float delay = 1f)
     {
-        score.text=GameManager.Instance.score.ToString();
-        gold.text = PlayerStats.Instance.gold - GameManager.Instance.goldEarned + "";
-        yield return new WaitForSecondsRealtime(1f);
+        var previousWallet = PlayerStats.Instance.gold - GameManager.Instance.goldEarned;
+        gold.text = previousWallet + "";
+        if (GameManager.Instance.goldEarned == 0)
+            yield break;
+        yield return new WaitForSecondsRealtime(delay);
         AudioManager.Instance.PlaySound(AudioManager.SoundName.coins);
-        gold.gameObject.GetComponent<ScrollingText>().SetNum(PlayerStats.Instance.gold , PlayerStats.Instance.gold - GameManager.Instance.goldEarned);
+        gold.gameObject.GetComponent<ScrollingText>().SetNum(PlayerStats.Instance.gold , previousWallet);
     }
 
     private IEnumerator Delay()

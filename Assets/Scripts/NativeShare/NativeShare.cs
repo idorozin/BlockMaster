@@ -4,8 +4,11 @@ using UnityEngine;
 using System.IO;
 using UnityEditor;
 
-public class NativeShare : MonoBehaviour {
-
+public class NativeShare : MonoBehaviour
+{
+	[SerializeField]
+	private string applink;
+	
 	public void ShareButtonPress()
 	{
 		if (!Application.isEditor)
@@ -14,12 +17,12 @@ public class NativeShare : MonoBehaviour {
 			AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");
 			intentObject.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_SEND"));
 			intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"),
-				"Can you beat my score?");
+				"#BlockMaster My best score is " + PlayerStats.Instance.highScore + " Can you beat me? " + applink);
 			intentObject.Call<AndroidJavaObject>("setType", "text/plain");
 			AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
 			AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity");
 			AndroidJavaObject chooser = intentClass.CallStatic<AndroidJavaObject>("createChooser",
-				intentObject, "Share your new score");
+				intentObject, "Share your high score");
 			currentActivity.Call("startActivity", chooser);
 		}
 	}

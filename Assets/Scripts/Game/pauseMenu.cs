@@ -13,8 +13,6 @@ public class PauseMenu : MonoBehaviour {
 	public GameObject PauseMenuUI;
 	public GameObject GameOverUI;
 	public GameObject clickToStart;
-	public TextMeshProUGUI gameOverScore;
-	public TextMeshProUGUI gameOverMoney;
 	public GameObject ChallangesDisplayPanel;
 	public GameObject ChallengeDisplayPrefab;
 	public GameObject ChallangesCompleteDisplayPanel;
@@ -116,21 +114,25 @@ public class PauseMenu : MonoBehaviour {
 		
 	}
 	
-	public void GameOverUi(float score)
+	public void GameOverUi()
 	{
+		DisplayCompletedChallenges();
 		GameOverUI.SetActive(true);
-		gameOverScore.text=score.ToString();
-		gameOverMoney.text = GameManager.Instance.goldEarned + Math.Round(score/10).ToString();
 		Score.SetActive(false);
 	}
 	
 	private void OnGameOver()
 	{
-		AdManager.Instance.ShowInterstitial();
 		GameIsPaused = true;
-		PlayerStats.Instance.gold+=(int)Math.Round(GameManager.Instance.score/10);
-		DisplayCompletedChallenges();
-		GameOverUi((GameManager.Instance.score));
-		PlayerStats.saveFile();
+		//if (AdManager.Instance.CanPlay())
+		//	AdManager.Instance.ShowInterstitial(handleAdFinished);
+		//else
+		AdManager.Instance.ShowInterstitial();
+			GameOverUi();
+	}
+
+	private void handleAdFinished(object sender, EventArgs e)
+	{
+		GameOverUi();
 	}
 }

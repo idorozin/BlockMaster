@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
+using Random = UnityEngine.Random;
+
 [Serializable]
 public class PlayerData
     {
-        public float highScore;
+        public int highScore;
         public int lastCannon;
         public int lastFlame;
         public int lastPlatform;
@@ -37,35 +40,40 @@ public class PlayerData
 
         public void ActivateChallenge()
         {
-            while (!(ChallengesAvailable <= 0 || ChallengesActive() >= 3))
+            int max = 0;
+            Debug.Log(ChallengesAvailable + " " + ChallengesActive());
+            while (!(ChallengesAvailable <= 0 || ChallengesActive() >= 3) && max<=3)
             {
-                foreach (var c in challenges)
+                var canSelectTime = from c in challenges where c.isActive && c.timeToComplete > 0 select c;
+                bool time = !canSelectTime.Any();
+                var nonActiveChallenges = from c in challenges where !c.isActive && !c.completed && !(!time && c.timeToComplete>0) select c;
+
+                int count = nonActiveChallenges.Count();
+                Debug.Log(count);
+                if (count == 0)
                 {
-                    if (!c.isActive && !c.completed)
+                    foreach (var c in challenges)
+                    {
+                        if (c.completed)
+                            c.NextLevel();
+                    }
+                }
+                var nonActiveChallenges_ = from c in challenges where !c.isActive && !c.completed && !(!time && c.timeToComplete>0) select c;
+                int r = Random.Range(0, nonActiveChallenges_.Count());
+                Debug.Log(r);
+                int i = 0;
+                foreach (var c in nonActiveChallenges_)
+                {
+                    if (i == r)
                     {
                         c.Activate();
                         ChallengesAvailable--;
-                        PlayerStats.saveFile();
                         break;
                     }
+                    i++;
                 }
 
-                foreach (var c in challenges)
-                {
-                    if (c.completed)
-                        c.NextLevel();
-                }
-
-                foreach (var c in challenges)
-                {
-                    if (!c.isActive && !c.completed)
-                    {
-                        c.Activate();
-                        ChallengesAvailable--;
-                        PlayerStats.saveFile();
-                        break;
-                    }
-                }
+                max++;
             }
         }
         

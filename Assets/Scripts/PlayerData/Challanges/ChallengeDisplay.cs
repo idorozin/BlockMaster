@@ -20,10 +20,10 @@ public class ChallengeDisplay : MonoBehaviour
 		if (Math.Max(0, (challenge.difficulty - 1) % difficultyArts.Length) == 0 && difficultyArt!=null)
 			difficultyArt.rectTransform.sizeDelta = new Vector2(110 , 110);
 		else
-		if(difficultyArt != null)
-			difficultyArt.rectTransform.sizeDelta = new Vector2(190 , 185);
-		if(difficultyArt != null)
-		difficultyArt.sprite = difficultyArts[Math.Max(0,(challenge.difficulty-1) % difficultyArts.Length)];
+			if(difficultyArt != null)
+				difficultyArt.rectTransform.sizeDelta = new Vector2(190 , 185);
+			if(difficultyArt != null)
+				difficultyArt.sprite = difficultyArts[Math.Max(0,(challenge.difficulty-1) % difficultyArts.Length)];
 		levelText.text = challenge.level.ToString();
 	}	
 	
@@ -34,7 +34,7 @@ public class ChallengeDisplay : MonoBehaviour
 			goal = challenge.goal;
 			progressBar.maximum = goal;
 			progressBar.current = challenge.progress;
-			if(challenge.incrementable)
+			if(challenge.incrementable && !challenge.oneRun)
 				progressText.text = challenge.progress + "/" + challenge.goal;
 			else
 				progressText.text = " best " + challenge.progress;
@@ -57,8 +57,8 @@ public class ChallengeDisplay : MonoBehaviour
 
 	private string Progress(Challenge challenge)
 	{
-		if(challenge.incrementable)
+		if(challenge.incrementable && !challenge.oneRun)
 			return  " ( " + (challenge.goal - challenge.progress) + " to go )";
-		return " ( " + "best: " + (challenge.progress) + " ) ";
+		return " ( best: " + (challenge.progress) + " ) ";
 	}
 }

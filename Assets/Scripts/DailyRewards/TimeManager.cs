@@ -38,18 +38,29 @@ public class TimeManager : MonoBehaviour
 		WWW www = new WWW(path);
 		yield return www;
 		time = www.text;
-		if(!string.IsNullOrEmpty(time))
-			setCurrentTime();
-		if(SceneManager.GetActiveScene().name == "MenuScene")
-			GetComponent<DailyReward>().UpdateTime();
+		if (!setCurrentTime())
+				yield break; 
+		//if(SceneManager.GetActiveScene().name == "MenuScene")
+		GetComponent<DailyReward>().UpdateTime();
 		GetComponent<DailyReward2>().updateTime();
 		GetComponent<DailyReward3>().UpdateTime();
 	}
 
-	public void setCurrentTime() // get the value of current secs,mins,hours,days in second from the beggining of the month
+	public bool setCurrentTime() // get the value of current secs,mins,hours,days in second from the beggining of the month
 	{
-		FakeDate d = JsonUtility.FromJson<FakeDate>(time);
-		currentDate = new DateTime(d.year , d.month , d.day , d.hours , d.minutes , d.seconds);
+		if (string.IsNullOrEmpty(time))
+			return false;
+		try
+		{
+			FakeDate d = JsonUtility.FromJson<FakeDate>(time);
+			currentDate = new DateTime(d.year, d.month, d.day, d.hours, d.minutes, d.seconds);
+		}
+		catch
+		{
+			return false;
+		}
+
+		return true;
 	}
 
 	struct FakeDate
@@ -123,10 +134,6 @@ public class TimeManager : MonoBehaviour
 			return "";
 		}
 		return html;
-	}
-	public static string SecsToTime(int coolDown) // convert seconds to time format 00:00:00
-	{
-		return coolDown / 60 / 60 + ":" + coolDown / 60 % 60 + ":" + coolDown % 60;
 	}
 	
 }

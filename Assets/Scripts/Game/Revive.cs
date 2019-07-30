@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 
@@ -24,25 +22,42 @@ public class Revive : MonoBehaviour
 	[SerializeField] private HeartsUi hearts;
 	private float time = 5f;
 
+	private int price = 10;
+	
 	private void Start()
 	{
+		price = GetPrice();
 		hearts = GameObject.Find("CanvasHearts").GetComponent<HeartsUi>();
 		lava = GameObject.Find("Lava").transform;
-		if (AdManager.Instance.CanPlayRewarded() && PlayerStats.Instance.gold > 10)
+		if (AdManager.Instance.CanPlayRewarded() && PlayerStats.Instance.gold > price)
 		{
 			both.SetActive(true);
-			bothText.text = 10 + "";
+			bothText.text = "" + price;
 		}
-		else if(PlayerStats.Instance.gold > 10)
+		else if(PlayerStats.Instance.gold > price)
 		{
 			pay.SetActive(true);
-			payText.text = 10 + "";
+			payText.text = price.ToString();
 		}
 		else
 		{
 			ad.SetActive(true);
 		}
 		StartCoroutine(Timer());
+	}
+
+	private int GetPrice()
+	{
+		int gold = PlayerStats.Instance.gold;
+		if (gold > 800)
+			return 250;
+		if (gold > 500)
+			return 200;
+		if (gold > 300)
+			return 150;
+		if (gold > 150)
+			return 100;
+		return 50;
 	}
 
 	private IEnumerator Timer()
@@ -60,21 +75,25 @@ public class Revive : MonoBehaviour
 
 	public void Pay()
 	{
-		PlayerStats.Instance.gold -= 10;
+		PlayerStats.Instance.gold -= price;
 		RevivePlayer();
 	}
 	
 	public void WatchAd()
 	{
-		AdManager.Instance.ShowRewarded(FailedToWatch , Watched);
+		AdManager.Instance.ShowRewarded(Watched);
 	}
 
 	void FailedToWatch(object sender , EventArgs e)
 	{
-		GameOver();
-	}	
+		if(!watched)
+			GameOver();
+	}
+
+	private bool watched;
 	void Watched(object sender , EventArgs e)
 	{
+		watched = true;
 		RevivePlayer();
 	}
 

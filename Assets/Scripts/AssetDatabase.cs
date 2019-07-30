@@ -38,7 +38,7 @@ public class AssetDatabase : MonoBehaviour
 	public Item GetRandomCannon()
 	{
 		var cannons = from c in this.cannons.serializedItems
-			where c.Gold < 500 where !PlayerStats.Instance.ItemsOwned.Contains(c.Id)
+			where c.Gold < 500 && !PlayerStats.Instance.ItemsOwned.Contains(c.Id)
 			select c;
 		Item cannon = null;
 		int m = cannons.Count();
@@ -46,11 +46,9 @@ public class AssetDatabase : MonoBehaviour
 		int i = 0;
 		foreach (var c in cannons)
 		{
-			i++;
 			if (i == r)
-			{
 				cannon = c;
-			}
+			i++;
 		}
 		return cannon;
 	}	

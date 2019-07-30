@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.IO.IsolatedStorage;
+using Boo.Lang;
 using UnityEngine;
 using GoogleMobileAds.Api;
 using TMPro;
@@ -60,6 +61,7 @@ public class AdManager : MonoBehaviour
         #else
             string adUnitId = "unexpected_platform";
         #endif
+        //interstitial?.Destroy();
         this.interstitial = new InterstitialAd(adUnitId);
         interstitial.OnAdClosed += ReloadInterstitial;
         AdRequest request = new AdRequest.Builder().Build();
@@ -100,8 +102,9 @@ public class AdManager : MonoBehaviour
         this.rewardedAd.LoadAd(request);
     }
 
-    public void ShowInterstitial(EventArgs handle)
+    public void ShowInterstitial(EventHandler<EventArgs> handle)
     {
+        interstitial.OnAdClosed += handle;
         if (interstitial.IsLoaded())
         {
             timePassedTillLastAd = 0;
@@ -118,7 +121,7 @@ public class AdManager : MonoBehaviour
         }
     }
 
-    bool CanPlay()
+    public bool CanPlay()
     {
         return timePassedTillLastAd >= minimumTimeBetweenAds;
     }
@@ -134,10 +137,10 @@ public class AdManager : MonoBehaviour
     }
 
 
-    public void ShowRewarded(EventHandler<AdErrorEventArgs> handleFailed, EventHandler<Reward> handleReward)
+    public void ShowRewarded(EventHandler<EventArgs> handleFailed, EventHandler<Reward> handleReward)
     {
         rewardedAd.OnUserEarnedReward += handleReward;
-        rewardedAd.OnAdFailedToShow += handleFailed;
+        rewardedAd.OnAdClosed += handleFailed;
         if (rewardedAd.IsLoaded())
         {
             timePassedTillLastAd = 0;

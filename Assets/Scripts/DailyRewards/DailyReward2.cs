@@ -59,8 +59,8 @@ public class DailyReward2: MonoBehaviour
 			if(TimeText == null && SceneManager.GetActiveScene().name == "MainMenu")
 				TimeText = GameObject.Find("Timer");
 			if(TimeText != null && coolDown > 0)
-			TimeText.GetComponent<TextMeshProUGUI>().text = secsToTime();
-			timeText = secsToTime();
+			TimeText.GetComponent<TextMeshProUGUI>().text =  ExtensionMethods.SecsToTime(coolDown);
+			timeText =  ExtensionMethods.SecsToTime(coolDown);
 			yield return new WaitForSecondsRealtime(1);
 		}
 		StartCoroutine("enableButton");
@@ -86,20 +86,6 @@ public class DailyReward2: MonoBehaviour
 		PlayerStats.saveFile();
 		//start timer again
 		StartCoroutine("CountDown");
-	}
-
-	public string secsToTime() // convert seconds to time format 00:00:00
-	{
-		TimeSpan t = TimeSpan.FromSeconds(coolDown);
-
-		//here backslash is must to tell that colon is
-		//not the part of format, it just a character that we want in output
-		
-		string answer = string.Format("{0:D2}:{1:D2}:{2:D2}", 
-			t.Hours, 
-			t.Minutes, 
-			t.Seconds);
-		return answer;
 	}
 		
 

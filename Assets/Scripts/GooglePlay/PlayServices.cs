@@ -1,12 +1,8 @@
 ﻿
-
-using System.Collections;
-using System.Net.Mime;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class PlayServices : MonoBehaviour
 {
@@ -29,7 +25,7 @@ public class PlayServices : MonoBehaviour
         // Initialize and activate the platform
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.Activate();
-        PlayGamesPlatform.Instance.Authenticate(SignInCallback, false);
+        Social.localUser.Authenticate(SignInCallback);
     }
 
     public void SignInCallback(bool success)
@@ -46,15 +42,15 @@ public class PlayServices : MonoBehaviour
     public void TryAgain()
     {
         triedAgain = true;
-        PlayGamesPlatform.Instance.Authenticate(TryAgainCallback, false);
+        Social.localUser.Authenticate(TryAgainCallback);
     }
     
     public void TryAgainCallback(bool success)
     {
         if (success) {
-            if (PlayGamesPlatform.Instance.localUser.authenticated) 
+            if (Social.localUser.authenticated) 
             {
-                PlayGamesPlatform.Instance.ShowLeaderboardUI();
+                Social.ShowLeaderboardUI();
             }
         } else {
             Debug.Log("(Lollygagger) Sign-in failed...");
@@ -66,9 +62,9 @@ public class PlayServices : MonoBehaviour
 
     #region Leaderboards
     public void ShowLeaderboards() {
-        if (PlayGamesPlatform.Instance.localUser.authenticated) 
+        if (Social.localUser.authenticated) 
         {
-            PlayGamesPlatform.Instance.ShowLeaderboardUI();
+            Social.ShowLeaderboardUI();
         }
         else 
         {
@@ -79,10 +75,10 @@ public class PlayServices : MonoBehaviour
 
     public void addScoreToLeaderboard(string leaderboardID,int score)
     {
-        if (PlayGamesPlatform.Instance.localUser.authenticated)
+        if (Social.localUser.authenticated)
         {
             // Note: make sure to add 'using GooglePlayGames'
-            PlayGamesPlatform.Instance.ReportScore(score,
+            Social.ReportScore(score,
                 GPGSIds.leaderboard_best_high_score,
                 (bool success) =>
                 {

@@ -34,7 +34,8 @@ public class PlayerStats : MonoBehaviour
 				Instance.ChallengesAvailable = 5;		
 				Instance.ActivateChallenge();
 			}
-			Instance.SubscribeToNewGame();
+			else
+				Instance.SubscribeToNewGame();
 			DontDestroyOnLoad(gameObject);
 			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
 		}

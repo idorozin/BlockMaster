@@ -6,12 +6,17 @@ public class PlayerInput : MonoBehaviour
 	private Vector3 initialPosition, aimPosition;
 	private Vector3 cameraInitialPosition;
 	bool fingerMoved, loading;
-	float nextTime;
-	public float shootingSpeed = 0.5f;
+	[SerializeField]
+	private float nextTime;
 	PredictionLine predictionLine;
 	private Camera camera_;
 	private CannonController cannonController;
 	private bool began;
+	[SerializeField]
+	private float shootingSpeed = 0.5f;
+	[SerializeField]
+	private float maximumStartPosition = 2f;
+
 
 
 	private void Awake()
@@ -27,7 +32,7 @@ public class PlayerInput : MonoBehaviour
 
 	private void Update()
 	{
-		if (GameManager.Instance != null&& PauseMenu.GameIsPaused || GameManager.Instance.NextLevel) return;
+		if (GameManager.Instance != null && PauseMenu.GameIsPaused || GameManager.Instance.NextLevel) return;
 
 		if (Time.time > nextTime)
 		{
@@ -45,6 +50,8 @@ public class PlayerInput : MonoBehaviour
 				case TouchPhase.Began:
 					initialPosition = GetWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));
 					cameraInitialPosition = camera_.transform.position;
+					if(initialPosition.y - cameraInitialPosition.y > maximumStartPosition)
+						break;
 					aimPosition = GetWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));
 					fingerMoved = true;
 					began = true;
@@ -54,6 +61,7 @@ public class PlayerInput : MonoBehaviour
 					if(!began)
 						break;
 					aimPosition = GetWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));
+					Debug.Log(aimPosition);
 					fingerMoved = true;
 					break;
 				//check if player can shoot and shoots

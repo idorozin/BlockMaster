@@ -1341,7 +1341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5191c0d8fd6c14b879b02765b1e4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 335650935}
 --- !u!114 &335650935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7243,7 +7242,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Double tour coins!
+  m_text: Double game coins!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9859a64ad2ae4cc49a37a16678d808d7, type: 2}
   m_sharedMaterial: {fileID: 21153115209632918, guid: 9859a64ad2ae4cc49a37a16678d808d7,
@@ -7822,15 +7821,18 @@ MonoBehaviour:
   oldRecord: 0
   shapes: []
   anim: {fileID: 1181826780}
+  fixedScore: 0
   surface: {fileID: 1098985330}
   highScoreSign: {fileID: 261576647}
   text_: {fileID: 512170391}
   goldEarned: 0
   timer: {fileID: 2064798520}
+  sounds: {fileID: 877722323}
   revive: {fileID: 1563404953040448, guid: dce0c4a81b28e0d42885475b4796c673, type: 3}
   canvasPause: {fileID: 1181826778}
   NextLevel: 0
   pigoom: {fileID: 1610229418037056, guid: 75ac4eeae3311884da8881f9d66067db, type: 3}
+  shapesTillDestroy: {fileID: 335650935}
 --- !u!23 &1283844110
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9354,7 +9356,7 @@ SpriteRenderer:
   m_SortingLayerID: -1530670557
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 338a403d13427a646b130fa9f0d42163, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9362,7 +9364,7 @@ SpriteRenderer:
   m_Size: {x: 4.8, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1605092964

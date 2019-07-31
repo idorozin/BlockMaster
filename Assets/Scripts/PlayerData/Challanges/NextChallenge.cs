@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,8 +12,9 @@ public class NextChallenge : MonoBehaviour
 	private TextMeshProUGUI text;
 	void Start ()
 	{
-		if(DailyReward3.timeRemaining > 1000)
-			StartCoroutine(CountDown(DailyReward3.timeRemaining));	
+		if(DailyReward3.timeRemaining > 1000 && AdManager.Instance.CanPlayRewarded())
+			ad.SetActive(true);
+		StartCoroutine(CountDown(DailyReward3.timeRemaining));	
 	}
 
 	private int countDown = 0;
@@ -40,6 +42,7 @@ public class NextChallenge : MonoBehaviour
 
 	void HandleReward(object sender , EventArgs e)
 	{
+		StopAllCoroutines();
 		DailyReward3 dr = FindObjectOfType<DailyReward3>();
 		if (dr != null)
 		{

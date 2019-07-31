@@ -9,6 +9,7 @@ public class CannonController : MonoBehaviour
 
 	[SerializeField] [Range(0, 1)] private float Ysesitivity = 1;
 	[SerializeField] [Range(0, 1)] private float Xsesitivity = 1;
+	[SerializeField] [Range(0, 1)] private float minimumPower = 1.5f;
 	
 
 	[SerializeField] private float maxY = 0.75f;
@@ -28,8 +29,9 @@ public class CannonController : MonoBehaviour
 
 	public void Shoot(Vector3 basePosition,Vector3 aimPosition) // shoots shape and loads the next one
 	{
-
 		Vector3 finalDir = GetDirection(basePosition, aimPosition);
+		if(finalDir.y < minimumPower)
+			return;
 		shapeGenerator.shape.transform.parent = shapesParent.transform;
 		shapeGenerator.shape.GetComponent<Rigidbody2D>().isKinematic = false; // gravity effect on
 		shapeGenerator.shape.GetComponent<Rigidbody2D>().velocity=(finalDir);
@@ -45,6 +47,11 @@ public class CannonController : MonoBehaviour
 	public void Aim(Vector3 basePosition,Vector3 aimPosition) // aims on touch
 	{
 		Vector3 finalDir = GetDirection(basePosition, aimPosition);
+		if (finalDir.y < minimumPower)
+		{
+			predictionLine.clearDots();
+			return;
+		}
 		float rot_z = Mathf.Atan2(finalDir.y, finalDir.x) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
 		predictionLine.PaintDotedLine(finalDir, shapeGenerator.shape.transform.position);

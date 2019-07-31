@@ -94,6 +94,8 @@ public class PauseMenu : MonoBehaviour {
 	{
 		clickToStart.SetActive(false);
 		Time.timeScale = 1f;
+		//AudioListener.pause = false;
+		//AudioListener.volume = 1;
 		GameIsPaused = false;
 		StartCoroutine(Camera.main.gameObject.GetComponent<CameraShake>().ShakeCamera());
 	} 
@@ -124,15 +126,15 @@ public class PauseMenu : MonoBehaviour {
 	private void OnGameOver()
 	{
 		GameIsPaused = true;
-		//if (AdManager.Instance.CanPlay())
-		//	AdManager.Instance.ShowInterstitial(handleAdFinished);
-		//else
+		AdManager.Instance.interstitial.OnAdClosed += handleAdFinished;
 		AdManager.Instance.ShowInterstitial();
-			GameOverUi();
+		GameOverUi();
 	}
 
 	private void handleAdFinished(object sender, EventArgs e)
 	{
-		GameOverUi();
+		//bool shmossi = true;
+		//GameOverUi();
+		AdManager.Instance.interstitial.OnAdClosed -= handleAdFinished;
 	}
 }

@@ -64,19 +64,8 @@ public class MenuScript : MonoBehaviour
 
 	public void unLoadWheelOfFortune()
 	{
-		if(WheelOfFortune.rollAllowed)
+		if (WheelOfFortune.rollAllowed)
 			wheelOfFortune.SetActive(false);
-	}
-
-	public void LoadCredits()
-	{
-		Settings.SetActive(false);
-		credits.SetActive(true);
-	}
-	public void UnLoadCredits()
-	{
-		credits.SetActive(false);
-		Settings.SetActive(true);
 	}
 
 	#endregion

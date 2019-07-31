@@ -60,6 +60,7 @@ public class Item
 			PlayerStats.Instance.diamonds -= Diamonds;
 			PlayerStats.saveFile();
 			onPurchase();
+			AudioManager.Instance.PlaySound(AudioManager.SoundName.Purchase);
 		}
 	}
 
@@ -91,13 +92,19 @@ public class Item
 		{
 			PlayerStats.Instance.ItemsUnlocked.Add(Id);
 			PlayerStats.saveFile();
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	public bool Unlocked()
 	{
-		return PlayerStats.Instance.ItemsUnlocked.Contains(Id);
+		return Default() || PlayerStats.Instance.ItemsUnlocked.Contains(Id);
+	}
+
+	public bool Default()
+	{
+		return Gold==0 && Diamonds==0 && Score==0;
 	}
 
 }

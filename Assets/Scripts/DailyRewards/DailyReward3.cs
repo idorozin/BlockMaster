@@ -63,9 +63,7 @@ public class DailyReward3: MonoBehaviour
 	IEnumerator EnableButton()
 	{
 		//validate 
-		Debug.Log(coolDown);
 		yield return TimeManager.Instance.StartCoroutine("getTime");
-		Debug.Log(coolDown);
 		if (coolDown <= 0)
 		{
 			PlayerStats.Instance.IncrementChallengesAvailable(Math.Max(1,Math.Abs((int)coolDown/(int)3600)));

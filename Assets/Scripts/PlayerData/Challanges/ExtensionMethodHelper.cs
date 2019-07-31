@@ -26,6 +26,11 @@ public static class ExtensionMethods
 {
 	public static void DisableAfterTimePassed(Challenge c)
 	{
+		if (!c.isActive)
+		{
+			Debug.Log("not active");
+			return;
+		}
 		ExtensionMethodHelper.Instance.StartCoroutine(DisableAfterTimePassed_(c));
 		GameManager.GameOver += StopAllCoroutines;
 	}
@@ -33,6 +38,7 @@ public static class ExtensionMethods
 	public static void StopAllCoroutines()
 	{
 		ExtensionMethodHelper.Instance.StopAllCoroutines();
+		GameManager.GameOver -= StopAllCoroutines;
 	}
 
 	public static IEnumerator DisableAfterTimePassed_(Challenge c)
@@ -45,10 +51,13 @@ public static class ExtensionMethods
 		{
 			timeRemaining -= 0.1f;
 			timer.text = timeRemaining.ToString("F1");
+			if (c.completed)
+				break;
 			yield return new WaitForSeconds(0.1f);
 		}
 		timer.gameObject.SetActive(false);
-		c.timePassed = true;
+		if(!c.completed)
+			c.timePassed = true;
 	}
 	
 	public static string SecsToTime(int secs) // convert seconds to time format 00:00:00

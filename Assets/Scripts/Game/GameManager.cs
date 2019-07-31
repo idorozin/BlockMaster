@@ -43,14 +43,29 @@ public class GameManager : MonoBehaviour
 
 	public GameObject timer;
 
+	[SerializeField]
+	private Transform sounds;
+
 	private void Awake()
 	{
-		if (!PlayerStats.Instance.soundOn)
+		if (PlayerStats.Instance.soundOn && !PlayerStats.Instance.musicOn)
+		{
+			AudioSource[] sources = sounds.GetComponentsInChildren<AudioSource>();
+			foreach (var s in sources)
+			{
+				s.mute = true;
+			}
+		}
+		else if (PlayerStats.Instance.soundOn)
 		{
 			AudioListener.pause = false;
 			AudioListener.volume = 1;
 		}
-
+		else
+		{
+			AudioListener.pause = true;
+			AudioListener.volume = 0;
+		}
 		NewGame();
 		Instance = this;
 	}
@@ -161,9 +176,17 @@ public class GameManager : MonoBehaviour
 	    StartCoroutine(Surface());
     }
 
+	
+	[SerializeField]
+	private TextMeshProUGUI shapesTillDestroy;
+	public void UpdateText(string text)
+	{
+		shapesTillDestroy.text = text;
+	}
 
 
-    #region Score
+
+	#region Score
 
     private float GetHighScoreSignHeight()
 	{

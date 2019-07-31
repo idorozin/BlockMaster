@@ -13,7 +13,8 @@ public class AudioManager : MonoBehaviour
 		ChallengeComplete,
 		coins,
 		DiamondWin,
-		NewRecord
+		NewRecord,
+		Purchase
 	}
 	
 	public static AudioManager Instance;
@@ -51,15 +52,14 @@ public class AudioManager : MonoBehaviour
 		if (!PlayerStats.Instance.soundOn)
 			return;
 		Sound s = GetSound(sound);
-		s.source.Play();
+		s?.source.Play();
 	}
 	
 	
 	public void StopSound(SoundName sound)
 	{
 		Sound s = GetSound(sound);
-		if(s!=null)
-			s.source.Stop();
+		s?.source.Stop();
 	}
 
 	private Sound GetSound(SoundName sound)

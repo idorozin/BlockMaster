@@ -41,7 +41,6 @@ public class PlayerData
         public void ActivateChallenge()
         {
             int max = 0;
-            Debug.Log(ChallengesAvailable + " " + ChallengesActive());
             while (!(ChallengesAvailable <= 0 || ChallengesActive() >= 3) && max<=3)
             {
                 var canSelectTime = from c in challenges where c.isActive && c.timeToComplete > 0 select c;
@@ -49,7 +48,6 @@ public class PlayerData
                 var nonActiveChallenges = from c in challenges where !c.isActive && !c.completed && !(!time && c.timeToComplete>0) select c;
 
                 int count = nonActiveChallenges.Count();
-                Debug.Log(count);
                 if (count == 0)
                 {
                     foreach (var c in challenges)
@@ -60,7 +58,6 @@ public class PlayerData
                 }
                 var nonActiveChallenges_ = from c in challenges where !c.isActive && !c.completed && !(!time && c.timeToComplete>0) select c;
                 int r = Random.Range(0, nonActiveChallenges_.Count());
-                Debug.Log(r);
                 int i = 0;
                 foreach (var c in nonActiveChallenges_)
                 {
@@ -72,7 +69,6 @@ public class PlayerData
                     }
                     i++;
                 }
-
                 max++;
             }
         }
@@ -81,11 +77,7 @@ public class PlayerData
         public void IncrementChallengesAvailable(int n)
         {
             ChallengesAvailable = Math.Min(ChallengesAvailable+n,2);
-            
-            for (int i = 0; i < 3 - ChallengesActive(); i++)
-            {
-                ActivateChallenge();
-            }
+            ActivateChallenge();
             PlayerStats.saveFile();
         }
 
@@ -97,7 +89,6 @@ public class PlayerData
                 if (c.isActive)
                     count++;
             }
-
             return count;
         }       
         
@@ -107,7 +98,6 @@ public class PlayerData
             {
                 if (c.isActive)
                 {
-                    Debug.Log(c.oneRun);
                     c.SubscribeToNewGame();
                 }
             }

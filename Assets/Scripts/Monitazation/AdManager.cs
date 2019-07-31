@@ -50,7 +50,7 @@ public class AdManager : MonoBehaviour
         timePassedTillLastAd += Time.deltaTime;
     }
 
-    private InterstitialAd interstitial;
+    public InterstitialAd interstitial;
 
     private void RequestInterstitial()
     {
@@ -61,9 +61,9 @@ public class AdManager : MonoBehaviour
         #else
             string adUnitId = "unexpected_platform";
         #endif
-        //interstitial?.Destroy();
+        interstitial?.Destroy();
         this.interstitial = new InterstitialAd(adUnitId);
-        interstitial.OnAdClosed += ReloadInterstitial;
+        //interstitial.OnAdClosed += ReloadInterstitial;
         AdRequest request = new AdRequest.Builder().Build();
         this.interstitial.LoadAd(request);
     }
@@ -114,6 +114,7 @@ public class AdManager : MonoBehaviour
     
     public void ShowInterstitial()
     {
+        interstitial.OnAdClosed += ReloadInterstitial;
         if (CanPlay() && interstitial.IsLoaded())
         {
             timePassedTillLastAd = 0;
@@ -121,21 +122,10 @@ public class AdManager : MonoBehaviour
         }
     }
 
-    public bool CanPlay()
-    {
-        return timePassedTillLastAd >= minimumTimeBetweenAds;
-    }
-
-    public bool CanPlayRewarded()
-    {
-        return rewardedAd!=null && rewardedAd.IsLoaded();
-    }
-
     public void ShowBanner(EventArgs e)
     {
         bannerView.Show();
     }
-
 
     public void ShowRewarded(EventHandler<EventArgs> handleFailed, EventHandler<Reward> handleReward)
     {
@@ -155,10 +145,22 @@ public class AdManager : MonoBehaviour
             rewardedAd.Show();
     }
 
+    public bool CanPlay()
+    {
+        return timePassedTillLastAd >= minimumTimeBetweenAds;
+    }
+
+    public bool CanPlayRewarded()
+    {
+        return rewardedAd!=null && rewardedAd.IsLoaded();
+    }
+    
     private void ReloadInterstitial(object sender , EventArgs e)
     {
+        interstitial.OnAdClosed -= ReloadInterstitial;
         RequestInterstitial();
     } 
+
     private void ReloadRewarded(object sender , EventArgs e)
     {
         RequestRewarded();

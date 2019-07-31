@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class Settings : MonoBehaviour
 	[SerializeField] private GameObject musicOff;
 	[SerializeField] private GameObject soundOn;
 	[SerializeField] private GameObject soundOff;
+	[SerializeField] private GameObject credits;
+	[SerializeField] private GameObject settings;
+	[Space]
+	[SerializeField] private IAP noAds;
 
 
 	#region setUI
@@ -70,15 +75,28 @@ public class Settings : MonoBehaviour
 		gameObject.SetActive(true);
 		SetUI();
 	}
-	
-	
 
-	public void Credits()
+	public void LoadCredits()
 	{
+		settings.SetActive(false);
+		credits.SetActive(true);
+	}
+	
+	public void UnLoadCredits()
+	{
+		credits.SetActive(false);
+		settings.SetActive(true);
 	}
 	
 	public void Info()
 	{
+	}
+
+	public void NoAds()
+	{
+		if(PlayerStats.Instance.noAds)
+			return;
+		IAPManager.Instance.BuyProductById(noAds.ProductId);
 	}
 
 }

@@ -230,6 +230,8 @@ public class ItemsShop : MonoBehaviour
 			use.GetComponent<Button>().enabled = true;
 		}
 
+		//if (item.Default())
+		//	BuyButton();
 		bool owned = PlayerStats.Instance.ItemsOwned.Contains(item.Id);
 		if (owned)
 		{

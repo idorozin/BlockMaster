@@ -48,9 +48,6 @@ public class Challenge
 
     public void Activate()
     {
-        //if(PlayerStats.Instance.ChallengesActive() >= 3)
-        //    return;
-        Debug.Log("active" + " " + this);
         isActive = true;
         progress = 0;
         if (oneRun)
@@ -73,8 +70,13 @@ public class Challenge
         goal = (int)Math.Round((double) (goal * 1.2));
     }
 
-    public void OnNewGame()
+    private void OnNewGame()
     {
+        if (!isActive)
+        {
+            GameManager.GameOver -= OnNewGame;
+            return;
+        }
         progress = 0;
         if (timeToComplete > 0)
         {
@@ -103,8 +105,10 @@ public class Challenge
     {
         completed = true;
         isActive = false;
-        if(oneRun)
+        if (oneRun)
+        {
             GameManager.GameOver -= OnNewGame;
+        }
         GameManager.Instance.ChallengeComplete(this);
         PlayerStats.Instance.gold += reward;
         previousGoals.Add(goal);

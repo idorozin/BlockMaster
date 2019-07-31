@@ -15,9 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Shop.unity
     guid: 4b1b7ce892a2f304fb41c95d6e6c99fd
   - enabled: 0
-    path: Assets/Scenes/WheelOfFortune.unity
-    guid: f9bf3097052d5254c8093f2b89b2e687
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Scenes/Test.unity
+    guid: 637ba2c51a0e4264f9030b3a0264b300
   m_configObjects: {}

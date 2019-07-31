@@ -13,6 +13,10 @@ public class RewardDialog : MonoBehaviour
 	private Image rewardIcon;
 	[SerializeField]
 	private TextMeshProUGUI rewardText;
+	[SerializeField] 
+	private GameObject multyButton;
+	[SerializeField] 
+	private Color unavailableColor;
 	
 
 	public void CollectPrizeWithAnimation(Reward_ reward)
@@ -25,16 +29,24 @@ public class RewardDialog : MonoBehaviour
 
 	public void MultiplyPrizeButton()
 	{
-		AdManager.Instance.ShowRewarded(handleFailed , handleSuccess);
+		if (AdManager.Instance.CanPlayRewarded())
+		{
+			AdManager.Instance.rewardedAd.OnAdClosed += handleFailed;
+			AdManager.Instance.rewardedAd.OnUserEarnedReward += handleSuccess;
+			AdManager.Instance.ShowRewarded();
+		}
 	}
 
 	void handleFailed(object sender , EventArgs e)
 	{
+		AdManager.Instance.rewardedAd.OnAdClosed -= handleFailed;
 		//AudioManager.Instance.StopSound(p.sound);
 		Destroy(gameObject);
-	}	
+	}
+	
 	void handleSuccess(object sender , EventArgs e)
 	{
+		AdManager.Instance.rewardedAd.OnUserEarnedReward -= handleSuccess;
 		p.Collect();
 		//AudioManager.Instance.StopSound(p.sound);
 		Destroy(gameObject);

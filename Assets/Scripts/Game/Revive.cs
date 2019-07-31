@@ -20,8 +20,11 @@ public class Revive : MonoBehaviour
 
 	[SerializeField] private Transform lava;
 	[SerializeField] private HeartsUi hearts;
+	
+	[Space]
+	[SerializeField]
 	private float time = 5f;
-
+	[SerializeField]
 	private int price = 10;
 	
 	private void Start()
@@ -81,33 +84,40 @@ public class Revive : MonoBehaviour
 	
 	public void WatchAd()
 	{
-		AdManager.Instance.ShowRewarded(Watched);
+		if (AdManager.Instance.CanPlayRewarded())
+		{
+			AdManager.Instance.rewardedAd.OnUserEarnedReward += Watched;
+			AdManager.Instance.rewardedAd.OnAdClosed += FailedToWatch;
+			AdManager.Instance.ShowRewarded();
+		}
 	}
 
 	void FailedToWatch(object sender , EventArgs e)
 	{
-		if(!watched)
-			GameOver();
+		AdManager.Instance.rewardedAd.OnAdClosed -= FailedToWatch;
+		if (!watched)
+			time = 0;
 	}
 
 	private bool watched;
+	[SerializeField]
+	private int lavaDownFactor = 3;
+
 	void Watched(object sender , EventArgs e)
 	{
+		AdManager.Instance.rewardedAd.OnUserEarnedReward -= Watched;
 		watched = true;
 		RevivePlayer();
 	}
 
-	void GameOver()
-	{
-		GameManager.Instance.LavaReached();
-		Destroy(gameObject);
-	}	
 	void RevivePlayer()
 	{
 		hearts.SetInitialHearts(3);
 		GameManager.Instance.lives = 0;
-		if(lava.position.y > Camera.main.transform.position.y)
-			lava.position += Vector3.down * 3;
+		if (lava.position.y > Camera.main.transform.position.y)
+		{
+			lava.position += Vector3.down * lavaDownFactor;
+		}
 		PauseMenu.GameIsPaused = false;
 		Destroy(gameObject);
 	}

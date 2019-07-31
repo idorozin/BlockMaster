@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.IO.IsolatedStorage;
 using Boo.Lang;
@@ -14,8 +13,7 @@ public class AdManager : MonoBehaviour
 {
     public static AdManager Instance;
     private float timePassedTillLastAd;
-    [SerializeField]
-    private float minimumTimeBetweenAds;
+    [SerializeField] private float minimumTimeBetweenAds;
 
     private void Awake()
     {
@@ -40,7 +38,8 @@ public class AdManager : MonoBehaviour
         #endif
         // Initialize the Google Mobile Ads SDK.
         //MobileAds.Initialize(appId);
-        RequestInterstitial();
+        if (!PlayerStats.Instance.noAds)
+            RequestInterstitial();
         RequestRewarded();
     }
 
@@ -54,9 +53,9 @@ public class AdManager : MonoBehaviour
 
     private void RequestInterstitial()
     {
-        #if UNITY_ANDROID
-            string adUnitId = "ca-app-pub-3940256099942544/1033173712";
-        #elif UNITY_IPHONE
+#if UNITY_ANDROID
+        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+#elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/1033173712";
         #else
             string adUnitId = "unexpected_platform";
@@ -69,11 +68,12 @@ public class AdManager : MonoBehaviour
     }
 
     private BannerView bannerView;
+
     private void RequestBanner()
     {
-        #if UNITY_ANDROID
-            string adUnitId = "ca-app-pub-3940256099942544/6300978111";
-        #elif UNITY_IPHONE
+#if UNITY_ANDROID
+        string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+#elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/1033173712";
         #else
             string adUnitId = "unexpected_platform";
@@ -84,12 +84,13 @@ public class AdManager : MonoBehaviour
         this.bannerView.LoadAd(request);
     }
 
-    private RewardedAd rewardedAd;
+    public RewardedAd rewardedAd;
+
     private void RequestRewarded()
     {
-        #if UNITY_ANDROID
-            string adUnitId = "ca-app-pub-3940256099942544/5224354917";
-        #elif UNITY_IPHONE
+#if UNITY_ANDROID
+        string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+#elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/5224354917";
         #else
             string adUnitId = "unexpected_platform";
@@ -102,21 +103,11 @@ public class AdManager : MonoBehaviour
         this.rewardedAd.LoadAd(request);
     }
 
-    public void ShowInterstitial(EventHandler<EventArgs> handle)
-    {
-        interstitial.OnAdClosed += handle;
-        if (interstitial.IsLoaded())
-        {
-            timePassedTillLastAd = 0;
-            interstitial.Show();
-        }
-    }
-    
     public void ShowInterstitial()
     {
-        interstitial.OnAdClosed += ReloadInterstitial;
-        if (CanPlay() && interstitial.IsLoaded())
+        if (CanPlayInterstitial())
         {
+            interstitial.OnAdClosed += ReloadInterstitial;
             timePassedTillLastAd = 0;
             interstitial.Show();
         }
@@ -127,43 +118,35 @@ public class AdManager : MonoBehaviour
         bannerView.Show();
     }
 
-    public void ShowRewarded(EventHandler<EventArgs> handleFailed, EventHandler<Reward> handleReward)
+    public void ShowRewarded()
     {
-        rewardedAd.OnUserEarnedReward += handleReward;
-        rewardedAd.OnAdClosed += handleFailed;
-        if (rewardedAd.IsLoaded())
+        if (CanPlayRewarded())
         {
+            rewardedAd.OnAdClosed += ReloadRewarded;
             timePassedTillLastAd = 0;
             rewardedAd.Show();
         }
-    }  
-    
-    public void ShowRewarded(EventHandler<Reward> handleReward)
-    {
-        rewardedAd.OnUserEarnedReward += handleReward;
-        if (rewardedAd.IsLoaded())
-            rewardedAd.Show();
     }
 
-    public bool CanPlay()
+    public bool CanPlayInterstitial()
     {
-        return timePassedTillLastAd >= minimumTimeBetweenAds;
+        return PlayerStats.Instance.noAds && interstitial != null &&
+               timePassedTillLastAd >= minimumTimeBetweenAds && interstitial.IsLoaded();
     }
 
     public bool CanPlayRewarded()
     {
-        return rewardedAd!=null && rewardedAd.IsLoaded();
+        return rewardedAd != null && rewardedAd.IsLoaded();
     }
-    
-    private void ReloadInterstitial(object sender , EventArgs e)
+
+    private void ReloadInterstitial(object sender, EventArgs e)
     {
         interstitial.OnAdClosed -= ReloadInterstitial;
         RequestInterstitial();
-    } 
+    }
 
-    private void ReloadRewarded(object sender , EventArgs e)
+    private void ReloadRewarded(object sender, EventArgs e)
     {
         RequestRewarded();
     }
-    
 }

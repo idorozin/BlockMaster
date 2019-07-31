@@ -36,12 +36,14 @@ public class NextChallenge : MonoBehaviour
 	{
 		if (AdManager.Instance.CanPlayRewarded())
 		{
-			AdManager.Instance.ShowRewarded(HandleReward);
+			AdManager.Instance.rewardedAd.OnUserEarnedReward += HandleReward;
+			AdManager.Instance.ShowRewarded();
 		}
 	}
 
 	void HandleReward(object sender , EventArgs e)
 	{
+		AdManager.Instance.rewardedAd.OnUserEarnedReward -= HandleReward;
 		StopAllCoroutines();
 		DailyReward3 dr = FindObjectOfType<DailyReward3>();
 		if (dr != null)

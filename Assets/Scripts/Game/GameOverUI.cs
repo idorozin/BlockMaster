@@ -102,11 +102,16 @@ public class GameOverUI : MonoBehaviour
     {
         if (once_) return;
         once_ = true;
-        AdManager.Instance.ShowRewarded(WatchedAd);
+        if (AdManager.Instance.CanPlayRewarded())
+        {
+            AdManager.Instance.rewardedAd.OnUserEarnedReward += WatchedAd;
+            AdManager.Instance.ShowRewarded();
+        }
     }
 
     private void WatchedAd(object sender , EventArgs e)
     {
+        AdManager.Instance.rewardedAd.OnUserEarnedReward -= WatchedAd;
         PlayerStats.Instance.gold += GameManager.Instance.goldEarned;
         watchAd.SetActive(false);
         doubled.SetActive(true);

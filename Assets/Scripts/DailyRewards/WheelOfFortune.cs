@@ -62,7 +62,6 @@ public class WheelOfFortune : MonoBehaviour
 		while (true)
 		{
 			float maxLerpRotationTime = 4f;
-    
 			// increment timer once per frame
 			_currentLerpRotationTime += Time.deltaTime;
 			if (_currentLerpRotationTime > maxLerpRotationTime || Circle.transform.eulerAngles.z == _finalAngle) {
@@ -70,12 +69,9 @@ public class WheelOfFortune : MonoBehaviour
 				_startAngle = _finalAngle % 360;
 				break;
 			}
-    
 			// Calculate current position using linear interpolation
 			float t = _currentLerpRotationTime / maxLerpRotationTime;
-    
 			// This formulae allows to speed up at start and speed down at the end of rotation.
-			// Try to change this values to customize the speed
 			t = t * t * t * (t * (6f * t - 15f) + 10f);
 			float angle = Mathf.Lerp (_startAngle, _finalAngle, t);
 			Circle.transform.eulerAngles = new Vector3 (0, 0, angle);
@@ -84,7 +80,7 @@ public class WheelOfFortune : MonoBehaviour
 		rollAllowed = true;
 		prizeIndex = GetPrizeByAngle((int)randomAngle);
 		Debug.Log(prizeIndex);
-		getPrize(prizeIndex);
+		GetPrize(prizeIndex);
 	}
 
 	int GetPrizeByAngle(int angel)
@@ -109,7 +105,7 @@ public class WheelOfFortune : MonoBehaviour
 		return -999;
 	}
 
-	void getPrize(int prizeIndex)
+	private void GetPrize(int prizeIndex)
 	{
 		RewardDialog r = Instantiate(rewardDialog);
 		r.CollectPrizeWithAnimation(rewards[prizeIndex]);

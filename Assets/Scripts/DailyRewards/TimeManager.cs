@@ -14,16 +14,18 @@ public class TimeManager : MonoBehaviour
 	private int sec, min, hour, day , month , year;
 	private DateTime currentDate,dateTime;
 	public DateTime baseDate;
+	public bool isUpdated = false;
 
 	public static TimeManager Instance;
-	
+	private int offest;
+
 	void Awake()
 	{
 		if (Instance == null)
 		{
 			Instance = this;
 			baseDate = new DateTime(1970,1,1,1,1,1);
-			StartCoroutine("getTime");
+			StartCoroutine(getTime());
 			DontDestroyOnLoad(gameObject);
 		}
 		else
@@ -33,17 +35,26 @@ public class TimeManager : MonoBehaviour
 	}
 
 	//gets time from the server and updates countDown
-	public IEnumerator getTime()
+	public IEnumerator getTime(Action<bool> result = null)
 	{
-		WWW www = new WWW(path);
-		yield return www;
-		time = www.text;
+		using (WWW www = new WWW(path))
+		{
+			while (!www.isDone)
+			{
+				yield return null;
+			}
+			time = www.text;
+		}
 		if (!setCurrentTime())
-				yield break; 
-		//if(SceneManager.GetActiveScene().name == "MenuScene")
-		GetComponent<DailyReward>().UpdateTime();
-		GetComponent<DailyReward2>().updateTime();
-		GetComponent<DailyReward3>().UpdateTime();
+		{
+			result?.Invoke(false);
+			yield break;
+		}
+		offest = (getTimeInSecs(DateTime.Now) - getTimeInSecs());
+		isUpdated = true;
+		if(!veryUpdated)
+			StartCoroutine(UpdatedEnough());
+		result?.Invoke(true);
 	}
 
 	public bool setCurrentTime() // get the value of current secs,mins,hours,days in second from the beggining of the month
@@ -63,6 +74,25 @@ public class TimeManager : MonoBehaviour
 		return true;
 	}
 
+	public bool veryUpdated;
+	public IEnumerator UpdatedEnough()
+	{
+		veryUpdated = true;
+		var i = 0;
+		while (i <= 10)
+		{
+			i++;
+			yield return new WaitForSecondsRealtime(1f);
+			currentDate = currentDate.AddSeconds(1);
+		}
+		veryUpdated = false;
+	}
+
+	public int GetOffset()
+	{
+		return offest;
+	}
+
 	struct FakeDate
 	{
 		public int hours;
@@ -71,11 +101,6 @@ public class TimeManager : MonoBehaviour
 		public int day;
 		public int month;
 		public int year;
-	}
-
-	public string getFullTime()
-	{
-		return time;
 	}
 	
 	public DateTime GetFullTime()
@@ -91,15 +116,7 @@ public class TimeManager : MonoBehaviour
 	{
 		dateTime = time;
 		return (int)(dateTime-baseDate).TotalSeconds;
-	} // time(string) to seconds
-	public int getTimeInSecs(string time)
-	{
-		if (time == "")
-			time = this.time;
-		FakeDate d = JsonUtility.FromJson<FakeDate>(time);
-		dateTime = new DateTime(d.year , d.month , d.day , d.hours , d.minutes , d.seconds);
-		return (int)(dateTime-baseDate).TotalSeconds;
-	} // time(string) to seconds
+	}
 
 
 	//use this to be sure there is internet connection

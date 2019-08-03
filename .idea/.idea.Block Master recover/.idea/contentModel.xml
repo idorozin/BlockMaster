@@ -433,6 +433,7 @@
             <e p="MoveToTheSide.cs" t="Include" />
             <e p="NotflicationAnimation.cs" t="Include" />
             <e p="ProgressBar.cs" t="Include" />
+            <e p="SceneTransition.cs" t="Include" />
             <e p="ScrollingText.cs" t="Include" />
             <e p="SlideToDirection.cs" t="Include" />
             <e p="Spin.cs" t="Include" />
@@ -456,10 +457,10 @@
             <e p="Sound.cs" t="Include" />
           </e>
           <e p="DailyRewards" t="Include">
+            <e p="ActivateChallenge.cs" t="Include" />
+            <e p="ActivateGift.cs" t="Include" />
+            <e p="ActivateWheelOfFortune.cs" t="Include" />
             <e p="dailyGift.cs" t="Include" />
-            <e p="DailyReward.cs" t="Include" />
-            <e p="DailyReward2.cs" t="Include" />
-            <e p="DailyReward3.cs" t="Include" />
             <e p="DailyReward_.cs" t="Include" />
             <e p="RewardDialog.cs" t="Include" />
             <e p="Rewards" t="Include">
@@ -544,6 +545,7 @@
           <e p="NotificationManager.cs" t="Include" />
           <e p="NotificationParams.cs" t="Include" />
         </e>
+        <e p="tricky.cs" t="Include" />
       </e>
       <e p="Block Master recover.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />

@@ -31,13 +31,13 @@ public class PlayerStats : MonoBehaviour
 				{
 					Instance.challenges.Add(new Challenge(c));
 				}
-				Instance.ChallengesAvailable = 5;		
+				//Instance.ChallengesAvailable = 5;		
 				Instance.ActivateChallenge();
 			}
 			else
 				Instance.SubscribeToNewGame();
 			DontDestroyOnLoad(gameObject);
-			GameObject.Find("MenuCanvas").GetComponent<MenuScript>().setRecordText();
+			GameObject.Find("MenuCanvas")?.GetComponent<MenuScript>().setRecordText();
 		}
 		else
 		{
@@ -59,7 +59,6 @@ public class PlayerStats : MonoBehaviour
 	{		
 		//read file
 		string fileString = File.ReadAllText(path);
-		Debug.Log(fileString);
 		//Serialize object
 		JsonConvert.PopulateObject(fileString , Instance);			
 		saveFile();

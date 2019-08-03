@@ -130,7 +130,7 @@ public class AdManager : MonoBehaviour
 
     public bool CanPlayInterstitial()
     {
-        return PlayerStats.Instance.noAds && interstitial != null &&
+        return !PlayerStats.Instance.noAds && interstitial != null &&
                timePassedTillLastAd >= minimumTimeBetweenAds && interstitial.IsLoaded();
     }
 

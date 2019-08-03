@@ -16,11 +16,12 @@ public class MenuScript : MonoBehaviour
 		SceneManager.LoadScene("MainMenu");
 	}
 
+	[SerializeField] private SceneTransition transition;
 	public void LoadGame()
 	{
-		Time.timeScale = 0f;
-		PauseMenu.GameIsPaused = true;
-		SceneManager.LoadScene("GameScene");
+		//Time.timeScale = 0f;
+		//PauseMenu.GameIsPaused = true;
+		transition.FadeOutAndLoadScene("GameScene");
 	}
 	
 	public void LoadShop(){

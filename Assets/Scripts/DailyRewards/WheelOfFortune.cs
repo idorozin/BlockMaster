@@ -19,25 +19,28 @@ public class WheelOfFortune : MonoBehaviour
 	public static bool rollAllowed = true;
 	public bool testing;
 
+	[SerializeField] private ActivateWheelOfFortune dailyReward;
+
 	[SerializeField] private GameObject offline;
 
 	public void OnMouseDown()
 	{
 		if (!rollAllowed)
 			return;
-		if (!testing){
-			if (!DailyReward.RollAllowed)
-				return;
-		if (Application.internetReachability == NetworkReachability.NotReachable)
+		if (!testing)
 		{
-			offline.SetActive(true);
-			return;
-		}
+			if (!ActivateWheelOfFortune.RollAllowed)
+				return;
+			if (Application.internetReachability == NetworkReachability.NotReachable)
+			{
+				offline.SetActive(true);
+				return;
+			}
 			startSpeed = UnityEngine.Random.Range(400, 800);
-		stopSpeed = UnityEngine.Random.Range(50, 100);
-		DailyReward.RollAllowed = false;
-		GameObject.Find("TimeManager").GetComponent<DailyReward>().StartCoroutine("ResetTimer");
-	}
+			stopSpeed = UnityEngine.Random.Range(50, 100);
+			ActivateWheelOfFortune.RollAllowed = false;
+			StartCoroutine(dailyReward.ResetTimer());
+		}
 
 	StartCoroutine(roll(UnityEngine.Random.Range(0 ,360)));
 	}
@@ -79,13 +82,11 @@ public class WheelOfFortune : MonoBehaviour
 		}
 		rollAllowed = true;
 		prizeIndex = GetPrizeByAngle((int)randomAngle);
-		Debug.Log(prizeIndex);
 		GetPrize(prizeIndex);
 	}
 
 	int GetPrizeByAngle(int angel)
 	{
-		Debug.Log(angel);
 		if (angel >= 0 && angel < 47)
 			return 0;
 		if (angel >= 47 && angel < 100)

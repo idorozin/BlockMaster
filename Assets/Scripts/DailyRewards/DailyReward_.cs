@@ -10,90 +10,120 @@ using UnityEngine.UI;
 public abstract class DailyReward_ : MonoBehaviour
 {
 	[SerializeField]
-	private int countDownLenght=500,coolDown;
-	private TimePassed timePassed = new TimePassed();
-	[SerializeField] private GameObject TimeText, Button;
-	private bool initilized=false;
-	public static string timeText;
-
-
+	protected int countDownLenght=500,coolDown;
+	protected TimePassed timePassed = new TimePassed();
+	private bool initialized;
+	[SerializeField]
+	private bool autoReset = false;
+	private bool safeMode = false;
 	
 	private void Start()
 	{
-		if (initilized)
-			return;
+		SetTimePassed();
 		if (timePassed.startTime == DateTime.MinValue)
 		{
-			TimeText.GetComponent<TextMeshProUGUI>().text = "READY!";
+			OnTimePassed();
+			if (autoReset)
+				StartCoroutine(ResetTimer());
+			initialized = true;
 			return;
 		}
-		initilized = true;
+		initialized = true;
 		coolDown = 2;
 		StartCoroutine("CountDown");
 	}
+
+	private void OnEnable()
+	{
+		if(initialized)
+		StartCoroutine("CountDown");
+	}
+
+	protected abstract void SetTimePassed();
 	
 	//reset the timer every roll
 	public IEnumerator ResetTimer()
 	{
-		NotificationManager.SendWithAppIcon(TimeSpan.FromSeconds(countDownLenght) , "Block Master" , "Wheel Of Fortune is ready , come try your luck!" , Color.cyan);
+		OnReset();
 		coolDown = countDownLenght;
-		yield return TimeManager.Instance.StartCoroutine("getTime");
-		timePassed.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now) - TimeManager.Instance.getTimeInSecs();
+		if (!TimeManager.Instance.veryUpdated)
+		{
+			yield return StartCoroutine(TimeManager.Instance.getTime());
+		}
+		timePassed.offset =  TimeManager.Instance.GetOffset();
 		timePassed.startTime = TimeManager.Instance.GetFullTime();
 		PlayerStats.saveFile();
 		StartCoroutine(CountDown());
 	}
 
-	public void UpdateTime() // updates countDown with internet time
-	{
-		coolDown = (countDownLenght) - (TimeManager.Instance.getTimeInSecs() - TimeManager.Instance.getTimeInSecs(timePassed.startTime));
-	}
+	protected virtual void OnReset(){}
 
-	IEnumerator CountDown()
+	private IEnumerator CountDown()
 	{
+		coolDown = TimeRemaining();
 		while (coolDown > 0 || coolDown > countDownLenght+1)
 		{
 			coolDown = TimeRemaining();
-			timeText = SecsToTime();
+			OnTick();
 			yield return new WaitForSecondsRealtime(1);
 		}
-		StartCoroutine("EnableButton");
+		StartCoroutine(ValidateTime());
 	}
 
+	protected virtual void OnTick(){}
+
+	private int TimeRemaining()
+	{
+		if (TimeManager.Instance.isUpdated)
+			return countDownLenght - (TimeManager.Instance.getTimeInSecs(DateTime.Now)
+			                          - TimeManager.Instance.getTimeInSecs(timePassed.startTime)) + TimeManager.Instance.GetOffset();
+		return countDownLenght - (TimeManager.Instance.getTimeInSecs(DateTime.Now) 
+		                          - TimeManager.Instance.getTimeInSecs(timePassed.startTime)) + timePassed.offset;
+	}
+	
+	public bool validationRequired;
 	// if countDown is over verify that with the server
 	// true => button enabled false => button disabled and count down continouse with updated time. 
-	IEnumerator EnableButton()
+	private IEnumerator ValidateTime()
 	{
-		if(TimeText!=null){TimeText.GetComponent<TextMeshProUGUI>().text = "READY!";timeText = "READY!";}
 		//validate 
-		yield return TimeManager.Instance.StartCoroutine("getTime");
-		if (coolDown <= 0)
+		if (!OnValidation())
 		{
-			OnTimePassed();
+			validationRequired = false;
 			yield break;
 		}
-		timePassed.offset = TimeManager.Instance.getTimeInSecs(DateTime.Now) - TimeManager.Instance.getTimeInSecs();
-		PlayerStats.saveFile();
-		//start timer again
-		StartCoroutine("CountDown");
+		yield return StartCoroutine(TimeManager.Instance.getTime(
+			(success) =>
+			{
+				if (success)
+				{
+					if (TimeRemaining() <= 0)
+					{
+						validationRequired = false;
+						OnTimePassed();
+						if (autoReset)
+							StartCoroutine(ResetTimer());
+					}
+					else
+					{
+						validationRequired = true;
+						timePassed.offset = TimeManager.Instance.GetOffset();
+						StartCoroutine(CountDown());
+					}
+				}
+				else
+				{
+					validationRequired = true;
+				}
+			}));
+	}
 
+	protected virtual bool OnValidation()
+	{
+		return true;
 	}
 
 	protected abstract void OnTimePassed();
-
-
-	int TimeRemaining()
-	{
-		return countDownLenght - (-TimeManager.Instance.getTimeInSecs(timePassed.startTime) + 
-		                          TimeManager.Instance.getTimeInSecs(DateTime.Now)) + timePassed.offset;
-	}
-
-	public string SecsToTime() // convert seconds to time format 00:00:00
-	{
-		return coolDown / 60 / 60 + ":" + coolDown / 60 % 60 + ":" + coolDown % 60;
-	}
-		
-
 
 
 

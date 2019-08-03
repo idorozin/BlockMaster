@@ -5436,7 +5436,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32dfc3ac9fcaa2429f6e68aaa0f6394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textBeforeScore: '#BlockMaster My best score is '
+  textAfterScore: ' Can you beat me? '
   applink: 
+  chooserText: Share your high score
 --- !u!1 &1074723689
 GameObject:
   m_ObjectHideFlags: 0
@@ -6658,7 +6661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuUI: {fileID: 1202200783}
-  GameOverUI: {fileID: 1068022050}
+  GameOverUI_: {fileID: 1068022050}
   clickToStart: {fileID: 735347386}
   ChallangesDisplayPanel: {fileID: 568359151}
   ChallengeDisplayPrefab: {fileID: 1686609114574856, guid: 8df7ec7f4e08fe34288c89e666b5467d,
@@ -9461,6 +9464,100 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1617763447
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2664546889685203177, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203182, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: fadeIn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203182, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: duration
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203182, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: endColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203183, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 289.24622
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203183, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 491.58395
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203183, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203183, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203183, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203183, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203183, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203183, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203183, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203183, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889685203183, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546889479568451, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664546888992494995, guid: f1883fc003a92d74394e62d6596684e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f1883fc003a92d74394e62d6596684e2, type: 3}
 --- !u!1 &1643511151
 GameObject:
   m_ObjectHideFlags: 0

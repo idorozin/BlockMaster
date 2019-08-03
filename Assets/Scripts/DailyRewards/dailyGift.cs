@@ -26,6 +26,7 @@ public class DailyGift : MonoBehaviour
 	[SerializeField]
 	private bool testing;
 
+	[SerializeField] public ActivateGift dailyReward;
 
 	private void OnMouseDown()
 	{
@@ -52,16 +53,15 @@ public class DailyGift : MonoBehaviour
 				return;
 			}
 
-			if (DailyReward2.timeText == "READY!" && !DailyReward2.GiftAllowed)
-				GameObject.Find("TimeManager").GetComponent<DailyReward2>().StartCoroutine("enableButton");
-			if (!giftAllowed || !DailyReward2.GiftAllowed)
+			if (dailyReward.validationRequired)
+				dailyReward.StartCoroutine("ValidateTime");
+			if (!giftAllowed || !ActivateGift.GiftAllowed)
 			{
 				Debug.Log("returned");
 				return;
 			}
-
-			DailyReward2.GiftAllowed = false;
-			GameObject.Find("TimeManager").GetComponent<DailyReward2>().StartCoroutine("resetTimer");
+			ActivateGift.GiftAllowed = false;
+			dailyReward.StartCoroutine("ResetTimer");
 		}
 
 		if (PlayerStats.Instance.GiftIndex >= gifts.Length)

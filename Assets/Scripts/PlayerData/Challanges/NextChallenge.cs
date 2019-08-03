@@ -12,9 +12,21 @@ public class NextChallenge : MonoBehaviour
 	private TextMeshProUGUI text;
 	void Start ()
 	{
-		if(DailyReward3.timeRemaining > 1000 && AdManager.Instance.CanPlayRewarded())
+		if(ActivateChallenge.timeRemaining > 1000 && AdManager.Instance.CanPlayRewarded())
 			ad.SetActive(true);
-		StartCoroutine(CountDown(DailyReward3.timeRemaining));	
+		StartCoroutine(CountDown(ActivateChallenge.timeRemaining));
+		ActivateChallenge.ChallengeActivated += Reload;
+	}
+
+	private void OnDisable()
+	{
+		ActivateChallenge.ChallengeActivated -= Reload;
+	}
+
+	void Reload()
+	{
+		SceneManager.LoadScene("GameScene");
+
 	}
 
 	private int countDown = 0;
@@ -23,11 +35,10 @@ public class NextChallenge : MonoBehaviour
 		countDown = timeRemaining;
 		while (countDown > 0)
 		{
+			text.text = "next challenge in : " + ExtensionMethods.SecsToTime(countDown);
 			yield return new WaitForSecondsRealtime(1f);
 			countDown--;
-			text.text = "next challenge in : " + ExtensionMethods.SecsToTime(countDown);
 		}
-		SceneManager.LoadScene("GameScene");
 	}
 
 	[SerializeField] private GameObject ad;
@@ -45,7 +56,7 @@ public class NextChallenge : MonoBehaviour
 	{
 		AdManager.Instance.rewardedAd.OnUserEarnedReward -= HandleReward;
 		StopAllCoroutines();
-		DailyReward3 dr = FindObjectOfType<DailyReward3>();
+		ActivateChallenge dr = FindObjectOfType<ActivateChallenge>();
 		if (dr != null)
 		{
 			dr.StopAllCoroutines();

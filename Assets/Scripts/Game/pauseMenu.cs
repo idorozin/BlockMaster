@@ -11,7 +11,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = true;
     public GameObject PauseMenuUI;
-    public GameObject GameOverUI;
+    public GameObject GameOverUI_;
     public GameObject clickToStart;
     public GameObject ChallangesDisplayPanel;
     public GameObject ChallengeDisplayPrefab;
@@ -19,6 +19,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject ChallengeCompleteDisplayPrefab;
     public GameObject ChallengeOpen;
     public GameObject Score;
+    public static bool AdPlaying { get; set; }
 
     private void Start()
     {
@@ -113,22 +114,35 @@ public class PauseMenu : MonoBehaviour
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        GameOverUI.SetActive(false);
+        SceneManager.LoadScene("GameScene");
+        //GameObject.FindObjectOfType<SceneTransition>().GetComponent<SceneTransition>().FadeOutAndLoadScene("GameScene");
+        GameOverUI_.SetActive(false);
     }
 
     public void GameOverUi()
     {
         DisplayCompletedChallenges();
-        GameOverUI.SetActive(true);
+        GameOverUI_.SetActive(true);
         Score.SetActive(false);
     }
 
     private void OnGameOver()
     {
         GameIsPaused = true;
-        AdManager.Instance.interstitial.OnAdClosed += handleAdFinished;
-        AdManager.Instance.ShowInterstitial();
+        #if !UNITY_EDITOR
+            if (AdManager.Instance.CanPlayInterstitial())
+            {
+                AdPlaying = true;
+                AdManager.Instance.interstitial.OnAdClosed += handleAdFinished;
+                AdManager.Instance.ShowInterstitial();
+            }
+            else
+            {
+                AdPlaying = false;
+            }
+        #else
+        AdPlaying = false;
+        #endif
         GameOverUi();
     }
 
@@ -136,6 +150,7 @@ public class PauseMenu : MonoBehaviour
     // right now it crashes when i do that
     private void handleAdFinished(object sender, EventArgs e)
     {
+        AdPlaying = false;
         AdManager.Instance.interstitial.OnAdClosed -= handleAdFinished;
     }
 }

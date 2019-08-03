@@ -1,24 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class XDA : DailyReward_
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Button button;
+    [SerializeField] 
+    private TextMeshProUGUI text;    
+    
+    protected override void SetTimePassed()
     {
-        
+        if(PlayerStats.Instance.test == null)
+            PlayerStats.Instance.test = new TimePassed();
+        timePassed = PlayerStats.Instance.test;
+    }
+
+    protected override bool OnValidation()
+    {
+        Debug.Log("validation");
+        return false;
     }
 
     protected override void OnTimePassed()
     {
-        throw new System.NotImplementedException();
+        button.enabled = true;
     }
 
-
-    // Update is called once per frame
-    void Update()
+    protected override void OnTick()
+    {
+        text.text = ExtensionMethods.SecsToTime(coolDown);
+    }
+    
+    protected override void OnReset()
     {
         
+    }
+
+    public void Click()
+    {
+        if(Application.internetReachability == NetworkReachability.NotReachable)
+            return;
+        //if(validationRequired)      
+        StartCoroutine(ResetTimer());
     }
 }

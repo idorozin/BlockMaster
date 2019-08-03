@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 
 [Serializable]
 public class PlayerData
-    {
+{
+        public TimePassed test = new TimePassed();
         public int highScore;
         public int lastCannon;
         public int lastFlame;

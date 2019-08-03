@@ -48,6 +48,14 @@ public class GameOverUI : MonoBehaviour
 
     private void OnEnable()
     {
+        StartCoroutine(WaitForAdToFinish());
+    }
+
+    
+    private IEnumerator WaitForAdToFinish()
+    {
+        while (PauseMenu.AdPlaying)
+            yield return null;
         if (GameManager.Instance.challengesCompleted.Count > 0)
         {
             challengesDisplay.SetActive(true);

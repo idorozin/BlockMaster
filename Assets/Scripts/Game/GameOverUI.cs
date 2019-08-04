@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using admob;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -113,16 +112,14 @@ public class GameOverUI : MonoBehaviour
         once_ = true;
         if (AdManager.Instance.CanPlayRewarded())
         {
-            AdManager.Instance.ad.rewardedVideoEventHandler += WatchedAd;
+            AdManager.Instance.rewardedAd.OnUserEarnedReward += WatchedAd;
             AdManager.Instance.ShowRewarded();
         }
     }
 
-    private void WatchedAd(string eventName , string msg)
+    private void WatchedAd(object sender , EventArgs e)
     {
-        if (eventName != AdmobEvent.onRewarded) 
-            return;
-        AdManager.Instance.ad.rewardedVideoEventHandler -= WatchedAd;
+        AdManager.Instance.rewardedAd.OnUserEarnedReward -= WatchedAd;
         PlayerStats.Instance.gold += GameManager.Instance.goldEarned;
         watchAd.SetActive(false);
         doubled.SetActive(true);

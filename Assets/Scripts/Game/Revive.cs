@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using admob;
 using TMPro;
 using UnityEngine;
 
@@ -87,29 +86,28 @@ public class Revive : MonoBehaviour
 	{
 		if (AdManager.Instance.CanPlayRewarded())
 		{
-			AdManager.Instance.ad.rewardedVideoEventHandler += HandleAd;
+			AdManager.Instance.rewardedAd.OnUserEarnedReward += Watched;
+			AdManager.Instance.rewardedAd.OnAdClosed += FailedToWatch;
 			AdManager.Instance.ShowRewarded();
 		}
 	}
-	
+
+	void FailedToWatch(object sender , EventArgs e)
+	{
+		AdManager.Instance.rewardedAd.OnAdClosed -= FailedToWatch;
+		if (!watched)
+			time = 0;
+	}
+
 	private bool watched;
 	[SerializeField]
 	private int lavaDownFactor = 3;
 
-	void HandleAd(string eventName , string msg)
+	void Watched(object sender , EventArgs e)
 	{
-		
-		if (eventName == AdmobEvent.onRewarded)
-		{
-			watched = true;
-			RevivePlayer();
-		}
-		if (eventName == AdmobEvent.onAdClosed)
-		{
-			if (!watched)
-				time = 0;
-			AdManager.Instance.ad.rewardedVideoEventHandler -= HandleAd;
-		}
+		AdManager.Instance.rewardedAd.OnUserEarnedReward -= Watched;
+		watched = true;
+		RevivePlayer();
 	}
 
 	void RevivePlayer()

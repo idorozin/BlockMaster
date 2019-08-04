@@ -36,13 +36,17 @@ public class WheelOfFortune : MonoBehaviour
 				offline.SetActive(true);
 				return;
 			}
+
+			if (dailyReward.validationRequired)
+			{
+				
+			}
 			startSpeed = UnityEngine.Random.Range(400, 800);
 			stopSpeed = UnityEngine.Random.Range(50, 100);
 			ActivateWheelOfFortune.RollAllowed = false;
 			StartCoroutine(dailyReward.ResetTimer());
 		}
-
-	StartCoroutine(roll(UnityEngine.Random.Range(0 ,360)));
+		StartCoroutine(roll(UnityEngine.Random.Range(0 ,360)));
 	}
 
 	public void Rol()

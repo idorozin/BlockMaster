@@ -30,13 +30,13 @@ public abstract class DailyReward_ : MonoBehaviour
 		}
 		initialized = true;
 		coolDown = 2;
-		StartCoroutine("CountDown");
+		StartCoroutine(CountDown());
 	}
 
 	private void OnEnable()
 	{
-		if(initialized)
-		StartCoroutine("CountDown");
+		if(initialized && timePassed.startTime != DateTime.MinValue)
+		StartCoroutine(CountDown());
 	}
 
 	protected abstract void SetTimePassed();

@@ -15,6 +15,8 @@ public class AdManager : MonoBehaviour
     private float timePassedTillLastAd;
     [SerializeField] private float minimumTimeBetweenAds;
 
+    private string testId = "3863B0DE3158C0FD8295B27D56C2F6D5";
+
     private void Awake()
     {
         if (Instance == null)
@@ -54,7 +56,7 @@ public class AdManager : MonoBehaviour
     private void RequestInterstitial()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        string adUnitId = "ca-app-pub-4356027285942374/7256159091";
 #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/1033173712";
         #else
@@ -63,7 +65,7 @@ public class AdManager : MonoBehaviour
         interstitial?.Destroy();
         this.interstitial = new InterstitialAd(adUnitId);
         //interstitial.OnAdClosed += ReloadInterstitial;
-        AdRequest request = new AdRequest.Builder().Build();
+        AdRequest request = new AdRequest.Builder().AddTestDevice(testId).Build();
         this.interstitial.LoadAd(request);
     }
 
@@ -89,7 +91,7 @@ public class AdManager : MonoBehaviour
     private void RequestRewarded()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+        string adUnitId = "ca-app-pub-4356027285942374/4821567447";
 #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/5224354917";
         #else
@@ -98,7 +100,7 @@ public class AdManager : MonoBehaviour
         this.rewardedAd = new RewardedAd(adUnitId);
         rewardedAd.OnAdClosed += ReloadRewarded;
         // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
+        AdRequest request = new AdRequest.Builder().AddTestDevice(testId).Build();
         // Load the rewarded ad with the request.
         this.rewardedAd.LoadAd(request);
     }
@@ -123,7 +125,7 @@ public class AdManager : MonoBehaviour
         if (CanPlayRewarded())
         {
             rewardedAd.OnAdClosed += ReloadRewarded;
-            timePassedTillLastAd = 0;
+           // timePassedTillLastAd = 0;
             rewardedAd.Show();
         }
     }
@@ -145,8 +147,19 @@ public class AdManager : MonoBehaviour
         RequestInterstitial();
     }
 
+    private bool triedReloadRewarded = false;
     private void ReloadRewarded(object sender, EventArgs e)
     {
+        triedReloadRewarded = false;
+        rewardedAd.OnAdClosed -= ReloadRewarded;
+        RequestRewarded();
+    }   
+    
+    private void TryReloadRewardedAgain(object sender, EventArgs e)
+    {
+        triedReloadRewarded = true;
+        if(triedReloadRewarded)
+        rewardedAd.OnAdClosed -= ReloadRewarded;
         RequestRewarded();
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using MyAsset;
 public class GameOverUI : MonoBehaviour
 {
     [Header("EndScreen")]

@@ -43,6 +43,7 @@
             <e p="CustomNativeEventArgs.cs" t="Include" />
             <e p="CustomNativeTemplateAd.cs" t="Include" />
             <e p="Gender.cs" t="Include" />
+            <e p="InitializationStatus.cs" t="Include" />
             <e p="InterstitialAd.cs" t="Include" />
             <e p="Mediation" t="Include">
               <e p="MediationExtras.cs" t="Include" />
@@ -58,6 +59,7 @@
             <e p="IAdLoaderClient.cs" t="Include" />
             <e p="IBannerClient.cs" t="Include" />
             <e p="ICustomNativeTemplateClient.cs" t="Include" />
+            <e p="IInitializationStatusClient.cs" t="Include" />
             <e p="IInterstitialClient.cs" t="Include" />
             <e p="IMobileAdsClient.cs" t="Include" />
             <e p="IRewardBasedVideoAdClient.cs" t="Include" />
@@ -68,6 +70,9 @@
           </e>
           <e p="Editor" t="Include">
             <e p="GoogleMobileAdsDependencies.xml" t="Include" />
+            <e p="GoogleMobileAdsSettings.cs" t="Include" />
+            <e p="GoogleMobileAdsSettingsEditor.cs" t="Include" />
+            <e p="ManifestProcessor.cs" t="Include" />
             <e p="PListProcessor.cs" t="Include" />
           </e>
           <e p="Platforms" t="Include">
@@ -75,6 +80,7 @@
               <e p="AdLoaderClient.cs" t="Include" />
               <e p="BannerClient.cs" t="Include" />
               <e p="CustomNativeTemplateClient.cs" t="Include" />
+              <e p="InitializationStatusClient.cs" t="Include" />
               <e p="InterstitialClient.cs" t="Include" />
               <e p="MobileAdsClient.cs" t="Include" />
               <e p="RewardBasedVideoAdClient.cs" t="Include" />
@@ -82,11 +88,12 @@
               <e p="Utils.cs" t="Include" />
             </e>
             <e p="GoogleMobileAdsClientFactory.cs" t="Include" />
-            <e p="IOS" t="Include">
+            <e p="iOS" t="Include">
               <e p="AdLoaderClient.cs" t="Include" />
               <e p="BannerClient.cs" t="Include" />
               <e p="CustomNativeTemplateClient.cs" t="Include" />
               <e p="Externs.cs" t="Include" />
+              <e p="InitializationStatusClient.cs" t="Include" />
               <e p="InterstitialClient.cs" t="Include" />
               <e p="MobileAdsClient.cs" t="Include" />
               <e p="MonoPInvokeCallbackAttribute.cs" t="Include" />
@@ -353,7 +360,7 @@
         <e p="GPGSIds.cs" t="Include" />
         <e p="PlayServicesResolver" t="Include">
           <e p="Editor" t="Include">
-            <e p="play-services-resolver_v1.2.105.0.txt" t="Include" />
+            <e p="play-services-resolver_v1.2.123.0.txt" t="Include" />
           </e>
         </e>
         <e p="Plugins" t="Include">

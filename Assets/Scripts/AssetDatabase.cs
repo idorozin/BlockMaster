@@ -7,107 +7,115 @@ using GooglePlayGames.Native.Cwrapper;
 using UnityEngine.Experimental.AI;
 using Random = UnityEngine.Random;
 
-public class AssetDatabase : MonoBehaviour
+
+namespace MyAsset
 {
-	public static AssetDatabase Instance;
-
-	private void Awake()
+	public class AssetDatabase : MonoBehaviour
 	{
-		if (Instance == null)
+		public static AssetDatabase Instance;
+
+		private void Awake()
 		{
-			Instance = this;
+			if (Instance == null)
+			{
+				Instance = this;
+			}
+			else
+			{
+				Destroy(gameObject);
+			}
 		}
-		else
+
+		public Category cannons;
+		public Category platforms;
+		public Category trails;
+		public Category flames;
+
+		public Sprite GetLastCannon()
 		{
-			Destroy(gameObject);
+			if (PlayerStats.Instance.lastCannon == 0)
+				return null;
+			return cannons.serializedItems.First(cannon => cannon.Id == PlayerStats.Instance.lastCannon).Icon;
 		}
-	}
 
-	public Category cannons;
-	public Category platforms;
-	public Category trails;
-	public Category flames;	
-
-	public Sprite GetLastCannon()
-	{
-		if (PlayerStats.Instance.lastCannon == 0)
-			return null;
-		return cannons.serializedItems.First(cannon => cannon.Id == PlayerStats.Instance.lastCannon).Icon;
-	}
-	
-	public Item GetRandomCannon()
-	{
-		var cannons = from c in this.cannons.serializedItems
-			where c.Gold < 500 && !PlayerStats.Instance.ItemsOwned.Contains(c.Id)
-			select c;
-		Item cannon = null;
-		int m = cannons.Count();
-		int r = Random.Range(0, m);
-		int i = 0;
-		foreach (var c in cannons)
+		public Item GetRandomCannon()
 		{
-			if (i == r)
-				cannon = c;
-			i++;
+			var cannons = from c in this.cannons.serializedItems
+				where c.Gold < 500 && !PlayerStats.Instance.ItemsOwned.Contains(c.Id)
+				select c;
+			Item cannon = null;
+			int m = cannons.Count();
+			int r = Random.Range(0, m);
+			int i = 0;
+			foreach (var c in cannons)
+			{
+				if (i == r)
+					cannon = c;
+				i++;
+			}
+
+			return cannon;
 		}
-		return cannon;
-	}	
-	
-	public Sprite GetLastPlatform()
-	{
-		if (PlayerStats.Instance.lastPlatform == 0)
-			return null;
-		return platforms.serializedItems.First(platform => platform.Id == PlayerStats.Instance.lastPlatform).Icon;
-	}	
-	public TrailRenderer GetLastTrail()
-	{
-		//return trails.serializedItems.First(cannon => cannon.Id  == PlayerStats.Instance.lastTrail).Icon;
-		return null;
-	}	
-	public RuntimeAnimatorController GetLastFlame()
-	{
-		if (PlayerStats.Instance.lastFlame == 0)
-			return null;
-		return flames.serializedItems.First(flame => flame.Id == PlayerStats.Instance.lastFlame).Animator;
-	}
-	
 
-	public bool CanBuyItem()
-	{
-		return CanBuyItem(cannons) || CanBuyItem(platforms) || CanBuyItem(trails) || CanBuyItem(flames);
-	}
+		public Sprite GetLastPlatform()
+		{
+			if (PlayerStats.Instance.lastPlatform == 0)
+				return null;
+			return platforms.serializedItems.First(platform => platform.Id == PlayerStats.Instance.lastPlatform).Icon;
+		}
 
-	private bool CanBuyItem(Category c)
-	{
-		if (c == null)
+		public TrailRenderer GetLastTrail()
+		{
+			//return trails.serializedItems.First(cannon => cannon.Id  == PlayerStats.Instance.lastTrail).Icon;
+			return null;
+		}
+
+		public RuntimeAnimatorController GetLastFlame()
+		{
+			if (PlayerStats.Instance.lastFlame == 0)
+				return null;
+			return flames.serializedItems.First(flame => flame.Id == PlayerStats.Instance.lastFlame).Animator;
+		}
+
+
+		public bool CanBuyItem()
+		{
+			return CanBuyItem(cannons) || CanBuyItem(platforms) || CanBuyItem(trails) || CanBuyItem(flames);
+		}
+
+		private bool CanBuyItem(Category c)
+		{
+			if (c == null)
+				return false;
+			foreach (Item item in c.serializedItems)
+			{
+				if (PlayerStats.Instance.gold >= item.Gold && item.Score <= PlayerStats.Instance.highScore)
+					return true;
+			}
+
 			return false;
-		foreach (Item item in c.serializedItems)
-		{
-			if (PlayerStats.Instance.gold >= item.Gold && item.Score <= PlayerStats.Instance.highScore)
-				return true;
 		}
-		return false;
-	}
-	
-	private void OnValidate()
-	{
-		List<Category> categories = new List<Category>();
-		categories.Add(cannons);
-		categories.Add(platforms);
-		categories.Add(trails);
-		categories.Add(flames);
-		AssetDatabaseHelper.categories = categories;
-	}
-	
-	[ContextMenu("SetIds")]
-	public void SetIds()
-	{
-		AssetDatabaseHelper.SetIds();
-	}	
-	[ContextMenu("PrintIds")]
-	public void PrintIds()
-	{
-		AssetDatabaseHelper.PrintIds();
-	}
 
+		private void OnValidate()
+		{
+			List<Category> categories = new List<Category>();
+			categories.Add(cannons);
+			categories.Add(platforms);
+			categories.Add(trails);
+			categories.Add(flames);
+			AssetDatabaseHelper.categories = categories;
+		}
+
+		[ContextMenu("SetIds")]
+		public void SetIds()
+		{
+			AssetDatabaseHelper.SetIds();
+		}
+
+		[ContextMenu("PrintIds")]
+		public void PrintIds()
+		{
+			AssetDatabaseHelper.PrintIds();
+		}
+	}
 }

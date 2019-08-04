@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
+using MyAsset;
 
 public class SetSkin : MonoBehaviour
 {

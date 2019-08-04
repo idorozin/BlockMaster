@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Experimental.U2D;
-
+using MyAsset;
 public class ItemsShop : MonoBehaviour
 {
 	[SerializeField]

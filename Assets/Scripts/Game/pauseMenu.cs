@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using admob;
 using Boo.Lang;
 using TMPro;
 using UnityEngine;
@@ -133,7 +134,7 @@ public class PauseMenu : MonoBehaviour
             if (AdManager.Instance.CanPlayInterstitial())
             {
                 AdPlaying = true;
-                AdManager.Instance.interstitial.OnAdClosed += handleAdFinished;
+                AdManager.Instance.ad.interstitialEventHandler += handleAdFinished;
                 AdManager.Instance.ShowInterstitial();
             }
             else
@@ -148,9 +149,11 @@ public class PauseMenu : MonoBehaviour
 
     //TODO start the animated layout when the ad is finished
     // right now it crashes when i do that
-    private void handleAdFinished(object sender, EventArgs e)
+    private void handleAdFinished(string eventName, string msg)
     {
+        if(eventName != AdmobEvent.onAdClosed)
+            return;
         AdPlaying = false;
-        AdManager.Instance.interstitial.OnAdClosed -= handleAdFinished;
+        AdManager.Instance.ad.interstitialEventHandler -= handleAdFinished;
     }
 }

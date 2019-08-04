@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using admob;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,27 +32,22 @@ public class RewardDialog : MonoBehaviour
 	{
 		if (AdManager.Instance.CanPlayRewarded())
 		{
-			AdManager.Instance.rewardedAd.OnAdClosed += handleFailed;
-			AdManager.Instance.rewardedAd.OnUserEarnedReward += handleSuccess;
+			AdManager.Instance.ad.rewardedVideoEventHandler += HandleAd;
 			AdManager.Instance.ShowRewarded();
 		}
 	}
 
-	void handleFailed(object sender , EventArgs e)
+	void HandleAd(string eventName, string msg)
 	{
-		AdManager.Instance.rewardedAd.OnAdClosed -= handleFailed;
-		//AudioManager.Instance.StopSound(p.sound);
-		Destroy(gameObject);
+		if(eventName == AdmobEvent.onRewarded)
+			p.Collect();
+		if (eventName == AdmobEvent.onAdClosed)
+		{
+			AdManager.Instance.ad.rewardedVideoEventHandler -= HandleAd;
+			Destroy(gameObject);
+		}
 	}
 	
-	void handleSuccess(object sender , EventArgs e)
-	{
-		AdManager.Instance.rewardedAd.OnUserEarnedReward -= handleSuccess;
-		p.Collect();
-		//AudioManager.Instance.StopSound(p.sound);
-		Destroy(gameObject);
-	}
-
 	public void CollectButton()
 	{
 		//AudioManager.Instance.StopSound(p.sound);

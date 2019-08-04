@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using admob;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -47,14 +48,16 @@ public class NextChallenge : MonoBehaviour
 	{
 		if (AdManager.Instance.CanPlayRewarded())
 		{
-			AdManager.Instance.rewardedAd.OnUserEarnedReward += HandleReward;
+			AdManager.Instance.ad.rewardedVideoEventHandler += HandleReward;
 			AdManager.Instance.ShowRewarded();
 		}
 	}
 
-	void HandleReward(object sender , EventArgs e)
+	void HandleReward(string eventName , string msg)
 	{
-		AdManager.Instance.rewardedAd.OnUserEarnedReward -= HandleReward;
+		if(eventName != AdmobEvent.onRewarded)
+			return;
+		AdManager.Instance.ad.rewardedVideoEventHandler -= HandleReward;
 		StopAllCoroutines();
 		ActivateChallenge dr = FindObjectOfType<ActivateChallenge>();
 		if (dr != null)

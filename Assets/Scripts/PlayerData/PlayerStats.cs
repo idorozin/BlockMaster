@@ -31,7 +31,7 @@ public class PlayerStats : MonoBehaviour
 				{
 					Instance.challenges.Add(new Challenge(c));
 				}
-				//Instance.ChallengesAvailable = 5;		
+				Instance.ChallengesAvailable = 5;		
 				Instance.ActivateChallenge();
 			}
 			else

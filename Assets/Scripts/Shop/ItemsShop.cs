@@ -73,6 +73,8 @@ public class ItemsShop : MonoBehaviour
 
 	private void MoveToSwipeDirection(string direction)
 	{
+		if(!gameObject.activeSelf)
+			return;
 		switch (direction)
 		{
 			case "Right":
@@ -158,7 +160,7 @@ public class ItemsShop : MonoBehaviour
 			lockedUi.SetActive(true);
 			lock_.GetComponent<Button>().enabled = false;
 			TextMeshProUGUI lockedUiText = lockedUi.GetComponent<TextMeshProUGUI>();
-			lockedUiText.text = "To unlock the \n cannon reach to \n " + item.Score + "points";
+			lockedUiText.text = "To unlock the \n cannon reach to \n " + item.Score + "meters";
 		}
 		else
 		{

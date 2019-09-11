@@ -5,6 +5,7 @@ using System.Collections.Generic;
  using System.Net;
  using System.Runtime.InteropServices;
  using UnityEngine;
+ using UnityEngine.Experimental.AI;
  using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour
@@ -34,9 +35,17 @@ public class TimeManager : MonoBehaviour
 		}
 	}
 
+	private bool firstTime = true;
 	//gets time from the server and updates countDown
 	public IEnumerator getTime(Action<bool> result = null)
 	{
+		Debug.Log("GET TIME");
+		isRunning = true;
+		if (firstTime)
+		{
+			yield return new WaitForSecondsRealtime(.1f);
+			firstTime = false;
+		}
 		using (WWW www = new WWW(path))
 		{
 			while (!www.isDone)
@@ -48,17 +57,21 @@ public class TimeManager : MonoBehaviour
 		if (!setCurrentTime())
 		{
 			result?.Invoke(false);
+			isRunning = false;
 			yield break;
 		}
 		offest = (getTimeInSecs(DateTime.Now) - getTimeInSecs());
 		isUpdated = true;
+		isRunning = false;
 		if(!veryUpdated)
 			StartCoroutine(UpdatedEnough());
 		result?.Invoke(true);
+
 	}
 
 	public bool setCurrentTime() // get the value of current secs,mins,hours,days in second from the beggining of the month
 	{
+		Debug.Log(time);
 		if (string.IsNullOrEmpty(time))
 			return false;
 		try
@@ -75,6 +88,8 @@ public class TimeManager : MonoBehaviour
 	}
 
 	public bool veryUpdated;
+	public bool isRunning;
+
 	public IEnumerator UpdatedEnough()
 	{
 		veryUpdated = true;
@@ -116,41 +131,6 @@ public class TimeManager : MonoBehaviour
 	{
 		dateTime = time;
 		return (int)(dateTime-baseDate).TotalSeconds;
-	}
-
-
-	//use this to be sure there is internet connection
-	public string GetHtmlFromUri(string resource)
-	{
-		string html = string.Empty;
-		HttpWebRequest req = (HttpWebRequest)WebRequest.Create(resource);
-		try
-		{
-			using (HttpWebResponse resp = (HttpWebResponse)req.GetResponse())
-			{
-				bool isSuccess = (int)resp.StatusCode < 299 && (int)resp.StatusCode >= 200;
-				if (isSuccess)
-				{
-					using (StreamReader reader = new StreamReader(resp.GetResponseStream()))
-					{
-						//We are limiting the array to 80 so we don't have
-						//to parse the entire html document feel free to 
-						//adjust (probably stay under 300)
-						char[] cs = new char[80];
-						reader.Read(cs, 0, cs.Length);
-						foreach(char ch in cs)
-						{
-							html +=ch;
-						}
-					}
-				}
-			}
-		}
-		catch
-		{
-			return "";
-		}
-		return html;
 	}
 	
 }

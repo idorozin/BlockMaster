@@ -17,6 +17,29 @@ public class AdManager : MonoBehaviour
 
     private string testId = "3863B0DE3158C0FD8295B27D56C2F6D5";
 
+    private string appId;
+    private string interstitialId;
+    private string rewardedId;
+    private string bannerId;
+
+    public bool testAds;  
+
+
+    private void Init()
+    {
+        appId = AdmobIds.appId;
+        if (!testAds)
+        {
+            interstitialId = AdmobIds.intersitialId;
+            rewardedId = AdmobIds.rewardedId;
+        }
+        else
+        {
+            interstitialId = AdmobIds.intersitialTestId;
+            rewardedId = AdmobIds.rewardedTestId;
+        }
+    }
+
     private void Awake()
     {
         if (Instance == null)
@@ -31,15 +54,16 @@ public class AdManager : MonoBehaviour
 
     public void Start()
     {
-#if UNITY_ANDROID
-        string appId = "ca-app-pub-4356027285942374~1457037501";
-#elif UNITY_IPHONE
-            string appId = "ca-app-pub-4356027285942374~1457037501";
-        #else
-            string appId = "unexpected_platform";
-        #endif
-        // Initialize the Google Mobile Ads SDK.
-        //MobileAds.Initialize(appId);
+        PlayerStats.Instance.noAds = false;
+        Init();
+        // Initialize the Google Mobile Ads SDK.       
+        MobileAds.Initialize(s => {});
+        StartCoroutine(load());
+    }
+
+    private IEnumerator load()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
         if (!PlayerStats.Instance.noAds)
             RequestInterstitial();
         RequestRewarded();
@@ -55,33 +79,17 @@ public class AdManager : MonoBehaviour
 
     private void RequestInterstitial()
     {
-#if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-4356027285942374/7256159091";
-#elif UNITY_IPHONE
-            string adUnitId = "ca-app-pub-3940256099942544/1033173712";
-        #else
-            string adUnitId = "unexpected_platform";
-        #endif
         interstitial?.Destroy();
-        this.interstitial = new InterstitialAd(adUnitId);
+        this.interstitial = new InterstitialAd(interstitialId);
         //interstitial.OnAdClosed += ReloadInterstitial;
         AdRequest request = new AdRequest.Builder().AddTestDevice(testId).Build();
         this.interstitial.LoadAd(request);
     }
 
     private BannerView bannerView;
-
     private void RequestBanner()
     {
-#if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/6300978111";
-#elif UNITY_IPHONE
-            string adUnitId = "ca-app-pub-3940256099942544/1033173712";
-        #else
-            string adUnitId = "unexpected_platform";
-        #endif
-
-        bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Top);
+        bannerView = new BannerView(bannerId, AdSize.Banner, AdPosition.Top);
         AdRequest request = new AdRequest.Builder().Build();
         this.bannerView.LoadAd(request);
     }
@@ -90,15 +98,7 @@ public class AdManager : MonoBehaviour
 
     private void RequestRewarded()
     {
-#if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-4356027285942374/4821567447";
-#elif UNITY_IPHONE
-            string adUnitId = "ca-app-pub-3940256099942544/5224354917";
-        #else
-            string adUnitId = "unexpected_platform";
-        #endif
-        this.rewardedAd = new RewardedAd(adUnitId);
-        rewardedAd.OnAdClosed += ReloadRewarded;
+        this.rewardedAd = new RewardedAd(rewardedId);
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().AddTestDevice(testId).Build();
         // Load the rewarded ad with the request.
@@ -129,7 +129,7 @@ public class AdManager : MonoBehaviour
             rewardedAd.Show();
         }
     }
-
+    
     public bool CanPlayInterstitial()
     {
         return !PlayerStats.Instance.noAds && interstitial != null &&
@@ -143,6 +143,7 @@ public class AdManager : MonoBehaviour
 
     private void ReloadInterstitial(object sender, EventArgs e)
     {
+        triedReloadInterstitial = true;
         interstitial.OnAdClosed -= ReloadInterstitial;
         RequestInterstitial();
     }
@@ -157,9 +158,20 @@ public class AdManager : MonoBehaviour
     
     private void TryReloadRewardedAgain(object sender, EventArgs e)
     {
-        triedReloadRewarded = true;
+        rewardedAd.OnAdFailedToLoad -= TryReloadRewardedAgain;
         if(triedReloadRewarded)
-        rewardedAd.OnAdClosed -= ReloadRewarded;
+            return;
+        triedReloadRewarded = true;
+        RequestRewarded();
+    }  
+    
+    private bool triedReloadInterstitial = false;
+    private void TryReloadInterstitialAgain(object sender, EventArgs e)
+    {
+        interstitial.OnAdFailedToLoad -= TryReloadInterstitialAgain;
+        if(triedReloadInterstitial)
+            return;
+        triedReloadInterstitial = true;
         RequestRewarded();
     }
 }

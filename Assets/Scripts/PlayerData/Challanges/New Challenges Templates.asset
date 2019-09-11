@@ -42,7 +42,7 @@ MonoBehaviour:
   - description: Reach to %s meters!
     reward: 10
     action: score
-    goal: 20
+    goal: 40
     oneRun: 1
     timeToComplete: 20
     difficulty: 0

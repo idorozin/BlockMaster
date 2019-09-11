@@ -153,6 +153,11 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volume: 1
+  - name: 7
+    clip: {fileID: 8300000, guid: cb2aa81f3a5d21a45980d58676d50ab5, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 1
 --- !u!114 &91000405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimumTimeBetweenAds: 30
+  testAds: 0
 --- !u!114 &91000406
 MonoBehaviour:
   m_ObjectHideFlags: 0

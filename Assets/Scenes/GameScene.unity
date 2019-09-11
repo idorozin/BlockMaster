@@ -9479,7 +9479,7 @@ PrefabInstance:
     - target: {fileID: 2664546889685203182, guid: f1883fc003a92d74394e62d6596684e2,
         type: 3}
       propertyPath: fadeIn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2664546889685203182, guid: f1883fc003a92d74394e62d6596684e2,
         type: 3}
@@ -9776,6 +9776,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212987232680421690, guid: 5713a2f3e7a057e46b1c97a9b434e80e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: deef2b5265f472740a11d573b888564e,
+        type: 3}
     - target: {fileID: 4195789529052348, guid: 5713a2f3e7a057e46b1c97a9b434e80e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9838,12 +9844,6 @@ PrefabInstance:
       propertyPath: renderer
       value: 
       objectReference: {fileID: 1657000996}
-    - target: {fileID: 212987232680421690, guid: 5713a2f3e7a057e46b1c97a9b434e80e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: deef2b5265f472740a11d573b888564e,
-        type: 3}
     - target: {fileID: 4477806741666702, guid: 5713a2f3e7a057e46b1c97a9b434e80e, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0

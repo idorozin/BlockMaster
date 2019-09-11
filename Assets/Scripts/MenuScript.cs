@@ -21,7 +21,16 @@ public class MenuScript : MonoBehaviour
 	{
 		//Time.timeScale = 0f;
 		//PauseMenu.GameIsPaused = true;
-		transition.FadeOutAndLoadScene("GameScene");
+		if (!PlayerStats.Instance.didTutorial)
+		{
+			PlayerStats.Instance.didTutorial = true;
+			PlayerStats.saveFile();
+			transition.FadeOutAndLoadScene("Test");
+		}
+		else
+		{
+			transition.FadeOutAndLoadScene("GameScene");
+		}
 	}
 	
 	public void LoadShop(){

@@ -14,13 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: 4b1b7ce892a2f304fb41c95d6e6c99fd
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Test.unity
-    guid: 637ba2c51a0e4264f9030b3a0264b300
+    guid: 6ea9e259d1d92aa40a5de21e940cb452
   m_configObjects: {}

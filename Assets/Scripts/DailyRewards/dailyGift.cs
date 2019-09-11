@@ -12,10 +12,6 @@ public class DailyGift : MonoBehaviour
 	private GameObject TickPrefab;
 	[SerializeField]
 	Reward_[] gifts = new Reward_[30];
-	[SerializeField]
-	private GameObject emptyGiftText;
-	[SerializeField]
-	private GameObject emptyGiftImage;
 
 	[SerializeField]
 	private RewardDialog rewardDialog;
@@ -27,6 +23,7 @@ public class DailyGift : MonoBehaviour
 	private bool testing;
 
 	[SerializeField] public ActivateGift dailyReward;
+	private bool tryValidate;
 
 	private void OnMouseDown()
 	{
@@ -53,8 +50,12 @@ public class DailyGift : MonoBehaviour
 				return;
 			}
 
-			if (dailyReward.validationRequired)
+			if (dailyReward.validationRequired && !tryValidate)
+			{
 				dailyReward.StartCoroutine("ValidateTime");
+				tryValidate = true;
+			}
+
 			if (!giftAllowed || !ActivateGift.GiftAllowed)
 			{
 				Debug.Log("returned");

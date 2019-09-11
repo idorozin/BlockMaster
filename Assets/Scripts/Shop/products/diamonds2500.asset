@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -16,3 +17,6 @@ MonoBehaviour:
   Type: 1
   Amount: 2500
   Price: 49.99
+  Image: {fileID: 21300000, guid: 3597c507852bf434391a0d7c2e6d117c, type: 3}
+  size: {x: 650.5, y: 426}
+  position: {x: -0.000010192, y: -286.7}

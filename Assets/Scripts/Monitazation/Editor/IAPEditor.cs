@@ -20,5 +20,6 @@ public class IAPEditor : Editor
 			iap.position = go.GetComponent<RectTransform>().anchoredPosition;
 			iap.Image = go.GetComponent<Image>().sprite;
 		}
+		EditorUtility.SetDirty(target);
 	}
 }

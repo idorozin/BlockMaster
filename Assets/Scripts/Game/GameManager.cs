@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
+		if(PlayerStats.Instance != null)
 		if (PlayerStats.Instance.soundOn && !PlayerStats.Instance.musicOn)
 		{
 			AudioSource[] sources = sounds.GetComponentsInChildren<AudioSource>();
@@ -163,12 +164,13 @@ public class GameManager : MonoBehaviour
 		    }
 		    yield return null;
 	    }
-	    if(count > 3)
-		    yield return new WaitForSeconds(0.3f);
+	    if(count > 0)
+		    yield return new WaitForSeconds(0.5f);
 	    surface.GetComponent<SlideToDirection>().SlideToVector3(new Vector3(surface.transform.position.x, height, surface.transform.position.z));
 	    Instantiate(pigoom, new Vector3(surface.transform.position.x, surface.transform.position.y + 0.905f, surface.transform.position.z),
 		    Quaternion.identity);
 	    DestroyShapes.Destroyall();
+	    UpdateText(DestroyShapes.Text());
     }
 	
     public void surface_()

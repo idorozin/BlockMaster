@@ -67,6 +67,8 @@ public class GoodsShop : MonoBehaviour
 
 	private void MoveToSwipeDirection(string direction)
 	{
+		if(!gameObject.activeSelf)
+			return;
 		switch (direction)
 		{
 			case "Right":
@@ -140,7 +142,7 @@ public class GoodsShop : MonoBehaviour
 			type.sprite = gold;
 		else
 			type.sprite = diamond;
-		priceText.text = item.Price + "";
+		priceText.text = "$"+item.Price + "";
 		amount.text = item.Amount + "";
 
 	}

@@ -494,12 +494,18 @@
             <e p="PlayerInput.cs" t="Include" />
             <e p="PredictionLine.cs" t="Include" />
             <e p="Revive.cs" t="Include" />
+            <e p="ScoreManager.cs" t="Include" />
             <e p="Shape.cs" t="Include" />
             <e p="shapeBehaviour.cs" t="Include" />
             <e p="shapeGenerator.cs" t="Include" />
             <e p="Tips.cs" t="Include" />
             <e p="trackCamera.cs" t="Include" />
             <e p="trailEffect.cs" t="Include" />
+            <e p="Tutorial" t="Include">
+              <e p="MoveForwardAndBackward.cs" t="Include" />
+              <e p="MoveUpLoop.cs" t="Include" />
+              <e p="Tutorial.cs" t="Include" />
+            </e>
           </e>
           <e p="GooglePlay" t="Include">
             <e p="PlayServices.cs" t="Include" />
@@ -507,6 +513,7 @@
           <e p="MenuScript.cs" t="Include" />
           <e p="Monitazation" t="Include">
             <e p="AdManager.cs" t="Include" />
+            <e p="AdmobIds.cs" t="Include" />
             <e p="Editor" t="Include">
               <e p="IAPEditor.cs" t="Include" />
             </e>

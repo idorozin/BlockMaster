@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour
 {
@@ -87,6 +88,8 @@ public class Settings : MonoBehaviour
 	
 	public void Info()
 	{
+		Tutorial.closeTutorial = true;
+		SceneManager.LoadScene("Test");
 	}
 
 	public void NoAds()

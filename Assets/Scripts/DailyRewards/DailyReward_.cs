@@ -14,8 +14,7 @@ public abstract class DailyReward_ : MonoBehaviour
 	protected TimePassed timePassed = new TimePassed();
 	private bool initialized;
 	[SerializeField]
-	private bool autoReset = false;
-	private bool safeMode = false;
+	private bool autoReset;
 	
 	private void Start()
 	{
@@ -36,24 +35,44 @@ public abstract class DailyReward_ : MonoBehaviour
 	private void OnEnable()
 	{
 		if(initialized && timePassed.startTime != DateTime.MinValue)
-		StartCoroutine(CountDown());
+			StartCoroutine(CountDown());
 	}
 
 	protected abstract void SetTimePassed();
 	
 	//reset the timer every roll
 	public IEnumerator ResetTimer()
-	{
-		OnReset();
+	{	
 		coolDown = countDownLenght;
+		while (TimeManager.Instance.isRunning)
+			yield return null;
 		if (!TimeManager.Instance.veryUpdated)
 		{
-			yield return StartCoroutine(TimeManager.Instance.getTime());
+			yield return StartCoroutine(TimeManager.Instance.getTime(
+				(success) =>
+				{
+					if (success)
+					{
+						timePassed.offset =  TimeManager.Instance.GetOffset();
+						timePassed.startTime = TimeManager.Instance.GetFullTime();
+						PlayerStats.saveFile();
+						StartCoroutine(CountDown());
+						OnReset();
+					}
+					else
+					{
+						
+					}
+				}));
 		}
-		timePassed.offset =  TimeManager.Instance.GetOffset();
-		timePassed.startTime = TimeManager.Instance.GetFullTime();
-		PlayerStats.saveFile();
-		StartCoroutine(CountDown());
+		else
+		{
+			timePassed.offset =  TimeManager.Instance.GetOffset();
+			timePassed.startTime = TimeManager.Instance.GetFullTime();
+			PlayerStats.saveFile();
+			StartCoroutine(CountDown());
+			OnReset();
+		}
 	}
 
 	protected virtual void OnReset(){}
@@ -92,6 +111,19 @@ public abstract class DailyReward_ : MonoBehaviour
 			validationRequired = false;
 			yield break;
 		}
+		
+		while (TimeManager.Instance.isRunning)
+			yield return null;
+
+		if (TimeManager.Instance.veryUpdated)
+		{
+			validationRequired = false;
+			OnTimePassed();
+			if (autoReset)
+				StartCoroutine(ResetTimer());
+			yield break;
+		}
+
 		yield return StartCoroutine(TimeManager.Instance.getTime(
 			(success) =>
 			{

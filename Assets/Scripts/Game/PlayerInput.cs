@@ -17,7 +17,11 @@ public class PlayerInput : MonoBehaviour
 	[SerializeField]
 	private float maximumStartPosition = 2f;
 
+	[SerializeField]
+	private bool skip;
 
+	public static int FingerMoved;
+	public static int Shoots;
 
 	private void Awake()
 	{
@@ -32,8 +36,8 @@ public class PlayerInput : MonoBehaviour
 
 	private void Update()
 	{
+		if(!skip)
 		if (GameManager.Instance != null && PauseMenu.GameIsPaused || GameManager.Instance.NextLevel) return;
-
 		if (Time.time > nextTime)
 		{
 			nextTime = Time.time + shootingSpeed;
@@ -68,6 +72,7 @@ public class PlayerInput : MonoBehaviour
 				case TouchPhase.Ended:
 					if (!loading && began)
 					{
+						Shoots++;
 						cannonController.Shoot(initialPosition,aimPosition);
 						loading = true;
 						fingerMoved = false;
@@ -79,10 +84,14 @@ public class PlayerInput : MonoBehaviour
 		}
 
 		if (fingerMoved)
-			cannonController.Aim(initialPosition,aimPosition);
+		{
+			FingerMoved++;
+			cannonController.Aim(initialPosition, aimPosition);
+		}
 	}
 
 	private Vector3 diff;
+
 	private Vector3 GetWorldPoint(Vector3 position)
 	{
 		diff = camera_.transform.position - cameraInitialPosition;

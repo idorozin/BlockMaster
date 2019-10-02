@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf63739b5ba42d89955bd82ea0c6fb4, type: 3}
   m_Name: NO_ADS
   m_EditorClassIdentifier: 
-  ProductId: NO_ADS
+  ProductId: no_ads
   ProductType: 1
   Type: 2
   Amount: 1

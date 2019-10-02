@@ -25,7 +25,7 @@ public class MenuScript : MonoBehaviour
 		{
 			PlayerStats.Instance.didTutorial = true;
 			PlayerStats.saveFile();
-			transition.FadeOutAndLoadScene("Test");
+			transition.FadeOutAndLoadScene("Tutorial");
 		}
 		else
 		{

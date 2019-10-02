@@ -437,8 +437,10 @@
             <e p="DestroyOnAnimationFinish.cs" t="Include" />
             <e p="FlyAnimation.cs" t="Include" />
             <e p="ImageCanvasAnimator.cs" t="Include" />
+            <e p="MoveToDirectionLoop.cs" t="Include" />
             <e p="MoveToTheSide.cs" t="Include" />
             <e p="NotflicationAnimation.cs" t="Include" />
+            <e p="OnAndOff.cs" t="Include" />
             <e p="ProgressBar.cs" t="Include" />
             <e p="SceneTransition.cs" t="Include" />
             <e p="ScrollingText.cs" t="Include" />
@@ -484,12 +486,12 @@
           </e>
           <e p="Game" t="Include">
             <e p="CannonController.cs" t="Include" />
-            <e p="DestroyShapes.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
             <e p="GameOverUI.cs" t="Include" />
             <e p="HeartsUi.cs" t="Include" />
             <e p="HeightFinder.cs" t="Include" />
             <e p="LavaBehaviour.cs" t="Include" />
+            <e p="LevelManager.cs" t="Include" />
             <e p="pauseMenu.cs" t="Include" />
             <e p="PlayerInput.cs" t="Include" />
             <e p="PredictionLine.cs" t="Include" />
@@ -533,6 +535,7 @@
               <e p="ExtensionMethodHelper.cs" t="Include" />
               <e p="NextChallenge.cs" t="Include" />
             </e>
+            <e p="ChallengesHelper.cs" t="Include" />
             <e p="PlayerData.cs" t="Include" />
             <e p="PlayerStats.cs" t="Include" />
             <e p="TimePassed.cs" t="Include" />

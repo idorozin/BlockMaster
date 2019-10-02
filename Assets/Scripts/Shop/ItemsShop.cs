@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,6 +35,31 @@ public class ItemsShop : MonoBehaviour
 	[SerializeField] private Sprite dia;
 
 	public RectTransform transform;
+
+	[SerializeField] private GameObject fingers;
+	
+	private void OnDisable()
+	{
+		fingers.SetActive(false);
+		time = 0f;
+	}
+
+	void Update()
+	{
+		time += Time.deltaTime;
+		if (time >= 10f)
+		{
+			StartCoroutine(Fingers());
+		}
+	}
+
+	IEnumerator Fingers()
+	{
+		time = -6f;
+		fingers.SetActive(true);
+		yield return new WaitForSecondsRealtime(6f);
+		fingers.SetActive(false);
+	}
 
 
 	// Use this for initialization
@@ -71,10 +97,12 @@ public class ItemsShop : MonoBehaviour
 		MoveLeft();
 	}
 
+	private float time = 0f;
 	private void MoveToSwipeDirection(string direction)
 	{
 		if(!gameObject.activeSelf)
 			return;
+		time = 0f;
 		switch (direction)
 		{
 			case "Right":

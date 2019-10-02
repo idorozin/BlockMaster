@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Experimental.U2D;
+using UnityScript.Steps;
 
 public class GoodsShop : MonoBehaviour
 {
@@ -25,7 +27,32 @@ public class GoodsShop : MonoBehaviour
 	[SerializeField]
 	private Sprite diamond;
 
+	[SerializeField] private GameObject fingers;
+	private float time;
 
+	void Update()
+	{
+		time += Time.deltaTime;
+		if (time >= 10f)
+		{
+			StartCoroutine(Fingers());
+		}
+	}
+
+	private void OnDisable()
+	{
+		fingers.SetActive(false);
+		time = 0f;
+	}
+
+	IEnumerator Fingers()
+	{
+		time = -6f;
+		fingers.SetActive(true);
+		yield return new WaitForSecondsRealtime(6f);
+		fingers.SetActive(false);
+	}
+	
 	// Use this for initialization
 	private void Start ()
 	{
@@ -69,6 +96,7 @@ public class GoodsShop : MonoBehaviour
 	{
 		if(!gameObject.activeSelf)
 			return;
+		time = 0f;
 		switch (direction)
 		{
 			case "Right":

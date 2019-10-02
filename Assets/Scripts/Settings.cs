@@ -89,7 +89,7 @@ public class Settings : MonoBehaviour
 	public void Info()
 	{
 		Tutorial.closeTutorial = true;
-		SceneManager.LoadScene("Test");
+		SceneManager.LoadScene("Tutorial");
 	}
 
 	public void NoAds()

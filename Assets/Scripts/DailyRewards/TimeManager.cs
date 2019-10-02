@@ -43,9 +43,10 @@ public class TimeManager : MonoBehaviour
 		isRunning = true;
 		if (firstTime)
 		{
-			yield return new WaitForSecondsRealtime(.1f);
+			yield return new WaitForSecondsRealtime(1f);
 			firstTime = false;
 		}
+		Debug.Log("GET TIME_");
 		using (WWW www = new WWW(path))
 		{
 			while (!www.isDone)

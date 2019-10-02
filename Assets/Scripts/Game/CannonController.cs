@@ -33,13 +33,14 @@ public class CannonController : MonoBehaviour
 		if(finalDir.y < minimumPower)
 			return;
 		shapeGenerator.shape.transform.parent = shapesParent.transform;
-		shapeGenerator.shape.GetComponent<Rigidbody2D>().isKinematic = false; // gravity effect on
-		shapeGenerator.shape.GetComponent<Rigidbody2D>().velocity=(finalDir);
+		var rb2d = shapeGenerator.shape.GetComponent<Rigidbody2D>();
+		rb2d.isKinematic = false; // gravity effect on
+		rb2d.velocity=(finalDir);
 		predictionLine.clearDots();
 		PlayerStats.Instance.ReportProgress(1 , shapeGenerator.shape.name);
 		PlayerStats.Instance.ReportProgress(1 , "shot");
 		AudioManager.Instance.PlaySound(AudioManager.SoundName.cannonShot);
-		DestroyShapes.NewShape(shapeGenerator.shape);
+		GameManager.Instance.levelManager.NewShape(shapeGenerator.shape);
 		shapeGenerator.LoadCannon();
 		FireAnimation();
 	}

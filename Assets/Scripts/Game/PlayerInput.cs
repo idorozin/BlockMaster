@@ -98,21 +98,4 @@ public class PlayerInput : MonoBehaviour
 		return camera_.ScreenToWorldPoint(position) - diff;
 	}
 
-	[ContextMenu("report")]
-	public void Report()
-	{
-		PlayerStats.Instance.ReportProgress(5 , "shot");
-	}
-	[ContextMenu("reportRect")]
-	public void Reportrect()
-	{
-		PlayerStats.Instance.ReportProgress(5 , "Rectangle");
-	}
-	[ContextMenu("reportreach")]
-	public void Reportreach()
-	{
-		PlayerStats.Instance.ReportProgress(100 , "score");
-	}
-
-
 }
